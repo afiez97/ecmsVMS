@@ -42,7 +42,6 @@ $(function(){
 
     //     // get employer position
     //     listEmpPosition(usrId, function(){
-    //         // console.log(obj_empPosition.data);
     //         let count = obj_empPosition.success;
     //         if(count){
     //             let item = obj_empPosition.data;
@@ -52,7 +51,6 @@ $(function(){
     //                 // if(dekan.indexOf(position) == 1){
     //                 //     window.sessionStorage.usrRole = 'dekan' ;
     //                 //     $('.btnEsenat').show();
-    //                 //     console.log('dekan');
 
     //                 // }
     //                 // else if(position == "HOP"){
@@ -84,7 +82,6 @@ $(function(){
     //                 } else if (anr.indexOf(position) !== -1) {
     //                     window.sessionStorage.usrRole = 'anr';
     //                 }
-    //                 // console.log(window.sessionStorage.usrRole);
 
     //         }
     //     });
@@ -154,7 +151,6 @@ $(function(){
         }
     }); 
 
-    // console.log(getSession)
     if(getSession != undefined){
         $("#campus").prop('class','collapse');
         $("#senat").prop('class','collapse in');
@@ -346,7 +342,6 @@ function load_search(token){
             );
 
             setTimeout(() => {
-                // console.log(list_stdPgm)
                 stat_gpa = [num1,num2,num3,num4,num5,num6,num7];
                 stat_cgpa = [numc1,numc2,numc3,numc4,numc5,numc6,numc7];
 
@@ -478,7 +473,6 @@ function load_search(token){
                         
                             data_intake = filterData(dataStd, filterConditions);
                             let good_standing = filterGoodStanding(data_intake);
-                            // console.log("good_standing: "+JSON.stringify(good_standing));
                             total_intake += good_standing.length;
 
                             $("#list_standing").append(`<tr>
@@ -496,7 +490,6 @@ function load_search(token){
                                 if(num_loop == 1){
 
                                     list_standing = filterContStanding(data_intake);
-                                    // console.log("CONT STANDING : "+JSON.stringify(list_standing));
 
                                     status_list = "CONDITIONAL STANDING";
                                     text_info = '2.00 > CGPA >= 1.50<br>(CGPA of 1.51 to 1.99)';
@@ -504,7 +497,6 @@ function load_search(token){
                                 }
                                 else{
                                     list_standing = filterFailed(data_intake);
-                                    // console.log("FAILED : "+JSON.stringify(list_standing));
 
                                     status_list = "FAILED";
                                     text_info = 'CGPA <= 1.50<br>(CGPA of 1.50 and below)';
@@ -579,14 +571,10 @@ function load_stdPgm(pgm_tag,name_pgm){
     // capaianSenat = load_capaian();
     load_capaian();
     capaianSenat = window.capaianData;
-    console.log(capaianSenat);
     let addSenat = capaianSenat[0];
     let uptSenat = capaianSenat[1];
     let delSenat = capaianSenat[2];
 
-    // console.log(addCot);
-    // console.log(uptCot);
-    // console.log(delCot);
 
     if (addSenat == 0){
         SenatAddDisabled = 'disabled';
@@ -755,7 +743,6 @@ function load_stdPgm(pgm_tag,name_pgm){
                                 formStd.append('std_studentid',item.std_studentid);
                                 formStd.append('status_academic',9);
                                 let objStatus = await new post(host+"api_pengurusan_pelajar/public/pelajar/change/statusAcademic",formStd,'picoms '+window.sessionStorage.token).execute();
-                                console.log(objStatus);
                             }
                         }
                         else{
@@ -764,7 +751,6 @@ function load_stdPgm(pgm_tag,name_pgm){
                                 formStd.append('std_studentid',item.std_studentid);
                                 formStd.append('status_academic',9);
                                 let objStatus = await new post(host+"api_pengurusan_pelajar/public/pelajar/change/statusAcademic",formStd,'picoms '+window.sessionStorage.token).execute();
-                                console.log(objStatus);
                             }
                         }
                     })                    
@@ -1030,7 +1016,6 @@ function filterData(data, conditions) {
   }
 
   function filterFailed(data) {
-    // console.log(data)
     return data.filter(item => item["curAcademic_type"] == "" && item["std_cgpa"] < 1.50 );
   } 
 
@@ -1421,7 +1406,6 @@ function loadData(student_id,cal_id,sem,selectSession,pk_cur_academic,modal){
                                 $(".btnGenerate").prop('disabled',false);
                             }
                             let objCGPA = await new get(host + 'api_pengurusan_pelajar/public/curAcademic/cgpa/'+student_id+'/'+pk_cur_academic+'/'+std_semester,'picoms '+window.sessionStorage.token).execute();
-                            // console.log(objCGPA)
                             // cgpa_dis = 0.00;
                             if(objCGPA.success){
                                 let dataCGPA = objCGPA.data;
@@ -1436,8 +1420,7 @@ function loadData(student_id,cal_id,sem,selectSession,pk_cur_academic,modal){
     
                                 cgpa_dis = cgpa_dis.toFixed(4);
                                 
-                                // console.log(cgpa_dis);
-                                // console.log(cgpa_dis.substring(5,6))
+                                
     
                                 if(cgpa_dis.substring(5,6) == "0"){
                                     cgpa_dis = Number(cgpa_dis) + 0.0001;
@@ -1448,7 +1431,6 @@ function loadData(student_id,cal_id,sem,selectSession,pk_cur_academic,modal){
                                     cgpa_dis = cgpa_dis.toFixed(2); 
                                 }
     
-                                // console.log(cgpa_dis)
     
         
                             }

@@ -1155,7 +1155,7 @@ function acaCalActive(returnValue) {
   });
 
   request.error(function (response) {
-    logOut();
+    // logOut();
   });
 }
 
