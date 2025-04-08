@@ -1,0 +1,270 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Biodata</span>
+			        </li>
+              <li class="nav-item">
+                <a href="javascript:void(0);" id="btn_update" class="navbar-item text-primary"><i class="fa fa-cog"></i> UPDATE</a>
+              </li>
+			        <!-- <li class="nav-item">
+				        <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-lokasi" title="Reply" data-backdrop="static" data-keyboard="false">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">Rekod Baru</span>
+				            </span>
+				        </a>
+			        </li> -->
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+
+    <div class="modal" id="loading_modal" data-backdrop="static">
+      <div class="modal-dialog">
+        <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+      </div>
+    </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-body">
+                    <p class="m-a-0">
+                      <h5><b>FATHER/GUARDIAN/SPOUSE INFO</b></h5>
+                      <hr>
+                      <form role="form">
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>IC No.</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_father_icno"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Name</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_father_name"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Phone No.</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_father_contactno"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Relationship</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_father_relationship"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Nationality</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_father_nationality"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Address</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_father_address"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- ibu -->
+                <div class="box">
+                  <div class="box-body">
+                    <p class="m-a-0">
+                      <h5><b>MOTHER/GUARDIAN WIFE'S INFO</b></h5>
+                      <hr>
+                      <form role="form">
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>IC No.</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_mother_icno"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Name</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_mother_name"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Phone No.</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_mother_contactno"></div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Relationship</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_mother_relationship"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Nationality</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_mother_nationality"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Address</b></div>
+                              <div class="col-sm-9 text-uppercase" id="dis_mother_address"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="modal_update" data-backdrop="static">
+                  <div class="modal-top white b-b">
+                    <div class="row-col p-a">
+                      <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+                      <div class="p-a b-b">
+                        <span class="h5">Parents Info Update</span>
+                      </div>
+                      <form id="form_std_parent">
+                        <p class="m-a-0">
+                          <!-- <form role="form"> -->
+                            <div class="row p-a">
+                              <div class="col-sm-6">
+                                <div class=""><h6><b>FATHER/GUARDIAN/SPOUSE INFO</b></h6></div>
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">NRIC/Passport No.</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="par_father_icno" id="par_father_ic" required placeholder="IC No.">
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Title</label>
+                                  <div class="col-sm-10">
+                                    <select class="form-control c-select" required name="par_father_title" id="par_father_title"></select>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Name</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="par_father_name" required id="par_father_name" placeholder="Name" >
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                  <div class="col-sm-10">
+                                    <input type="number" class="form-control" required name="par_father_contactno" id="par_father_contactno" placeholder="Phone No." >
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Relationship</label>
+                                  <div class="col-sm-10">
+                                    <select class="form-control" required name="par_father_relationship" id="par_father_relationship"></select>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Nationality</label>
+                                  <div class="col-sm-10">
+                                      <select class="form-control c-select" required name="par_father_nationality" id="par_father_nationality"></select>
+                                  </div>
+                                </div>
+    
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Address</label>
+                                  <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" required name="par_father_address" id="par_father_address" placeholder="Address" ></textarea>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-sm-6">
+                                <div class=""><h6><b>MOTHER/GUARDIAN WIFE'S INFO</b></h6></div>
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">NRIC/Passport No.</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" class="form-control" required name="par_mother_icno" id="par_mother_ic" placeholder="IC No.">
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Title</label>
+                                  <div class="col-sm-10">
+                                    <select class="form-control c-select" required name="par_mother_title" id="par_mother_title"></select>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Name</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" class="form-control" required name="par_mother_name" id="par_mother_name" placeholder="Name" >
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                  <div class="col-sm-10">
+                                    <input type="number" class="form-control" required name="par_mother_contactno" id="par_mother_contactno" placeholder="Phone No." >
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Relationship</label>
+                                  <div class="col-sm-10">
+                                    <select class="form-control" required name="par_mother_relationship" id="par_mother_relationship"></select>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Nationality</label>
+                                  <div class="col-sm-10">
+                                      <select class="form-control c-select" required name="par_mother_nationality" id="par_mother_nationality"></select>
+                                  </div>
+                                </div>
+    
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Address</label>
+                                  <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3"vrequired name="par_mother_address" id="par_mother_address" placeholder="Address" ></textarea>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row p-a">
+                              <button type="submit" class="btn info">Save</button>
+                            </div>
+                        </p>  
+                      </form>                      
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="pljr_ibuBapaWaris.js"></script>

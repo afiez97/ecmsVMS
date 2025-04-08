@@ -1,0 +1,190 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Info Ibu/Bapa dan Waris</span>
+			        </li>
+			        <!-- <li class="nav-item">
+				        <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-lokasi" title="Reply" data-backdrop="static" data-keyboard="false">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">Rekod Baru</span>
+				            </span>
+				        </a>
+			        </li> -->
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+
+    <div class="modal" id="loading_modal" data-backdrop="static">
+      <div class="modal-dialog">
+        <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+      </div>
+    </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header purple-700">
+                    <h3><b>MAKLUMAT BAPA</b></h3>
+                  </div>
+                  <div class="box-body">
+                    <p class="m-a-0">
+                      <form role="form">
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Nama Bapa</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_father_name"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Alamat</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_father_address"></div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>No.Tel. Bimbit</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_father_contactno"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Pekerjaan</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_father_occupation"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- ibu -->
+                <div class="box">
+                  <div class="box-header purple-700">
+                    <h3><b>MAKLUMAT IBU</b></h3>
+                  </div>
+                  <div class="box-body">
+                    <p class="m-a-0">
+                      <form role="form">
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Nama Ibu</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_mother_name"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Alamat</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_mother_address"></div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>No.Tel. Bimbit</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_mother_contactno"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Pekerjaan</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_mother_occupation"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- waris -->
+                <div class="box">
+                  <div class="box-header purple-700">
+                    <h3><b>MAKLUMAT WARIS</b></h3>
+                  </div>
+                  <div class="box-body">
+                    <p class="m-a-0">
+                      <form role="form">
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Nama Penjaga</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_nextofkin"></div>
+                            </div>
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Alamat</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_kin_address"></div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>No.Tel. Bimbit</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_kin_contactno"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- lain -->
+                <div class="box">
+                  <div class="box-header purple-700">
+                    <h3><b>MAKLUMAT LAIN</b></h3>
+                  </div>
+                  <div class="box-body">
+                    <p class="m-a-0">
+                      <form role="form">
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Hubungan Ibu/Bapa</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_parent_relation"></div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Pendapatan Keluarga</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_family_income"></div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <!-- <div class="form-group row">
+                              <div class="col-sm-3"><b>Jumlah Tanggungan</b></div>
+                              <div class="col-sm-9"></div>
+                            </div> -->
+
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Pelajar Tinggal Dengan</b></div>
+                              <div class="col-sm-9 text-uppercase" id="par_living_with"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+
+    <script src="pljr_ibuBapaWaris.js"></script>

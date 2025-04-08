@@ -1,0 +1,746 @@
+<style>
+.emoji {
+    font-size: 2em;
+}
+.center-radio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.radio-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+</style>
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <!-- <li class="nav-item">
+                <span class="navbar-item text-md">Registration</span>
+            </li> -->
+      <div class="navbar-item pull-left h5" id="pageTitle">
+        <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+        Course Teaching Evaluation
+      </div>
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+  </div>
+</div>
+
+<!-- FOOTER INSERT -->
+<div class="app-footer white bg p-a b-t">
+  <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+  <span class="text-sm text-muted">&copy; Copyright.</span>
+</div>
+<div class="app-body">
+
+  <!-- ############ PAGE START-->
+  <div class="padding">
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header light-blue-900">
+            <h2>COURSE TEACHING EVALUATION</h2>
+            <small>1 - Poor, 5 - Excellent</small>
+            <input type="hidden" id="pk_cte_question">
+            <input type="hidden" id="totalJawapan">
+
+          </div>
+          <div class="box-divider m-a-0"></div>
+          <div class="box-body none">
+            <form role="form" id="formAddEvaluation">
+
+              <input type="hidden" id="stdId">
+              <input type="hidden" id="fk_acaCal">
+              <input type="hidden" id="cotDet">
+              <input type="hidden" id="crsCode">
+              <input type="hidden" id="fk_rsb">
+
+              <h5>INSTRUCTOR EFFECTIVENESS AND COMMUNICATION:</h5>
+
+              <!-- Question 1 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">1. How would you rate the overall effectiveness of the
+                  instructor in facilitating learning?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q1" min="1" max="5" step="1" style="width: 90%;" required>
+                  <output id="q1Value">3</output>
+                </div>
+              </div>
+
+
+
+              <!-- Question 2 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">2. To what extent did the instructor demonstrate a clear
+                  understanding of the course content?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q2" min="1" max="5" step="1" style="width: 90%;" required>
+                  <output id="q2Value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 3 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">3. Were the learning objectives and goals of the course
+                  clearly communicated?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q3" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output id="q3Value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 4 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">4. How organized was the instructor in delivering course
+                  materials and lectures?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q4" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output id="q4Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 5 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">5. Did the instructor provide relevant and timely feedback on
+                  assignments and assessments?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q5" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output id="q5Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <hr>
+
+              <h5>TEACHING METHODS AND ENGAGEMENT:</h5>
+
+              <!-- Question 6 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">6. Did the instructor use a variety of teaching methods to
+                  enhance your understanding of the subject matter?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q6" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output id="q6Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 7 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">7. How well did the instructor encourage class participation
+                  and discussions?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q7" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q7" id="q7Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 8 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">8. Were the instructional materials (e.g., textbooks, slides,
+                  handouts) helpful in understanding the course content?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q8" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q8" id="q8Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 9 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">9. How well did the instructor incorporate real-world
+                  applications into the course?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q9" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q9" id="q9Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 10 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">10. Did the instructor encourage a collaborative and
+                  supportive learning community among students?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q10" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q10" id="q10Value" class="output-value">3</output>
+                </div>
+              </div>
+              <hr>
+
+              <h5>ACCESSIBILITY AND SUPPORT:</h5>
+
+              <!-- Question 11 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">11. How would you rate the accessibility and availability of
+                  the instructor for additional help or clarification?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q11" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q11" id="q11Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 12 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">12. Were the office hours convenient and beneficial for
+                  seeking additional help?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q12" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q12" id="q12Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 13 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">13. Did the instructor effectively use technology to enhance
+                  the learning experience?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q13" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q13" id="q13Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 14 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">14. How well did the instructor encourage critical thinking
+                  and problem-solving skills?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q14" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q14" id="q14Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 15 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">15. Did the instructor demonstrate a willingness to adapt
+                  teaching methods based on student feedback?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q15" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q15" id="q15Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <hr>
+
+              <h5>ASSESSMENT AND GRADING:</h5>
+
+
+              <!-- Question 16 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">16. Were the assessments and exams fair representations of
+                  the course content?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q16" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q16" id="q16Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 17 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">17. Were the grading criteria and rubrics clear and
+                  transparent?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q17" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q17" id="q17Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 18 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">18. How would you rate the overall fairness of the grading
+                  system in the course?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q18" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q18" id="q18Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 19 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">19. Did the instructor provide opportunities for hands-on or
+                  practical learning experiences?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q19" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q19" id="q19Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 20 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">20. Were the assignments and projects aligned with the course
+                  learning objectives?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q20" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q20" id="q20Value" class="output-value">3</output>
+                </div>
+              </div>
+              <hr>
+
+              <h5>CLASSROOM ENVIRONMENT AND INCLUSIVITY:</h5>
+
+
+
+              <!-- Question 21 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">21. How well did the instructor create a positive and
+                  inclusive learning environment?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q21" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q21" id="q21Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 22 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">22. Did the instructor address diverse learning styles and
+                  needs effectively?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q22" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q22" id="q22Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 23 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">23. Were the course expectations and requirements clearly
+                  outlined at the beginning of the semester?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q23" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q23" id="q23Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 24 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">24. How well did the instructor foster a positive and
+                  respectful learning environment for all students?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q24" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q24" id="q24Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 25 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">25. Were the course materials relevant and up-to-date with
+                  current industry standards?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q25" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q25" id="q25Value" class="output-value">3</output>
+                </div>
+              </div>
+              <hr>
+
+              <h5>STUDENT FEEDBACK AND IMPROVEMENT:</h5>
+
+              <!-- Question 26 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">26. Did the instructor integrate student feedback effectively
+                  for course improvement?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q26" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q26" id="q26Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 27 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">27. Did the instructor inspire you to think critically and
+                  creatively about the course material?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q27" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q27" id="q27Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 28 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">28. How well did the instructor provide opportunities for
+                  student collaboration and teamwork?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q28" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q28" id="q28Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 29 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">29. Did the instructor effectively use examples and case
+                  studies to illustrate key concepts?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q29" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q29" id="q29Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 30 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">30. Were the learning outcomes of the course clearly
+                  communicated and achievable?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q30" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q30" id="q30Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <hr>
+              <h5>PASSION AND ENTHUSIASM:</h5>
+
+              <!-- Question 31 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">31. Did the instructor demonstrate enthusiasm and passion for
+                  the subject matter?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q31" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q31" id="q31Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 32 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">32. How well did the instructor manage and utilize class
+                  time?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q32" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q32" id="q32Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 33 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">33. Did the instructor provide opportunities for hands-on or
+                  practical learning experiences?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q33" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q33" id="q33Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 34 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">34. How well did the instructor encourage critical thinking
+                  and problem-solving skills?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q34" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q34" id="q34Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 35 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">35. Were the course materials relevant and up-to-date with
+                  current industry standards?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q35" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q35" id="q35Value" class="output-value">3</output>
+                </div>
+              </div>
+              <hr>
+
+              <h5>ADAPTABILITY AND INNOVATION:</h5>
+
+              <!-- Question 36 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">36. Did the instructor demonstrate a willingness to adapt
+                  teaching methods based on student feedback?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q36" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q36" id="q36Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 37 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">37. Were the course objectives and expectations consistently
+                  reinforced throughout the semester?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q37" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q37" id="q37Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 38 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">38. Did the instructor effectively use examples and case
+                  studies to illustrate key concepts?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q38" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q38" id="q38Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 39 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">39. How well did the instructor encourage critical thinking
+                  and problem-solving skills?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q39" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q39" id="q39Value" class="output-value">3</output>
+                </div>
+              </div>
+
+              <!-- Question 40 -->
+              <div class="form-group row">
+                <label class="col-sm-6 form-control-label">40. Were the instructional methods used by the instructor
+                  conducive to your learning style?</label>
+                <div class="col-sm-6">
+                  <input type="range" id="q40" min="1" max="5" step="1" style="width:  90%;" required>
+                  <output for="q40" id="q40Value" class="output-value">3</output>
+                </div>
+              </div>
+              <hr>
+
+              <div class=" p-a text-right">
+                <button type="submit" class="btn info">Submit</button>
+              </div>
+              <!-- End of questions -->
+
+
+            </form>
+          </div>
+
+          <div class="box-body lt">
+            <p class="m-a-0 ">
+
+
+            <div class="row-col white">
+              <div class="col-sm-3 col-lg-2 b-r">
+                <div class="p-y">
+                  <div class="nav-active-border left b-primary">
+                    <ul class="nav nav-md">
+                      <li class="nav-item none">
+                        <a class="nav-link block" href="#" data-toggle="tab" data-target="#"></a>
+                      </li>
+                      <li class="nav-item b-theme">
+                        <input type="hidden" id="sectionCount_A">
+
+                        <a class="nav-link block active" href="#" data-toggle="tab" data-target="#tab-A">Section A
+                          <span class="pull-right text-danger" id="countSecA">*
+                          </span>
+                        </a>
+                        
+                      </li>
+                      <li class="nav-item">
+                        <input type="hidden" id="sectionCount_B">
+
+                        <a class="nav-link block none" href="#" data-toggle="tab" data-target="#tab-B">Section B
+                          <span class="pull-right text-danger" id="countSecB">*
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <input type="hidden" id="sectionCount_C">
+
+                        <a class="nav-link block none" href="#" data-toggle="tab" data-target="#tab-C">Section C
+                          <span class="pull-right text-danger" id="countSecC">*
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <input type="hidden" id="sectionCount_D">
+
+                        <a class="nav-link block none" href="#" data-toggle="tab" data-target="#tab-D">Section D
+                          <span class="pull-right text-danger" id="countSecD">*
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <input type="hidden" id="sectionCount_E">
+
+                        <a class="nav-link block none" href="#" data-toggle="tab" data-target="#tab-E">Section E
+                          <span class="pull-right text-danger" id="countSecE">*
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="p-a-md pull-left">
+
+                      <input type="hidden" id="questionsArrayInput" name="questionsArray">
+                      <a id="saveButton" class="btn btn-success m-t" data-toggle="modal" data-target="#modal">Submit
+                        Feedback</a>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-9 col-lg-10">
+                <div class="tab-content pos-rlt">
+                  <div class="tab-pane active" id="tab-A">
+                    <div class="box-header b-b">
+                      <div class="row">
+                          <div class="col-md-8">
+                              <div class="col-md-2">
+                                  <div class="mt-0 h4 font-weight-bold">Section A :</div>
+                              </div>
+                              <div class="col-md-10">
+                                  <span class="mt-0 h4" id="sectDet_Section_A" style="display: inline; margin-left: 0;">uji a<br> <small>test A</small></span>
+
+                              </div>
+                            </div>
+                    
+                      </div>
+                  </div>
+
+                    <form role="form" class="p-a-md col-md-12" id="box_A">
+
+            
+                    </form>
+                  </div>
+                  <div class="tab-pane" id="tab-B">
+                    <div class="box-header b-b">
+                      <div class="row">
+                          <div class="col-md-8">
+                              <div class="col-md-2">
+                                  <div class="mt-0 h4 font-weight-bold">Section B :</div>
+                              </div>
+                              <div class="col-md-10">
+                                  <span class="mt-0 h4" id="sectDet_Section_B" style="display: inline; margin-left: 0;"><br> <small></small></span>
+
+                              </div>
+                            </div>
+                    
+                      </div>
+                  </div>
+                    <form role="form" class="p-a-md col-md-12" id="box_B">
+                      <div>
+                        <table class="table m-b-none" id="table_Section_B">
+
+                        </table>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="tab-pane" id="tab-C">
+                    <div class="box-header b-b">
+                      <div class="row">
+                          <div class="col-md-8">
+                              <div class="col-md-2">
+                                  <div class="mt-0 h4 font-weight-bold">Section C :</div>
+                              </div>
+                              <div class="col-md-10">
+                                  <span class="mt-0 h4" id="sectDet_Section_C" style="display: inline; margin-left: 0;"><br> <small></small></span>
+
+                              </div>
+                            </div>
+                    
+                      </div>
+                  </div>
+                    <form role="form" class="p-a-md col-md-12" id="box_C">
+                      <div>
+                        <table class="table m-b-none default footable-loaded footable" id="table_Section_C">
+
+                        </table>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="tab-pane" id="tab-D">
+                    <div class="box-header b-b">
+                      <div class="row">
+                          <div class="col-md-8">
+                              <div class="col-md-2">
+                                  <div class="mt-0 h4 font-weight-bold">Section D :</div>
+                              </div>
+                              <div class="col-md-10">
+                                  <span class="mt-0 h4" id="sectDet_Section_D" style="display: inline; margin-left: 0;"><br> <small></small></span>
+
+                              </div>
+                            </div>
+                    
+                      </div>
+                  </div>
+                    <form role="form" class="p-a-md col-md-12" id="box_D">
+                 
+
+
+                    </form>
+                  </div>
+                  <div class="tab-pane" id="tab-E">
+                    <div class="box-header b-b">
+                      <div class="row">
+                          <div class="col-md-8">
+                              <div class="col-md-2">
+                                  <div class="mt-0 h4 font-weight-bold">Section E :</div>
+                              </div>
+                              <div class="col-md-10">
+                                  <span class="mt-0 h4" id="sectDet_Section_E" style="display: inline; margin-left: 0;"><br> <small></small></span>
+
+                              </div>
+                            </div>
+                    
+                      </div>
+                  </div>
+                    <div class="p-a-md">
+                      <div class="clearfix m-b-lg">
+                        <form role="form" class="col-md-12 p-a-0" id="box_E">
+                          <div>
+                            <table class="table m-b-none default footable-loaded footable" id="table_Section_E">
+
+                            </table>
+                          </div>
+                        </form>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ############ PAGE END-->
+
+</div>
+</div>
+<!-- / -->
+
+<script>
+  // Update range input values dynamically
+  document.querySelectorAll('input[type="range"]').forEach(function (input) {
+    input.addEventListener('input', function () {
+      document.getElementById(input.id + 'Value').textContent = input.value;
+    });
+  });
+
+  window.addEventListener('load', function () {
+    for (let i = 1; i <= 40; i++) {
+      const questionId = 'q' + i;
+      document.getElementById(questionId).value = '';
+    }
+  });
+</script>
+
+<!-- <script src="callFunctionStd.js"></script> -->
+<script src="scripts/ajax.js"></script>
+<script src="std_evaluate.js?n=3"></script>
+
+
+<script>
+   $(document).ready(function() {
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+                var target = $(e.target).attr("href");
+                $(target).hide().fadeIn('slow');
+            });
+        });
+
+  // btn Back to admin page
+  $('#btnBack').click(function () {
+    let prevPage = window.sessionStorage.prevPage;
+
+    window.sessionStorage.content = "pljr_courseList";
+    $('#content').load('pljr_courseList.html');
+  });
+
+</script>

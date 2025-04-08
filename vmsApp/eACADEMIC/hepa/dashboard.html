@@ -1,0 +1,1041 @@
+<style>
+  .chart-container {
+    width: 100%;
+    /* Make the chart containers take up 100% of their parent container's width */
+    height: auto;
+    /* Let the height adjust automatically based on the aspect ratio */
+    /* max-width: 600px; Optionally, set a maximum width for the charts */
+    margin: 0 auto;
+    /* Center-align the charts within their parent container */
+  }
+
+  /* Style the container div */
+  .input-group {
+    width: 200px;
+    /* Adjust the width as needed */
+  }
+
+  /* Style the month input */
+  #MonthYearpick {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+  }
+</style>
+
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+    <div class="navbar-item pull-left h5" id="pageTitle">Dashboard</div>
+  </div>
+</div>
+<div class="app-footer white bg p-a b-t">
+  <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+  <span class="text-sm text-muted">&copy; Copyright.</span>
+</div>
+<div class="app-body ">
+
+  <!-- ############ PAGE START-->
+  <!-- only need a height for layout 4 -->
+  <div class="" style="min-height: 200px" id="">
+    <div class="padding">
+      <div class="row " style="background-color: rgba(0, 0, 0, .1)">
+        <div class="col-lg- b-r">
+          <div class="row g-4">
+            <div class="padding">
+              <div class="col-sm-3">
+                <p><img src="images/LOGO-UCMI(Landscape).png" width="90%"></p>
+
+
+              </div>
+              <!-- <div class="mb-8 pull-lefttblListData"> -->
+
+              <!-- <h2 class="mb-2">Ecommerce Dashboard</h2> -->
+              <!-- <h5 class="text-700 fw-semi-bold">Here’s what’s going on at your business right now</h5> -->
+              <!-- </div> -->
+
+              <div class="col-sm-6"><h2 class="text-center m-t m-b _600"><br>BAHAGIAN HAL EHWAL <br><br> PELAJAR & ALUMNI</h2></div>
+              <div class="col-md-2 push-md-1">
+
+                <div class="box">
+                  <div class="row-col p-a text-center primary">
+                    DATA BULAN
+                  </div>
+                  <input type="month" id="MonthYearpick" name="start" min="2018-01" value="" class="form-control" />
+
+                </div>
+                <!-- <label for="start">Start month:</label>   -->
+                <!-- <input type="month" id="MonthYearpick" name="start" min="2023-03" value="" class="form-control" /> -->
+
+                <!-- <input type="month" id="MonthYearpick" name="start" min="2023-03" value="" /> -->
+              </div>
+
+
+            </div>
+            <div class="col-12 col-xl-12 ">
+
+
+
+              <hr width="88%" class="bg-200">
+              <br>
+              <div class="row none">
+                <div class="col-sm-2 push-sm-9">
+                  <div class="col-sm-5">Application Progress</div>
+                  <div class="col-sm-3">HEPA</div>
+                  <div class="col-sm-3">WARDEN</div>
+                </div>
+
+              </div>
+           
+              <div class="col-sm-9">
+                <div class="box">
+                  <!-- <div  class="box-header">
+                    <h3 id="push-center">Bed Chart Available in PICOMS</h3> -->
+                  <!-- <small class="block text-muted">Pie charts are probably the most commonly used</small> -->
+                  <!-- </div> -->
+
+                  <div class="box-body light">
+                    <div id="echarts-container" style="height: 400px;"></div>
+
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="col-sm-3">
+                <div class="box">
+                  <div class="box-body light" style="height: 431px;">
+                    <div class="row">
+                      <div class="col-sm-6 col-md-4 col-lg-12">
+                        <div class="box p-a blue-grey-100">
+                          <div class="pull-left m-r">
+                            <span class="avatar w-40 text-center rounded primary">
+                              <span class="fa fa-dollar"></span>
+                            </span>
+                          </div>
+                          <div class="clear">
+                            <h4 class="m-a-0 text-md">
+                              <span class="text-sm">Total Booking Apply</span>
+                              <!-- <a href="#">75 <span class="text-sm">Total Booking Apply</span></a> -->
+                            </h4>
+                            <!-- <small id="bookingCount"id="bookingCountContainer" class="text-muted"> -->
+                              <!-- 6 Pending. -->
+                              <div id="bookingCountContainer">
+                                <!-- <p id="bookingCount">Loading...</p> -->
+                            <small id="bookingCount" class="text-muted">Pending                      </small>
+      
+      
+                            </div>
+                            <!-- <p id="bookingCount">Loading...</p> -->
+       
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-lg-12">
+                        <div class="box p-a blue-grey-100">
+                          <div class="pull-left m-r">
+                            <span class="avatar w-40 text-center rounded info">
+                              <span class="fa fa-female"></span>
+                            </span>
+                          </div>
+                          <div class="clear">
+                            <h4 class="m-a-0 text-md">
+                              <span class="text-sm">Total Change Request</span>
+                              <!-- <a href="#">40 <span class="text-sm">Total Change Request</span></a> -->
+                            </h4>
+                            <!-- <small class="text-muted">38 Pending.</small> -->
+                            <div id="changeCountContainer">
+                              <!-- <p id="bookingCount">Loading...</p> -->
+                          <small id="changeCount" class="text-muted">Pending                      </small>
+      
+      
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-lg-12">
+                        <div class="box p-a blue-grey-100">
+                          <div class="pull-left m-r">
+                            <span class="avatar w-40 text-center rounded success">
+                              <span class="fa fa-bookmark"></span>
+                            </span>
+                          </div>
+                          <div class="clear">
+                            <h4 class="m-a-0 text-md">
+                              <span class="text-sm">Total Complaint Damage</span>
+                              <!-- <a href="#">6,000 <span class="text-sm">Total Complaint Damage</span></a> -->
+                            </h4>
+                            <div id="dmgComplaintContainer">
+                                                    <small id="checkDmgHostel" class="text-muted">632 Pending.</small>
+      
+                              <!-- <p id="checkDmgHostel">Loading...</p> -->
+                          </div>
+                            <!-- <small class="text-muted">632 Pending.</small> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-lg-12">
+                        <div class="box p-a blue-grey-100">
+                          <div class="pull-left m-r">
+                            <span class="avatar w-40 text-center rounded warning">
+                              <span class="fa fa-comment"></span>
+                            </span>
+                          </div>
+                          <div class="clear">
+                            <h4 class="m-a-0 text-md">
+                              <!-- <a href="#">69 
+                              <span class="text-sm">Total Check-Out Request</span>
+                            </a> -->
+                            <span class="text-sm">Total Check-Out Request</span>
+                          </h4>
+                            <!-- <small class="text-muted">5 Pending.</small> -->
+                          
+                            <div id="checkoutCountContainer">
+                              <!-- <p id="bookingCount">Loading...</p> -->
+                          <small id="checkoutCount" class="text-muted">Pending                      </small>
+      
+      
+                          </div></div>
+                        </div>
+                      </div>
+                   
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="col-12 col-xl-8 push-xl-2 mt-3" style="left: 12%">
+                <div class="row no-gutter">
+                  <div style="border-color: teal;" class="col-xs-6 col-sm-4 b-r b-l b-b light">
+                    <div class="box-header teal">
+                      <div class="text-center _600">Reside (Girl)</div>
+                    </div>
+                    <div class="padding">
+
+                      <div class="text-center">
+                        <h2 id="gegirlOccu" class="text-center _600 text-primary">45</h2>
+                        <div>
+                          <!-- <span data-ui-jp="sparkline"
+                            data-ui-options="[2,3,2,2,1,3,6,3,2,1], {type:'line', height:20, width: '60', lineWidth:1, valueSpots:{'0:':'#818a91'}, lineColor:'#818a91', spotColor:'#818a91', fillColor:'', highlightLineColor:'rgba(120,130,140,0.3)', spotRadius:0}"
+                            class="sparkline inline"><canvas width="60" height="20"
+                              style="display: inline-block; width: 60px; height: 20px; vertical-align: top;"></canvas></span> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="border-color: teal;" class="col-xs-6 col-sm-4 push-sm-1 b-r b-l b-b light">
+                    <div class="box-header teal">
+                      <div class="text-center _600">Total Bed</div>
+
+                    </div>
+                    <div class="padding">
+                      <div class="text-center">
+                        <h2 id="ToBed" class="text-center _600 text-primary">219</h2>
+                        <div>
+                          <!-- <span data-ui-jp="sparkline"
+                            data-ui-options="[1,1,0,2,3,4,2,1,2,2], {type:'line', height:20, width: '60', lineWidth:1, valueSpots:{'0:':'#818a91'}, lineColor:'#818a91', spotColor:'#818a91', fillColor:'', highlightLineColor:'rgba(120,130,140,0.3)', spotRadius:0}"
+                            class="sparkline inline"><canvas width="60" height="20"
+                              style="display: inline-block; width: 60px; height: 20px; vertical-align: top;"></canvas></span> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="border-color: teal;" class="col-xs-6 col-sm-4 push-sm-2 b-b b-r b-l light">
+                    <div class="box-header teal">
+                      <!-- <div>
+                        <span class="pull-right"><i class="fa fa-caret-up text-primary m-y-xs"></i></span>
+                        <span class="text-muted l-h-1x"><i class="ion-paper-airplane text-muted"></i></span>
+                      </div> -->
+
+                      <div class="text-center _600">Reside (Men)</div>
+
+                    </div>
+                    <div class="padding">
+
+                      <div class="text-center">
+                        <h2 id="MenOccu" class="text-center _600 text-primary text-bold">36</h2>
+                        <!-- <div>
+                          <span data-ui-jp="sparkline"
+                            data-ui-options="[3,3,1,62,4,3,7,3,2,5], {type:'line', height:20, width: '60', lineWidth:1, valueSpots:{'0:':'#818a91'}, lineColor:'#818a91', spotColor:'#818a91', fillColor:'', highlightLineColor:'rgba(120,130,140,0.3)', spotRadius:0}"
+                            class="sparkline inline"><canvas width="60" height="20"
+                              style="display: inline-block; width: 60px; height: 20px; vertical-align: top;"></canvas></span>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row g-3">
+
+                  <div class="col-12 col-md-12">
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+
+          </div>
+          <div class="padding">
+            <div class="padding">
+              <div class="row">
+
+                <div class="col-sm-6">
+                  <div class="box blue-grey-100">
+                    <div class="box-header">
+                      <h3 class="pull-center">HOSTEL - MAIN CAMPUS</h3>
+                      <!-- <h6 class="text-u-c m-a-0 m-t">HOSTEL - MAIN CAMPUS</h6> -->
+                      <!-- <small class="block text-muted">label, animation</small> -->
+                    </div>
+                    <div class="box-body">
+
+                      <div id="mainCampusChart" class="chart-container" style="height: 400px;"></div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="box blue-grey-100">
+                    <div class="box-header">
+                      <h3 class="pull-center">HOSTEL - City Campus</h3>
+                      <!-- <small class="block text-muted">inverted axes</small> -->
+                    </div>
+                    <div class="box-body">
+
+                      <div id="cityCampusChart" class="chart-container" style="height: 400px;"></div>
+
+                      <!-- <div data-ui-jp="echarts" data-ui-options="{
+                          tooltip : {
+                              trigger: 'axis'
+                          },
+                          legend: {
+                              data:['2011', '2012']
+                          },
+                          calculable : true,
+                          grid : {
+                            x: 60
+                          },
+                          xAxis : [
+                              {
+                                  type : 'value',
+                                  boundaryGap : [0, 0.01]
+                              }
+                          ],
+                          yAxis : [
+                              {
+                                  type : 'category',
+                                  data : ['Brasil','Indonesia','USA','India','China','World(M)']
+                              }
+                          ],
+                          series : [
+                              {
+                                  name:'2011',
+                                  type:'bar',
+                                  data:[18203, 23489, 29034, 104970, 131744, 630230]
+                              },
+                              {
+                                  name:'2012',
+                                  type:'bar',
+                                  data:[19325, 23438, 31000, 121594, 134141, 681807]
+                              }
+                          ]
+                      }" style="height: 300px; -webkit-tap-highlight-color: transparent; user-select: none; background-color: rgba(0, 0, 0, 0); cursor: default;" _echarts_instance_="1696101115233"><div style="position: relative; overflow: hidden; width: 785px; height: 300px;"><div data-zr-dom-id="bg" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 792px; height: 300px; user-select: none;"></div><canvas width="785" height="300" data-zr-dom-id="0" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 785px; height: 300px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="785" height="300" data-zr-dom-id="1" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 785px; height: 300px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="785" height="300" data-zr-dom-id="_zrender_hover_" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 785px; height: 300px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><div class="echarts-tooltip zr-element" style="position: absolute; display: none; border-style: solid; white-space: nowrap; transition: left 0.4s ease 0s, top 0.4s ease 0s; background-color: rgb(0, 0, 0); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font-family: Arial, Verdana, sans-serif; padding: 10px 15px; left: 481px; top: 206px;">Indonesia<br>2011 : 23,489<br>2012 : 23,438</div></div></div>
+                    -->
+
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+            <div class="row no-gutter">
+
+
+
+            </div>
+          </div>
+          <div class="col-sm-4 none">
+            <div class="box">
+              <div class="box-header grey-300">
+                <h3>REPORT STATUS</h3>
+              </div>
+              <div class="box-body">
+                <p><b>ADUAN KEROSAKAN</b></p>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar primary" id="divKerosakan"></div>
+                </div>
+
+                <p><b>ADUAN UMUM</b></p>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar info" id="divUmum"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4 none">
+            <div class="box">
+              <div class="box-header grey-300">
+                <h3>HOSTEL VACANCY</h3>
+              </div>
+              <div class="box-body">
+                <p class="m-a-0">
+                <div class="row" id="listHostel"></div>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4 none">
+            <div class="box">
+              <div class="box-header grey-300">
+                <h3>REQUEST CHANGE HOSTEL</h3>
+              </div>
+              <div class="box-body">
+                <p class="m-a-0">
+                  <button class="btn warning btn-block"><span class="pull-left">New </span><b
+                      class="label pull-right rounded black m-l-xs" id="totalNew">0</b></button>
+                  <button class="btn success btn-block"><span class="pull-left">Accept </span><b
+                      class="label pull-right rounded black m-l-xs" id="totalAccept">0</b></button>
+                  <button class="btn danger btn-block"><span class="pull-left">Reject </span><b
+                      class="label pull-right rounded black m-l-xs" id="totalReject">0</b></button>
+                  <button class="btn info btn-block"><span class="pull-left">Verify </span><b
+                      class="label pull-right rounded black m-l-xs" id="totalVerify">0</b></button>
+                  <button class="btn primary btn-block"><span class="pull-left">Complete </span><b
+                      class="label pull-right rounded black m-l-xs" id="totalComplete">0</b></button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- utk dashboard program -->
+      <div class="row">
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm red-900">
+            <!-- style="background-color: #6699CC;" -->
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#campus" aria-expanded="true"
+              class="collapsed">
+              <h4><i class="fa fa-university"></i>REPORTING/DASHBOARD PROGRAM</h4>
+            </a>
+          </div>
+          <div id="campus" class="collapse in pink-50" aria-expanded="true">
+            <!-- style="background-color: rgba(202, 229, 255, 0.5);" -->
+
+
+            <!-- utk jumlah program mengikut program -->
+            <div class="row no-gutter">
+
+              <div class="col-xs-6 col-sm-3 b-r b-b">
+                <div class="padding">
+                  <div><span class="text-muted l-h-1x"><i class="ion-pie-graph text-muted"></i></span></div>
+                  <div class="text-center">
+                    <h2 id="kat_01" class="text-center _600">0</h2>
+                    <p class="text-muted m-b-md">External Invitation</p>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5 offset-sm-6">
+                      <div class="form-group">
+                        <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                                  format: 'MM/YYYY',
+                                  icons: {
+                                      time: 'fa fa-clock-o',
+                                      date: 'fa fa-calendar',
+                                      up: 'fa fa-chevron-up',
+                                      down: 'fa fa-chevron-down',
+                                      previous: 'fa fa-chevron-left',
+                                      next: 'fa fa-chevron-right',
+                                      today: 'fa fa-screenshot',
+                                      clear: 'fa fa-trash',
+                                      close: 'fa fa-remove'
+                                  }
+                              }">
+                          <input type='text' class="form-control form-control-sm" id="datekat_01" />
+                          <span class="input-group-addon"
+                            style="  width: auto; padding: 0 4px; background-color: transparent;">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+
+                    <div class=""><span class="h3 pull-right text-muted" id="budget_01">RM 0</span> <i
+                        class="label label-xs teal m-r-sm"></i>Total Budget Program</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-3 b-r b-b">
+                <div class="padding">
+                  <div> <span class="text-muted l-h-1x"><i class="ion-pie-graph text-muted"></i></span></div>
+                  <div class="text-center">
+                    <h2 id="kat_02" class="text-center _600">0</h2>
+                    <p class="text-muted m-b-md">Creditable Activities</p>
+
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-sm-5 offset-sm-6">
+                      <div class="form-group">
+                        <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                                  format: 'MM/YYYY',
+                                  icons: {
+                                      time: 'fa fa-clock-o',
+                                      date: 'fa fa-calendar',
+                                      up: 'fa fa-chevron-up',
+                                      down: 'fa fa-chevron-down',
+                                      previous: 'fa fa-chevron-left',
+                                      next: 'fa fa-chevron-right',
+                                      today: 'fa fa-screenshot',
+                                      clear: 'fa fa-trash',
+                                      close: 'fa fa-remove'
+                                  }
+                              }">
+                          <input type='text' class="form-control form-control-sm" id="datekat_02" />
+                          <!-- Added input-sm class -->
+                          <span class="input-group-addon"
+                            style="  width: auto; padding: 0 4px; background-color: transparent;">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class=""><span class="h3 pull-right text-muted" id="budget_02">RM 0</span> <i
+                        class="label label-xs teal m-r-sm"></i>Total Budget Program</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-3 b-r b-b">
+                <div class="padding">
+                  <div> <span class="text-muted l-h-1x"><i class="ion-pie-graph text-muted"></i></span></div>
+                  <div class="text-center">
+                    <h2 id="kat_03" class="text-center _600">0</h2>
+                    <p class="text-muted m-b-md">Non-Credit Activities</p>
+                    <!-- <div class="box-tool">
+                          <div class="dropdown"><a data-toggle="dropdown"
+                              class="btn btn-xs rounded white dropdown-toggle">This Month</a>
+                            <div class="dropdown-menu pull-right">
+                              <a class="dropdown-item" href="#" value="1">January</a>
+                              <a class="dropdown-item" href="#" value="2">Feb</a>
+                              <a class="dropdown-item" href="#" value="3">Mac</a>
+                              <a class="dropdown-item" href="#" value="4">April</a>
+                              <a class="dropdown-item" href="#" value="5">May</a>
+                              <a class="dropdown-item" href="#" value="6">June</a>
+                              <a class="dropdown-item" href="#" value="7">July</a>
+                              <a class="dropdown-item" href="#" value="8">August</a>
+                              <a class="dropdown-item" href="#" value="9">Sep</a>
+                              <a class="dropdown-item" href="#" value="10">Oct</a>
+                              <a class="dropdown-item" href="#" value="11">Nov</a>
+                              <a class="dropdown-item" href="#" value="12">Dec</a>
+                            </div>
+                          </div>
+                        </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5 offset-sm-6">
+                      <div class="form-group">
+                        <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                                  format: 'MM/YYYY',
+                                  icons: {
+                                      time: 'fa fa-clock-o',
+                                      date: 'fa fa-calendar',
+                                      up: 'fa fa-chevron-up',
+                                      down: 'fa fa-chevron-down',
+                                      previous: 'fa fa-chevron-left',
+                                      next: 'fa fa-chevron-right',
+                                      today: 'fa fa-screenshot',
+                                      clear: 'fa fa-trash',
+                                      close: 'fa fa-remove'
+                                  }
+                              }">
+                          <input type='text' class="form-control form-control-sm" id="datekat_03" />
+                          <!-- Added input-sm class -->
+                          <span class="input-group-addon"
+                            style="  width: auto; padding: 0 4px; background-color: transparent;">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class=""><span class="h3 pull-right text-muted" id="budget_03">RM 0</span> <i
+                        class="label label-xs teal m-r-sm"></i>Total Budget Program</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-3 b-r b-b">
+                <div class="padding">
+                  <div><span class="text-muted l-h-1x"><i class="ion-pie-graph text-muted"></i></span></div>
+                  <div class="text-center">
+                    <h2 id="kat_04" class="text-center _600">0</h2>
+                    <p class="text-muted m-b-md">Lain-lain</p>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5 offset-sm-6">
+                      <div class="form-group">
+                        <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                                  format: 'MM/YYYY',
+                                  icons: {
+                                      time: 'fa fa-clock-o',
+                                      date: 'fa fa-calendar',
+                                      up: 'fa fa-chevron-up',
+                                      down: 'fa fa-chevron-down',
+                                      previous: 'fa fa-chevron-left',
+                                      next: 'fa fa-chevron-right',
+                                      today: 'fa fa-screenshot',
+                                      clear: 'fa fa-trash',
+                                      close: 'fa fa-remove'
+                                  }
+                              }">
+
+                          <!-- <textarea onclick="InputToSpan()" type="text" class="InputTable" placeholder="Masukkan Label" name="shade">
+</textarea><span class="spanInputTable" onclick="InputToSpan()"></span> -->
+
+                          <input type='text' class="form-control form-control-sm" id="datekat_04">
+                          <!-- <textarea type='text' class="form-control form-control-sm" id="datekat_04" ></textarea> -->
+                          <span class="input-group-addon"
+                            style="  width: auto; padding: 0 4px; background-color: transparent;">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class=""><span class="h3 pull-right text-muted" id="budget_04">RM 0</span> <i
+                        class="label label-xs teal m-r-sm"></i>Total Budget Program</div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+              <!-- <div class="col-xs-6 col-sm-3 b-b">
+                      <div class="padding">
+                        <div><span class="pull-right"><i class="fa fa-caret-up text-primary m-y-xs"></i></span> <span
+                            class="text-muted l-h-1x"><i class="ion-paper-airplane text-muted"></i></span></div>
+                        <div class="text-center">
+                          <h2 class="text-center _600">36</h2>
+                          <p class="text-muted m-b-md">Berkredit Lain-lain</p>
+                         
+                        </div>
+
+                        <div class="row">
+                          <div class="col-sm-6 push-sm-6">
+                            <div class="p-y text-center text-sm-right">
+                              <a href="#" class="inline p-x text-center"><span
+                                  class="h4 block m-a-0">2k</span> <small class="text-xs text-muted">Total Budget Program</small></a> </div>
+                          </div>
+                          <div class="col-sm-6 pull-sm-6">
+                            <div class="p-y-md clearfix nav-active-info">
+                              <div class="dropdown"><a data-toggle="dropdown" class="btn btn-xs rounded white dropdown-toggle">This Month</a>
+                                <div class="dropdown-menu pull-right">
+                                  <a class="dropdown-item" href="#">January</a>
+                                  <a class="dropdown-item" href="#">Feb</a> 
+                                  <a class="dropdown-item" href="#">Mac</a>
+                                  <a class="dropdown-item" href="#">April</a>
+                                  <a class="dropdown-item" href="#">May</a>
+                                  <a class="dropdown-item" href="#">June</a>
+                                  <a class="dropdown-item" href="#">July</a>
+                                  <a class="dropdown-item" href="#">August</a>
+                                  <a class="dropdown-item" href="#">Sep</a>
+                                  <a class="dropdown-item" href="#">Oct</a>
+                                  <a class="dropdown-item" href="#">Nov</a>
+                                  <a class="dropdown-item" href="#">Dec</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+            </div>
+            <!--end utk jumlah program mengikut program -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- utk end dashboard program -->
+
+    <!-- ############ PAGE END-->
+
+  </div>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script> -->
+
+
+  <!-- <script src="callFunction.js"></script> -->
+  <script src="scripts/ajax.js"></script>
+  <script src="scripts/echarts.min.js"></script>
+  <script src="dashboard.js?n=1"></script>
+
+
+
+  <script>
+    // Data
+
+
+    // var data = {
+    //     "MAIN CAMPUS": {
+    //         "PICOMS 18 (MIDF)": 23,
+    //         "PICOMS 21 (PDV)": 17
+    //     },
+    //     "CITY CAMPUS": {
+    //         "UCMI 11": 143,
+    //         "UCMI 4": 2,
+    //         "DUTAMAS": 5,
+    //         "PICOMS 20 (PV12B)": 1,
+    //         "UCMI 5": 176,
+    //         "UCMI 12": 132,
+    //         "UCMI 9": 84,
+    //         "PICOMS 23": 6,
+    //         "PICOMS 20 (PV12)": 26,
+    //         "UCMI YT": 86
+    //     }
+    // };
+
+    // Extract data for the charts
+    // var mainCampusData = data["MAIN CAMPUS"];
+    // var cityCampusData = data["CITY CAMPUS"];
+
+  </script>
+
+
+  <!-- script bawah nie utk generate dashboard atas -->
+  <script>
+
+    $(function () {
+      $.ajaxSetup({
+        cache: false
+      });
+
+      countGender('0', function () {
+        var totalBed = obj_countGender.data;
+        $('#ToBed').html(totalBed);
+
+        // Define a function to handle the 'change' event
+        function handleMonthYearChange() {
+          penghuni(function () {
+            TotalOccupied = obj_penghuni.data;
+            TotalOccupiedFemale = TotalOccupied.Female;
+            TotalOccupiedMale = TotalOccupied.Male;
+            countGender('Female', function () {
+              var totalFemalebilik = obj_countGender.data;
+
+              let Bilikkosonggirl = totalFemalebilik - TotalOccupiedFemale;
+              let bilikkosongLelaki = totalBed - totalFemalebilik - TotalOccupiedMale;
+
+              generatechartBed(Bilikkosonggirl, bilikkosongLelaki, totalBed);
+              // console.log(bilikkosongLelaki);
+            });
+
+            $('#gegirlOccu').html(TotalOccupiedFemale);
+            $('#MenOccu').html(TotalOccupiedMale);
+          });
+        }
+
+        // Attach the 'change' event handler to #MonthYearpick
+        $('#MonthYearpick').on('change', handleMonthYearChange);
+
+        // Trigger the 'change' event on #MonthYearpick when the page loads
+        $('#MonthYearpick').trigger('change');
+      });
+
+
+    });
+
+    // function generatechartBed(female, male, totalKatil) {
+    //   // console.log(female);
+
+
+    //   let invidataGirl = 100 - female, invidataMEn = 100 - male;
+    //   let percentagePP = (Math.floor((female / totalKatil) * 100)); //w00t!
+    //   let percentageLL = (Math.floor((male / totalKatil) * 100)); //w00t!
+    //   let nameFemale = female + ' Female', nameMale = male + ' Male';
+    //   // console.log(percentage +"%");
+    //   // Initialize the ECharts instance and provide the HTML element where the chart should be rendered
+    //   var myChart = echarts.init(document.getElementById('echarts-container'));
+    //   var option = {
+    //     title: {
+    //       text: 'Bed Available',
+    //       subtext: female + male + ' Beds',
+    //       x: 'center',
+    //       y: 'center',
+    //       itemGap: 20,
+    //       textStyle: {
+    //         color: 'rgba(30,144,255,0.8)',
+    //         fontSize: 20,
+    //         fontWeight: 'bolder'
+    //       }
+    //     },
+    //     tooltip: {
+    //       show: true,
+    //       formatter: '{a} <br></div>{b} : {c} ({d}%)'
+    //     },
+    //     legend: {
+    //       orient: 'vertical',
+    //       x: myChart.getWidth() / 2 + 10,
+    //       y: 40,
+    //       itemGap: 12,
+    //       data: [nameFemale, nameMale] // Updated legend data with names
+    //     },
+    //     series: [
+
+    //       {
+    //         name: 'Female',
+    //         type: 'pie',
+    //         clockWise: false,
+    //         radius: [80, 105],
+    //         itemStyle: {
+    //           normal: {
+    //             label: { show: false },
+    //             labelLine: { show: false }
+    //           }
+    //         },
+    //         data: [
+    //           {
+    //             value: percentagePP,
+    //             name: nameFemale
+    //           },
+    //           {
+    //             value: 100 - percentagePP,
+    //             name: 'invisible',
+    //             itemStyle: {
+    //               normal: {
+    //                 color: 'rgba(0,0,0,0)',
+    //                 label: { show: false },
+    //                 labelLine: { show: false }
+    //               },
+    //               emphasis: {
+    //                 color: 'rgba(0,0,0,0)'
+    //               }
+    //             }
+    //           }
+    //         ]
+    //       },
+    //       {
+    //         name: 'Male',
+    //         type: 'pie',
+    //         clockWise: false,
+    //         radius: [55, 80],
+    //         itemStyle: {
+    //           normal: {
+    //             label: { show: false },
+    //             labelLine: { show: false }
+    //           }
+    //         },
+    //         data: [
+    //           {
+    //             value: percentageLL,
+    //             name: nameMale
+    //           },
+    //           {
+    //             value: 100 - percentageLL,
+    //             name: 'invisible',
+    //             itemStyle: {
+    //               normal: {
+    //                 color: 'rgba(0,0,0,0)',
+    //                 label: { show: false },
+    //                 labelLine: { show: false }
+    //               },
+    //               emphasis: {
+    //                 color: 'rgba(0,0,0,0)'
+    //               }
+    //             }
+    //           }
+    //         ]
+    //       }
+    //     ]
+    //   };
+
+    //   // Set the ECharts options
+    //   myChart.setOption(option);
+
+
+    // }
+
+    function generatechartBed(female, male, totalKatil) {
+  let invidataGirl = 100 - female, invidataMEn = 100 - male;
+  let percentagePP = Math.floor((female / totalKatil) * 100);
+  let percentageLL = Math.floor((male / totalKatil) * 100);
+  let nameFemale = female + ' Female', nameMale = male + ' Male';
+
+  // var myChart = echarts.init(document.getElementById('echarts-container'));
+  var myChart = echarts.init(document.getElementById('echarts-container'));
+var option = {
+  title: {
+    text: 'Bed Available',
+    subtext: female + male + ' Beds',
+    x: 'center',
+    y: 'center',
+    itemGap: 20,
+    textStyle: {
+      color: 'rgba(30,144,255,0.8)',
+      fontSize: 20,
+      fontWeight: 'bolder'
+    }
+  },
+  tooltip: {
+    show: true,
+    formatter: '{a} <br></div>{b} : {c} ({d}%)'
+  },
+  // legend: {
+  //   orient: 'vertical',
+  //   x: myChart.getWidth() / 2 + 10,
+  //   y: 40,
+  //   itemGap: 12,
+  //   data: [nameFemale, nameMale]
+  // },
+   legend: {
+    orient: 'vertical',
+    left: 'right', // Adjust the left property for gap
+    top: 'top',   // Adjust the top property for gap
+    itemGap: 12,
+    data: [nameFemale, nameMale]
+  },
+  series: [
+    {
+      name: 'Female',
+      type: 'pie',
+      clockWise: false,
+      radius: [120, 157.5], // Increase the radius values by 50%
+      itemStyle: {
+        normal: {
+          label: { show: false },
+          labelLine: { show: false },
+          color: '#b85887' // Set the color for Female
+        }
+      },
+      data: [
+        {
+          value: percentagePP,
+          name: nameFemale
+        },
+        {
+          value: 100 - percentagePP,
+          name: 'invisible',
+          itemStyle: {
+            normal: {
+              color: '#FAE7F3', // Set the color for the invisible part
+              label: { show: false },
+              labelLine: { show: false }
+            },
+            emphasis: {
+              color: '#FAE7F3'
+            }
+          }
+        }
+      ]
+    },
+    {
+      name: 'Male',
+      type: 'pie',
+      clockWise: false,
+      radius: [82.5, 120], // Increase the radius values by 50%
+      itemStyle: {
+        normal: {
+          label: { show: false },
+          labelLine: { show: false },
+          color: '#276ba4' // Set the color for Male
+        }
+      },
+      data: [
+        {
+          value: percentageLL,
+          name: nameMale
+        },
+        {
+          value: 100 - percentageLL,
+          name: 'invisible',
+          itemStyle: {
+            normal: {
+              color: '#AEDEFC', // Set the color for the invisible part
+              label: { show: false },
+              labelLine: { show: false }
+            },
+            emphasis: {
+              color: '#AEDEFC'
+            }
+          }
+        }
+      ]
+    }
+  ]
+};
+
+  myChart.setOption(option);
+  window.addEventListener('resize', function () {
+        myChart.resize();
+    });
+}
+
+    function penghuni(returnValue) {
+      let MonthYearpick = $('#MonthYearpick').val();
+      // alert(MonthYearpick);
+
+      var form = new FormData();
+      form.append("MonthYearpick", MonthYearpick);
+
+      var settings = {
+        "url": host + "api_hep/public/hepHostelChkinout/dashboard/Occupied",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "picoms " + window.sessionStorage.token
+        },
+        "processData": false,
+        "mimeType": "multipart/form-data",
+        "contentType": false,
+        "data": form
+      };
+
+
+      $.ajax(settings).done(function (response) {
+        obj_penghuni = JSON.parse(response);
+        // console.log(obj_penghuni);
+
+        returnValue();
+      });
+    }
+
+  </script>
+  <!-- script atas nie utk generate dashboard atas -->
+
+
+<script>
+  // Get current date
+  var currentDate = new Date();
+
+  // Format the current date to YYYY-MM
+  var currentYear = currentDate.getFullYear();
+  var currentMonth = ("0" + (currentDate.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-indexed
+
+  // Set the value of the input element to the current month and year
+  document.getElementById('MonthYearpick').value = currentYear + '-' + currentMonth;
+</script>

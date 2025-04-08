@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>aside - Bootstrap 4 web application</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  
+  <!-- style -->
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <div id="aside" class="app-aside fade nav-dropdown black">
+    <!-- fluid app aside -->
+    <div class="navside dk" data-layout="column">
+      <div class="navbar no-radius">
+        <!-- brand -->
+        <a href="index.html" class="navbar-brand">
+        	<div data-ui-include="'images/logo.svg'"></div>
+        	<img src="images/logo.png" alt="." class="hide">
+        	<span class="hidden-folded inline">aside</span>
+        </a>
+        <!-- / brand -->
+      </div>
+
+      <!-- NAV INSERT -->
+      <div data-flex class="hide-scroll" id="template-nav">  </div>
+
+      <!-- NAV-FOLD INSERT -->
+      <div data-flex-no-shrink id="template-nav-fold"> </div>
+
+    </div>
+  </div>
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Tetapan</span>
+			        </li>
+			        <li class="nav-item">
+				        <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-kolej" title="Reply">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">Rekod Baru</span>
+				            </span>
+				        </a>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-sm-8 col-md-12 mt-2">
+                <div class="box">
+                  <div class="box-header purple-700">
+                    <h3><b>KOLEJ</b></h3>
+                    <small>Senarai Kolej</small>
+                  </div>
+                  <div class="box-body light lt">
+                    <p class="m-a-0">
+                        <table id="kolejList" class="table m-b-none"></table>
+
+                          <div id="reg-kolej" class="modal fade" data-backdrop="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <form role="form" data-bind="submit: Register">
+                                <div class="modal-header purple-500">
+                                    <h5 class="modal-title">DAFTAR KOLEJ</h5>
+                                </div>
+                                <div class="modal-body text-center p-lg">
+                                  <p>
+                                      <div class="form-group row">
+                                        <label for="kodKolej" class="col-sm-2 form-control-label">Kod Kolej</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" data-bind="value: clg_id" id="kodKolej" placeholder="Kod Kolej">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="namaKolej" class="col-sm-2 form-control-label">Nama Kolej</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" data-bind="value: clg_name" id="namaKolej" placeholder="Nama Kolej">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="alamatKolej" class="col-sm-2 form-control-label">Alamat Kolej</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" data-bind="value: clg_address1" id="alamatKolej" placeholder="Alamat 1"><br/>
+                                          <input type="text" class="form-control" data-bind="value: clg_address2" id="alamatKolej2" placeholder="Alamat 2"><br/>
+                                          <input type="text" class="form-control" data-bind="value: clg_address3" id="alamatKolej3" placeholder="Alamat 3"><br/>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="notel" class="col-sm-2 form-control-label">No. Telefon</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" data-bind="value: clg_phoneno" id="notel" placeholder="No. Telefon">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="nofax" class="col-sm-2 form-control-label">No. Faks</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" data-bind="value: clg_faxno" id="nofax" placeholder="No. Faks">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="emel" class="col-sm-2 form-control-label">Emel</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" data-bind="value: clg_email" id="emel" placeholder="Emel">
+                                        </div>
+                                      </div>
+                                  </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn white p-x-md " data-dismiss="modal">Batal</button>
+                                  <input type="submit" class="btn warn p-x-md" value="Simpan">
+                                </div>                                      
+                              </form>
+                              </div><!-- /.modal-content -->
+                            </div>
+                          </div>
+
+                          <div id="update-college" class="modal fade" data-backdrop="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header purple-500">
+                                    <h5 class="modal-title">KEMASKINI KOLEJ</h5>
+                                </div>
+                                <div class="modal-body text-center p-lg">
+                                  <p>
+                                    <form role="form" data-bind="submit: updateCollege">
+                                      <!-- <div id="update-kolej"> -->
+
+                                      
+                                      <div class="form-group row">
+                                        <label for="kodKolej" class="col-sm-2 form-control-label">Kod Kolej</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="kodKolej" data-bind="value: clg_id" placeholder="Kod Kolej">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="namaKolej" class="col-sm-2 form-control-label">Nama Kolej</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="namaKolej" data-bind="value: clg_name" placeholder="Nama Kolej">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="alamatKolej" class="col-sm-2 form-control-label">Alamat Kolej</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="alamatKolej" data-bind="value: clg_address1" placeholder="Alamat 1"><br/>
+                                          <input type="text" class="form-control" id="alamatKolej2" data-bind="value: clg_address2" placeholder="Alamat 2"><br/>
+                                          <input type="text" class="form-control" id="alamatKolej3" data-bind="value: clg_address3" placeholder="Alamat 3"><br/>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="notel" class="col-sm-2 form-control-label">No. Telefon</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="notel" data-bind="value: clg_phoneno" placeholder="No. Telefon">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="nofax" class="col-sm-2 form-control-label">No. Faks</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="nofax" data-bind="value: clg_faxno" placeholder="No. Faks">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="emel" class="col-sm-2 form-control-label">Emel</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="emel" data-bind="value: clg_email" placeholder="Emel">
+                                        </div>
+                                      </div>
+                                    <!-- </div> -->
+                                    </form>
+                                  </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn white p-x-md " data-dismiss="modal">Batal</button>
+                                  <button type="button" class="btn purple p-x-md " data-dismiss="modal">Simpan</button>
+                                </div>
+                              </div><!-- /.modal-content -->
+                            </div>
+                          </div>
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+  </div>
+  <!-- / -->
+
+  
+  <!-- ############ SWITHCHER START-->
+    <div id="switcher"></div>
+  <!-- ############ SWITHCHER END-->
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css">
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="bower_components/knockout/dist/knockout.js"></script>
+  <script src="bower_components/knockout-validation/dist/knockout.validation.min.js"></script>
+<!-- endbuild -->
+
+<!-- customization -->
+<script src="scripts/customize.js"></script>
+<script src="kolejList.js"></script>
+</body>
+</html>

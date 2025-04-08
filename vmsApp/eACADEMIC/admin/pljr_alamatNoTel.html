@@ -1,0 +1,115 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Alamat & No.Telefon</span>
+			        </li>
+			      </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+
+    <div class="modal" id="loading_modal" data-backdrop="static">
+      <div class="modal-dialog">
+        <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+      </div>
+    </div>
+    
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                
+
+                <!-- kemaskini -->
+                <div class="box">
+                  <div class="box-header purple-700">
+                    <h3><b>KEMASKINI ALAMAT DAN NO.TELEFON</b></h3>
+                    <!-- <small>Senarai Lokasi</small> -->
+                  </div>
+                  <div class="box-body">
+                    <p class="m-a-0">
+                      <form id="formUpdate" role="form">
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Alamat</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="sti_address_1" placeholder="Alamat 1" required>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label"></label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="sti_address_2" placeholder="Alamat 2" required>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label"></label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="sti_address_3" placeholder="Alamat 3" required>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Poskod</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="sti_postcode" placeholder="Poskod" required>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Negeri</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select" id="negeriList" required>
+                                      <option value="">-Pilih-</option>
+                                  </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">No.Tel. Rumah</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="sti_contactno_home" placeholder="No. Tel.Rumah" required>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">No.Tel. Bimbit</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="sti_contactno_mobile" placeholder="No. Tel.Bimbit" required>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row p-a text-right">
+                          <button type="submit" class="btn warn">Simpan</button>
+                        </div>
+                        
+                      </form>
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+
+    <script src="pljr_alamatNoTel.js"></script>

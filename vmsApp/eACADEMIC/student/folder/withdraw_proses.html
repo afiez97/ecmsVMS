@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS - Pengurusan Pelajar</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+    <div class="app-header white bg b-b">
+          <div class="navbar" data-pjax>
+                <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                  <i class="ion-navicon"></i>
+                </a>
+                
+                <div class="navbar-item pull-left h5" id="pageTitle">
+                  <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                  Withdraw Processes
+                </div>
+                <!-- nabar right -->
+                <!-- / navbar right -->
+          </div>
+    </div>
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+    <div class="app-body">
+
+<!-- ############ PAGE START-->
+<!-- only need a height for layout 4 -->
+<div style="min-height: 200px">
+  <div class="padding">
+  
+    <div class="box">
+      <div class="box-header b-b">
+        <h3>Withdraw</h3>
+      </div>
+      <div class="box-body">
+          <form data-ui-jp="parsley" id="form">
+            <!-- <div id="rootwizard" data-ui-jp="bootstrapWizard" data-ui-options="{
+              onTabClick: function(tab, navigation, index) {
+                return false;
+              },
+              onNext: function(tab, navigation, index) {
+                var instance = $('#form').parsley();
+                instance.validate();
+                if(!instance.isValid()) {
+                  return false;
+                }
+              }
+              }"> -->
+            <div>
+              <ul class="nav nav-pills clearfix m-b">
+                <li class="nav-item"><a class="nav-link active" href="#tab1" data-toggle="tab">Application Status - Admin(Faculty)</a></li>
+              </ul>
+              <div class="tab-content">
+                  <div class="tab-pane active" id="tab1">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="" class="col-sm-3 form-control-label font-weight-bold">Student Id</label>
+                          <div class="col-sm-9 form-control-label">PH101700006</div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="" class="col-sm-3 form-control-label font-weight-bold">Student Name</label>
+                          <div class="col-sm-9 form-control-label">Nur Adila binti Abd Nasir</div> 
+                        </div>
+
+                        <div class="form-group">
+                          <label for="" class="col-sm-3 form-control-label font-weight-bold">Programme</label>
+                          <div class="col-sm-9 form-control-label">Diploma</div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="" class="col-sm-3 form-control-label font-weight-bold">Semester</label>
+                          <div class="col-sm-9 form-control-label">2</div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="" class="col-sm-3 form-control-label font-weight-bold">Reason</label>
+                          <div class="col-sm-9 form-control-label">Health Issue</div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="" class="col-sm-3 form-control-label font-weight-bold">Supporting Document</label>
+                          <div class="col-sm-9 form-control-label">example.pdf</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="grey-300 m-b-1 m-t-2"><span class="font-weight-bold text-dark p-l-1">Approval By Program Coordinator Faculty Admin</span></div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="quit_validation_status" class="col-sm-2 form-control-label">Status</label>
+                          <div class="col-sm-10">
+                            <select id="quit_validation_status" class="form-control">
+                              <option selected>Choose Status</option>
+                              <option>Support</option>
+                              <option>Not Support</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="quit_validation_note" class="col-sm-2 form-control-label">Remarks</label>
+                          <div class="col-sm-10">
+                            <textarea class="form-control" id="quit_validation_note" rows="3"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="grey-300 m-b-1 m-t-2"><span class="font-weight-bold text-dark p-l-1">Counselor Appointments</span></div>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="checkbox-inline">
+                            <input type="checkbox" value="HEPA" id=""> Done
+                          </label>
+                        </div>
+                      </div>
+                      <!-- <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="checkbox-inline">
+                            <input type="checkbox" value="Library" id="quit_clearance_library"> Library
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="checkbox-inline">
+                            <input type="checkbox" value="Financing" id="quit_clearance_financing"> Financing
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="checkbox-inline">
+                            <input type="checkbox" value="Finance" id="quit_clearance_finance"> Finance
+                          </label>
+                        </div>
+                      </div> -->
+                    </div>
+
+                    <div class="grey-300 m-b-1 m-t-2"><span class="font-weight-bold text-dark p-l-1">Clearance</span></div>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="checkbox-inline">
+                            <input type="checkbox" value="HEPA" id="quit_clearance_hepa"> HEPA
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="checkbox-inline">
+                            <input type="checkbox" value="Library" id="quit_clearance_library"> Library
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="checkbox-inline">
+                            <input type="checkbox" value="Financing" id="quit_clearance_financing"> Financing
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="checkbox-inline">
+                            <input type="checkbox" value="Finance" id="quit_clearance_finance"> Finance
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="grey-300 m-b-1 m-t-2"><span class="font-weight-bold text-dark p-l-1">Approval By Admin (Registration Office) Executor - Admin A&R</span></div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="quit_approval_statys" class="col-sm-2 form-control-label">Status</label>
+                          <div class="col-sm-10">
+                            <select id="quit_approval_statys" class="form-control">
+                              <option selected>-Choose-</option>
+                              <option>Passed</option>
+                              <option>Do not Pass</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="quit_approval_note" class="col-sm-2 form-control-label">Remarks</label>
+                          <div class="col-sm-10">
+                            <textarea class="form-control" id="quit_approval_note" rows="3"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row text-center m-t-2">
+                      <button type="button" class="btn info">Save</button>
+                    </div>
+                  </div>
+
+              
+                  <!-- <ul class="list-inline pager wizard">
+                    <li class="previous first" style="display:none;"><a href="#" class="btn white">First</a></li>
+                    <li class="previous"><a href="#" class="btn white">Previous</a></li>
+                    <li class="next last" style="display:none;"><a href="#" class="btn white">Last</a></li>
+                    <li class="next"><a href="#" class="btn white">Next</a></li>
+                  </ul> -->
+              </div>  
+            </div>
+          </form>
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+<!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+  
+  <!-- ############ SWITHCHER START-->
+  <!-- ############ SWITHCHER END-->
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+
+  <script src="cect_proses.js"></script>
+<!-- endbuild -->
+</body>
+</html>

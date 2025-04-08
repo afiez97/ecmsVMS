@@ -1,0 +1,981 @@
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <span class="navbar-item text-md">Programme</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-program">
+          <span class="">
+            <i class="fa fa-fw fa-plus"></i>
+            <span class="hidden-sm-down">New Record</span>
+          </span>
+        </a>
+      </li>
+      <!-- <li class="nav-item" id="reportProgramme">
+        <a class="nav-link text-muted" data-toggle="modal" data-target="#mdl_reportProgramme">
+          <span class=""> <i class="fa fa-fw fa-pencil-square-o"></i>
+            <span class="hidden-sm-down">Reporting For Programme
+            </span>
+          </span>
+        </a>
+      </li> -->
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header">
+      <li class="nav-item dropdown"> <a class="nav-link"> <span id="totalNewApplied" class="label-lg">Total New
+            Application: 0</span>
+          <!-- <li class="nav-item dropdown"> <a class="nav-link"> <span id="totalNewApplied" class="label label-lg">Total New Application: 0</span> -->
+        </a> </li>
+    </ul>
+  </div>
+</div>
+
+<!-- FOOTER INSERT  -->
+<div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+<div class="app-body">
+
+  <!-- CONTENT START -->
+  <div style="min-height: mh-200">
+    <div class="container-fluid m-t-2">
+      <div class="m-b" id="accordion">
+        <div class="panel box no-border m-b-xs none">
+          <div class="box-header p-y-sm red-900">
+            <!-- style="background-color: #6699CC;" -->
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#campus" aria-expanded="true"
+              class="collapsed">
+              <h4><i class="fa fa-university"></i>REPORTING/DASHBOARD PROGRAM</h4>
+            </a>
+          </div>
+          <div id="campus" class="collapse in pink-50" aria-expanded="true">
+            <!-- style="background-color: rgba(202, 229, 255, 0.5);" -->
+
+
+            <!-- utk jumlah program mengikut program -->
+            <div class="row no-gutter">
+
+              <div class="col-xs-6 col-sm-3 b-r b-b">
+                <div class="padding">
+                  <div><span class="text-muted l-h-1x"><i class="ion-pie-graph text-muted"></i></span></div>
+                  <div class="text-center">
+                    <h2 id="kat_01" class="text-center _600">0</h2>
+                    <p class="text-muted m-b-md">External Invitation</p>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5 offset-sm-7">
+                      <div class="form-group">
+                        <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                                    format: 'MM/YYYY',
+                                    icons: {
+                                        time: 'fa fa-clock-o',
+                                        date: 'fa fa-calendar',
+                                        up: 'fa fa-chevron-up',
+                                        down: 'fa fa-chevron-down',
+                                        previous: 'fa fa-chevron-left',
+                                        next: 'fa fa-chevron-right',
+                                        today: 'fa fa-screenshot',
+                                        clear: 'fa fa-trash',
+                                        close: 'fa fa-remove'
+                                    }
+                                }">
+                          <input type='text' class="form-control form-control-sm" id="datekat_01" />
+                          <span class="input-group-addon"
+                            style="  width: auto; padding: 0 4px; background-color: transparent;">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+
+                    <div class=""><span class="h3 pull-right text-muted" id="budget_01">RM 0</span> <i
+                        class="label label-xs teal m-r-sm"></i>Total Budget Program</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-3 b-r b-b">
+                <div class="padding">
+                  <div> <span class="text-muted l-h-1x"><i class="ion-pie-graph text-muted"></i></span></div>
+                  <div class="text-center">
+                    <h2 id="kat_02" class="text-center _600">0</h2>
+                    <p class="text-muted m-b-md">Creditable Activities</p>
+
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-sm-5 offset-sm-7">
+                      <div class="form-group">
+                        <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                                    format: 'MM/YYYY',
+                                    icons: {
+                                        time: 'fa fa-clock-o',
+                                        date: 'fa fa-calendar',
+                                        up: 'fa fa-chevron-up',
+                                        down: 'fa fa-chevron-down',
+                                        previous: 'fa fa-chevron-left',
+                                        next: 'fa fa-chevron-right',
+                                        today: 'fa fa-screenshot',
+                                        clear: 'fa fa-trash',
+                                        close: 'fa fa-remove'
+                                    }
+                                }">
+                          <input type='text' class="form-control form-control-sm" id="datekat_02" />
+                          <!-- Added input-sm class -->
+                          <span class="input-group-addon"
+                            style="  width: auto; padding: 0 4px; background-color: transparent;">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class=""><span class="h3 pull-right text-muted" id="budget_02">RM 0</span> <i
+                        class="label label-xs teal m-r-sm"></i>Total Budget Program</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-3 b-r b-b">
+                <div class="padding">
+                  <div> <span class="text-muted l-h-1x"><i class="ion-pie-graph text-muted"></i></span></div>
+                  <div class="text-center">
+                    <h2 id="kat_03" class="text-center _600">0</h2>
+                    <p class="text-muted m-b-md">Non-Credit Activities</p>
+                    <!-- <div class="box-tool">
+                            <div class="dropdown"><a data-toggle="dropdown"
+                                class="btn btn-xs rounded white dropdown-toggle">This Month</a>
+                              <div class="dropdown-menu pull-right">
+                                <a class="dropdown-item" href="#" value="1">January</a>
+                                <a class="dropdown-item" href="#" value="2">Feb</a>
+                                <a class="dropdown-item" href="#" value="3">Mac</a>
+                                <a class="dropdown-item" href="#" value="4">April</a>
+                                <a class="dropdown-item" href="#" value="5">May</a>
+                                <a class="dropdown-item" href="#" value="6">June</a>
+                                <a class="dropdown-item" href="#" value="7">July</a>
+                                <a class="dropdown-item" href="#" value="8">August</a>
+                                <a class="dropdown-item" href="#" value="9">Sep</a>
+                                <a class="dropdown-item" href="#" value="10">Oct</a>
+                                <a class="dropdown-item" href="#" value="11">Nov</a>
+                                <a class="dropdown-item" href="#" value="12">Dec</a>
+                              </div>
+                            </div>
+                          </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5 offset-sm-7">
+                      <div class="form-group">
+                        <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                                    format: 'MM/YYYY',
+                                    icons: {
+                                        time: 'fa fa-clock-o',
+                                        date: 'fa fa-calendar',
+                                        up: 'fa fa-chevron-up',
+                                        down: 'fa fa-chevron-down',
+                                        previous: 'fa fa-chevron-left',
+                                        next: 'fa fa-chevron-right',
+                                        today: 'fa fa-screenshot',
+                                        clear: 'fa fa-trash',
+                                        close: 'fa fa-remove'
+                                    }
+                                }">
+                          <input type='text' class="form-control form-control-sm" id="datekat_03" />
+                          <!-- Added input-sm class -->
+                          <span class="input-group-addon"
+                            style="  width: auto; padding: 0 4px; background-color: transparent;">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class=""><span class="h3 pull-right text-muted" id="budget_03">RM 0</span> <i
+                        class="label label-xs teal m-r-sm"></i>Total Budget Program</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-3 b-r b-b">
+                <div class="padding">
+                  <div><span class="text-muted l-h-1x"><i class="ion-pie-graph text-muted"></i></span></div>
+                  <div class="text-center">
+                    <h2 id="kat_04" class="text-center _600">0</h2>
+                    <p class="text-muted m-b-md">Lain-lain</p>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5 offset-sm-7">
+                      <div class="form-group">
+                        <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                                    format: 'MM/YYYY',
+                                    icons: {
+                                        time: 'fa fa-clock-o',
+                                        date: 'fa fa-calendar',
+                                        up: 'fa fa-chevron-up',
+                                        down: 'fa fa-chevron-down',
+                                        previous: 'fa fa-chevron-left',
+                                        next: 'fa fa-chevron-right',
+                                        today: 'fa fa-screenshot',
+                                        clear: 'fa fa-trash',
+                                        close: 'fa fa-remove'
+                                    }
+                                }">
+
+                          <!-- <textarea onclick="InputToSpan()" type="text" class="InputTable" placeholder="Masukkan Label" name="shade">
+</textarea><span class="spanInputTable" onclick="InputToSpan()"></span> -->
+
+                          <input type='text' class="form-control form-control-sm" id="datekat_04">
+                          <!-- <textarea type='text' class="form-control form-control-sm" id="datekat_04" ></textarea> -->
+                          <span class="input-group-addon"
+                            style="  width: auto; padding: 0 4px; background-color: transparent;">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class=""><span class="h3 pull-right text-muted" id="budget_04">RM 0</span> <i
+                        class="label label-xs teal m-r-sm"></i>Total Budget Program</div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+              <!-- <div class="col-xs-6 col-sm-3 b-b">
+                        <div class="padding">
+                          <div><span class="pull-right"><i class="fa fa-caret-up text-primary m-y-xs"></i></span> <span
+                              class="text-muted l-h-1x"><i class="ion-paper-airplane text-muted"></i></span></div>
+                          <div class="text-center">
+                            <h2 class="text-center _600">36</h2>
+                            <p class="text-muted m-b-md">Berkredit Lain-lain</p>
+                           
+                          </div>
+  
+                          <div class="row">
+                            <div class="col-sm-6 push-sm-6">
+                              <div class="p-y text-center text-sm-right">
+                                <a href="#" class="inline p-x text-center"><span
+                                    class="h4 block m-a-0">2k</span> <small class="text-xs text-muted">Total Budget Program</small></a> </div>
+                            </div>
+                            <div class="col-sm-6 pull-sm-6">
+                              <div class="p-y-md clearfix nav-active-info">
+                                <div class="dropdown"><a data-toggle="dropdown" class="btn btn-xs rounded white dropdown-toggle">This Month</a>
+                                  <div class="dropdown-menu pull-right">
+                                    <a class="dropdown-item" href="#">January</a>
+                                    <a class="dropdown-item" href="#">Feb</a> 
+                                    <a class="dropdown-item" href="#">Mac</a>
+                                    <a class="dropdown-item" href="#">April</a>
+                                    <a class="dropdown-item" href="#">May</a>
+                                    <a class="dropdown-item" href="#">June</a>
+                                    <a class="dropdown-item" href="#">July</a>
+                                    <a class="dropdown-item" href="#">August</a>
+                                    <a class="dropdown-item" href="#">Sep</a>
+                                    <a class="dropdown-item" href="#">Oct</a>
+                                    <a class="dropdown-item" href="#">Nov</a>
+                                    <a class="dropdown-item" href="#">Dec</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+            </div>
+            <!--end utk jumlah program mengikut program -->
+
+          </div>
+        </div>
+        <div class="panel box no-border m-b-xs super_admin">
+          <!-- <div class="box-header p-y-sm" style="background-color: #6699CC;"> -->
+          <div class="box-header p-y-sm red-900">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#senat" class="collapsed"
+              aria-expanded="false">
+              <h4><i class="fa fa-area-chart"></i> Programme & Activity</h4>
+            </a>
+          </div>
+          <div id="senat" class="collapse" aria-expanded="false">
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-10 offset-md-1 mt-2">
+                  <div class="box">
+                    <div class="box-header purple-50">
+                      <!-- style="background-color: #FFCC70;" -->
+                      <!-- red-900-->
+                      <h3><b>PROGRAMME & ACTIVITY</b></h3>
+                    </div>
+                    <div class="box-body b-b">
+                      <p class="m-a-0">
+                      <div id="tableProgram">
+                        <input type="hidden" id="userId">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table id="tblProgActivity" class="table table-striped m-b-none"></table>
+                      </div>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+      <!-------------------------------------------------- modal add program & activity -------------------------------------------------->
+      <div id="reg-program" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content" id="other">
+            <form role="form" id="formAddActivity">
+              <div class="modal-header red-900">
+                <h5 class="modal-title">ADD PROGRAMME & ACTIVITY</h5>
+              </div>
+              <div class="modal-body p-lg">
+                <p>
+                <div class="form-group row ">
+                  <label for="" class="col-sm-2 form-control-label ">Programme<span class="text-danger">
+                      *</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="prog_title" placeholder="Programme Name" required>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Campus<span class="text-danger"> *</span></label>
+                  <div class="col-sm-4">
+                    <select class="form-control c-select" id="clg_id" required></select>
+                  </div>
+
+                  <label for="" class="col-sm-2 form-control-label">Cost</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="prog_cost">
+                  </div>
+                </div>
+
+
+
+                <div class="form-group row ">
+                  <label for="" class="col-sm-2 text-nowrap form-control-label">Programme Category</label>
+                  <div class="col-sm-4">
+                    <select class="form-control c-select" id="prog_kat" required>
+                      <option value="">- Choose -</option>
+                      <option value="External Invitation">External Invitation</option>
+                      <option value="Creditable Activities">Creditable Activities</option>
+                      <option value="Non-Credit Activities">Non-Credit Activities</option>
+                      <option value="Others">Others</option>
+                    </select>
+                  </div>
+
+                  <label for="" class="col-sm-2 form-control-label">Allocation requested</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="prog_peruntukan">
+                  </div>
+                </div>
+
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Organize By<span class="text-danger">
+                      *</span></label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="prog_org" placeholder="Organize" required>
+                  </div>
+
+                  <label for="" class="col-sm-2 form-control-label">Start Date<span class="text-danger">
+                      *</span></label>
+                  <div class="col-sm-4">
+                    
+                    <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                      format: 'DD/MM/YYYY',
+                      minDate: moment(),
+                      defaultDate: moment(),
+                      icons: {
+                          time: 'fa fa-clock-o',
+                          date: 'fa fa-calendar',
+                          up: 'fa fa-chevron-up',
+                          down: 'fa fa-chevron-down',
+                          previous: 'fa fa-chevron-left',
+                          next: 'fa fa-chevron-right',
+                          today: 'fa fa-screenshot',
+                          clear: 'fa fa-trash',
+                          close: 'fa fa-remove'
+                      }
+                  }">
+                                            <input type='text' class="form-control" id="prog_startdate" />
+                                            <span class="input-group-addon">
+                                              <span class="fa fa-calendar"></span>
+                                            </span>
+                                          </div>
+                  
+                    <!-- <input type="date" class="form-control" id="prog_startdate" required> -->
+                  </div>
+
+                </div>
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Cooperation</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="prog_vent" placeholder="Cooperation">
+                  </div>
+
+                  <label for="" class="col-sm-2 form-control-label">End Date<span class="text-danger"> *</span></label>
+                  <div class="col-sm-4">
+                    
+                    <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                      format: 'DD/MM/YYYY',
+                      minDate: moment(),
+                      defaultDate: moment(),
+                      icons: {
+                          time: 'fa fa-clock-o',
+                          date: 'fa fa-calendar',
+                          up: 'fa fa-chevron-up',
+                          down: 'fa fa-chevron-down',
+                          previous: 'fa fa-chevron-left',
+                          next: 'fa fa-chevron-right',
+                          today: 'fa fa-screenshot',
+                          clear: 'fa fa-trash',
+                          close: 'fa fa-remove'
+                      }
+                  }">
+                                            <input type='text' class="form-control" id="prog_enddate" />
+                                            <span class="input-group-addon">
+                                              <span class="fa fa-calendar"></span>
+                                            </span>
+                                          </div>
+                  
+                    <!-- <input type="date" class="form-control" id="prog_enddate" required> -->
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Advisor</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="prog_advisor" placeholder="Advisor">
+                  </div>
+
+                  <label for="" class="col-sm-2 form-control-label">Proposal<span class="text-danger"> *</span></label>
+                  <div class="col-sm-4">
+                    <input type="file" class="form-control chkProposal" id="prog_proposal" name="prog_proposal"
+                      required>
+                    <span class="text-info">PDF only (less than 5MB)</span>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <!-- <label for="" class="col-sm-2 form-control-label">Status</label>
+                  <div class="col-sm-4">
+                    <select class="form-control" id="prog_status">
+                      <option value="">- Choose -</option>
+                      <option value="New">New</option>
+                      <option value="Accept">Accept</option>
+                      <option value="Reject">Reject</option>
+                      <option value="KIV">KIV</option>
+                    </select>
+                  </div> -->
+
+                  <label for="" class="col-sm-2 form-control-label">Venue</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="prog_venue" placeholder="Venue">
+                  </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                  <label for="" class="col-sm-2 form-control-label">Total Participant</label>
+                  <div class="col-sm-4">
+                    <input required type="text" class="form-control" id="total_particapate" placeholder="Participant">
+                  </div>
+
+                </div>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn info p-x-md" value="Save">
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal add program & activity -------------------------------------------------->
+
+      <!-------------------------------------------------- modal edit program & activity -------------------------------------------------->
+      <div id="update-program" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <form role="form" id="formUptProgramme">
+              <div class="modal-header red-900">
+                <h5 class="modal-title">UPDATE PROGRAMME & ACTIVITY</h5>
+              </div>
+              <div class="modal-body p-lg">
+                <p>
+                  <input type="hidden" id="id_program">
+                <div class="form-group row ">
+                  <label for="" class="col-sm-2 form-control-label ">Programme<span class="text-danger">
+                      *</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="upt_prog_title" placeholder="Programme Name" required>
+                  </div>
+                </div>
+
+                <div class="form-group row ">
+                  <label for="" class="col-sm-2 form-control-label ">Campus<span class="text-danger"> *</span></label>
+                  <div class="col-sm-4">
+                    <select class="form-control c-select" id="upt_clg_id" required></select>
+                  </div>
+
+                  <label for="" class="col-sm-2 form-control-label">Venue</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="upt_prog_venue" placeholder="Venue">
+                  </div>
+                </div>
+
+
+                <div class="form-group row ">
+                  <label for="" class="col-sm-2 text-nowrap form-control-label">Programme Category</label>
+                  <div class="col-sm-4">
+                    <select class="form-control c-select" id="upt_prog_kat">
+                      <option value="">- Pilih -</option>
+                      <option value="External Invitation">External Invitation</option>
+                      <option value="Creditable Activities">Creditable Activities</option>
+                      <option value="Non-Credit Activities">Non-Credit Activities</option>
+                      <option value="Others">Others</option>
+                    </select>
+                  </div>
+
+
+                  <label for="" class="col-sm-2 form-control-label">Cost</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="upt_prog_cost">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Organize By<span class="text-danger">
+                      *</span></label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="upt_prog_org" placeholder="Organize" required>
+                  </div>
+
+                  <label for="" class="col-sm-2 form-control-label">Allocation requested</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="upt_prog_peruntukan">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Cooperation</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="upt_prog_vent" placeholder="Cooperation">
+                  </div>
+                  <label for="" class="col-sm-2 form-control-label">Start Date<span class="text-danger">
+                      *</span></label>
+                  <div class="col-sm-4">
+                    <input type="date" class="form-control" id="upt_prog_startdate" required>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Advisor</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="upt_prog_advisor" placeholder="Advisor">
+                  </div>
+
+                  <label for="" class="col-sm-2 form-control-label">End Date<span class="text-danger"> *</span></label>
+                  <div class="col-sm-4">
+                    <input type="date" class="form-control" id="upt_prog_enddate" required>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Status</label>
+                  <div class="col-sm-4">
+                    <select class="form-control" id="upt_prog_status">
+                      <option value="">- Choose -</option>
+                      <option value="New">New</option>
+                      <option value="Accept">Accept</option>
+                      <option value="Reject">Reject</option>
+                      <option value="KIV">KIV</option>
+                      <option value="Approved">Approved</option>
+                    </select>
+                  </div>
+
+                  <label class="col-sm-2 form-control-label">Proposal</label>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <span id="view_prog_proposal"></span>
+                      </div>
+                      <div class="col-md-10 p-l-0"><input type="file" class="form-control chkProposal"
+                          id="upt_prog_proposal">
+                      </div>
+                    </div>
+                    <span class="text-info">PDF only (less than 5MB)</span>
+                    <input type="hidden" class="form-control" id="exist_prog_proposal">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+
+                  <label for="" class="col-sm-2 form-control-label">Allocation Approved</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="upt_prog_alloc_approve">
+                  </div>
+
+                  <label for="" class="col-sm-2 form-control-label">Total Participant</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="upt_total_particapate" placeholder="Participant">
+                  </div>
+
+
+
+                </div>
+                <div class="form-group row">
+
+                  <label for="" class="col-sm-2 form-control-label">Remarks</label>
+                  <div class="col-sm-4">
+                    <textarea class="form-control" rows="3" id="prog_statusremark"></textarea>
+                  </div>
+                </div>
+                </p>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn success p-x-md" value="Update">Update</button>
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal edit program & activity -------------------------------------------------->
+
+
+      <!-------------------------------------------------- modal view program & activity -------------------------------------------------->
+      <div id="view-program" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header p-a-0 red-900">
+              <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+              <div class="p-a b-b">
+                <span class="h5">VIEW PROGRAMME & ACTIVITY</span>
+              </div>
+            </div>
+
+            <div class="modal-body p-lg">
+              <p>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Programme</div>
+                    <div class="col-sm-9 text-uppercase" id="view_prog_title"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Campus</div>
+                    <div class="col-sm-9 text-uppercase" id="view_clg_id"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Programme Category</div>
+                    <div class="col-sm-9 text-uppercase" id="view_prog_kat"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Organize By</div>
+                    <div class="col-sm-9 text-uppercase" id="view_prog_org"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Cooperation</div>
+                    <div class="col-sm-9 text-uppercase" id="view_prog_vent"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Advisor</div>
+                    <div class="col-sm-9 text-uppercase" id="view_prog_advisor"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Venue</div>
+                    <div class="col-sm-9 text-uppercase" id="view_prog_venue"></div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Cost</div>
+                    <div class="col-sm-9" id="view_prog_cost"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Allocation requested</div>
+                    <div class="col-sm-9" id="view_prog_peruntukan"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Date</div>
+                    <div class="col-sm-9" id="view_prog_date"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Proposal</div>
+                    <div class="col-sm-8 text-truncate" id="view_progProposal"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Status</div>
+                    <div class="col-sm-9 text-uppercase" id="view_prog_status"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Remark</div>
+                    <div class="col-sm-9 text-uppercase" id="view_prog_statusremark"></div>
+                  </div>
+                </div>
+              </div>
+              </p>
+            </div>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal view program & activity -------------------------------------------------->
+
+      <!-------------------------------------------------- modal generate pdf programme -------------------------------------------------->
+      <div id="mdl_reportProgramme" class="modal fade" data-backdrop="true" display="block">
+        <div class="modal-dialog modal-lg fade-right-big " style="max-width: 80% !important;">
+          <div class="modal-content red-50">
+            <div class="modal-header red-700">
+              <h5 class="modal-title">Reporting Programme</h5>
+            </div>
+            <div id="" class="modal-body text-center p-lg" style="height: 30vw;">
+              <div class="row">
+                <div class="col-sm-12">
+
+                  <div id="" class="box">
+
+                    <div class="box-header">
+                      <!-- <span class="label danger pull-right">6</span> -->
+                      <!-- <h3 class="pull-left">Reporting Programme</h3> -->
+                      <div class="row">
+
+                        <div class="box">
+                          <!-- <div class="box-header">
+                            <h2>Inline form</h2>
+                            <small>Add ".form-inline" to your &lt;form&gt; for left-aligned and inline-block controls. This only applies to forms within viewports that are at least 768px wide.</small>
+                          </div> -->
+                          <div class="box-body p-v-md">
+                            <form id="formFilterPDF" class="form-inline" role="form">
+                              <div class="form-group mb-2">
+                                <label for="tarikh_mula" class="col-form-label">Start Date:</label>
+                                <input id="tarikh_mula" type="date" class="form-control" placeholder="Date">
+                              </div>
+                              <div class="form-group mx-sm-3 mb-2">
+                                <label for="tarikh_tamat" class="col-form-label">End Date:</label>
+                                <input id="tarikh_tamat" type="date" class="form-control" placeholder="Date">
+                              </div>
+                              <div class="form-group mb-2">
+                                <label for="prog_category_id" class="col-form-label">Category Program:</label>
+                                <select id="prog_category_id" class="form-control c-select">
+                                  <option value="">--Choose Category Program--</option>
+                                  <option value="External Invitation">External Invitation</option>
+                                  <option value="Non-Credit Activities">Non-Credit Activities</option>
+                                  <option value="Creditable Activities">Creditable Activities</option>
+                                  <option value="Others">Others</option>
+                                </select>
+                              </div>
+                              <button type="submit" class="btn btn-info mb-2">Filter</button>
+                            </form>
+                          </div>
+
+                          <div class="box-divider m-a-0"></div>
+
+                        </div>
+
+
+                      </div>
+
+                    </div>
+                    <table id="report_ProgrammeTab" class="table">
+
+                    </table>
+                  </div>
+
+
+                  <!-- <button class="pdfexport">Export to PDF</button> -->
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!-- <button style="margin-right: 5%;" id="HAHA" class="md-btn md-raised green"> <i
+                class="fa fa-fw  fa-file-pdf-o"></i>
+              Download PDF</button> -->
+              <button id="HAHA" class="btn btn-outline-danger p-x-md"> <i class="fa fa-fw fa-file-pdf-o"></i>
+                PDF</button>
+              <!-- <button id=""    onclick="exportTableToXLSX()">Export to Excel</button> -->
+
+              <button type="button" class="btn btn-outline-danger p-x-md " onclick="exportTableToXLSX()"><i
+                  class="fa fa-file-excel-o"></i> Excel</button>
+              <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn danger p-x-md" data-dismiss="modal">Yes</button> -->
+            </div>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- modal generate pdf -------------------------------------------------->
+
+
+    </div>
+  </div>
+
+
+
+  <script src="scripts/jspdf.umd.min.js"></script>
+  <script src="scripts/jspdf.plugin.autotable.js"></script>
+  <!-- <script src="libs/footable2/js/footable.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="prog_activity.js"></script>
+
+  <script>
+    // Find all collapse elements and trigger the click event to open them
+    $('.collapse').each(function () {
+      $(this).collapse('show');
+    });
+  </script>
+
+  <script>
+
+    function InputToSpan() {
+
+      $(".spanInputTable").click(function (event) {
+        event.stopPropagation();
+        $(this).hide();
+        $(this).parent().children('textarea').removeClass('hidden');
+        $(this).parent().children('input').removeClass('hidden');
+
+
+      });
+
+      $(".InputTable").blur(function () {
+        // console.log($(this).val());
+        if ($(this).val() != '') {
+          $(this).addClass('hidden');
+          $(this).parent().children('span').html($(this).val().replace(/\n/g, "<br>"));
+          $(this).parent().children('span').show();
+        }
+      });
+
+    }
+
+    // window.jsPDF = window.jspdf.jsPDF; //nie pnting utk call jspdf pnya library
+    // $("#HAHA").on("click", function () {
+    //   // Initialize jsPDF
+    //   var doc = new jsPDF();
+    //   // doc.text("Reporting Discipline", 10, 20);
+
+
+    //   doc.addImage("images/LOGO-UCMI(Potrait).png", "PNG", 90, 2, 30, 40);
+
+    //   // doc.setFontSize(30);
+    //   doc.setFont("helvetica", "bold");
+    //   doc.text("Unit Pembangunan Holistik Mahasiswa", 53, 52);
+    //   // Define the source element (your HTML table)
+    //   var source = $('#report_ProgrammeTab')[0];
+
+    //   // Define the gap (adjust the value as needed)
+    //   var gap = 60; // Adjust this value to set the desired gap
+
+    //   // Generate the PDF from the table, starting with a gap
+    //   doc.autoTable({
+    //     html: source,
+    //     startY: gap //nak tmbah gap between atas dia
+    //   });
+
+    //   // Save or download the PDF
+    //   doc.save('Reporting_Discipline.pdf');
+    // });
+    window.jsPDF = window.jspdf.jsPDF;
+
+$("#HAHA").on("click", function () {
+
+  // var doc = new jsPDF({
+  //   orientation: "landscape",
+  //   unit: "mm",
+  //   format: "a3",
+  // });
+
+  // // Set the desired height of the logo
+  // var desiredLogoHeight = 40;
+
+  // // Get the original dimensions of the logo (replace with your actual logo dimensions)
+  // var originalLogoWidth = 100; // Replace with the actual width of your logo
+  // var originalLogoHeight = 80; // Replace with the actual height of your logo
+
+  // // Calculate the width to maintain aspect ratio
+  // var desiredLogoWidth = (desiredLogoHeight / originalLogoHeight) * originalLogoWidth;
+
+  // // Center the logo at the top
+  // var centerX = (doc.internal.pageSize.width - desiredLogoWidth) / 2;
+  // doc.addImage("images/LOGO-UCMI(Potrait).png", "PNG", centerX, 10, desiredLogoWidth, desiredLogoHeight);
+
+  // // Add text below the logo
+  // doc.setFont("helvetica", "bold");
+  
+  // // Calculate the centerX for the text to be centered below the logo
+  // var textCenterX = doc.internal.pageSize.width / 2;
+  // doc.text("Unit Pembangunan Holistik Mahasiswa", textCenterX, 60, { align: "center" });
+
+  //   // Calculate the centerX for the text to be centered below the logo
+  //   doc.setFont("helvetica", "normal"); // Set font style to normal (not bold)
+  // doc.text("Reporting Programmme", textCenterX, 70, { align: "center" });
+
+
+  // // Define the source element (your HTML table)
+  // var source = $('#report_ProgrammeTab')[0];
+
+  // // Generate the PDF from the table, starting below the text
+  // doc.autoTable({
+  //   html: source,
+  //   startY: 80, // Adjusted start position below the text
+  //   margin: { top: 40 },
+  //   theme: 'grid',
+  //   styles: { fillColor: false, textColor: 0 },
+  //   headerStyles: { fillColor: '#9c4298', textColor: 255 },
+  // });
+
+  // // Save or download the PDF
+  // doc.save('Reporting_Discipline.pdf');
+
+  GeneratePDFUnit('PROGRAMME', 'report_ProgrammeTab', 'UNIT PEMBANGUNAN HOLISTIK MAHASISWA','tarikh_mula','tarikh_tamat');
+
+  
+
+});
+
+
+  </script>

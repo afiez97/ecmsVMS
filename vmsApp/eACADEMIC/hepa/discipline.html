@@ -1,0 +1,198 @@
+<style>
+  .add-border {
+    border: 2px solid #f00;
+    background-color: #ffc0cb;
+    /* Pink background color for example */
+    color: #f00;
+    /* Red text color for example */
+  }
+</style>
+
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <span class="navbar-item text-md">Discipline</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-muted" data-toggle="modal" data-target="#add-dicipline">
+          <span class="">
+            <i class="fa fa-fw fa-plus"></i>
+            <span class="hidden-sm-down">New Record</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header">
+      <!-- <li class="nav-item dropdown pos-stc-xs">
+                <a class="nav-link" data-toggle="dropdown">
+                  <i class="ion-android-search w-24"></i>
+                </a>
+                <div class="dropdown-menu text-color w-md animated fadeInUp pull-right">
+                  <form class="navbar-form form-inline navbar-item m-a-0 p-x v-m" role="search">
+                    <div class="form-group l-h m-a-0">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search projects...">
+                        <span class="input-group-btn">
+                          <button type="submit" class="btn white b-a no-shadow"><i class="fa fa-search"></i></button>
+                        </span>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </li> -->
+
+
+
+      <!-- <li class="nav-item">
+        <span class="navbar-item m-r-0 text-md">Total Kesalahan Disiplin:</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <span id="totalDiscipline" class="label label-lg rounded">
+            55
+          </span>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+</div>
+
+<!-- FOOTER INSERT  -->
+<div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+<div class="app-body">
+
+  <!-- CONTENT START -->
+  <div style="min-height: mh-200">
+    <div class="col-md-10 offset-md-1 mt-2">
+      <div class="box">
+        <div class="box-header blue-700">
+          <h3><b>DISCIPLINE TYPE</b></h3>
+          <!-- <small>List of Discipline</small> -->
+        </div>
+        <div class="box-body light lt">
+          <p class="m-a-0">
+          <div id="tableDisiplin">
+            <textarea class="hidden" id="dataList"></textarea>
+            <table id="disiplinList" class="table m-b-none"></table>
+
+            <div class="row">
+              <!-- <button id="" class="md-btn pull-right md-raised m-b-sm w-xs indigo generateExcel"
+                style="margin-right: 30px;">Download</button> -->
+            </div>
+          </div>
+
+          <!-- modal add descipline -->
+          <div id="add-dicipline" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content" id="other">
+                <form role="form" id="formAddDisiplin">
+                  <div class="modal-header blue-700">
+                    <h5 class="modal-title">ADD DISCIPLINE TYPE</h5>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                    <div class="form-group row">
+                      <label for="" class="col-sm-2 form-control-label ">Code<span class="text-danger"> *</span></label>
+                      <div class="col-sm-3">
+                        <input type="text" class="form-control" id="id_salahlaku" required>
+                      </div>
+
+                      <!-- <label for="" class="col-sm-2 form-control-label ">Action Taken<span class="text-danger">
+                          *</span></label>
+                      <div class="col-sm-4">
+                        <select class="form-control c-select" id="action_taken" required>
+                          <option value="">- Choose -</option>
+                          <option value="Warning">Warning</option>
+                          <option value="Compound">Compound</option>
+                        </select>
+                      </div> -->
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-2 form-control-label">Description<span class="text-danger">
+                          *</span></label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="description" placeholder="Description" required>
+                      </div>
+                    </div>
+
+                    <!-- <div class="form-group row ">
+                                        <label for="" class="col-sm-2 form-control-label ">Action<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-4">
+                                          <select class="form-control c-select" id="tindakanDisiplin" required>
+                                            <option value="">- Choose -</option>
+                                            <option value="External Invitation">Warning</option>
+                                            <option value="Creditable Activities">Compound</option>
+                                          </select>
+                                        </div>
+                                      </div> -->
+
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn info p-x-md" value="Save">
+                  </div>
+                </form>
+              </div><!-- /.modal-content -->
+            </div>
+          </div>
+
+          <!-- update discipline -->
+          <div id="update-dicipline" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content" id="other">
+                <form role="form" id="formUptDisiplin">
+                  <div class="modal-header blue-700">
+                    <h5 class="modal-title">UPDATE DISCIPLINE TYPE</h5>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                      <input type="hidden" id="pk_id">
+                    <div class="form-group row ">
+                      <label for="" class="col-sm-2 form-control-label ">Code<span class="text-danger"> *</span></label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" id="upt_id_salahlaku" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-2 form-control-label">Description<span class="text-danger">
+                          *</span></label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="upt_description" placeholder="Description" required>
+                      </div>
+                    </div>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn success p-x-md" value="Update">
+                  </div>
+                </form>
+              </div><!-- /.modal-content -->
+            </div>
+          </div>
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<script src="libs/footable2/js/footable.js"></script>
+<script src="callFunction.js"></script>
+
+<script src="scripts/ajax.js"></script>
+<script src="discipline.js"></script>

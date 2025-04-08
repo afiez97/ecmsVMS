@@ -1,0 +1,122 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Discipline</span>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header blue-700">
+                    <h3><b>DISCIPLINE</b></h3>
+                    <!-- <small>List of Compound</small> -->
+                  </div>
+                  <div class="box-body b-b">
+                    <p class="m-a-0">
+                      
+                      <div id="tableCompound">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table id="compoundList" class="table table-striped m-b-none"></table>
+                      </div>
+
+                      <!-------------------------------------------------- modal view Compound -------------------------------------------------->
+                      <div id="update-compound" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content" id="">
+                            <div class="modal-header blue-700">
+                                <h5 class="modal-title">DETAILS</h5>
+                            </div>
+                            <div class="modal-body p-lg">
+                              <p>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group row">
+                                      <div class="col-sm-3 font-weight-bold">Campus</div>
+                                      <div class="col-sm-9 text-uppercase" id="upt_clg_id"></div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <div class="col-sm-3 font-weight-bold">Date/Time</div>
+                                      <div class="col-sm-9 text-uppercase"><span id="upt_dis_date"></span> / <span id="upt_dis_time"></span></div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <div class="col-sm-3 font-weight-bold">Venue</div>
+                                      <div class="col-sm-9 text-uppercase" id="upt_dis_venue"></div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <div class="col-sm-3 font-weight-bold">Action</div>
+                                      <div class="col-sm-9 text-uppercase" id="upt_dis_action"></div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <div class="col-sm-3 font-weight-bold">Amount</div>
+                                      <div class="col-sm-9" id="upt_dis_amount"></div>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <div class="form-group row">
+                                      <div class="col-sm-3 font-weight-bold">Reference No.</div>
+                                      <div class="col-sm-9 text-uppercase" id="upt_dis_refNo"></div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <div class="col-sm-3 font-weight-bold">Type</div>
+                                      <div class="col-sm-9 text-uppercase" id="upt_dis_type"></div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <div class="col-sm-3 font-weight-bold">Issue</div>
+                                      <div class="col-sm-9 text-uppercase" id="upt_dis_issue"></div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <div class="col-sm-3 font-weight-bold">Remark</div>
+                                      <div class="col-sm-9 text-uppercase" id="upt_dis_remark"></div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <div class="col-sm-3 font-weight-bold">Status</div>
+                                      <div class="col-sm-9" id="upt_dis_pay_status"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </p>
+                            </div>
+                            <div class="modal-footer ">
+                              <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                            </div>                     
+                          </div><!-- /.modal-content -->
+                        </div>
+                      </div><!-------------------------------------------------- end modal view Compound -------------------------------------------------->
+                      
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+    <script src="scripts/ajax.js"></script>
+    <script src="comp_stud.js"></script>

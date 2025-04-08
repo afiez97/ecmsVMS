@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS - Pengurusan Pelajar</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />  
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/select2/dist/css/select2.css">
+  <link rel="stylesheet" href="libs/select2-bootstrap-theme/dist/select2-bootstrap.css">
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+    <div class="app-header white bg b-b">
+          <div class="navbar" data-pjax>
+                <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                  <i class="ion-navicon"></i>
+                </a>
+                
+                <div class="navbar-item pull-left h5" id="pageTitle">
+                  <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                  Credit Exemption/Credit Transfer Processes
+                </div>
+                <!-- nabar right -->
+                <!-- / navbar right -->
+          </div>
+    </div>
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+
+    <div class="modal" id="loading_modal" data-backdrop="static">
+      <div class="modal-dialog">
+        <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+      </div>
+    </div>
+
+    <div class="app-body">
+
+<!-- ############ PAGE START-->
+<!-- only need a height for layout 4 -->
+<div style="min-height: 200px">
+  <div class="padding">
+  
+    <div class="box">
+      <div class="box-header b-b">
+        <h3>DETAILS</h3>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <div class="col-sm-3 font-weight-bold">Student Id</div>
+              <div id="std_studentid" class="col-sm-9 text-uppercase"></div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-3 font-weight-bold">Student Name</div>
+              <div id="sti_name" class="col-sm-9 text-uppercase"></div> 
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-3 font-weight-bold">Programme</div>
+              <div id="programme" class="col-sm-9 text-uppercase"></div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-3 font-weight-bold">Semester</div>
+              <div id="semester" class="col-sm-9 text-uppercase"></div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-3 font-weight-bold">Processing Fee</div>
+              <div id="fee" class="col-sm-9 text-uppercase"></div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group row">
+              <div class="col-sm-3 font-weight-bold">Previous Education</div>
+              <div id="std_edu" class="col-sm-9 text-uppercase"></div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-3 font-weight-bold">Previous IPTA/IPTS</div>
+              <div id="std_universiti" class="col-sm-9 text-uppercase"></div> 
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-3 font-weight-bold">Previous Program</div>
+              <div id="std_pre_programme" class="col-sm-9 text-uppercase"></div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-3 font-weight-bold">Transcript</div>
+              <div id="std_transkrip" class="col-sm-9 text-uppercase"></div>
+            </div>
+          </div>
+        </div>
+        <hr>
+          
+            <div>
+              <ul class="nav nav-pills clearfix m-b">
+                <li class="nav-item"><a class="nav-link font-weight-bold active" href="#tab1" data-toggle="tab">ADMIN (FACULTY)</a></li>
+                <li class="nav-item"><a class="nav-link font-weight-bold" href="#tab2" data-toggle="tab">MESYUARAT SENAT</a></li>
+                <li class="nav-item"><a class="nav-link font-weight-bold" href="#tabDean" data-toggle="tab">ADMIN (DEAN)</a></li>
+                <li class="nav-item"><a class="nav-link font-weight-bold" href="#tab4" data-toggle="tab">UPDATE STUDENT FEES</a></li>
+              </ul>
+
+              <div class="tab-content">
+                  <!-------------------------------------------------- tab 1 -------------------------------------------------->
+                  <div class="tab-pane active" id="tab1">
+                   
+                    <hr>
+
+                    <!-- senarai course -->
+                    <div class="grey-300 m-b-1 m-t-2"><span class="font-weight-bold text-dark p-l-1">COURSE LIST</span></div>
+                    <div class="p-a" id="listStudent">
+                      <textarea class="hidden" id="dataList"></textarea>
+                      <table class="table table-striped table-bordered m-b-none" id="tblCourseTransfer"></table>
+                    </div>
+
+                    <form id="admin_send">
+                      <input type="hidden" id="cect_id">
+                      <div class="grey-300 m-b-1 m-t-2"><span class="font-weight-bold text-dark p-l-1">Approval By Program Coordinator</span></div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-2 form-control-label">Status</label>
+                            <div class="col-sm-10">
+                              <select id="statusAdminFakulti" class="form-control">
+                                <option value="">- Choose -</option>
+                                <option value="Support">Support</option>
+                                <option value="Not Support">Not Support</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-2 form-control-label">Remarks</label>
+                            <div class="col-sm-10">
+                              <textarea class="form-control" id="cttnAdminFakulti" rows="3"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+
+                      <div class="row text-right m-r-1">
+                        <button type="submit" class="btn info btn_update_cect">Save</button>
+                      </div>
+                    </form>
+                  </div><!-------------------------------------------------- end tab 1 -------------------------------------------------->
+
+
+                  <!-------------------------------------------------- tab 2 -------------------------------------------------->
+                  <hr>
+                  <div class="tab-pane" id="tab2">
+                    <form id="formSenat">
+                      <div class="row p-a">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Academic Session</label>
+                            <div class="col-sm-9">
+                              <select class="form-control c-select slct2" id="cect_acaSession"></select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row" >
+                            <label class="col-sm-3 form-control-label">Category
+                               <!-- <span class="text-danger">*</span> -->
+                              </label>
+                            <div class="col-sm-9">
+                              <select class="form-control" id="aca_calendar"></select>
+                            </div>
+                          </div>
+  
+                          <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Total Credit <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                                <input required type="number" class="form-control" id="cect_total_credit" placeholder="Total Credit">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">CGPA <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="cect_cgpa" placeholder="CGPA" required>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            
+
+                            <label class="col-sm-3 form-control-label">GPA <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" id="cect_gpa" placeholder="GPA" required>
+
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label class="col-sm-3 form-check-label">Senate's Decision <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                                <textarea id="cect_senate_decision" class="form-control" rows="3"></textarea>
+                            </div>
+                          </div>
+
+                          <!-- <div class="form-group row">
+                            <label class="col-sm-3 form-check-label"></label>
+                            <div class="col-sm-9">
+                              <label class="ui-switch primary m-t-xs m-r" ><input type="radio" checked id="ce" name="cect_type" ><i></i></label>&nbsp;Credit Exceptation (CE)                             
+                            </div>
+                            <label class="col-sm-3 form-check-label"></label>
+                            <div class="col-sm-9">
+                              <label class="ui-switch primary m-t-xs m-r" ><input type="radio" checked id="ct" name="cect_type" ><i></i></label>&nbsp;Credit Transfer (CT)                            
+                            </div>
+                          </div> -->
+                        </div>
+                      </div>
+                      <hr>
+  
+                      <div class="row text-right m-r-1">
+                        <button type="submit" class="btn info btn_update_cect">Save</button>
+                      </div>
+                    </form>
+                  </div>
+                  <!-------------------------------------------------- end tab 2 -------------------------------------------------->
+
+
+                  <!-------------------------------------------------- tab Admin (Dean) -------------------------------------------------->
+                  <div class="tab-pane m-a-2" id="tabDean">
+                    <form id="formDean">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <textarea hidden id="dataListSubject"></textarea>
+                          <div class="form-group">
+
+                            <label for="cect_approval_status" class="col-sm-2 form-control-label">Status</label>
+                            <div class="col-sm-10">
+                              <select id="cect_approval_status" class="form-control">
+                                <option value="">- Choose -</option>
+                                <option value="Approve">Approve</option>
+                                <option value="Reject">Reject</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="cect_approval_remarks" class="col-sm-2 form-control-label">Remarks</label>
+                            <div class="col-sm-10">
+                              <textarea class="form-control" id="cect_approval_remarks" rows="3"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+
+                      <div class="row text-right m-r-1 btn_update_cect">
+                        <button type="submit" class="btn info ">Save</button>
+                      </div>
+                    </form>
+                  </div>
+                  <!-------------------------------------------------- end tab Admin (Dean) -------------------------------------------------->
+
+
+                  <!-------------------------------------------------- tab fees -------------------------------------------------->
+                  <div class="tab-pane" id="tab4">
+                    <form id="formUptFees">
+                      <div class="row p-a">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Fees</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="cect_fees" placeholder="Fees">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="row text-right m-a-2">
+                        <button type="submit" class="btn info btn_update_cect">Save</button>
+                      </div>
+                    </form>
+                  </div>
+                  <!-------------------------------------------------- end tab fees -------------------------------------------------->
+              </div>  
+            </div>
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+<!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+  
+  <!-- ############ SWITHCHER START-->
+  <!-- ############ SWITHCHER END-->
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="libs/select2/dist/js/select2.full.min.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+
+
+  
+  <script src="scripts/action.min.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="config.js"></script>
+  <script src="cect_proses.js"></script>
+  <script src="capaian.js"></script>
+<!-- endbuild -->
+</body>
+</html>

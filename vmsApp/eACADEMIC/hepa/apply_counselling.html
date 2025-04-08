@@ -1,0 +1,668 @@
+<!-- <script src="scripts/jspdf.umd.min.js"></script> -->
+<!-- Load jsPDF from a CDN -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script> -->
+
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <span class="navbar-item text-md">Counseling</span>
+      </li>
+      <li class="nav-item" id="btnNewRecord">
+        <a class="nav-link text-muted" data-toggle="modal" data-target="#apply-counselling">
+          <span class="">
+            <i class="fa fa-fw fa-plus"></i>
+            <span class="hidden-sm-down">New Record</span>
+          </span>
+        </a>
+      </li>
+
+      <!-- <li class="nav-item" id="generateReport">
+        <a class="nav-link text-muted" data-toggle="modal" data-target="#mdl_reportKaunseling">
+          <span class="">
+            <i class="fa fa-fw fa-pencil-square-o"></i>
+            <span class="hidden-sm-down">Reporting For Counseling Application</span>
+          </span>
+        </a>
+      </li> -->
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+  </div>
+</div>
+
+<!-- FOOTER INSERT  -->
+<div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+<div class="app-body">
+
+  <!-- CONTENT START -->
+  <div style="min-height: mh-200">
+    <div class="col-md-10 offset-md-1 mt-2">
+      <div class="box">
+        <div class="box-header green-700">
+          <h3><b>APPLY COUNSELING</b></h3>
+        </div>
+        <div class="box-body b-b">
+          <p class="m-a-0">
+          <div id="tableCounseling">
+            <input type="hidden" id="usrId">
+            <input type="hidden" id="ifKaun">
+            <textarea class="hidden" id="dataList"></textarea>
+            <table id="counselingList" class="table table-striped m-b-none"></table>
+          </div>
+          </p>
+        </div>
+      </div>
+
+
+      <!-------------------------------------------------- modal apply counseling -------------------------------------------------->
+      <div id="apply-counselling" class="modal fade" display="block" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content" id="">
+            <form role="form" id="formApplyCoun">
+              <div class="modal-header green-700">
+                <h5 class="modal-title">ADD COUNSELING</h5>
+              </div>
+
+              <div class="modal-body p-lg">
+                <p>
+                <div class="form-group row">
+                  <label for="" class="col-sm-3 form-control-label">Campus<span class="text-danger"> *</span></label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select" id="clg_id" required></select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="" class="col-sm-3 form-control-label">Type</label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select coun_type" id="counseling_type_ori" required>
+                      <option value="">- Choose -</option>
+                      <option value="Individual">Individual</option>
+                      <option value="Group">Group</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="" class="col-sm-3 form-control-label">Session</label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select coun_type" id="counseling_type" required>
+                      <option value="">- Choose -</option>
+                      <option value="Individual">Individual</option>
+                      <option value="On Behalf">On Behalf</option>
+                      <option value="Programme">Programme</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row coun_matric" style="display: none;">
+                  <label for="" class="col-sm-3 form-control-label">Matric No.</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control coun_name" id="stud_id" placeholder="Matric No.">
+                    <span class="text-danger check"></span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 form-control-label">Issue<span class="text-danger"> *</span></label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select" id="counselling_reason" required></select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-3 form-control-label">Remarks</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" id="remark_coun" rows="2"></textarea>
+                  </div>
+                </div>
+                <!--                               
+                              <div class="form-group row">
+                                <label for="" class="col-sm-3 form-control-label">Issue</label>
+                                <div class="col-sm-9">
+                                  <textarea class="form-control" rows="3" id="counselling_reason" placeholder="Issue"></textarea>
+                                </div>
+                              </div> -->
+                </p>
+              </div>
+
+              <div class="modal-footer ">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn info p-x-md btnSaveStd" value="Save">
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal apply counseling -------------------------------------------------->
+
+
+      <!-------------------------------------------------- modal update counseling -------------------------------------------------->
+      <div id="update-apply-counselling" class="modal fade" display="block" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form role="form" id="formUptCounseling">
+              <div class="modal-header green-700">
+                <h5 class="modal-title">UPDATE COUNSELING</h5>
+              </div>
+              <div class="modal-body p-lg">
+                <p>
+                  <input type="hidden" id="pk_id">
+                <div class="form-group row">
+                  <label class="col-sm-3 form-control-label">Campus<span class="text-danger"> *</span></label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select" id="upt_clg_id" required></select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-3 form-control-label">Type</label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select coun_type" id="upt_counseling_type_ori" required>
+                      <option value="">- Choose -</option>
+                      <option value="Individual">Individual</option>
+                      <option value="Group">Group</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 form-control-label">Session</label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select coun_type" id="upt_counseling_type" required>
+                      <option value="">- Choose -</option>
+                      <option value="Individual">Individual</option>
+                      <option value="On Behalf">On Behalf</option>
+                      <option value="Programme">Programme</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row coun_matric">
+                  <label class="col-sm-3 form-control-label">Matric No.</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control coun_name" id="upt_stud_id" placeholder="Matric No.">
+                    <span class="text-danger check"></span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 form-control-label">Issue<span class="text-danger"> *</span></label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select" id="upt_counselling_reason" required></select>
+                  </div>
+                </div>
+
+                <!-- <div class="form-group row m-b-0">
+                                <label class="col-sm-3 form-control-label">Issue</label>
+                                <div class="col-sm-9">
+                                  <textarea class="form-control" rows="3" id="upt_counselling_reason" placeholder="Issue"></textarea>
+                                </div>
+                              </div> -->
+                </p>
+              </div>
+
+              <div class="modal-footer ">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn success p-x-md btnSaveStd" value="Update">
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal update counseling -------------------------------------------------->
+
+
+      <!-------------------------------------------------- modal view -------------------------------------------------->
+      <div id="mdlView" class="modal fade" display="block" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form role="form" id="formUptCounseling">
+              <div class="modal-header green-700">
+                <h5 class="modal-title">VIEW COUNSELING</h5>
+              </div>
+              <div class="modal-body p-lg">
+                <p>
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Campus</div>
+                  <div class="col-sm-9 text-uppercase" id="view_clg_id"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Requester</div>
+                  <div class="col-sm-9 text-uppercase" id="view_requester"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Session</div>
+                  <div class="col-sm-9"><span class="label grey" id="view_type"></span></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Matric No.</div>
+                  <div class="col-sm-9 text-uppercase" id="view_stud_id"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Student</div>
+                  <div class="col-sm-9 text-uppercase" id="view_stud_name"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Issue</div>
+                  <div class="col-sm-9 text-uppercase" id="view_counselling_reason"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Status</div>
+                  <div class="col-sm-9" id="view_status"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Counselor</div>
+                  <div class="col-sm-9 text-uppercase" id="view_counselor"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Date/Time</div>
+                  <div class="col-sm-9 text-uppercase" id="view_date"></div>
+                </div>
+                </p>
+              </div>
+              <div class="modal-footer ">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal view -------------------------------------------------->
+
+
+      <!-------------------------------------------------- modal update status -------------------------------------------------->
+      <div id="updateStatus" class="modal fade" display="block" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form role="form" id="formUptStatus">
+              <div class="modal-header green-700">
+                <h5 class="modal-title">UPDATE STATUS</h5>
+              </div>
+              <div class="modal-body p-lg">
+                <p>
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Campus</div>
+                  <div class="col-sm-9 text-uppercase" id="stts_clg_id"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Applicant</div>
+                  <div class="col-sm-9 text-uppercase" id="stts_requester"></div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Type</div>
+                  <div class="col-sm-9 text-uppercase" id="stts_counseling_type_ori"></div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Session</div>
+                  <div class="col-sm-9 text-uppercase" id="stts_type"></div>
+                </div>
+
+                <div class="form-group row sttsHide">
+                  <div class="col-sm-3 font-weight-bold">Matric No.</div>
+                  <div class="col-sm-9 text-uppercase" id="stts_stud_id"></div>
+                </div>
+
+                <div class="form-group row sttsHide">
+                  <div class="col-sm-3 font-weight-bold">Student</div>
+                  <div class="col-sm-9 text-uppercase" id="stts_stud_name"></div>
+                </div>
+
+                <div class="form-group row sttsHide">
+                  <div class="col-sm-3 font-weight-bold">Contact No</div>
+                  <div class="col-sm-9 text-uppercase" id="stts_stud_contact"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Issue</div>
+                  <div class="col-sm-9 text-uppercase" id="stts_counselling_reason"></div>
+                </div>
+                <hr>
+
+                <!------------------------------ form update status ------------------------------>
+                <input type="hidden" id="coun_id">
+                <div class="form-group row">
+                  <label class="col-sm-3 font-weight-bold">Status</label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select" id="counselling_status" required>
+                      <option value="">- Choose -</option>
+                      <option value="Accept">Accept</option>
+                      <option value="Reject">Reject</option>
+                      <option value="Complete">Complete</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-3 font-weight-bold">Counselor</label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select slct2 formUptStts" id="counselling_kaunselor"
+                      required></select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-3 font-weight-bold">Date</label>
+                  <div class="col-sm-9">
+                    <input type="date" class="form-control formUptStts" id="counselling_date" required>
+                  </div>
+                </div>
+
+                <div class="form-group row" title="Select Counselor & Date to view list">
+                  <label class="col-sm-3 font-weight-bold">Time<span class="text-info"> *</span></label>
+                  <div class="col-sm-9">
+                    <select class="form-control c-select formUptStts" id="coun_timeslot" required></select>
+                    <small class="text-danger" id="noTimeAdded">No Timetable Added</small>
+                  </div>
+                </div>
+                <!------------------------------ end form update status ------------------------------>
+                </p>
+              </div>
+
+              <div class="modal-footer ">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn success p-x-md" value="Update">
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal update status -------------------------------------------------->
+
+   
+
+
+   <!-------------------------------------------------- modal generate pdf -------------------------------------------------->
+   <div id="mdl_reportKaunseling" class="modal fade" data-backdrop="true" display="block">
+    <div class="modal-dialog modal-lg fade-right-big " style="max-width: 80% !important;">
+      <div class="modal-content green-50">
+        <div class="modal-header green-700">
+          <h5 class="modal-title">Reporting For Counseling Application</h5>
+        </div>
+        <div id="" class="modal-body text-center p-lg"  style="height: 30vw;">
+          <div class="row">
+            <div class="col-sm-12">
+              <div  id=""  class="box">
+                <div class="box-header">
+                  <!-- <span class="label danger pull-right">6</span> -->
+                  <h3 class="pull-left">Reporting</h3>
+                </div>
+                <table id="report_disipline" class="table">
+                  <!-- <thead>
+                    <tr>
+                      <th>Progress</th>
+                      <th>Item</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="progress progress-xs m-y-sm">
+                          <div class="progress-bar info" style="width: 45%"></div>
+                        </div>
+                      </td>
+                      <td>App prototype design</td>
+                    </tr>
+                    <tr>                    
+                      <td>
+                        <div class="progress progress-xs m-y-sm">
+                          <div class="progress-bar success" style="width: 25%"></div>
+                        </div>
+                      </td>
+                      <td>Design documents</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="progress progress-xs m-y-sm">
+                          <div class="progress-bar danger" style="width: 55%"></div>
+                        </div>
+                      </td>
+                      <td>UI toolkit</td>
+                    </tr>
+                    <tr>                    
+                      <td>
+                        <div class="progress progress-xs m-y-sm">
+                          <div class="progress-bar warning" style="width: 15%"></div>
+                        </div>
+                      </td>
+                      <td>Testing</td>
+                    </tr>
+                  </tbody> -->
+                </table>
+              </div>
+
+              <!-- <button class="pdfexport">Export to PDF</button> -->
+            </div>
+       
+          </div>        
+        </div>
+        <div class="modal-footer">
+          
+          <button id="pdfexportDiscipline" class="btn md-raisd green p-x-md">      
+            <i class="fa fa-fw fa-file-pdf-o"></i>
+     Download PDF</button>
+          <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn danger p-x-md" data-dismiss="modal">Yes</button> -->
+        </div>
+      </div><!-- /.modal-content -->
+    </div>
+  </div>
+  <!-------------------------------------------------- modal generate pdf -------------------------------------------------->
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<script src="scripts/jspdf.umd.min.js"></script>
+<script src="scripts/jspdf.plugin.autotable.js"></script>
+<script src="scripts/html2canvas.min.js"></script>
+<script src="scripts/ajax.js"></script>
+<script src="apply_counselling.js"></script>
+
+<!-- <script>
+
+document.getElementById('pdfexport').addEventListener('click', function (e) {
+  e.preventDefault();
+  // window.jsPDF = window.jspdf.jsPDF;
+
+  var pdf = new jsPDF('p', 'pt', 'a4');
+  pdf.internal.scaleFactor = 2.25;
+  pdf.addHTML(document.getElementById('reportinganjing'),
+    { allowTaint: true },
+    function () {
+      pdf.save('test.pdf');
+    }
+  );
+});
+
+
+// window.jsPDF = window.jspdf.jsPDF;
+
+// var doc = new jsPDF();
+	
+// // Source HTMLElement or a string containing HTML.
+// var elementHTML = document.querySelector("#contnet");
+
+// doc.html(elementHTML, {
+//     callback: function(doc) {
+//         // Save the PDF
+//         doc.save('sample-document.pdf');
+//     },
+//     x: 15,
+//     y: 15,
+//     width: 170, //target width in the PDF document
+//     windowWidth: 650 //window width in CSS pixels
+// });
+
+</script> -->
+
+<!-- <script>
+  $("#pdfexport").on("click", function (e) {
+    // Initialize jsPDF
+      window.jsPDF = window.jspdf.jsPDF; //kena ada klau nak call library dia 
+
+    var doc = new jsPDF();
+
+    // Set the title for the PDF
+    doc.text("Table to PDF", 10, 10);
+
+    // Convert the table to a canvas element
+    var table = document.getElementById("reportinganjing");
+    html2canvas(table, {
+        onrendered: function (canvas) {
+            // Add the canvas as an image to the PDF
+            var imgData = canvas.toDataURL("image/png");
+            doc.addImage(imgData, "PNG", 10, 20, 180, 150);
+
+            // Save or download the PDF
+            doc.save("table.pdf");
+        },
+    });
+});
+
+
+
+</script> -->
+
+<!-- <script>
+  window.jsPDF = window.jspdf.jsPDF;
+
+$("#pdfexport").on("click", function () {
+    // Initialize jsPDF
+    var doc = new jsPDF();
+    doc.text("Reporting Discipline", 10, 10);
+// Adjust your margins here (left, top, right ,bottom)
+
+    // Define the source element (your HTML table)
+    var source = $('#report_disipline')[0];
+
+    // Generate the PDF from the table
+    doc.autoTable({ html: source });
+
+    // Save or download the PDF
+    doc.save('table.pdf');
+});
+
+</script> -->
+
+
+<script>
+  window.jsPDF = window.jspdf.jsPDF; //nie pnting utk call jspdf pnya library
+  $("#pdfexportDiscipline").on("click", function () {
+  
+     // Initialize jsPDF
+     var doc = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4",
+    });
+
+    // Create a gradient effect with three colors (purple, maroon, red) on the left side
+    var gradientColors = ['#743d89', '#973d78', '#ac3869'];
+    var gradientWidth = 1.4; // Width of each color segment
+    var gradientHeight = doc.internal.pageSize.height;
+
+    for (var i = 0; i < gradientColors.length; i++) {
+        doc.setFillColor(gradientColors[i]);
+        doc.rect(i * gradientWidth, 0, gradientWidth, gradientHeight, 'F');
+    }
+
+    var a4Width = 210;
+
+    // Image dimensions
+    var originalWidth = 275.59; // Replace with the actual width of your image
+    var originalHeight = 67.818; // Replace with the actual height of your image
+
+    // Calculate the new width and height (60% of A4 width while maintaining aspect ratio)
+    var newWidth = 0.6 * a4Width;
+    var newHeight = (newWidth / originalWidth) * originalHeight;
+
+    // Calculate the X-coordinate to center the image on the A4 page
+    var xCoordinate = (a4Width - newWidth) / 2;
+
+    // Add the image to the document with the calculated width, height, and centered position
+    doc.addImage("images/logo_reporting.png", "JPEG", xCoordinate, 10, newWidth, newHeight);
+
+    doc.setFont("helvetica", "bold");
+    var textCenterX = doc.internal.pageSize.width / 2;
+    doc.setFontSize(14); // Set the font size to 10
+    doc.text('BAHAGIAN HAL EHWAL PELAJAR DAN ALUMNI', textCenterX, 50, { align: "center" });
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(13); // Set the font size to 8
+    var textCenterX = doc.internal.pageSize.width / 2;
+    doc.text('UNIT KAUNSELING DAN KEBAJIKAN', textCenterX, 58, { align: "center" });
+
+    const text = "REPORTING FOR COUNSELLING APPLICATION";
+    doc.setFontSize(15);
+    // Set the font type for the text
+    doc.setFont("helvetica", "bold");
+    const textWidth = doc.getTextWidth(text);
+    // Set the position for the text
+    const textX = 20; // X position
+    const textY = 80; // Y position
+
+
+    doc.text(text, textX, textY);
+
+    // Set the underline color
+    doc.setDrawColor(0, 0, 0); // RGB color for the underline
+
+    // Draw the original-size underline
+    const underlineLength1 = textWidth + 20; // Length of the underline
+    const underlineWidth1 = 1.5; // Width of the underline
+    doc.setLineWidth(underlineWidth1);
+    doc.line(textX, textY + 2, textX + underlineLength1, textY + 2);
+
+    // Set the color for the second underline (purple)
+    doc.setDrawColor(128, 0, 128); // RGB color for purple
+
+    // Draw the second underline with double the width
+    const underlineLength2 = textWidth * (30 / 100); // Same length as the first underline
+    const underlineWidth2 = underlineWidth1 * 2; // Double the width
+    doc.setLineWidth(underlineWidth2);
+    doc.line(textX, textY + 2, textX + underlineLength2, textY + 2);
+
+    // // Initialize jsPDF
+    // var doc = new jsPDF();
+    // doc.text("Reporting For Counselling Application", 10, 20);
+
+
+    // // Define the gap (adjust the value as needed)
+    // var gap = 30; // Adjust this value to set the desired gap
+
+
+        // Define the source element (your HTML table)
+    var source = $('#report_disipline')[0];
+ // Generate the PDF from the table, starting below the text
+ doc.autoTable({
+      html: source,
+      startY: 100, // Adjusted start position below the text
+      margin: { top: 40 },
+      theme: 'grid',
+      styles: { fillColor: false, textColor: 0 },
+      headerStyles: { fillColor: '#9c4298', textColor: 255 },
+    });
+
+    // Save or download the PDF
+    doc.save('Reporting For Counselling Application.pdf');
+});
+
+</script>

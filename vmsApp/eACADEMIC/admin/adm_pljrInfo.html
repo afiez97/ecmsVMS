@@ -1,0 +1,2353 @@
+<style>
+  /* Custom styles for extra-large modal */
+  .modal-xl {
+    max-width: 90%; /* Adjust the width as needed */
+    width: 90%; /* This makes sure the modal scales responsively */
+  }
+
+  @media (min-width: 1300px) {
+    .modal-xl {
+      max-width: 1240px; /* This can be adjusted to your preference */
+    }
+  }
+</style>
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+      <div class="navbar" data-pjax>
+          <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+            <i class="ion-navicon"></i>
+          </a>
+
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a id="infoPljr"><span class="navbar-item text-md">Students</span></a>
+            </li>
+          </ul>
+          <!-- nabar right -->
+          <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+      </div>
+  </div>
+
+  <!-- FOOTER INSERT -->
+  <div class="app-footer white bg p-a b-t">
+    <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+    <span class="text-sm text-muted">&copy; Copyright.</span>
+  </div>
+
+  <div class="app-body">
+
+      <!-- CONTENT START -->
+      <div style="min-height: mh-200;">
+          <div style=" margin-bottom: 50px;" class="col-md-10 offset-md-1 mt-2">
+              <div class="row">
+                
+                <div class="col-md-12">
+                  <div class="box">
+                    <div class="box-body">
+                      <!-- senarai pelajar -->
+                      <div id="listStudent">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h5 class="text-success">Student Register
+                            <button type="button" class="btn btn-sm btn-outline-primary pull-right accessRoleAdd btn_create_student" data-toggle="modal" onclick="modalNew()" data-ui-toggle-class="zoom" data-ui-target="#animate"><i class="fa fa-fw fa-plus"></i> Register</button>                      
+                            </h5>
+                            <hr>
+                            <form id="search_form" class="m-b-3">
+                              <div class="form-inline col-md-8">
+                                <select class="form-control c-select m-t-1" id="pgm_filter"></select>
+                                <select class="form-control c-select m-t-1" id="intake_filter"></select>
+                              </div>
+                              <div class="col-md-4 text-right">
+                                <div class="input-group">
+                                  <input type="text" name="input_txt" id="input_txt" class="form-control b-primary m-t-1" placeholder="Contain Name, IC, Matrix No">                                
+                                  <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-info m-t-1"><i class="fa fa-search"></i> Search</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <button type="submit" class="btn btn-info m-t-1"><i class="fa fa-search"></i> Search</button>
+                                <a href="javascript:void(0)" class="btn grey-200 text-info m-t-1" id="clear_btn"><i class="fa fa-refresh"></i> Clear</a>
+                              </div>
+                            </form>                        
+                            <table class="table table-bordered table-striped m-b-none" data-sorting="true" id="tableStudent"></table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 hidden">
+                  <div class="box">
+                    <div class="box-body">
+                      <!-- senarai pelajar -->
+                      <div id="listOfferStudent">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h5 class="text-info">
+                              <textarea class="hidden" name="tawaran_lists" id="tawaran_lists" cols="30" rows="10"></textarea>
+                              <p>Student Offer
+                                <button type="button" class="btn btn-sm btn-outline-primary pull-right" data-toggle="modal" data-target="#mdlUpload"><i class="fa fa-upload"></i> Upload</button>
+                              </p>
+                            </h5>
+                            <hr>
+                            <table class="table table-bordered table-striped m-b-none" data-sorting="true" id="tableOfferStudent"></table>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+
+              <!-- .modal upload file -->
+              <div id="mdlUpload" class="modal fade" data-backdrop="static">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Upload File</h5>
+                    </div>
+                    <form id="upload_tawaran">
+                      <div class="modal-body p-lg">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <label for="" class="form-control-label">Session</label>
+                            <select class="form-control c-select" id="upl_session"></select>
+                          </div>
+
+                          <div class="col-sm-6">
+                            <label for="" class="form-control-label">File</label>
+                            <input type="file" required class="form-control" accept=".xlsx" id="upl_file">
+                          </div>
+                          <div class="col-md-12">
+                            <div id="list_uploaded"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Cancel</button>
+                        <button type="submit" disabled id="btn_upload" class="btn info p-x-md" >Upload</button>
+                      </div>
+                    </form>
+                  </div><!-- /.modal-content -->
+                </div>
+              </div>
+              <!-- / .modal -->
+
+              <!-- modal new register -->
+              <div class="modal fade" id="new_reg" data-backdrop="static">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3>Student Register</h3>
+                    </div>
+                    <form id="form_newReg">
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <img src="images/nopic.png" class="img-thumbnail" alt="..." width="50%">
+                            <input type="file" class="form-control m-t-1" placeholder="Picture" id="sti_image" onchange="checkSize()">
+                            <span id="checkSize"></span>
+                            <input type="hidden" name="id_tawaran" id="id_tawaran">                                                   
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-md-6">
+              
+                            <div class="form-group">
+                              <label for="" class="form-control-label">Name</label>
+                              <input type="text" class="form-control text-uppercase" id="sti_name" placeholder="Name" required>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="" class="form-control-label">IC No.</label>
+                              <input type="text" class="form-control" id="sti_icno" placeholder="eg: 880402100321" required>
+                            </div>
+
+                            
+
+                          </div>
+
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="" class="form-control-label">Personal Email</label>
+                              <input type="email" class="form-control" id="sti_email">
+                            </div>
+
+                          </div>                          
+                        </div> 
+                        <hr>
+                        <div class="row">
+                          <div class="col-md-6">
+
+                            <div class="form-group">
+                              <label for="" class="form-control-label">Programme</label>
+                              <select class="form-control" id="pgm_id" required></select>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="" class="form-control-label">Session</label>
+                              <select class="form-control" id="sti_session" required></select>
+                            </div>
+
+                          </div>
+                          <div class="col-md-6">
+
+
+                            <div class="form-group">
+                              <label for="" class="form-control-label">Intake</label>
+                              <select class="form-control" id="sti_intake" required></select>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="" class="form-control-label">Nationality</label>
+                              <select class="form-control" id="sti_nationality" required></select>
+                            </div>
+
+                          </div>
+                        </div>                    
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="reset" id="btn_cancelReg" class="btn btn-outline-secondary">Back</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!--/ modal-->
+
+              <!-- top modal -->
+              <div class="modal fade" id="topModalNew">
+                <div class="modal-top white b-b" style="height:100vh">
+                    <div class="row-col">
+                      <a data-dismiss="modal"  id="closeMdlBtm" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+                      <div class="p-a b-b">
+                        <span class="h5">Student Info Register</span>
+                      </div>
+                      <div class="row-row">
+                        <div class="row-body">
+                          <div class="row-inner">
+                            <div class="row p-a-2">
+                              <div class="col-md-3">
+                                <form id="form_basic">
+                                  <div class="row m-t-2  m-b-2">
+                                    <div class="col-md-12">
+          
+                                      <div class="form-group">
+                                        <label for="sti_name_upt">Name</label>
+                                        <input type="text" class="form-control" id="sti_name_upt" placeholder="Name" required>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="sti_icno_upt">Identity ID</label>
+                                        <input type="text" class="form-control" id="sti_icno_upt" placeholder="eg: 880402100321" required>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="pgm_id_upt">Programme</label>
+                                        <select class="form-control c-select" id="pgm_id_upt" required></select>
+                                        <input type="hidden" id="pgm_fk">
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                        <label for="sti_session_upt">Session Intake</label>
+                                        <select class="form-control c-select" id="sti_session_upt" required></select>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="sti_intake_upt">Current Intake</label>
+                                        <select class="form-control c-select" id="sti_intake_upt" required></select>
+                                      </div>
+            
+                                      <div class="form-group">
+                                        <label for="sti_nationality_upt">Nationality</label>
+                                        <select class="form-control c-select" id="sti_nationality_upt" required></select>
+                                      </div>
+
+
+                                      
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <button type="submit" class="btn btn-outline-success accessRoleAdd">Save</button> 
+                                    <a href="javascript:void(0)" class="btn btn-outline-danger pull-right reset_password accessRoleAdd">Reset Password</a> 
+                                  </div>                                                                  
+                                </form>
+                              </div>
+                              <div class="col-md-9">
+
+
+                                <div class="b-b b-success nav-active-success">
+                                  <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                      <a class="nav-link active" href="#" data-toggle="tab" data-target="#tabNew1" id="link_tabNew1">Personal</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew2" id="link_tabNew2">Parents & Heirs</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew3" id="link_tabNew3">Registration</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew4" id="link_tabNew4">Sijil Pelajaran Malaysia</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="#" data-toggle="tab" data-target="#tabAcaHistory" id="link_acaHistory">Education Background</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="#" data-toggle="tab" data-target="#tabCAT" id="link_AP">Academic Progress</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="#" data-toggle="tab" data-target="#tabAR" id="link_AR">Administrative Record</a>
+                                    </li>
+                                    
+                                  </ul>
+                                </div>
+
+                                <div class="tab-content p-a m-b-md">
+                                  <!-------------------------------------------------- tab Personal -------------------------------------------------->
+                                  <div class="tab-pane animated fadeIn text-muted active" id="tabNew1">
+                                    <div class="box" id="divKemaskini">
+                                      <div class="box-body">
+                                        <div class="m-a-0">
+                                          <form id="form_std_info">
+                                            <div class="row p-a">
+                                              <div class="row p-l-2"><h6><b>PERSONAL INFO</b></h6></div>
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Matric No.</label>
+                                                  <div class="col-sm-10">
+                                                      <input type="text" class="form-control" name="std_studentid" id="matric_no" readonly >
+                                                  </div>
+                                                </div>
+
+                                                <!-- <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Level of Education</label>
+                                                  <div class="col-sm-10">
+                                                      <select class="form-control c-select" id="level_edu"></select>
+                                                  </div>
+                                                </div> -->
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Faculty</label>
+                                                  <div class="col-sm-10">
+                                                      <input type="text" class="form-control" name="fac_name" id="fac_name" readonly >
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Academic Status</label>
+                                                  <div class="col-sm-4">
+                                                    <select class="form-control c-select" name="status_academic" id="sts_status"></select>
+                                                  </div>
+
+                                                  <label for="" class="col-sm-2 form-control-label">Duration of Study</label>
+                                                  <div class="col-sm-4">
+                                                      <input type="text" class="form-control" name="duration_std" id="duration_std" placeholder="eg: 3 YEARS 8 MONTHS">
+                                                  </div>
+                                                </div>
+
+                                                <div id="row_deffered" class="form-group row hidden">
+                                                  <label for="session_deffered" class="col-sm-2 text-danger form-control-label">Deferred Session</label>
+                                                  <div class="col-sm-4" id="session_deffered_pick">
+                                                      <select class="form-control" required id="session_deffered"></select>
+                                                     
+                                                  </div>
+
+                                                  <label for="" class="col-sm-2 form-control-label">Week</label>
+                                                  <div class="col-sm-4" id="session_deffered_pick">
+                                                    <!-- <select class="form-control" required id="session_deffered_pick"></select> -->
+                                                    <select disabled class="form-control c-select" name="deffered_weeks" id="deffered_weeks">
+                                                      <option value="">- Choose -</option>
+                                                      <option value="1">Week 1</option>
+                                                      <option value="2">Week 2</option>
+                                                      <option value="3">Week 3</option>
+                                                      <option value="4">Week 4</option>
+                                                      <option value="5">Week 5</option>
+                                                      <option value="6">Week 6</option>
+                                                      <option value="7">Week 7</option>
+                                                      <option value="8">Week 8</option>
+                                                      <option value="9">Week 9</option>
+                                                      <option value="10">Week 10</option>
+                                                      <option value="11">Week 11</option>
+                                                      <option value="12">Week 12</option>
+                                                      <option value="13">Week 13</option>
+                                                      <option value="14">Week 14</option>
+                                                      <option value="15">Week 15</option>
+                                                      <option value="16">Week 16</option>
+                                                      <option value="17">Week 17</option>
+                                                      <option value="18">Week 18</option>
+                                                      <option value="19">Week 19</option>
+                                                      <option value="20">Week 20</option>
+                                                      <option value="21">Week 21</option>
+                                                      <option value="22">Week 22</option>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                                <div id="row_wd" class="form-group row hidden">
+                                              
+                                                  <label for="" class="col-sm-2 form-control-label">Week</label>
+                                                  <div class="col-sm-4" id="acaCal_weeks_pick">
+                                                    <!-- <select class="form-control" required id="session_deffered_pick"></select> -->
+                                                    <select class="form-control c-select" name="acaCal_weeks" id="acaCal_weeks">
+                                                      <option value="">- Choose -</option>
+                                                      <option value="1">Week 1</option>
+                                                      <option value="2">Week 2</option>
+                                                      <option value="3">Week 3</option>
+                                                      <option value="4">Week 4</option>
+                                                      <option value="5">Week 5</option>
+                                                      <option value="6">Week 6</option>
+                                                      <option value="7">Week 7</option>
+                                                      <option value="8">Week 8</option>
+                                                      <option value="9">Week 9</option>
+                                                      <option value="10">Week 10</option>
+                                                      <option value="11">Week 11</option>
+                                                      <option value="12">Week 12</option>
+                                                      <option value="13">Week 13</option>
+                                                      <option value="14">Week 14</option>
+                                                      <option value="15">Week 15</option>
+                                                      <option value="16">Week 16</option>
+                                                      <option value="17">Week 17</option>
+                                                      <option value="18">Week 18</option>
+                                                      <option value="19">Week 19</option>
+                                                      <option value="20">Week 20</option>
+                                                      <option value="21">Week 21</option>
+                                                      <option value="22">Week 22</option>
+                                                    </select>
+                                                </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Personal Email</label>
+                                                  <div class="col-sm-10">
+                                                      <input type="email" class="form-control" name="sti_email" id="sti_email_upt">
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Gender</label>
+                                                  <div class="col-sm-4">
+                                                      <select class="form-control c-select" required name="sti_gender" id="sti_gender"></select>
+                                                  </div>
+
+                                                  <label for="" class="col-sm-2 form-control-label">Race</label>
+                                                  <div class="col-sm-4">
+                                                      <select class="form-control c-select" name="sti_race" id="sti_race"></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Religion</label>
+                                                  <div class="col-sm-4">
+                                                      <select class="form-control c-select" name="sti_religion" id="sti_religion_upt"></select>
+                                                  </div>
+
+                                                  <label for="" class="col-sm-2 form-control-label">Marital Status</label>
+                                                  <div class="col-sm-4">
+                                                      <select class="form-control c-select" name="marital_status" id="marital_status">
+                                                        <option value="">- Choose -</option>
+                                                        <option value="SINGLE">SINGLE</option>
+                                                        <option value="MARRIED">MARRIED</option>
+                                                      </select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">OKU Status</label>
+                                                  <div class="col-sm-4">
+                                                      <select class="form-control c-select" name="sti_status_oku" id="sti_status_oku_upt" ></select>
+                                                  </div>
+
+                                                  <label for="" class="col-sm-2 form-control-label">Alumni/Staff Status</label>
+                                                  <div class="col-sm-4">
+                                                      <select type="text" class="form-control" name="staff_alumi" id="staff_alumi">
+                                                        <option value="">- Choose -</option>
+                                                        <option value="YES">YES</option>
+                                                        <option value="NO">NO</option>
+                                                      </select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Blood Type</label>
+                                                <div class="col-sm-4">
+                                                  <select class="form-control c-select" name="sti_blood_type" id="sti_blood_type_upt"></select>
+                                                </div>
+                                                </div>
+                    
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Remarks</label>
+                                                  <div class="col-sm-10">
+                                                    <textarea rows="3" class="form-control" name="remark" id="remark"></textarea>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="row p-a">
+                                              <!-- place info -->
+                                              <div class="row p-l-2"><h6><b>PLACE INFO</b></h6></div>
+                                              <div class="col-sm-6">
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Home Address</label>
+                                                  <div class="col-sm-10">
+                                                    <textarea rows="3" class="form-control" name="sti_address_1" id="sti_address"></textarea>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Postcode</label>
+                                                  <div class="col-sm-4">
+                                                    <input type="number" class="form-control" name="sti_postcode" id="sti_postcode" placeholder="Postcode">
+                                                  </div>
+
+                                                  <label for="" class="col-sm-2 form-control-label">State</label>
+                                                  <div class="col-sm-4">
+                                                    <select class="form-control c-select" name="sti_state" id="sti_state"></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  
+                                                </div>
+                                              </div>
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Home No.</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="number" class="form-control" name="sti_contactno_home" id="sti_contactno_home" placeholder="Home No.">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="number" class="form-control" name="sti_contactno_mobile" id="sti_contactno_mobile" placeholder="Phone No.">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="row p-a">
+                                              <!-- bank info -->
+                                              <div class="row p-l-2"><h6><b>BANK ACCOUNT INFO</b></h6></div>
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Bank</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="sti_bank_id" id="sti_bank_id" placeholder="Bank">
+                                                  </div>
+                                                </div>
+
+                                                
+                                              </div>
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Account No.</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="sti_bank_accountno" id="sti_bank_accountno" placeholder="Account No.">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="row p-a">
+                                              <!-- sponsorship info -->
+                                              <div class="row p-l-2"><h6><b>SPONSORSHIP</b></h6></div>
+                                              <div class="col-sm-12">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Sponsorship Name</label>
+                                                  <div class="col-sm-10">
+                                                    <!-- <input type="text" class="form-control" name="sti_sponsorship" id="sti_sponsorship" required placeholder="Name"> -->
+                                                    <select class="form-control c-select" name="sti_sponsorship" id="sti_sponsorship"></select>
+
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-sm-6"></div>
+                                            </div>
+
+                                            <div class="row p-a">
+                                              <!-- sponsorship info -->
+                                              <div class="row p-l-2"><h6><b>BAITULMAL</b></h6></div>
+                                              <div class="col-sm-12">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Baitulmal</label>
+                                                  <div class="col-sm-10">
+
+                                                    <!-- <label><input type="radio" name="sti_baitulmal" id="sti_baitulmal" value="Y"> Yes </label>
+                                                    <label><input type="radio" name="sti_baitulmal" id="sti_baitulmal" value="N"> No </label> -->
+                                                    <select type="text" class="form-control" name="sti_baitulmal" id="sti_baitulmal">
+                                                      <option value="">-Choose-</option>
+                                                      <option value="YES">YES</option>
+                                                      <option value="NO">NO</option>
+                                                    </select>
+                                                  
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-sm-6"></div>
+                                            </div>
+
+                                            <div class="row p-a">
+                                              <!-- sponsorship info -->
+                                              <div class="row p-l-2"><h6><b>ASNAF</b></h6></div>
+                                              <div class="col-sm-12">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Asnaf Category</label>
+                                                  <div class="col-sm-10">
+                                                    <!-- <input type="text" class="form-control" name="sti_sponsorship" id="sti_sponsorship" required placeholder="Name"> -->
+                                                    <select class="form-control c-select" name="sti_asnaf" id="sti_asnaf"></select>
+
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-sm-6"></div>
+                                            </div>
+
+                                            
+
+                                            <div class="row p-a text-right">
+                                              <button type="submit" class="btn info accessRoleAdd">Save</button>
+                                            </div>
+                                            
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div><!-------------------------------------------------- end tab Personal -------------------------------------------------->
+
+                                  <!-------------------------------------------------- tab Parents & Heirs -------------------------------------------------->
+                                  <div class="tab-pane animated fadeIn text-muted" id="tabNew2">
+                                    <div class="box" id="">
+                                      <div class="box-body">
+                                        <form id="form_std_parent">
+                                        <p class="m-a-0">
+                                          <!-- <form role="form"> -->
+                                            <div class="row p-a">
+                                              <div class="col-sm-6">
+                                                <div class=""><h6><b>FATHER/GUARDIAN/SPOUSE INFO</b></h6></div>
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">NRIC/Passport No.</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="par_father_icno" id="par_father_ic" required placeholder="IC No.">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Title</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control c-select" required name="par_father_title" id="par_father_title"></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Name</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="par_father_name" required id="par_father_name" placeholder="Name" >
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="number" class="form-control" required name="par_father_contactno" id="par_father_contactno" placeholder="Phone No." >
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Relationship</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control" required name="par_father_relationship" id="par_father_relationship"></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Nationality</label>
+                                                  <div class="col-sm-10">
+                                                      <select class="form-control c-select" required name="par_father_nationality" id="par_father_nationality"></select>
+                                                  </div>
+                                                </div>
+                    
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Address</label>
+                                                  <div class="col-sm-10">
+                                                    <textarea class="form-control" rows="3" required name="par_father_address" id="par_father_address" placeholder="Address" ></textarea>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="col-sm-6">
+                                                <div class=""><h6><b>MOTHER/GUARDIAN WIFE'S INFO</b></h6></div>
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">NRIC/Passport No.</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" required name="par_mother_icno" id="par_mother_ic" placeholder="IC No.">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Title</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control c-select" required name="par_mother_title" id="par_mother_title"></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Name</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" required name="par_mother_name" id="par_mother_name" placeholder="Name" >
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="number" class="form-control" required name="par_mother_contactno" id="par_mother_contactno" placeholder="Phone No." >
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Relationship</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control" required name="par_mother_relationship" id="par_mother_relationship"></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Nationality</label>
+                                                  <div class="col-sm-10">
+                                                      <select class="form-control c-select" required name="par_mother_nationality" id="par_mother_nationality"></select>
+                                                  </div>
+                                                </div>
+                    
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Address</label>
+                                                  <div class="col-sm-10">
+                                                    <textarea class="form-control" rows="3"vrequired name="par_mother_address" id="par_mother_address" placeholder="Address" ></textarea>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="row p-a text-right">
+                                              <button type="submit" class="btn info accessRoleAdd">Save</button>
+                                            </div>
+                                        </p>  
+                                      </form>
+                                      </div>
+                                    </div>
+                                  </div><!-------------------------------------------------- end tab Parents & Heirs -------------------------------------------------->
+
+                                  <!-------------------------------------------------- tab Current Academic Progress -------------------------------------------------->
+                                  <div class="tab-pane animated fadeIn text-muted" id="tabAP">
+                                    <div class="box" id="">
+                                      <div class="box-body">
+                                        <p class="m-a-0">
+                                          
+                                          <hr>
+                                          <table class="table table-bordered table-striped" id="list_semester"></table>
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div><!-------------------------------------------------- end tab Current Academic Timeline -------------------------------------------------->
+
+                                  <!-------------------------------------------------- tab Academic History -------------------------------------------------->
+                                  <div class="tab-pane animated fadeIn text-muted" id="tabAcaHistory">
+                                    <div class="box" id="">
+                                      <div class="box-body">
+                                        <p class="m-a-0">
+                                          <form id="form_std_acaHistory">
+                                            <div class="row p-a">
+                                              <div class="col-sm-6">
+                                                <div class=""><h6><b>INFO</b></h6>
+                                                <p id="status_form" class="green-200 p-l">Mode Create Form</p>
+                                                </div>
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Alumni/Staff Status</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="hidden" name="pk_id" id="id_acaHistory">
+                                                    <input type="text" class="form-control" name="std_alumni" required id="std_alumni" placeholder="Alumni/Staff Status">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">MUET Status</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="std_muet" id="std_muet" placeholder="MUET Status">
+                                                  </div>
+                                                </div>
+                                                <div class="p-t"><h6><b>EDUCATION FORM</b></h6></div>
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Previous Level of Education</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control c-select" name="std_eduLevel" required id="std_eduLevel"></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Previous Institution Attended</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="std_preUniversity" required id="std_preUniversity" placeholder="Previous Institution Attended">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Student Status</label>
+                                                  <div class="col-sm-4">
+                                                    <select class="form-control c-select" name="std_status" required id="std_status"></select>
+                                                  </div>
+
+                                                  <label for="" class="col-sm-2 form-control-label">Year of Graduation(YYYY)</label>
+                                                  <div class="col-sm-4">
+                                                    <input type="text" class="form-control" name="std_year" required id="std_year" placeholder="eg: 2022">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">CGPA</label>
+                                                  <div class="col-sm-4">
+                                                    <input type="text" class="form-control" name="std_cgpa" required id="acaHistory_cgpa" placeholder="Cumulative Grade Point Average">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Scroll & Transcript Academic Status</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="file" class="form-control" name="std_transcript" id="std_transcript" placeholder="Scroll & Transcript Academic Status">
+                                                  </div>
+                                                </div>
+
+                                                <div class="row p-a">
+                                                  <button type="submit" class="btn info accessRoleAdd">Save</button>
+                                                  <button type="reset" id="reset_btn" class="btn grey-200">Cancel
+                                                    
+                                                  </button>
+                                                </div>
+                                              </div>
+                                              <div class="col-md-6">
+                                                <div><h6><b>EDUCATION HISTORY</b></h6></div>
+                                                <table id="acaHistoryList" class="table table-striped table-bordered"></table>
+                                              </div>
+                                            </div>
+                                            
+                                          </form>
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div><!-------------------------------------------------- end tab Academic History -------------------------------------------------->
+
+                                  <!-------------------------------------------------- tab Registration -------------------------------------------------->
+                                  <div class="tab-pane animated fadeIn text-muted" id="tabNew3">
+                                    <div class="box" id="">
+                                      <div class="box-body">
+                                        <p class="m-a-0">
+                                          <form role="form" id="form_std_registration">
+                                            <div class="row p-a">
+                                              <div class="row p-l-2"><h6><b>REGISTRATION INFO</b></h6></div>
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Payment via</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control c-select" name="srg_payment_via" id="srg_payment_via" required>
+                                                    </select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Receipt No.</label>
+                                                  <div class="col-sm-10">
+                                                      <input type="text" class="form-control" name="srg_payment_resit" id="srg_payment_resit" placeholder="Receipt No." required>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Introducer Name</label>
+                                                  <div class="col-sm-10">
+                                                      <input type="text" class="form-control" name="srg_introducer_name" id="srg_introducer" placeholder="Introducer Name" required>
+                                                  </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Payment Receipt</label>
+                                                  <div class="col-sm-10">
+                                                    <a id="link_payment_resitdoc" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                      <input type="file" class="btn-primary" name="srg_payment_resitdoc" id="srg_payment_resitdoc" onchange="validateFile('srg_payment_resitdoc')"> 
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="row p-a">
+                                              <div class="row p-l-2"><h6><b>UPLOAD DOCUMENTS</b></h6></div>
+                                              <div class="col-md-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Offer Letter</label>
+                                                  <div class="col-sm-10">
+                                                    <a id="link_offer_letter" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                    <input type="file" class="btn-primary" name="srg_offer_letter" id="srg_offerLetter" onchange="validateFile('srg_offerLetter')" >
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Acceptance Letter</label>
+                                                  <div class="col-sm-10">
+                                                    <a id="link_accept_letter" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                      <input type="file" class="btn-primary" name="srg_accept_letter" id="srg_acceptance" onchange="validateFile('srg_acceptance')" >
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Student IC(Colored)</label>
+                                                  <div class="col-sm-10">
+                                                    <a id="link_ic_pict" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                      <input type="file" class="btn-primary" name="srg_ic_pict" id="srg_studIC" onchange="validateFile('srg_studIC')"> 
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Birth Certificate(Colored)</label>
+                                                  <div class="col-sm-10">
+                                                    <a id="link_birth_cert" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                      <input type="file" class="btn-primary" name="srg_birth_cert" id="srg_birthCert" onchange="validateFile('srg_birthCert')"> 
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="col-md-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Father/Guardian/ Spouse IC(Colored)</label>
+                                                  <div class="col-sm-10">
+                                                    <a id="link_father_ic" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                    <input type="file" class="btn-primary" name="srg_father_ic" id="srg_fatherIC" onchange="validateFile('srg_fatherIC')">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Mother/Guardian/ Spouse IC(Colored)</label>
+                                                  <div class="col-sm-10">
+                                                    <a id="link_mother_ic" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                    <input type="file" class="btn-primary" name="srg_mother_ic" id="srg_motherIC" onchange="validateFile('srg_motherIC')">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">SPM/STPM Certificate <span><i class="ion-information-circled" title="SPM/STPM/Foundation/Certificate/Diploma/Others Certificate"></i></span></label>
+                                                  <div class="col-sm-10">
+                                                    <a id="link_spm_doc" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                    <input type="file" class="btn-primary" name="srg_spm_doc" id="srg_spmCert" onchange="validateFile('srg_spmCert')">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="row p-a text-right">
+                                              <button type="submit" class="btn info accessRoleAdd">Save</button>
+                                            </div>
+                                            
+                                          </form>
+                                        </p>
+                                      </div>
+                                    </div> 
+                                  </div><!-------------------------------------------------- end tab Registration -------------------------------------------------->
+
+                                  <!-------------------------------------------------- tab Academic -------------------------------------------------->
+                                  <div class="tab-pane animated fadeIn text-muted" id="tabNew4">
+                                    <div class="box" id="">
+                                      <div class="box-body">
+                                        <p class="m-a-0">
+                                          <form id="form_std_academic">
+                                            <div class="row p-a">
+                                              <div class="row p-l-2"><h6><b>Sijil Pelajaran Malaysia</b></h6></div>
+                
+                                              <div class="col-md-4 m-r-1">
+                                                <div class="form-group row b-b p-b-1">
+                                                  <label for="" class="col-sm-4 form-control-label">Bahasa Malaysia (SPM)</label>
+                                                  <div class="col-sm-4">
+                                                      <select class="form-control c-select" name="sta_bm_spm" id="sta_bm_spm"></select>
+                                                  </div>
+                                                </div>
+                
+                                                <div class="form-group row b-b p-b-1">
+                                                  <label for="" class="col-sm-4 form-control-label">English (SPM)</label>
+                                                  <div class="col-sm-4">
+                                                      <select class="form-control c-select" name="sta_bi_spm" id="sta_bi_spm"></select>
+                                                  </div>
+                                                </div>
+                
+                                                <div class="form-group row b-b p-b-1">
+                                                  <label for="" class="col-sm-4 form-control-label">Mathematic (SPM)</label>
+                                                  <div class="col-sm-4">
+                                                      <select class="form-control c-select" name="sta_math_spm" id="sta_math_spm"></select>
+                                                  </div>
+                                                </div>
+                
+                                                <div class="form-group row b-b p-b-1">
+                                                  <label for="" class="col-sm-4 form-control-label">History (SPM)</label>
+                                                  <div class="col-sm-4">
+                                                      <select class="form-control c-select" name="sta_his_spm" id="sta_his_spm"></select>
+                                                  </div>
+                                                </div>
+                
+                                                <div class="form-group row b-b p-b-1">
+                                                  <label for="" class="col-sm-4 form-control-label">Islam (SPM)</label>
+                                                  <div class="col-sm-4">
+                                                      <select class="form-control c-select" name="sta_islam_spm" id="sta_islam_spm"></select>
+                                                  </div>
+                                                </div>
+                                              </div>
+                
+                                              <div class="col-md-7">
+                                                <div class="form-group row b-b p-b-1">
+                                                  <label for="" class="col-sm-4 form-control-label">Other Subject 1 (SPM)</label>
+                                                  <div class="col-sm-6 m-b-1">
+                                                    <select class="form-control c-select" name="sta_sub1_spm" id="sta_sub1_spm">
+                                                      <option value="">- Subject -</option>
+                                                    </select>
+                                                  </div>                                  
+                                                  <div class="col-sm-2">
+                                                      <select class="form-control c-select" name="sta_other1_spm" id="sta_other1_spm"></select>
+                                                  </div>
+                                                </div>
+                
+                                                <div class="form-group row b-b p-b-1">
+                                                  <label for="" class="col-sm-4 form-control-label">Other Subject 2 (SPM)</label>
+                                                  <div class="col-sm-6 m-b-1">
+                                                    <select class="form-control c-select" name="sta_sub2_spm" id="sta_sub2_spm">
+                                                      <option value="">- Subject -</option>
+                                                    </select>
+                                                  </div>
+                                                  <div class="col-sm-2">
+                                                      <select class="form-control c-select" name="sta_other2_spm" id="sta_other2_spm"></select>
+                                                  </div>
+                                                </div>
+                
+                                                <div class="form-group row b-b p-b-1">
+                                                  <label for="" class="col-sm-4 form-control-label">Other Subject 3 (SPM)</label>
+                                                  <div class="col-sm-6 m-b-1">
+                                                    <select class="form-control c-select" name="sta_sub3_spm" id="sta_sub3_spm">
+                                                      <option value="">- Subject -</option>
+                                                    </select>
+                                                  </div>
+                                                  <div class="col-sm-2">
+                                                      <select class="form-control c-select" name="sta_other3_spm" id="sta_other3_spm"></select>
+                                                  </div>
+                                                </div>
+                
+                                                <div class="form-group row b-b p-b-1">
+                                                  <label for="" class="col-sm-4 form-control-label">Other Subject 4 (SPM)</label>
+                                                  <div class="col-sm-6 m-b-1">
+                                                    <select class="form-control c-select" name="sta_sub4_spm" id="sta_sub4_spm">
+                                                      <option value="">- Subject -</option>
+                                                    </select>
+                                                  </div>
+                                                  <div class="col-sm-2">
+                                                      <select class="form-control c-select" name="sta_other4_spm" id="sta_other4_spm"></select>
+                                                  </div>
+                                                </div>
+                
+                                                <div class="form-group row b-b p-b-1">
+                                                  <label for="" class="col-sm-4 form-control-label">Other Subject 5 (SPM)</label>
+                                                  <div class="col-sm-6 m-b-1">
+                                                    <select class="form-control c-select" name="sta_sub5_spm" id="sta_sub5_spm">
+                                                      <option value="">- Subject -</option>
+                                                    </select>
+                                                  </div>
+                                                  <div class="col-sm-2">
+                                                      <select class="form-control c-select" name="sta_other5_spm" id="sta_other5_spm"></select>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                
+                                            <div class="row p-a">
+                                              <div class="row p-l-2"><h6><b>SPM CERTIFICATE</b></h6></div>
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Certificate</label>
+                                                  <div class="col-sm-10">
+                                                      <a id="link_cert_doc" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                      <input type="file" class="btn-primary" name="sta_spm_doc"  id="sta_spm_doc">
+                                                  </div>
+                                                </div>
+                                              </div>
+                
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">MUET</label>
+                                                  <div class="col-sm-4">
+                                                  <select class="form-control c-select" name="sta_muet" id="sta_muet" ></select>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                
+                                            <div class="row p-a text-right">
+                                              <button type="submit" class="btn info accessRoleAdd">Save</button>
+                                            </div>
+                                            
+                                          </form>
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div><!-------------------------------------------------- end tab Academic -------------------------------------------------->
+
+                                  <!-------------------------------------------------- tab Financial -------------------------------------------------->
+                                  <div class="tab-pane animated fadeIn text-muted" id="tabNew6">
+                                    <div class="box" id="">
+                                      <div class="box-body">
+                                        <p class="m-a-0">
+                                          <form id="form_std_financial">
+                                            <div class="row p-a">
+                                              <!-- <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div> -->
+                                              <div class="col-sm-6">
+                                                <div class="form-group">
+                                                  <label class="md-check">
+                                                    <input type="checkbox" name="b40" id="fin_b40Stts" value="Yes">
+                                                    <i class="green"></i>
+                                                    B40
+                                                  </label>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Study Loan/ Scholarship</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control c-select" name="std_loan" id="fin_penaja"></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Baitulmal Receiver</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control c-select" name="std_baitulmal" id="fin_baitulmal"></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Asnaf Status</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="std_asnafStatus" id="fin_asnaf" placeholder="Asnaf Status">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Period of Assistance</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="std_periodAsis" id="fin_period" placeholder="Period of Assistance">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="row p-a">
+                                              <button type="submit" class="btn info accessRoleAdd">Save</button>
+                                            </div>
+                                            
+                                          </form>
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div><!-------------------------------------------------- end tab Financial -------------------------------------------------->
+
+                                  <!-------------------------------------------------- tab Hostel -------------------------------------------------->
+                                  <div class="tab-pane animated fadeIn text-muted" id="tabHostel">
+                                    <div class="box" id="">
+                                      <div class="box-body">
+                                        <p class="m-a-0">
+                                            <div class="row p-a">
+                                              
+                                              <div class="col-sm-6">
+                                                <form id="form_std_hostel">
+                                                  <div class="form-group">
+                                                    <input type="hidden" name="pk_id" id="id_std_hostel" />
+                                                    <label class="md-check">
+                                                      <input type="checkbox" name="hstl_occupyStatus" id="hstl_occupyStatus" value="Yes">
+                                                      <i class="green"></i>
+                                                      Occupy
+                                                    </label>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Existence Status</label>
+                                                    <div class="col-sm-10">
+                                                      <select class="form-control" name="hstl_semester" id="hstl_semester" placeholder="Existence Status"></select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Existence Status</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" name="hstl_existence" id="hstl_existence" placeholder="Existence Status">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Hostel Name</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" name="hstl_name" id="hstl_name" placeholder="Hostel Name">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Unit</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" name="hstl_unit" id="hstl_unit" placeholder="Unit">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="row p-a">
+                                                    <button type="submit" class="btn info accessRoleAdd">Save</button>
+                                                    <button type="reset" class="btn grey-200">Cancel</button>
+                                                  </div>  
+                                                </form>
+                                              </div>
+                                              <div class="col-md-6">
+                                                <table class="table table-striped table-bordered" id="table_list_hostel"></table>
+                                              </div>
+                                            </div>                                              
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div><!-------------------------------------------------- end tab Hostel -------------------------------------------------->
+
+                                  <!-------------------------------------------------- tab Student Status -------------------------------------------------->
+                                  <div class="tab-pane animated fadeIn text-muted" id="tabNew7">
+                                    <div class="box" id="">
+                                      <div class="box-body">
+                                        <p class="m-a-0">
+                                          <!-- <form role="form"> -->
+                                            <div class="row p-a">
+                                              <!-- <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div> -->
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Session</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control c-select" data-bind="value: sts_cur_year" id="sts_cur_year"  ></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Intake</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control c-select" data-bind="value: sts_cur_intake" id="sts_cur_intake"  ></select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Semester</label>
+                                                  <div class="col-sm-10">
+                                                    <select class="form-control c-select" data-bind="value: sts_semester" id="sts_semester" ></select>
+                                                  </div>
+                                                </div>
+
+                                                
+                                              </div>
+
+                                              <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Date of Commencement of Studies</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="date" class="form-control" id="sts_date_joined" data-bind="value: sts_date_joined"  >
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="" class="col-sm-2 form-control-label">Graduation Date</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="date" class="form-control" id="sts_date_complete" data-bind="value: sts_date_complete"  >
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="row p-a text-right">
+                                              <a  href="#" class="btn white" onclick="triggerTab('New6')" ><i class="fa  fa-chevron-left"></i> Previous</a>
+                                              <input type="submit" class="btn info accessRoleAdd" id="btn-save" value="Save">
+                                              <!-- <button type="submit" class="btn info">Save</button> -->
+                                            </div>
+                                            
+                                          <!-- </form> -->
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-------------------------------------------------- tab Student Status -------------------------------------------------->
+
+                                  <!-------------------------------------------------- tab Current Academic Timeline AzizZ 20230627 10:20 -------------------------------------------------->
+                                  <div class="tab-pane animated fadeIn text-muted" id="tabCAT">
+                                    <div class="box" id="">
+                                      <div class="box-body">
+                                        <p class="m-a-0">
+                                          <div class="row p-a">
+                                            <div class="col-md-12 m-b-2">
+                                              
+                                              <div class="button-container" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                                <div>
+                                                  <button data-toggle="collapse" data-target="#addCurAcademic" class="btn btn-outline-success" id="academicButton">
+                                                    <i class="fa fa-plus-circle"></i> Academic Session
+                                                  </button>
+                                                </div>
+                                              
+                                                <div id="buttonTranscript"></div>
+                                              </div>
+                                             
+
+                                              <!-- <div id="buttonTranscript"> </div> -->
+
+                                              <p class="alert alert-info m-t-2" id="display_response">Create/Update Academic Session</p>
+                                              <div class="box-body collapse" id="addCurAcademic">
+                                                <form id="form_std_curAcademic">
+                                                  <div class="row p-a">
+                                                    <div class="col-sm-12">
+                                                      <div class=""><h6><b>INFO</b></h6></div>
+                                                      <div class="form-group row">
+                                                        <label for="" class="col-sm-2 form-control-label">Semester</label>
+                                                        <div class="col-sm-4">
+                                                          <select class="form-control" name="std_semester" id="std_semester" required></select>
+                                                        </div>
+        
+                                                        <label for="" class="col-sm-2 form-control-label">Admission Date</label>
+                                                        <div class="col-sm-4">
+                                                          <input type="text" class="form-control" name="std_admission" id="std_admission" placeholder="example : JUN 2022" required>
+                                                        </div>
+                                                      </div>
+        
+                                                      <div class="form-group row m-b">
+                                                        <label for="" class="col-sm-2 form-control-label">Session Academic</label>
+                                                        <div class="col-sm-6">
+                                                          <select class="form-control" name="fk_acaCal" id="session_cur" required>
+                                                            <option value="">- Choose -</option>
+                                                          </select>
+                                                        </div>
+                                                      </div>
+        
+                                                      <div class="form-group row">
+                                                        <label for="" class="col-sm-2 form-control-label">Completion Date</label>
+                                                        <div class="col-sm-4">
+                                                          <input type="text" class="form-control" name="std_completion" id="std_completion" placeholder="example : JUN 2022" required>
+                                                        </div>
+        
+                                                        <label for="" class="col-sm-2 form-control-label">Endorsement Senate Date</label>
+                                                        <div class="col-sm-4">
+                                                          <input type="date" class="form-control" name="std_senate_endorsement" id="std_senate_endorsement" required>
+                                                        </div>
+                                                      </div>
+        
+                                                      <div class="form-group row">
+                                                        <label for="" class="col-sm-2 form-control-label">Mentor Name</label>
+                                                        <div class="col-sm-10">
+                                                          <input type="text" class="form-control" name="std_mentor" id="std_mentor" placeholder="Mentor Name" required>
+                                                        </div>
+                                                      </div>
+        
+                                                      <div class="form-group row">
+                                                        <label for="" class="col-sm-2 form-control-label">Remarks</label>
+                                                        <div class="col-sm-10">
+                                                          <textarea class="form-control" rows="3" name="std_remarks" id="std_remarks"></textarea>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+        
+                                                    <!-- <div class="col-sm-6">
+                                                      <div class=""><h6><b>ACHIEVEMENT</b></h6></div>
+        
+                                                      <div class="form-group row">
+                                                        <label for="" class="col-sm-2 form-control-label">Credit of CE/CT</label>
+                                                        <div class="col-sm-4">
+                                                            <select class="form-control c-select" name="std_cect" id="std_cect"></select>
+                                                        </div>
+        
+                                                        <label for="" class="col-sm-2 form-control-label">Total Credit of CE/CT</label>
+                                                        <div class="col-sm-4">
+                                                          <input type="number" class="form-control" name="std_total_cect" id="std_total_cect" placeholder="Credits Exemption/Credits Transfer" value="0">
+                                                        </div>
+                                                      </div>
+        
+                                                      <div class="form-group row">
+                                                        <label for="" class="col-sm-2 form-control-label">Total Credit Earned</label>
+                                                        <div class="col-sm-4">
+                                                          <input type="number" class="form-control" name="std_total_credit" id="std_total_credit" placeholder="Total Credit Earned" value="0">
+                                                        </div>
+        
+                                                        <label for="" class="col-sm-2 form-control-label">Credit Hours per Semester</label>
+                                                        <div class="col-sm-4">
+                                                          <input type="number" class="form-control" name="std_total_hour" id="std_total_hour" placeholder="Credit Hours per Semester" value="0">
+                                                        </div>
+                                                      </div>
+        
+                                                      <div class=""><h6><b>LETTER</b></h6></div>
+                                                      <div class="form-group row">
+                                                        <label for="" class="col-md-2 form-control-label">1st Warning Letter</label>
+                                                        <div class="col-md-4">
+                                                          <a id="link_warning_letter1" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                          <input type="file" class="" name="std_warning_letter1" id="std_warning_letter1">
+                                                        </div>
+        
+                                                        <label for="" class="col-md-2 form-control-label">2nd Warning Letter</label>
+                                                        <div class="col-md-4">
+                                                          <a id="link_warning_letter2" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                          <input type="file" class="" name="std_warning_letter2" id="std_warning_letter2">
+                                                        </div>
+                                                      </div>
+        
+                                                      <div class="form-group row">
+                                                        <label for="" class="col-md-2 form-control-label">3rd Warning Letter</label>
+                                                        <div class="col-md-4">
+                                                          <a id="link_warning_letter3" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                          <input type="file" class="" name="std_warning_letter3" id="std_warning_letter3">
+                                                        </div>
+        
+                                                        <label for="" class="col-md-2 form-control-label">Barred Letter</label>
+                                                        <div class="col-md-4">
+                                                          <a id="link_barred_letter" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                                            <input type="file" class="" name="std_barred_letter" id="std_barred_letter">
+                                                        </div>
+                                                      </div>
+                                                    </div> -->
+                                                  </div>
+        
+                                                  <div class="row p-a text-right">
+                                                    <button type="submit"  class="btn info accessRoleAdd">Save</button>
+                                                  </div>
+                                                  
+                                                </form>                                        
+                                              </div>                                 
+                                            </div>
+                                            <div class="col-md-8">
+                                              <div class="box" id="divLectDetails">
+                                                <ul class="nav nav-pills nav-stacked" data-ui-nav id="divListSem"></ul>
+                                              </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                              <div class="panel box b-success m-b-xs p-a-1">
+                                                <div class="row">
+                                                  <div class="col-md-6">
+                                                    <b>Course Offer</b>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                  </div>
+                                                </div>
+                                                <hr>
+                                                <table class="table table-bordered table-striped table-condensed" data-sorting="true" id="listCrstbl">
+                                                  <tr><td class="text-center"><i class="text-muted">Course Not Registered</i></td></tr>
+                                                </table>
+                                              </div>                                              
+                                            </div>
+
+                                            <div class="col-md-4">
+                                              <div class="panel box b-success m-b-xs p-a-1">
+                                                <div class="row">
+                                                  <div class="col-md-6">
+                                                    <b>Course Exemption</b>
+                                                  </div>
+                                                  <div class="col-md-6 text-right" id="tCreditCE">Course Exemption :
+                                                    <!-- <b id="tCreditCE">Course Exemption : </b> -->
+                                                  </div>
+                                                </div>
+                                                <hr>
+                                                <div class="col-md-10 m-b-2">
+                                                  <b>THESE COURSE(S) WERE EXEMPTED</b>
+
+                                                  
+                                                </div>
+                                                <table class="table table-bordered table-striped table-condensed" data-sorting="true" id="listCE">
+                                                  <tr><td class="text-center"><i class="text-muted">Course Examption (CE)</i></td></tr>
+                                                </table>
+                                              </div>                                              
+                                            </div>
+                                          </div>
+                                        </p> 
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                                  <!-------------------------------------------------- end tab Current Academic Timeline -------------------------------------------------->
+
+                                   <!-------------------------------------------------- tab Administrative Record - Adlina -------------------------------------------------->
+                                   <div class="tab-pane animated fadeIn text-muted" id="tabAR">
+                                    <div class="box" id="">
+                                      <div class="box-body">
+                                        <p class="m-a-0">
+                                          <div class="row p-a">
+                                            <div class="col-md-12">
+                                              <div class="box" id="divLectDetails">
+                                                <!-- <ul class="nav nav-pills nav-stacked" data-ui-nav id="divListSemAR"></ul> -->
+                                                <div class="tabs">
+                                                  <ul class="nav nav-tabs" role="tablist" id="tabListSemAR">
+
+                                                    <!-- Tab links will be generated dynamically -->
+                                                  </ul>
+                                                  <div class="tab-content" id="divListSemAR">
+                                                    <!-- Tab content will be generated dynamically -->
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            
+                                          </div>
+                                        </p> 
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                                  <!-------------------------------------------------- end tab Administrative Record - Adlina -------------------------------------------------->
+
+
+
+                                </div>                                
+
+                              </div>
+                              <div class="col-sm-12" id="reg-student">
+                                <!-- <form role="form" id="form_update" enctype='multipart/form-data'>  -->
+                                  
+                                  
+                                <!-- </form> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="p-a b-t">
+                        <!-- <a href="#" class="text-muted"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+                        <a href="#" class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a> -->
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <!-- end modal new add student -->
+
+
+              <!-- afiez CTE analysys -->
+              
+            <div class="modal black-overlay fade" id="bottom" style="display: none;" aria-hidden="true">
+              <div class="modal-bottom box-shadow-md white lt">
+               
+                  <div class="row-col">
+                    <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">×</a>
+                    <div class="grey-100 p-a b-t b-b">
+                      <div class="row m-t-1">
+                        <div class="col-xs-4">
+                            <img src="images/LOGO-UCMI(Landscape).png" width="40%" alt="" srcset="">
+                        </div>
+                        <div class="col-xs-8 text-right">
+                                <b id="">COURSE TEACHING EVALUATION</b><br>
+                                <span id="titleSessionCTE"></span>
+                            
+                                <hr>
+                               
+                        </div>
+                    </div>
+
+                      <span class="h5"></span>
+
+                      <span class="info pull-right" id="titleSessionCTE">
+                        <h1 id=""></h1>
+
+                      </span>
+
+                    </div>
+                    <div class="row-row" style="height:600px;">
+                      <div class="row-body">
+                        <div class="row-inner" >
+                          <div class="container">
+                            <div class="col-sm-12 m-x-auto m-t">
+                              <div class="box">
+                                <div class="box-header">
+                                  <!-- <span class="label danger pull-right" id="countCourseCTE">0</span> -->
+                                  <!-- <h3 id="titleSessionCTE">Tasks</h3> -->
+                                </div>
+                                <table class="table table-bordered" id="cteListBySession">
+                                  <thead>
+                                    <tr>
+                                      <th>Progress</th>
+                                      <th>Item</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <div class="progress progress-xs m-y-sm">
+                                          <div class="progress-bar info" style="width: 45%"></div>
+                                        </div>
+                                      </td>
+                                      <td>App prototype design</td>
+                                    </tr>
+                                    <tr>                    
+                                      <td>
+                                        <div class="progress progress-xs m-y-sm">
+                                          <div class="progress-bar success" style="width: 25%"></div>
+                                        </div>
+                                      </td>
+                                      <td>Design documents</td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <div class="progress progress-xs m-y-sm">
+                                          <div class="progress-bar danger" style="width: 55%"></div>
+                                        </div>
+                                      </td>
+                                      <td>UI toolkit</td>
+                                    </tr>
+                                    <tr>                    
+                                      <td>
+                                        <div class="progress progress-xs m-y-sm">
+                                          <div class="progress-bar warning" style="width: 15%"></div>
+                                        </div>
+                                      </td>
+                                      <td>Testing</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                      
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-a b-t">
+                      <a href="#" class="text-muted"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+                      <a href="#" class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+              <!-- afiez CTE analysys -->
+           
+              <!-- top modal kemaskini -->
+              
+
+              <!-- kemaskini -->
+              <div class="box collapse" id="divKemaskini">
+                <div class="box-header purple-700">
+                  <h3><b>KEMASKINI MAKLUMAT PERIBADI PELAJAR</b></h3>
+                  <!-- <small>Senarai Lokasi</small> -->
+                </div>
+                <div class="box-body">
+                  <p class="m-a-0">
+                    <form role="form">
+                      <div class="row p-a">
+                        <div class="col-sm-6">
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">ID Pelajar</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="" placeholder="ID Pelajar">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Nama Pelajar</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="" placeholder="Nama Pelajar">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Program</label>
+                            <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                    <option>-Pilih-</option>
+                                    <option>Diploma</option>
+                                </select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Jurusan</label>
+                            <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                    <option>-Pilih-</option>
+                                    <option>Fisioterapi</option>
+                                </select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Sesi</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="" placeholder="Sesi">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Jantina</label>
+                            <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                    <option>-Pilih-</option>
+                                    <option>Lelaki</option>
+                                    <option>Perempuan</option>
+                                </select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Status Warganegara</label>
+                            <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                    <option>-Pilih-</option>
+                                    <option>Warganegara</option>
+                                    <option>Bukan Warganegara</option>
+                                </select>
+                            </div>
+                          </div>
+
+                          
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Kaum/Bangsa</label>
+                            <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                    <option>-Pilih-</option>
+                                    <option>Melayu</option>
+                                </select>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Status Bumiputera</label>
+                            <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                    <option>-Pilih-</option>
+                                    <option>Bumiputera</option>
+                                    <option>Bukan Bumiputera</option>
+                                </select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Agama</label>
+                            <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                    <option>-Pilih-</option>
+                                    <option>Islam</option>
+                                </select>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Cacat</label>
+                            <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                    <option>-Pilih-</option>
+                                    <option>Cacat</option>
+                                    <option>Tidak Cacat</option>
+                                </select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Kumpulan Darah</label>
+                            <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                    <option>-Pilih-</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>AB</option>
+                                    <option>O</option>
+                                </select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Gambar</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" placeholder="Gambar">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row p-a text-right">
+                        <button type="submit" class="btn warn">Simpan</button>
+                      </div>
+                      
+                    </form>
+                  </p>
+                </div>
+              </div>
+            </div>
+      </div>
+
+      <!-- modal add course -->
+      <div class="modal fade" id="modal_course" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header green-700">
+              <h6><b><i class="fa fa-plus"></i> Course</b></h6>
+              <input type="hidden" name="code_indexs" id="code_indexs">
+            </div>
+            <form id="form_addCourse">
+              <div class="modal-body">
+                <div class="row">
+                  <!-- /////////////////////// -->
+                  <div class="col-md-6">
+
+                    <div class="form-group">
+                      <label for="course_select"><b>Course</b></label>
+                      <p id="course_select"></p>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="session_select">Session</label>
+                      <select name="aca_session" required class="form-control slct2" id="session_select"></select>                    
+                    </div>
+
+                    <div class="form-group">
+                      <label for="sem_std">Semester Student</label>
+                    <select name="reg_semester" id="reg_semester" class="form-control"></select>
+                    </div>
+
+                    
+                   
+                  </div>
+                  <!-- /////////////////////// -->
+
+                  <div class="col-md-6">
+
+                    <div class="form-group">
+
+                      <label for="course_credit"><b>Credit Hour</b></label>
+                      <p id="course_credit"></p>
+
+                      
+                      <!-- <p><b id="course_credit"></b> Credit Hour</p> -->
+
+
+                      <input class="inputAddcourse" type="hidden" name="crs_code" id="fk_course">
+                      <input class="inputAddcourse" type="hidden" name="ccd_id_New" id="ccd_id_New">
+                      <input class="inputAddcourse" type="hidden" name="ccd_id_repeat" id="ccd_id_repeat">
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="status_course">Status</label>
+                      <select name="rsb_type" required class="form-control" id="status_course">
+                        <option value="">- Choose -</option>
+                        <option value="N">- New -</option>
+                        <option value="RC">- Repeat -</option>
+                      </select>                    
+                    </div>
+                    
+
+                   
+
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer green-50">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-secondary" type="submit">Add</button>
+              </div>
+            </form>            
+          </div>
+        </div>
+      </div>
+
+      <!-- modal-tawaran detail -->
+      <div class="modal fade" id="modal-tawaran" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>
+                eTawaran
+              <a data-dismiss="modal" class="btn btn-icon pull-right"><i class="fa fa-times"></i></a>              
+            </h3>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 table-responsive">
+                  <input type="hidden" name="tawaran_indexs" id="tawaran_indexs">
+                  <table class="table table-striped table-condensed m-b-2">
+                    <tr>
+                      <td><b>Name: </b> <p id="first_name_t"></p></td>
+                      <td><b>My Kad: </b> <label id="mykad_t"></label></td>
+                    </tr>
+                    <tr>
+                      <td><b>email: </b> <i class="text-info" id="email_t"></i></td>
+                      <td><b>Mobile No: </b> <label id="mobile_no_t"></label></td>
+                    </tr>
+                    <tr>
+                      <td><b>Address: </b> <p id="address_t"></p></td>
+                      <td><b>Ethnic: </b> <label id="ethnic_t"></label></td>
+                    </tr>
+                    <tr>
+                      <td><b>Gender: </b> <label id="gender_t"></label></td>
+                      <td><b>Religion: </b> <label id="religion_t"></label></td>
+                    </tr>
+                    <tr>
+                      <td><b>Introducer: </b> <p id="introducer_t"></p></td>
+                      <td><b>Status: </b> <label id="status_t"></label></td>
+                    </tr>
+                  </table>
+
+                  <div class="card">
+                    <div class="card-header"><i class="fa fa-info-circle"></i> Academic Info</div>
+                    <div class="card-body p-a">
+                      <p><span id="school_name_t"></span> <span class="pull-right" id="acad_year_t"></span></p>
+                      <div class="b-a p-a">
+                        <label class="m-r-3"><b>Bahasa Melayu: </b> <span id="GRED_BM_t"></span></label>
+                        <label class="m-r-3"><b>Bahasa Inggeris: </b> <span id="GRED_BI_t"></span></label>
+                        <label class="m-r-3"><b>Agama Islam: </b> <span id="GRED_ISLAM_t"></span></label>
+                        <label class="m-r-3"><b>Mathematic: </b> <span id="GRED_MATH_t"></span></label>
+                        <label class="m-r-3"><b>Sejarah: </b> <span id="GRED_SEJARAH_t"></span></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card p-a blue-50">
+                    <p>First Choice : <b id="first_choice_t"></b></p>
+                    <p>Second Choice : <b id="second_choice_t"></b></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn blue-900" id="btn_regTawaran">Register</button>
+              <!-- <button class="btn btn-outline grey-200" data-dismiss="modal">Back</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end modal-tawaran detail -->
+
+      <!-------------------------------------------------- modal upload file -------------------------------------------------->
+      <div id="uploadFile" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form role="form" id="formAddFile">
+              <div class="modal-header" style="background-color: #22b66e;">
+                <h5 class="modal-title modalName">ADD WARNING LETTER</h5>
+              </div>
+              <div class="modal-body p-lg">
+                <p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <input id="WL_StudentID" hidden>
+                    <input id="WL_ID" hidden>
+                    <input id="rsbID" hidden>
+
+                    <div class="form-group row" title="Select Campus to view list">
+                      <label class="col-sm-3 form-control-label">File input<span class="text-info"> *</span></label>
+                      <div class="col-sm-9">
+                        <label class="custom-file">
+                            <input type="file" id="WLfile" accept="application/pdf" required onchange="displayFileName()">
+                            <span class="custom-file-control"></span>
+                        </label>                         
+                        <p id="fileName" class="help-block">Please insert in PDF format.</p>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn info p-x-md" value="Submit">
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal upload file -------------------------------------------------->
+
+      <div style="min-height: mh-200">
+        <div class="col-md-10 offset-md-1 mt-2">
+          <div class="box" id="rock">
+           
+          <!-------------------------------------------------- student Timetable -------------------------------------------------->
+          
+
+
+            <div class="modal fade" id="StudTimetbl">
+              <div class="modal-bottom white b-b" style="height:80%;">
+                  <div class="row-col">
+                      <div class="grey-100 b-b b-t">
+                        <div class="container-fluid">
+                          <div class="row m-t-1">
+                              <div class="col-md-12">
+                                <h4><i class="fa fa-calendar-o"></i> Student Timetable</h4>
+                              </div>
+                          </div>
+                        </div>                          
+                      </div>
+                      <div class="row-row">
+                          <div class="row-body">
+                              <div class="row-inner">
+                                  <div class="container-fluid">
+                                    <p class="">
+                                      <span class="hidden" id="acaCal"></span>
+                                      <div class="form-group row">
+                                        <div class="col-sm-2 font-weight-bold">Student ID</div>
+                                        <div class="col-sm-10 text-uppercase" id="stud_id"></div>
+                                      </div>
+                  
+                                      <div class="form-group row">
+                                        <div class="col-sm-2 font-weight-bold">Student Name</div>
+                                        <div class="col-sm-10 text-uppercase" id="stud_name"></div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <div class="col-sm-2 font-weight-bold">Academic Session</div>
+                                        <div class="col-sm-10 text-uppercase" id="year"></div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <div class="col-sm-2 font-weight-bold">Semester</div>
+                                        <div class="col-sm-10 text-uppercase" id="cohort"></div>
+                                      </div>
+                                      <hr>
+                                      
+                                      <!-- <table class="table table-striped m-b-none" data-sorting="true" id="tblStudTmt"></table> -->
+                                    </p>
+                                      <p class="text-center table-responsive" style="padding:0 0;">
+                                        <table class="table table-bordered" cellpadding="1">
+                                          <thead class="grey-200">
+                                            <tr>
+                                              <th>DAY</th>
+                                              <th width="200">08:00AM-09:00AM</th>
+                                              <th width="200">09:00AM-10:00AM</th>
+                                              <th width="200">10:00AM-11:00AM</th>
+                                              <th width="200">11:00AM-12:00PM</th>
+                                              <th width="200">12:00PM-1:00PM</th>
+                                              <th width="200">01:00PM-02:00PM</th>
+                                              <th width="200">02:00PM-03:00PM</th>
+                                              <th width="200">03:00PM-04:00PM</th>
+                                              <th width="200">04:00PM-05:00PM</th>
+                                              <th width="200">05:00PM-06:00PM</th>
+                                              <th width="200">06:00PM-07:00PM</th>
+                                              <th width="200">07:00PM-08:00PM</th>
+                                              <th width="200">08:00PM-09:00PM</th>
+                                              <th width="200">09:00PM-10:00PM</th>
+                                              <th width="200">10:00PM-11:00PM</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody id="tblStudTmt"></tbody>
+                                        </table>                                          
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="p-a b-t">
+                          <div class="container text-right">
+                              <button class="btn btn-dark" data-dismiss="modal">Back</button>
+                              <button type="button" class="btn btn-outline-danger p-x-md" id="printTimeTableStudent"><i class="fa fa-file-pdf-o"></i> Print</button>
+                              
+                          </div>
+                      </div>
+                  </div> <!-- row-col -->            
+              </div>
+          </div>
+          
+            <!-------------------------------------------------- student Timetable  -------------------------------------------------->
+
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <div style="min-height: mh-200">
+      <div class="col-md-10 offset-md-1 mt-2">
+        <div class="box" id="rock">
+        </div>
+        <!-------------------------------------------------- lecturer -------------------------------------------------->
+        <div id="StudTviewExamSlip" class="modal fade" data-backdrop="static">
+          <div class="modal-dialog modal-lg" style="max-width: 80% !important;">
+            <div class="modal-content">
+                <div class="modal-header teal-500">
+                  <h5 class="modal-title">FINAL EXAMINATION SLIP</h5>
+    
+                </div>
+                <div class="modal-body p-lg" >
+                  <p class="">
+                    <span class="hidden" id="acaCal"></span>
+                    <div class="form-group row">
+                      <div class="col-sm-2 font-weight-bold">Name of Candidate</div>
+                      <div class="col-sm-10 text-uppercase" id="studname"></div>
+                    </div>
+    
+                    <div class="form-group row">
+                      <div class="col-sm-2 font-weight-bold">I/C</div>
+                      <div class="col-sm-10 text-uppercase" id="studic"></div>
+                    </div>
+    
+                    <div class="form-group row">
+                      <div class="col-sm-2 font-weight-bold">Index No.</div>
+                      <div class="col-sm-10 text-uppercase" id="studid"></div>
+                    </div>
+    
+                    <div class="form-group row">
+                      <div class="col-sm-2 font-weight-bold">Program</div>
+                      <div class="col-sm-10 text-uppercase" id="studprog"></div>
+                    </div>
+    
+                    <div class="form-group row">
+                      <div class="col-sm-2 font-weight-bold">Intake</div>
+                      <div class="col-sm-10 text-uppercase" id="studintake"></div>
+                    </div>
+    
+    
+                    <div class="form-group row">
+                      <div class="col-sm-2 font-weight-bold">Academic Session</div>
+                      <div class="col-sm-10 text-uppercase" id="cmsession"></div>
+                    </div>
+                   
+    
+                    <hr>
+                    
+                    <table class="table table-striped m-b-none" data-sorting="true" id="tblCMark"></table>
+                  
+    
+                
+                <div class="modal-footer">
+                  <button type="button" class="btn white p-x-md" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline-danger p-x-md" id="printTimeTableExam"><i class="fa fa-file-pdf-o"></i> Print</button>
+    
+                </div>
+    
+    
+            </div><!-- /.modal-content -->
+          </div>
+        </div>
+        <!-------------------------------------------------- end lecturer -------------------------------------------------->
+    
+      </div>
+    
+    
+      
+      </div>
+    </div>
+
+   <!-- .modal -->
+    <div id="modalTranscriptMain" class="modal modalTranscript fade" data-backdrop="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <!-- <div class="modal-header #22b66e"> -->
+          <div class="modal-header" style="background-color: #22b66e; color: #fff;">
+            <h5 class="modal-title">Academic Transcript</h5>
+          </div>
+          <div class="modal-body p-lg">
+            <p class="formResetTranscript">
+              <span class="hidden" id="acaCal"></span>
+
+              <div class="row">
+                <div class="col-md-6" >
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Name </div>
+                    <div class="col-sm-9 text-uppercase" id="ATstudname"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Gender</div>
+                    <div class="col-sm-9 text-uppercase" id="ATgender"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Nationality</div>
+                    <div class="col-sm-9 text-uppercase" id="ATnationality"></div>
+                  </div>
+              
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">IC/Passport Number</div>
+                    <div class="col-sm-9 text-uppercase" id="ATic"></div>
+                  </div>
+                </div>
+              
+                <div class="col-md-6" >
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Matric Number </div>
+                    <div class="col-sm-9 text-uppercase" id="ATstudID"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Programme </div>
+                    <div class="col-sm-9 text-uppercase" id="ATProgram"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Year Enrolled </div>
+                    <div class="col-sm-9 text-uppercase" id="ATyearStart"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 font-weight-bold">Year Completed </div>
+                    <div class="col-sm-9 text-uppercase" id="ATyearEnd"></div>
+                    <div class="col-sm-9 text-uppercase" id="ATstatusAcademic" hidden></div>
+                    <div class="col-sm-9 text-uppercase" id="ATSenate" hidden></div>
+                  </div>
+                </div>
+              </div>
+              
+              
+
+              <hr>
+              <div class = "box">
+                <!-- <table class="table table-bordered table-striped m-b-none hiddenTranscript" data-sorting="true" id="list_cect"  ></table> -->
+                <span id ="tableCect"></span>
+                <!-- <table class="table table-bordered table-striped m-b-none hiddenTranscript" data-sorting="true" id="list_cect" hidden></table> -->
+
+              </div>
+              <hr>
+
+
+
+              <!-- <table class="table table-striped m-b-none" data-sorting="true" id="divLectDetails"></table> -->
+              <div class="col-md-12">
+                <div class="box" id="divLectDetailsAT">
+                  <ul class="nav nav-pills nav-stacked" data-ui-nav id="divListSemAT"></ul>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="box" >
+                  <div class ="box-body">
+                    <div class="row">
+                      <div class="form-group row">
+                        <div class="col-sm-4 font-weight-bold">TOTAL CREDIT EARNED </div>
+                        <div class="col-sm-1 font-weight-bold">: </div>
+                        <div class="col-sm-7 text-uppercase" id="ATtce"></div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <div class="col-sm-4 font-weight-bold">TOTAL CREDIT TRANSFER</div>
+                        <div class="col-sm-1 font-weight-bold">: </div>
+                        <div class="col-sm-7 text-uppercase" id="ATtct"></div>
+                      </div>
+    
+                      <!-- <div class="form-group row">
+                        <div class="col-sm-4 font-weight-bold">GRAND TOTAL CREDIT</div>
+                        <div class="col-sm-1 font-weight-bold">: </div>
+                        <div class="col-sm-7 text-uppercase" id="ATgtc"></div>
+                      </div> -->
+                  
+                      <div class="form-group row">
+                        <div class="col-sm-4 font-weight-bold">CUMULATIVE GRADE POINT AVERAGE</div>
+                        <div class="col-sm-1 font-weight-bold">: </div>
+                        <div class="col-sm-7 text-uppercase" id="ATcgpa"></div>
+                      </div>
+                    </div>
+
+                  </div>
+                  
+                </div>
+              </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn dark-white p-x-md" id="buttonHideTranscript">Close</button>
+            <!-- <button type="button" class="btn dark-white p-x-md" id="buttonHideTranscript">No</button> -->
+            <!-- <button type="button" class="btn danger p-x-md" data-dismiss="modalTranscript">Yes</button> -->
+            <!-- <div id ="buttonCECT"></div> -->
+
+            <button type="button" class="btn btn-outline-danger p-x-md buttonCect" id="printAcademicTranscriptCECT"><i class="fa fa-file-pdf-o"></i> Print</button>
+            <button type="button" class="btn btn-outline-danger p-x-md buttonNoCect" id="printAcademicTranscript"><i class="fa fa-file-pdf-o"></i> Print</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div>
+    </div>
+    <!-- / .modal -->
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
+    <div id="modalAcademicTranscript" class="modal fade" data-backdrop="static">
+      <div class="modal-dialog modal-lg" style="max-width: 80% !important;">
+        <div class="modal-content">
+            <div class="modal-header teal-500">
+              <h5 class="modal-title">ACADEMIC TRANSCRIPT </h5>
+            </div>
+            <div class="modal-body p-lg" >
+                <div class="box">
+                  <div class="box-body">
+                    <div class ="row">
+                      <div class ="col-sm-12" >
+                        <table class="table table-striped m-b-none"  id="testtable" style="font-size: 10px;"></table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="modal-footer">
+                  <button type="button" class="btn white p-x-md" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline-danger p-x-md" id="printTimeTableExam"><i class="fa fa-file-pdf-o"></i> Print</button>
+                </div>
+
+        </div><!-- /.modal-content -->
+      </div>
+    </div>
+    <!-------------------------------------------------- end lecturer -------------------------------------------------->
+
+  </div>
+
+
+      <!-- LOADING START -->
+      <div class="modal" id="loading_modal" data-backdrop="static">
+        <div class="modal-dialog">
+          <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i id="load_text">Loading...</i></div>
+        </div>
+      </div>
+      <!-- LOADING END -->
+
+  </div>
+
+  <!-- <script src="pljr_info.js"></script> -->
+  <script src="scripts/ajax.js"></script>
+  <script src="scripts/jspdf.umd.min.js"></script>
+  <script src="scripts/jspdf.plugin.autotable.js"></script>
+  <script src="scripts/html2canvas.min.js"></script>
+
+  <script src="callFunction.js"></script> 
+  <script src="capaian.js"></script>
+
+  <script src="adm_pljrInfo.js?n=02"></script>
+  <!-- <script src="scripts/ajax.js"></script> -->
+
+
+
+  <script>
+    function displayFileName() {
+        var input = document.getElementById('WLfile');
+        var fileName = input.files[0].name;
+        document.getElementById('fileName').innerText = fileName;
+    }
+</script>
+
+
+
+
+<script>
+
+$('#closeMdlBtm').on('click',function () {
+  window.location.reload();
+});
+
+$('#buttonHideTranscript').on('click',function () {
+  window.location.reload();
+  // $(this).find('form').trigger('reset');
+
+});
+
+  // letak dalam jquery
+  
+  // $("#buttonHideTranscript").click(function () {
+  //       // $(".modalTranscript").hide();
+  //       $(".modalTranscript").modal('hide');
+
+        
+  //   });
+</script>

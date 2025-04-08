@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Examination Slip</title>
+      <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body>
+      <div class="container-fluid">
+        <div><img id="divImage"></div>
+        <div style="height: 100vw; width: 100%;" id="preview-pdf"></div>
+      </div>
+
+      <div class="modal" id="loading_mode" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="text-center text-white" style="padding-top: 50%;"><span id="gear" class="fa fa-cog fa-spin fa-3x m-b"></span><br><i id="load_text">Please Wait...</i></div>
+        </div>
+      </div>
+      
+      <script src="libs/jquery/dist/jquery.js"></script>
+      <script src="../admin/jquery.min.js"></script>
+      <script src="jsPDF/jspdf.min.js"></script>
+      <script src="jsPDF/pdfobjct.min.js"></script>
+      <script src="jsPDF/jspdf.plugin.autotable.min.js"></script>
+      <script src="../admin/excel2json/xlsx.full.min.js"></script>
+      <script src="../admin/excel2json/tableToExcel.js"></script>
+      <script src="../admin/excel2json/xlsx.core.min.js"></script>
+      <script src="../admin/excel2json/js/jhxlsx.js"></script>
+      <script src="../admin/excel2json/js/FileSaver.js"></script>
+      
+      <script src="config.js"></script>
+      <script src="scripts/action.min.js"></script>
+      <script src="callFunctionStd.js"></script>
+      <!-- <script src="funcLect.js"></script> -->
+      <script src="print_timetblSExam.js"></script>
+  </body>
+</html>

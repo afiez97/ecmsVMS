@@ -1,0 +1,169 @@
+.brand-animate {
+    -webkit-animation: rotate 1s infinite linear;
+    animation: rotate 1s infinite linear;
+
+    transform-origin: 24px 24px;
+    -webkit-transform-origin: 24px 24px;
+
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-transition: all 0.3s ease-in-out;
+  	transition: all 0.3s ease-in-out;
+
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+.pace-running .brand-animate{
+    -webkit-animation-play-state: running;
+    animation-play-state: running;
+}
+
+.pace-done .brand-animate{
+    opacity: 0;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+.mt-11x{
+  margin-top:11px !important;
+}
+
+.mt-3{
+  margin-top:3rem !important;
+}
+
+.mt-2{
+  margin-top:2rem !important;
+}
+
+.mt-1{
+  margin-top:1rem !important;
+}
+
+.mh-200{
+  min-height:200px !important;
+}
+
+.p-18{
+  padding:18px !important;
+}
+
+.pt-18{
+  padding-top:18px !important;
+}
+
+.pl-18{
+  padding-left:18px !important;
+}
+
+.pr-18{
+  padding-right:18px !important;
+}
+
+.pb-18{
+  padding-bottom:18px !important;
+}
+
+.p-23{
+  padding:23px !important;
+}
+
+.pt-23{
+  padding-top:23px !important;
+}
+
+.pl-23{
+  padding-left:23px !important;
+}
+
+.pr-23{
+  padding-right:23px !important;
+}
+
+.pb-23{
+  padding-bottom:23px !important;
+}
+
+.p-24{
+  padding:24px !important;
+}
+
+.pt-24{
+  padding-top:24px !important;
+}
+
+.pl-24{
+  padding-left:24px !important;
+}
+
+.pr-24{
+  padding-right:24px !important;
+}
+
+.pb-24{
+  padding-bottom:24px !important;
+}
+
+.p-25{
+  padding:25px !important;
+}
+
+.pt-25{
+  padding-top:25px !important;
+}
+
+.pl-25{
+  padding-left:25px !important;
+}
+
+.pr-25{
+  padding-right:25px !important;
+}
+
+.pb-25{
+  padding-bottom:25px !important;
+}
+
+.f-22{
+  font-size:22px !important;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.modal.modal-fullscreen .modal-dialog {
+  width:100vw;
+  margin:0;
+  padding:0;
+  max-width:none;
+}
+.modal.modal-fullscreen .modal-content {
+  border-radius:0;
+  border:none;
+
+}
+.modal.modal-fullscreen .modal-body {
+  overflow-y:auto;
+}

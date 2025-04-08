@@ -1,0 +1,81 @@
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Reporting Examination (Student List)</span>
+			        </li>
+			      </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+              <div class="box" id="divCOT">
+                <div class="box-header blue-grey-800">
+                  <h3><b>Student List Section</b></h3>
+                </div>
+                <div class="box-body b-b">
+                  <p class="m-a-0">
+                    <div id="tableCot">
+                      <div class="form-group row">
+                        <div class="col-sm-2">
+                          <select class="form-control slct2 c-select" id="aca_session" required></select>
+                        </div>
+
+                        <div class="col-sm-2">
+                          <select class="form-control slct2 c-select" id="aca_cal_category" required></select>
+                        </div>
+
+                        <div class="col-sm-2">
+                          <select class="form-control slct2 c-select" id="cam_id" required></select>
+                        </div>
+
+                        <div class="col-sm-2">
+                          <select class="form-control slct2 c-select" id="tbl_venue" required></select>
+                        </div>
+
+                        <div class="col-sm-1">
+                          <button type="" onclick="generateTable()" class="btn btn-info mb-2">
+                            <i class="fa fa-fw fa-filter"></i>
+                            Filter</button>&nbsp;
+                        </div>
+
+                        <!-- <div class="col-sm-1">
+                          
+                          <button onclick="generatePDF3('List Student By Category Academic', 'tableReportListStudentpdf')" class="btn btn-danger"> <i class="fa fa-fw fa-file-pdf-o"></i> PDF</button>                        
+                        </div> -->
+                        <div class="col-sm-1" id ="btnPDF"></div>
+
+                        
+            
+                      </div>
+                      <textarea class="hidden" id="dataList"></textarea>
+                      <table class="table table-striped m-b-none" id="tableReportListStudent"></table>
+                      <table class="" id="tableReportListStudentpdf"></table>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              
+            </div>
+        </div>
+    </div><!--- end app-body -->
+
+    <script src="scripts/ajax.js"></script>
+    <script src="scripts/jspdf.umd.min.js"></script>
+    <script src="scripts/jspdf.plugin.autotable.js"></script>
+    <script src="callFunction.js"></script>
+    <script src="adm_reportListStudent.js"></script>
+    <!-- <script src="cot.js"></script> -->

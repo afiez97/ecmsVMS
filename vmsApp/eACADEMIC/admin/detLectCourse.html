@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/select2/dist/css/select2.css">
+  <link rel="stylesheet" href="libs/select2-bootstrap-theme/dist/select2-bootstrap.css">
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+
+  <style>
+    .scroll {
+    max-height: 800px;
+    overflow-y: auto;
+    }
+
+    #mdlUpload .modal-body {
+    max-height: 400px; /* Set a specific height */
+    overflow-y: auto; /* Enable vertical scrollbar */
+      }
+
+</style>
+</head>
+<body>
+  <div class="app" id="app">
+  <!-- ############ LAYOUT START-->
+    
+    <!-- content -->
+    <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+      <div class="app-header white bg b-b">
+            <div class="navbar" data-pjax>
+                  <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                    <i class="ion-navicon"></i>
+                  </a>
+                  
+                  <div class="navbar-item pull-left h5" id="pageTitle">
+                    <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                    LECTURER COURSE DETAILS
+                  </div>
+                  <!-- nabar right -->
+                  <!-- / navbar right -->
+            </div>
+      </div>
+      <div class="app-footer white bg p-a b-t">
+        <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+        <span class="text-sm text-muted">&copy; Copyright.</span>
+      </div>
+      
+      <div class="app-body">
+
+        <!-- ############ PAGE START-->
+        <!-- only need a height for layout 4 -->
+        <div style="min-height: 200px">
+          <div class="padding">
+            <div class="row">
+              <!-------------------------------------------------- box left -------------------------------------------------->
+              <!-- <div class="col-md-5 offset-md-1"> -->
+              <div class="col-md-5">
+                <div class="box">
+                  <div class="box-header b-b">
+                    <h3 class="font-weight-bold">DETAILS</h3>
+                  </div>
+    
+                  <div class="box-body">
+                    <input type="hidden" id="lectCrsId">
+                    <input type="hidden" id="coordinator">
+                    <input type="hidden" id="grdSchmId">
+                    <input type="hidden" id="fk_cotDet">
+                    <input type="hidden" id="nameTypeExam">
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Lecturer</div>
+                      <div class="col-sm-9 text-uppercase" id="emp_id"></div> 
+                    </div>
+                    
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Academic Session</div>
+                      <div class="col-sm-9 text-uppercase" id="cur_year"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Academic Calendar Category</div>
+                      <div class="col-sm-9 text-uppercase" id="acaCal_type"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Course</div>
+                      <div class="col-sm-9 text-uppercase" id="crs_code"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-------------------------------------------------- end box left -------------------------------------------------->
+
+              <!-------------------------------------------------- box right -------------------------------------------------->
+              <!-- <div class="col-md-5"> -->
+              <div class="col-md-7">
+                <div class="box">
+                  <div class="box-header b-b">
+                    <h3 class="font-weight-bold">MARKS</h3>
+                    <div class="box-tool">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link text-muted btn_create_lecturer" id="btnNew" data-toggle="modal" data-target="#regMarks" data-backdrop="static" data-keyboard="false">
+                              <span class="">
+                                <i class="fa fa-fw fa-plus"></i>
+                                <span class="hidden-sm-down">New Record</span>
+                              </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+    
+                  <div class="box-body">
+                    <div class="m-b nav-active-info">
+                      <ul class="nav nav-pills nav-stacked" data-ui-nav id="divBox"></ul>
+                    </div>
+                  </div>
+                  <div class="box-footer">
+                    <hr>
+                    <!-- <button id="printAnalysisReport" class="btn blue-900">Result Analysis Report</button>
+                    <button id="shCLOxPLO" class="btn blue-900">CLO vs PLO Analaysis</button> -->
+                    <!-- <button id="generate_mark" class="btn btn-success" disabled >Generate Mark</button> -->
+                    <button id="print_mark" class="btn btn-outline-danger" disabled ><i class="fa fa-file-pdf-o"></i> Mark</button>
+                  </div>   
+                </div>
+              </div>
+              <!-------------------------------------------------- end box right -------------------------------------------------->
+             
+            </div>
+
+         <div class="box p-a">
+          <div class="row">
+     
+            <div class="col-sm-12">
+              <div class="b-b b-primary nav-active-primary">
+                <ul class="nav nav-tabs">
+                  <!-- <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="tab" data-target="#tab4">Pages</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#" data-toggle="tab" data-target="#tab5">Components</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="tab" data-target="#tab6">UI Kits</a>
+                  </li> -->
+                </ul>
+              </div>
+              <div class="m-t-2">
+                <div class="row">
+                  <div class="col-md-6">
+                    <button hidden data-toggle="modal" id="btn_markStd" data-target="#course_marks" data-ui-toggle-class="modal-open-aside" data-ui-target="body" class="btn btn-outline-primary"><i class="fa fa-check-circle-o"></i> MARKS <span class="pgmCode"></span> </button>
+                  </div>
+                  <div class="col-md-6 text-right btnOBEAnalysis" id="group_btn">
+                    <!-- <button id="show_mark" class="btn blue-900">Show Mark</button>
+                    <button id="generate_mark" class="btn btn-success" disabled="">Generate Mark</button>
+                    <button id="print_markPgm" class="btn btn-danger"><i class="fa fa-pdf-o"></i> Print Mark  <span class="pgmCode">DMS</span></button> -->
+                  </div>
+                </div>                  
+              </div>
+              <div class="tab-content bg-white p-a m-b-md">
+                <!-- <div class="tab-pane animated fadeIn text-muted" id="tab4">
+                  Pages
+                </div>
+                <div class="tab-pane animated fadeIn text-muted active" id="tab5">
+                  Components
+                </div>
+                <div class="tab-pane animated fadeIn text-muted" id="tab6">
+                  UI kits
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+
+
+            <!-- student -->
+            <div class="col-md-12">
+              <p class="m-a-0 ">
+                <textarea class="hidden" id="dataList"></textarea>
+                <p id="loading_mark" class="hidden"><i class="fa fa-cog fa-spin fa-2x"></i><br>Load Mark & Point...</p>
+                <table class="table table-bordered table-striped scroll" id="tblStudent"></table>
+              </p>                
+              <!-- <div class="box">
+                <div class="box-header light lt">
+                  <h3 class="font-weight-bold">STUDENT</h3>
+                </div>
+                <div class="box-body">
+                  
+                </div>
+              </div> -->
+            </div>
+            
+          </div>
+
+         </div>
+
+                <!-- LOADING START -->
+            <div class="modal" id="loading_modal" data-backdrop="static">
+              <div class="modal-dialog">
+                <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Migrate Mark...</i></div>
+              </div>
+            </div>
+
+            <div class="modal" id="loading_mode" data-backdrop="static">
+              <div class="modal-dialog">
+                <div class="text-center text-white" style="padding-top: 50%;"><span id="gear" class="fa fa-cog fa-spin fa-3x m-b"></span><br><i id="load_text">Please Wait...</i></div>
+              </div>
+            </div>
+            <!-- LOADING END -->
+
+            <!-------------------------------------------------- add marks -------------------------------------------------->
+            <div id="regMarks" class="modal fade" data-backdrop="static">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header purple-700">
+                      <h5 class="modal-title">ADD MARKS</h5>
+                  </div>
+                  <form role="form" id="formAddMarks">
+                    <div class="modal-body p-lg">
+                      <p>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Marks Type</label>
+                              <div class="col-sm-10">
+                                <select class="form-control slct2" id="non_obe_type" required></select>
+                                <input type="hidden" id="gsDet_id">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Item</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="item_name" required>
+                              </div>
+                            </div>
+
+                            <div class="form-group row ">
+                              <label class="col-sm-2 form-control-label">Marks Allocation (%)</label>
+                              <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="Mark (%)" id="non_obe_percentage">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Assessment SLT CI</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="ass_sltCi" required>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn info p-x-md">Save</button>
+                    </div>
+                  </form>
+                </div><!-- /.modal-content -->
+              </div>
+            </div><!-------------------------------------------------- end add marks -------------------------------------------------->
+
+            <!-------------------------------------------------- update marks -------------------------------------------------->
+            <div id="mdlUptMarks" class="modal fade" data-backdrop="static">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header purple-700">
+                      <h5 class="modal-title">UPDATE MARKS</h5>
+                  </div>
+                  <form role="form" id="formUptMark">
+                    <div class="modal-body p-lg">
+                      <p>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <input type="hidden" id="pk_id">
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Marks Type</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="view_non_obe_type" readonly>
+                                <input type="hidden" class="form-control" id="upt_non_obe_type">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Item</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="upt_item_name" required>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Marks Allocation (%)</label>
+                              <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="Mark (%)" id="upt_non_obe_percentage">
+                              </div>
+                            </div>
+
+                             <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Assasement SLT CI</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="upt_ass_sltCi" required>
+                              </div>
+                            </div>
+
+
+                          </div>
+                        </div>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn info p-x-md">Update</button>
+                    </div>
+                  </form>
+                </div><!-- /.modal-content -->
+              </div>
+            </div><!-------------------------------------------------- end update marks -------------------------------------------------->
+
+            <!-------------------------------------------------- update marks Item -------------------------------------------------->
+            <div id="mdlUptMarksItem" class="modal fade" data-backdrop="static">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header purple-700">
+                      <h5 class="modal-title">UPDATE MARKS ITEM</h5>
+                  </div>
+                  <form role="form" id="formUptMarkItem">
+                    <div class="modal-body p-lg">
+                      <p>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <input type="hidden" id="pk_id_sub">
+                            <!-- <input  id="pk_id2"> -->
+                            <!-- <input  id="gsd_percentageMarks"> -->
+                            <input type="hidden" id="gsd_percentageMarks">
+                            <input type="hidden" id="AssSLTCI">
+                            <input type="hidden" id="markAllocate3">
+
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">CLO</label>
+                              <div class="col-sm-10">
+                                <select class="form-control slct2" id="upt_clo_lecCourse_sub" required></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Marks (%)</label>
+                              <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="Mark (%)" id="upt_non_obe_percentage_sub">
+                              </div>
+                            </div>
+
+                            <!-- <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Weightage</label>
+                              <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" placeholder=" Example : 0.00" id="upt_weightage_sub">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">SLT </label>
+                              <div class="col-sm-10">
+                                <input type="number" readonly class="form-control" placeholder="" id="upt_slt_sub">
+                              </div>
+                            </div> -->
+
+                          </div>
+                        </div>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn info p-x-md">Update</button>
+                    </div>
+                  </form>
+                </div><!-- /.modal-content -->
+              </div>
+            </div><!-------------------------------------------------- end update marks Item -------------------------------------------------->
+
+            <!-------------------------------------------------- add Mark Clo -------------------------------------------------->
+            <div id="markCloNew" class="modal fade" data-backdrop="static">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header purple-700">
+                      <h5 class="modal-title">ADD ITEM MARKS</h5>
+                  </div>
+                  <form role="form" id="formAddMarksClo">
+                    <div class="modal-body p-lg">
+                      <p>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">CLO</label>
+                              <div class="col-sm-10">
+                                <select class="form-control slct2" id="item_clo" required></select>
+                                <input type="hidden" id="fk_LecCourseDet">
+                                <input type="hidden" id="itemName2">
+                                <input type="hidden" id="markAllocate2">
+                                <input type="hidden" id="AssSLTCI2">
+                                <input type="hidden" id="gsd_percentageMarks2">
+
+                                <!-- <input  id="fk_LecCourseDet">
+                                <input  id="itemName2">
+                                <input  id="markAllocate2">
+                                <input  id="AssSLTCI2">
+                                <input  id="gsd_percentageMarks2"> -->
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Marks</label>
+                              <div class="col-sm-10">
+                                <input type="number" class="form-control" id="item_marks" required>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                        <div  id="saveaddNewCloPlo"></div>
+                      <!-- <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn info p-x-md">Save</button> -->
+                    </div>
+                  </form>
+                </div><!-- /.modal-content -->
+              </div>
+            </div><!-------------------------------------------------- end add Mark Clo -------------------------------------------------->
+
+            <div id="MarkClo" class="modal fade" data-backdrop="static">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header teal-500">
+                      <h5 class="modal-title">ITEM DETAILS</h5>
+                      <div  id="itemMarks2"></div>
+        
+                    </div>
+                    <div class="modal-body p-lg">
+                      <p class="">
+                        <!-- <span class="hidden" id="acaCal"></span> -->
+                        <div class="form-group row">
+                          <div class="col-sm-2 font-weight-bold">Item</div>
+                          <div class="col-sm-10 text-uppercase" id="item"></div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="col-sm-2 font-weight-bold">Mark Allocation (%)</div>
+                          <div class="col-sm-10 text-uppercase" id="MarkAlloc"></div>
+                        </div>
+        
+                        <div class="form-group row">
+                          <div class="col-sm-2 font-weight-bold">Assessment SLT CI</div>
+                          <div class="col-sm-10 text-uppercase" id="AssSLTCI_det"></div>
+                        </div>
+        
+                        <hr>
+
+                        <div  id="addNewClo"></div>
+                        <table class="table table-striped m-b-none" data-sorting="true" id="tblCMark"></table>
+                      
+                    <div class="modal-footer">
+                      <button type="button" class="btn white p-x-md" id="closeMdlDet" data-dismiss="modal">Close</button>
+                      <!-- <button type="button" class="btn btn-outline-danger p-x-md" id="printTimeTableExam"><i class="fa fa-file-pdf-o"></i> Print</button> -->
+        
+                    </div>
+        
+                </div><!-- /.modal-content -->
+              </div>
+            </div>
+        
+            <!-------------------------------------------------- end lecturer -------------------------------------------------->
+        
+          </div>
+
+          <!-------------------------------------------------- modal upload student mark -------------------------------------------------->
+          <div id="mdlUpload" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form role="form" id="form_excel">
+                  <div class="modal-header p-a-0 blue-900">
+                    <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+                    <div class="p-a b-b">
+                      <span class="h5 text-uppercase" id="subItem"></span>
+                    </div>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                      <h6 class="font-weight-bold m-b-2">DOWNLOAD STUDENT LIST</h6>
+                      <textarea class="hidden" id="dataDnldList"></textarea>
+                      <table class="table table-bordered table-striped m-b-none" id="tblStdDnld"></table>
+                      <hr>
+                      <div class="text-right"><button type="button" id="btnExcel" class="btn btnExcel btn-success">Excel</button></div>
+
+                      <div class="saveExcel">
+                        <hr>
+                        <h6 class="font-weight-bold m-b-2">UPLOAD STUDENT MARK</h6>
+                        <input type="hidden" id="fk_idClo">
+                        <input type="hidden" id="cloLevel">
+                        <input type="hidden" id="lectCrsDet_id">
+                        <input type="hidden" id="fullMark">
+                        <div class="form-group row">
+                          <label for="" class="col-sm-2 form-control-label ">Upload</label>
+                          <div class="col-sm-10">
+                            <input type="file" class="form-control" name="excel_file" id="excel_file" required>
+                            <span id="tempStd"></span>
+                          </div>
+                        </div>
+                        <textarea class="hidden" rows="10" cols="30" id="list_data"></textarea>
+                      </div>
+                    </p>
+                  </div>
+                  <div class="modal-footer saveExcel">
+                    <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn info p-x-md">Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-------------------------------------------------- end modal upload student mark -------------------------------------------------->
+
+            <!-------------------------------------------------- add marks -------------------------------------------------->
+            <div id="mdlStdMarks" class="modal fade" data-backdrop="static">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header green-500">
+                      <h5 class="modal-title">ADD MARKS</h5>
+                  </div>
+                  <form role="form" class="formName" id="formAddMarks">
+                    <div class="modal-body p-lg">
+                      <p>
+                        <div class="row">
+                        <div class="col-md-12">
+                            <input type="hidden" class="formEdit" id="pk_stdMark">
+                            <input type="hidden" class="" id="cloLevelFK">
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Student Id</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="fk_student" readonly>
+                              </div>
+                            </div>
+    
+                            <div class="form-group row">
+                              <label class="col-sm-2 form-control-label">Item</label>
+                              <div class="col-sm-10">
+                                <select class="form-control slct2" id="fk_lectCrsDet" required></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row m-b-0">
+                              <label class="col-sm-2 form-control-label">Marks</label>
+                              <div class="col-sm-3">
+                                <input type="number" class="form-control formEdit" id="mark" step="0.01" required>
+                              </div>
+                              <div class="col-sm-2"><input type="text" class="form-control" id="setMark" disabled></div>
+                            </div>
+                          </div>
+                        </div>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                      <span id="btnSave"></span>
+                    </div>
+                  </form>
+                </div><!-- /.modal-content -->
+              </div>
+            </div>
+            <!-------------------------------------------------- end add marks -------------------------------------------------->
+
+          </div>
+        </div>
+
+        <!-- ############ PAGE END-->
+
+      </div><!-- end app-body -->
+    </div><!-- end content -->
+    <!-- / -->
+
+     
+    <!-- ############ SWITHCHER START-->
+    <div class="modal fade inactive" id="course_marks" data-backdrop="false">
+      <div class="modal-right w-xl white b-l">
+          <div class="row-col">
+            <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+            <div class="p-a b-b">
+              <span class="h5">MARKS <span class="pgmCode"></span></span>
+            </div>
+            <div class="row-row">
+              <div class="row-body">
+                <div class="row-inner">
+                  <div class="m-b nav-active-info">
+                    <ul class="nav nav-pills nav-stacked" data-ui-nav id="divBoxMain"></ul>
+                  </div>                  
+                </div>
+              </div>
+            </div>
+            <div class="p-a b-t">
+              
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- ############ SWITHCHER END-->
+
+
+  <!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="libs/select2/dist/js/select2.full.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+
+  <script src="excel2json/xlsx.full.min.js"></script>
+  <script src="excel2json/tableToExcel.js"></script>
+  <script src="excel2json/xlsx.core.min.js"></script>
+  <script src="excel2json/js/jhxlsx.js"></script>
+  <script src="excel2json/js/FileSaver.js"></script>
+
+  <script src="config.js"></script>
+  <script src="scripts/action.min.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="detLectCourse.js?n=6"></script>
+  <script src="capaian.js"></script>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Find the button element
+    var closeButton = document.getElementById('closeMdlDet');
+    
+    // Add click event listener to the button
+    closeButton.addEventListener('click', function() {
+        // Refresh the page
+        location.reload();
+    });
+});
+
+
+
+
+$('#myModalID').on("scroll", function() {      
+  console.log("Scrolling");
+});
+  </script>
+<!-- endbuild -->
+</body>
+</html>

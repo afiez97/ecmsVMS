@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <!-- style -->
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="libs/select2/dist/css/select2-bootstrap.css">
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+    <div class="app-header white bg b-b">
+          <div class="navbar" data-pjax>
+                <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                  <i class="ion-navicon"></i>
+                </a>
+                <div class="navbar-item pull-left h5" id="pageTitle">VMS Application</div>
+                <!-- nabar right -->
+                <ul class="nav navbar-nav pull-right">
+                  <li class="nav-item dropdown A1">
+                    <a class="nav-link clear" data-toggle="dropdown">
+                      <span class="text-uppercase font-weight-bold" id="usrName"></span>
+                      <i class="fa fa-cog"></i>
+                    </a>
+                    <div class="dropdown-menu w dropdown-menu-scale pull-right ">
+                      <a class="dropdown-item btnSttng btn_read_setting" id="btnCalendar">
+                        <i class="fa fa-plus m-r-0"></i>
+                        <span>Academic Calendar</span>
+                      </a>
+
+                      <a class="dropdown-item btnSttng btn_read_setting" id="btnSessionIntake">
+                        <i class="fa fa-plus m-r-0"></i>
+                        <span>Academic Session/Intake</span>
+                      </a>
+
+                      <a class="dropdown-item btnSttng btn_read_setting" id="btnCampus">
+                        <i class="fa fa-plus m-r-0"></i>
+                        <span>Campus</span>
+                      </a>
+
+                      <a class="dropdown-item btnSttng btn_read_setting" id="btnFaculty">
+                        <i class="fa fa-plus m-r-0"></i>
+                        <span>Faculty</span>
+                      </a>
+
+                      <a class="dropdown-item btnSttng btn_read_setting" id="btnProgramme">
+                        <i class="fa fa-plus m-r-0"></i>
+                        <span>Programme</span>
+                      </a>
+
+                      <a class="dropdown-item btnSttng btn_read_setting" id="btnCourse">
+                        <i class="fa fa-plus m-r-0"></i>
+                        <span>Course</span>
+                      </a>
+
+                      <a class="dropdown-item btnSttng btn_read_setting" id="btnExamGrade">
+                        <i class="fa fa-plus m-r-0"></i>
+                        <span>Exam Grade</span>
+                      </a>
+
+                      <a class="dropdown-item btnSttng btn_read_setting" id="btnAccess">
+                        <i class="fa fa-plus m-r-0"></i>
+                        <span>Role Access</span>
+                      </a>
+
+                      <a class="dropdown-item" id="btnLogout">Logout</a>
+                    </div>
+                  </li>
+                </ul>
+                <!-- / navbar right -->
+          </div>
+    </div>
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+
+    <!-- LOADING START -->
+    <div class="modal" id="loading_modal" data-backdrop="static">
+      <div class="modal-dialog">
+        <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+      </div>
+    </div>
+    <!-- LOADING END -->
+    
+    <div class="app-body">
+
+      <!-- ############ PAGE START-->
+      <!-- only need a height for layout 4 -->
+      <div style="min-height: 200px">
+        <div class="container-fluid m-t-2">
+          <div class="m-b" id="accordion">
+            <div class="panel box no-border m-b-xs">
+              <div class="box-header p-y-sm">
+                <a data-toggle="collapse" data-parent="#accordion" data-target="#campus">
+                  <h4><i class="fa fa-university"></i> CAMPUS</h4>
+                </a>
+              </div>
+              <div id="campus" class="collapse in">
+                <div class="box-body">
+                  <div class="row" id="div_dashboard"></div>                
+                </div>
+              </div>
+            </div>
+  
+            <div class="K8 panel box no-border m-b-xs super_admin btnEsenat btn_read_e_eSenat">
+              <div class="box-header p-y-sm purple-50">
+                <a data-toggle="collapse" data-parent="#accordion" data-target="#senat">
+                  <h4><i class="fa fa-area-chart"></i> eSENAT</h4>
+                </a>
+              </div>
+              <div id="senat" class="collapse">
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                        <form id="search_form">
+                            <div class="row m-b-2">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-3 ">
+                                            <label for="sec_taken">Academic Session</label>
+                                            <!-- <select name="semester" id="semester" class="form-control"></select> -->
+                                            <select class="form-control slct2 c-select" id="semester" required name="semester"></select>
+                                        </div>
+                                        <button class="btn blue-900" style="margin-top:1.5rem;margin-left:0.5rem" type="submit"><i class="fa fa-search"></i> Find</button>
+                                    </div>
+                                </div>
+                                
+                            </div>                            
+                        </form>                
+                        <div class="box">
+                          <div class="box-header purple-700">
+                            <h3><b class="text-uppercase">ACADEMIC SESSION <span class="aca_session_dis"></span></b></h3>
+                          </div>
+                          <div class="box-body light lt">
+                            <p class="m-a-0 ">
+                                
+                                <div class="row">
+                                    
+                                    <div class="col-md-6" id="statistic_desk">
+                                        <div class="row">
+                                          <!-- status active -->
+                                            <div class="col-md-4">
+                                                <div class="box p-a">
+                                                    <div class="pull-left m-r">
+                                                        <span class="avatar w-40 text-center rounded success">
+                                                        <span class="fa fa-male"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="clear">
+                                                        <h4 class="m-a-0 text-md"><a class="" href="javascript:void(0)"><span id="active_std"></span> <span class="text-sm">Students</span></a></h4>
+                                                        <small class="text-muted">Status Active</small>
+                                                    </div>
+                                                </div>                                         
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="box p-a">
+                                                    <div style="cursor: pointer;" class="pull-left m-r btn_deffered">
+                                                        <span class="avatar w-40 text-center rounded warning">
+                                                        <span class="fa fa-male"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="clear">
+                                                        <h4 class="m-a-0 text-md"><span id="deferred_std"></span> <span class="text-sm">Students</span></h4>
+                                                        <small class="text-muted">Status Deferred</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="box p-a">
+                                                    <div style="cursor: pointer;"  class="pull-left m-r btn_withdraw">
+                                                        <span class="avatar w-40 text-center rounded danger">
+                                                        <span class="fa fa-male"></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="clear">
+                                                        <h4 class="m-a-0 text-md"><span id="withdraw_std"></span> <span class="text-sm">Students</span></h4>
+                                                        <small class="text-muted">Status Withdraw</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- status active end -->
+                                            <!-- status GPA/CGPA -->
+                                            <div class="col-md-4">
+                                              <div class="box p-a">
+                                                  <div class="pull-left m-r">
+                                                      <span class="avatar w-40 text-center rounded blue">
+                                                      <span class="fa fa-male"></span>
+                                                      </span>
+                                                  </div>
+                                                  <div class="clear">
+                                                      <h4 class="m-a-0 text-md"><a class="" href="javascript:void(0)"><span id="good_std"></span> <span class="text-sm">Students</span></a></h4>
+                                                      <small class="text-muted"><b>GPA</b> Good Standing</small>
+                                                  </div>
+                                              </div>                                         
+                                          </div>
+                                          <div class="col-md-4">
+                                              <div class="box p-a">
+                                                  <div class="pull-left m-r">
+                                                      <span class="avatar w-40 text-center rounded lime">
+                                                      <span class="fa fa-male"></span>
+                                                      </span>
+                                                  </div>
+                                                  <div class="clear">
+                                                      <h4 class="m-a-0 text-md"><a class="" href="javascript:void(0)"><span id="con_std"></span> <span class="text-sm">Students</span></a></h4>
+                                                      <small class="text-muted"><b>GPA</b> Conditional Standing</small>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-4">
+                                              <div class="box p-a">
+                                                  <div class="pull-left m-r">
+                                                      <span class="avatar w-40 text-center rounded blue-grey">
+                                                      <span class="fa fa-male"></span>
+                                                      </span>
+                                                  </div>
+                                                  <div class="clear">
+                                                      <h4 class="m-a-0 text-md"><a class="" href="javascript:void(0)"><span id="failed_std"></span> <span class="text-sm">Students</span></a></h4>
+                                                      <small class="text-muted"><b>GPA</b> Failed</small>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <!-- status GPA/CGPA end -->
+                                            <div class="col-md-12">
+                                                <div class="box">
+                                                    <div class="box-header">
+                                                      <h3>GPA/CGPA Status</h3>
+                                                      <small class="block text-muted">Academic Session : <span class="aca_session_dis"></span></small>
+                                                    </div>
+                                                    <div class="box-body">
+                                                      <div id="chart_gpaCgpa" data-ui-jp="echarts" style="height:350px" >
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <select name="campus_select" id="campus_select" class="form-control m-b-2"></select>
+                                            </div> 
+                                            <div class="col-md-12">
+                                              <table class="table table-bordered table-striped" id="tblPgm">
+                                                <tbody id="list_pgm"></tbody>
+                                              </table>                                              
+                                            </div>                                   
+                                        </div>                                                                                                                                       
+                                    </div>
+                                    
+                                    <div class="col-md-6">                              
+                                        
+                                        
+                                        <div class="row">                                          
+                                          <div class="col-md-12">
+                                              <p>
+                                                <span class="pull-right">Academic Session : <span class="aca_session_dis">No Data</span></span>
+                                              </p>
+                                              <div class="table-responsive">
+                                                <table id="tbl" class="table table-striped table-bordered table-condensed">
+                                                  <thead class="purple-200">
+                                                      <tr>
+                                                          <th>No.</th><th>Intake</th><th class="text-center">Semester</th>
+                                                          <th class="text-center">Student</th><th>Academic Status</th>
+                                                          <th>CGPA</th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody id="list_standing"></tbody>
+                                                  <tfoot class="purple-700">
+                                                      <tr><td colspan="3" class="text-right"><b>TOTAL</b></td><td class="text-center"><b class=" total_std"></b></td><td colspan="2"></td></tr>
+                                                  </tfoot>
+                                              </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+
+                                
+                            </p>
+                          </div>
+                        </div>                
+                    </div>
+                  </div>                
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+
+      <!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+
+  <div class="modal" id="loading_mode" data-backdrop="static">
+    <div class="modal-dialog">
+      <div style="padding-top: 50%; color: #ffffff;" class="text-center text-white"><span class="fa fa-refresh fa-spin fa-2x m-b"></span>&nbsp;&nbsp;&nbsp;<i id="load_text">Loading Data...</i></div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="list_stdStanding" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5><span id="title_standing"></span> <a href="javascript:void(0);" class="btn btn-icon pull-right" data-dismiss="modal">&times;</a></h5>
+                <small id="title_intake"></small>
+            </div>
+            <div class="modal-body">
+                <table id="liststdStanding" data-sorting="true" class="table table-striped table-condensed table-bordered"></table>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" data-dismiss="modal" class="btn grey-100">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="modal fade" id="list_stdPgm" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5><span id="name_pgm"></span> <a href="javascript:void(0);" class="btn btn-icon pull-right" data-dismiss="modal">&times;</a></h5>
+            </div>
+            <div class="modal-body">
+                <p class="text-success"><span id="status_checked"></span></p>
+                <table id="listStdPgm" data-sorting="true" class="table table-striped table-condensed table-bordered"></table>
+            </div>
+            <div class="modal-footer">
+              <div class="row">
+                <div class="col-md-6 text-left">
+                  <label class="text-success alert green-100" id="release_text"></label>
+                </div>
+                <div class="col-md-6">
+                  <button class="btn btn-primary btn_release btn_update_e_eSenat">Release <i class="fa fa-users"></i></button>
+                  <a href="javascript:void(0)" data-dismiss="modal" class="btn grey-100">Back</a>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+    </div>
+  </div> 
+  
+  <div class="modal fade" id="viewResult">
+    <div class="modal-bottom white b-b" style="height:80%;">
+        <div class="row-col">
+            <div class="grey-100 b-b b-t">
+                <div class="container">
+                    <div class="row m-t-1">
+                        <div class="col-xs-4">
+                            <img src="images/LOGO-UCMI(Landscape).png" width="80%" alt="" srcset="">
+                        </div>
+                        <div class="col-xs-8 text-right">
+                                <b id="student_id"></b><br>
+                                <span id="name_std"></span>
+                                <span id="noic"></span><br>
+                                <span id="intake_std"></span>
+                                <hr>
+                                <span id="programme_name"></span>  
+                                <span id="cur_intake"></span>
+                                <span id="sem_academic"></span><br>
+                                <span>SEMESTER : <span id="sem_std"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-row">
+                <div class="row-body">
+                    <div class="row-inner">
+                        <div class="container">
+                            <p class="text-center table-responsive" style="padding:0 0;">
+                                <table class="table m-b-none table-bordered table-striped" id="tblResult"></table>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-a b-t">
+                <div class="container text-right">
+                    <input type="hidden" name="modal" id="modal">
+                    <button class="btn btn-dark" id="back_page">Back</button>
+                </div>
+            </div>
+        </div> <!-- row-col -->            
+    </div>
+</div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+<script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/excel2json/xlsx.full.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="libs/select2/dist/js/select2.full.min.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+<!-- endbuild -->
+
+<script src="config.js"></script>
+<script src="callFunction.js"></script>
+<script src="scripts/action.min.js"></script>
+<script src="campusPage_latest_lagi.js?azizz=1"></script>
+<script src="capaian.js"></script>
+
+<!-- <script src="campusPage.js"></script> -->
+</body>
+</html>

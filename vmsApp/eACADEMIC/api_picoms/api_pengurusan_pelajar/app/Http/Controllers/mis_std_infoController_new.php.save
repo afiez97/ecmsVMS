@@ -1,0 +1,389 @@
+<?php
+
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use App\Models\sad_users;
+use App\Models\mis_std_info;
+
+class mis_std_infoController_new extends Controller
+{
+    public function  __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    public function create(Request $request){
+        $std_studentid        = $request->input('std_studentid');
+        $sti_name             = $request->input('sti_name');
+        $sti_icno             = $request->input('sti_icno');
+        $pgm_fk               = $request->input('pgm_fk');
+        $pgm_id               = $request->input('pgm_id');
+        $cur_intake           = $request->input('cur_intake');
+        $sti_session_id       = $request->input('sti_session_id');
+        $sti_nationality      = $request->input('sti_nationality');
+        $cam_id               = $request->input('cam_id');
+        $sti_email            = $request->input('sti_email');
+        $recordstatus         = "ADD";
+
+        //GENERATE PASSWORD
+        $salt = "RMY7nZ3+s8xpU1n0O*0o_EGfdoYtd|iU_AzhKCMoSu_xhh-e|~y8FOG*-xLZ";
+        $password     = hash("sha256", $sti_icno.$salt);
+
+        if($std_studentid == "" || $std_studentid == null){
+            //GET CUR_INTAKE & SESSION
+            $session_id = substr($cur_intake,6);
+            $set_intake = date_format(date_create(substr($cur_intake,0,3)),'m');
+
+            //SET NOSIRI
+            $nosiri = "001";
+            $obj = mis_std_info::select("nosiri")
+            ->where('pgm_id',$pgm_id)
+            ->where('cur_intake',$cur_intake)
+            ->where('sti_session_id',$sti_session_id)
+            ->where('cam_id',$cam_id)
+            ->orderBy("nosiri","DESC")->first();
+
+            if($obj){
+                $num = (int) $obj['nosiri']+1;
+                if(strlen($num) == 1){
+                    $nosiri = "00".$num;
+                }
+                elseif(strlen($num) == 2){
+                    $nosiri = "0".$num;
+                }
+                else{
+                    $nosiri = $num;
+                }
+            }
+
+            //CREATE STUDENT_ID
+            $std_studentid = $pgm_id.$set_intake.$session_id."1".$nosiri;
+            
+            if($sti_nationality == "2"){
+                $std_studentid = $pgm_id.$set_intake.$session_id."0".$nosiri;
+            }
+            else if($sti_nationality == "MALAYSIA"){
+                $sti_nationality == "2";
+                $std_studentid = $pgm_id.$set_intake.$session_id."0".$nosiri;
+            }
+        }
+
+        $destinationPath_image = "";
+        if($file = $request->hasFile('sti_image')) {
+            $destinationPath_image = $request->file('sti_image')->getClientOriginalExtension(); 
+            $resitdoc_image = base64_encode(file_get_contents($request->file('sti_image')->getRealPath()));
+        }else{
+            $resitdoc_image = '';
+        }
+
+        $data = [
+            'std_studentid'     => $std_studentid,
+            'nosiri'            => $nosiri,            
+            'pgm_fk'            => $pgm_fk ,
+            'pgm_id'            => $pgm_id ,
+            'cur_intake'        => $cur_intake,
+            'sti_session_id'    => $sti_session_id,
+            'sti_nationality'   => $sti_nationality,
+            'sti_password'      => $password,
+            'sti_name'          => strtoupper($sti_name),
+            'sti_icno'          => $sti_icno,
+            'sti_email'         => $sti_email,
+            'cam_id'            => $cam_id,
+            'sti_image'         => $resitdoc_image,
+            'sti_image_path'    => $destinationPath_image,
+            'status_academic'   => '4',
+            'recordstatus'      => $recordstatus,
+        ];
+
+        $dataSad = [
+            'usr_id'  =>  $std_studentid,
+            'usr_icno'  =>  $sti_icno,
+            'usr_passwd'  =>  $password,
+            'usr_name'  =>  $sti_name,
+            'profile'  =>  $resitdoc_image,
+            'recordstatus'  =>  $recordstatus, 
+            // 'user_token'  =>  $,
+            'usr_status'  =>  'Active',
+            'change_password'  =>  'N',
+            'usr_startdate'  =>  date('Y-m-d H:i:s'),
+            'usr_email'  =>  $sti_email,
+            'usr_cat_estudent'  =>  '1',
+            'usr_cat_ehep'  =>  '0',
+            'usr_cat_ecmis'  =>  '0',
+            'usr_cat_ehrms'  =>  '0',
+            'usr_cat_admin'  =>  '0',
+        ]; 
+        
+        $infoSad = sad_users::create($dataSad);
+
+        // return $data;
+        if($infoSad){
+            $obj   = mis_std_info::create($data);            
+            return response()->json([
+                'success'=>true,
+                'messages'=>'Proses Berjaya',
+                'data'=>$obj,
+                'data_sad'=>$infoSad,
+            ],201);
+        }
+        else {
+            return response()->json([
+                'success'=>false,
+                'messages'=>'Proses Gagal',
+                'data'=>'',
+            ],400);
+        }
+    }
+
+    public function update(Request $request){
+        $std_studentid        = $request->input('std_studentid');
+        $sti_name             = $request->input('sti_name');
+        $sti_icno             = $request->input('sti_icno');
+        $pgm_id               = $request->input('pgm_id');
+        $cur_intake            = $request->input('cur_intake');
+        $sti_gender           = $request->input('sti_gender');
+        $sti_nationality      = $request->input('sti_nationality');
+        $sti_status_bumiputra = $request->input('sti_status_bumiputra');
+        $sti_race             = $request->input('sti_race');
+        $sti_religion         = $request->input('sti_religion');
+        $sti_status_oku       = $request->input('sti_status_oku');
+        $sti_blood_type       = $request->input('sti_blood_type');
+        $sti_email            = $request->input('sti_email');
+        $sti_address_1        = $request->input('sti_address_1').", ".$request->input('sti_address_2').", ".$request->input('sti_address_3');;
+        $sti_postcode         = $request->input('sti_postcode');
+        $sti_state            = $request->input('sti_state');
+        $sti_contactno_home   = $request->input('sti_contactno_home');
+        $sti_contactno_mobile = $request->input('sti_contactno_mobile');
+        $sti_bank_id          = $request->input('sti_bank_id');
+        $sti_bank_accountno   = $request->input('sti_bank_accountno');
+        $marital_status   = $request->input('marital_status');
+        $status_academic   = $request->input('status_academic');
+        $duration_std   = $request->input('duration_std');
+        $remark   = $request->input('remark');
+        $staff_alumi   = $request->input('staff_alumi');
+        // $resitdoc_image       = $request->input('sti_image');
+
+        if($sti_nationality == "MALAYSIA"){
+            $sti_nationality == "2";
+        }
+
+        if($sti_gender == "Male"){
+            $sti_gender = "L";
+        }
+        else if($sti_gender == "Female"){
+            $sti_gender = "P";
+        }
+
+        if($sti_race == "Malay"){
+            $sti_race = "1";
+        }
+        else if($sti_race == "Chinese"){
+            $sti_race = "99";
+        }
+        else if($sti_race == "Indian"){
+            $sti_race = "111";
+        }
+        else if($sti_race == "Pre-Bumi"){
+            $sti_race = "3";
+        }
+        else if($sti_race == "Others"){
+            $sti_race = "";
+        }
+
+        //PROFILE DOC
+        // if($file = $request->hasFile('sti_image')) {
+        //     // dd('1');
+        //     // $destinationPath_image = public_path().'\profile' ;
+        //     $image = base64_encode(file_get_contents($request->file('sti_image')->getRealPath()));
+        // }else{
+        //     // dd('2');
+        //     // $destinationPath_image = mis_std_infoController::getCurrFile('mis_std_info','sti_image_path',$std_studentid);
+        //     $info_image = mis_std_infoController::getCurrFile('mis_std_info','sti_image',$std_studentid);
+        //     $image = $info_image -> sti_image;
+        // }
+
+
+        $data = [
+            'std_studentid'         => $std_studentid ,
+            'sti_name'              => $sti_name ,
+            'sti_icno'              => $sti_icno ,
+            'pgm_id'                => $pgm_id ,
+            'cur_intake'            => $cur_intake,
+            'sti_gender'            => $sti_gender,
+            'sti_nationality'       => $sti_nationality,
+            'sti_status_bumiputra'  => $sti_status_bumiputra,
+            'sti_race'              => $sti_race,
+            'sti_religion'          => $sti_religion,
+            'sti_status_oku'        => $sti_status_oku,
+            'sti_blood_type'        => $sti_blood_type,
+            'sti_email'             => $sti_email,
+            'sti_address_1'         => $sti_address_1,
+            // 'sti_address_2'         => $sti_address_2,
+            // 'sti_address_3'         => $sti_address_3,
+            'sti_postcode'          => $sti_postcode,
+            'sti_state'             => $sti_state,
+            'sti_contactno_home'    => $sti_contactno_home,
+            'sti_contactno_mobile'  => $sti_contactno_mobile,
+            'sti_bank_id'           => $sti_bank_id,
+            'sti_bank_accountno'    => $sti_bank_accountno,
+            'marital_status'        => $marital_status,
+            'status_academic'       => $status_academic,
+            'duration_std'          => $duration_std,
+            'remark'                => $remark,
+            'staff_alumi'           => $staff_alumi,
+            'recordstatus'          => "ADD",
+            // 'sti_image'             => $image,
+            // 'sti_image_path' => $destinationPath_image,
+        ];
+
+        $obj = mis_std_info::where('std_studentid',$std_studentid)-> update($data);
+
+        if($obj){
+
+            return response()->json([
+                'success'=>true,
+                'messages'=>'Successfully Register',
+                'data'=>$obj,
+            ],201);
+        }
+        else {
+            return response()->json([
+                'success'=>false,
+                'messages'=>'Registration Failed',
+                'data'=>'',
+            ],400);
+        }
+    }
+
+    public function show(Request $request){
+        $id = $request->input('std_studentid');
+
+        $obj = mis_std_info::select("*")->where([['recordstatus','!=','DEL'],['std_studentid','=',$id]])->first();
+        if($obj){
+
+            return response()->json([
+                'success'=>true,
+                'messages'=>'Proses Berjaya',
+                'data'=>$obj,
+            ],200);
+        }
+        else {
+            return response()->json([
+                'success'=>false,
+                'messages'=>'Proses Gagal',
+                'data'=>'',
+            ],200);
+        }
+    }
+
+    public function list(){
+        $obj = mis_std_info::select('*')
+        // ->leftJoin('mis_prm_programme', 'mis_prm_programme.pgm_id', '=', 'std_info.offer_choice')
+        ->where([
+            ['recordstatus','!=','DEL']
+            ])
+        ->orderBy('mis_std_info.lastupdateon','DESC')
+            ->first();
+
+        if($obj){
+
+            return response()->json([
+                'success'=>true,
+                'messages'=>'Proses Berjaya',
+                'data'=>$obj,
+            ],200);
+        }
+        else {
+            return response()->json([
+                'success'=>false,
+                'messages'=>'Proses Gagal',
+                'data'=>'',
+            ],200);
+        }
+    }
+
+    public function listByCam(Request $request){
+
+        $pgm_fk = $request->input("pgm_id");
+        $cur_intake = $request->input("cur_intake");
+        $cam_id = $request->input("cam_id");
+        
+        $obj = mis_std_info::
+        leftJoin('mis_prm_programme', 'mis_prm_programme.pk_id', '=', 'mis_std_info.pgm_fk')
+        ->where('mis_std_info.pgm_fk',$pgm_fk)
+        ->where('mis_std_info.cur_intake',$cur_intake)
+        ->leftJoin('mis_prm_faccampus', 'mis_prm_faccampus.fac_id', '=', 'mis_prm_programme.fac_id')
+        ->leftJoin('mis_prm_college', 'mis_prm_college.pk_id', '=', 'mis_prm_faccampus.cam_id')
+        ->where('mis_prm_faccampus.cam_id',$cam_id)
+        ->where('mis_std_info.recordstatus','!=','DEL')
+        ->orderBy('mis_std_info.lastupdateon','DESC')
+        ->get();
+
+        if($obj){
+
+            return response()->json([
+                'success'=>true,
+                'messages'=>'Proses Berjaya',
+                'data'=>$obj,
+            ],200);
+        }
+        else {
+            return response()->json([
+                'success'=>false,
+                'messages'=>'Proses Gagal',
+                'data'=>'',
+            ],400);
+        }
+    }
+
+    public function listNew(Request $request){
+        $cam_id = $request->input("cam_id");
+        
+        $obj = mis_std_info::
+        leftJoin('mis_prm_programme', 'mis_prm_programme.pk_id', '=', 'mis_std_info.pgm_fk')
+        ->leftJoin('mis_prm_faccampus', 'mis_prm_faccampus.fac_id', '=', 'mis_prm_programme.fac_id')
+        ->leftJoin('mis_prm_college', 'mis_prm_college.pk_id', '=', 'mis_prm_faccampus.cam_id')
+        ->where('mis_prm_faccampus.cam_id',$cam_id)
+        ->where('mis_std_info.recordstatus','=','ADD')
+        ->orderBy('mis_std_info.lastupdateon','DESC')
+        ->get();
+
+        if($obj){
+
+            return response()->json([
+                'success'=>true,
+                'messages'=>'Proses Berjaya',
+                'data'=>$obj,
+            ],200);
+        }
+        else {
+            return response()->json([
+                'success'=>false,
+                'messages'=>'Proses Gagal',
+                'data'=>'',
+            ],400);
+        }
+    }
+
+    public function delete(){
+        
+    }
+
+    public function getCurrFile($tablename,$param1,$param2){
+
+        $output = '';
+
+        // if($tablename == 'mis_std_info'){
+        //     $output = mis_std_info::select($param1)
+        //     ->where([
+        //         ['mis_std_info.recordstatus','!=','DEL'],
+        //         ['mis_std_info.std_studentid','=',$param2]
+        //         ])->first();
+
+        // }
+        
+            return $output;
+    }
+}

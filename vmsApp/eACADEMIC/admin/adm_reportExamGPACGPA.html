@@ -1,0 +1,303 @@
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <span class="navbar-item text-md">Reporting Examination (GPA/CGPA)</span>
+      </li>
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+  </div>
+</div>
+
+<!-- FOOTER INSERT  -->
+<div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+<div class="app-body">
+
+  <!-- CONTENT START -->
+  <div style="min-height: mh-200">
+    <div class="col-md-10 offset-md-1 mt-2">
+      <div class="box">
+        <div class="box-header blue-grey-900">
+          <h3><b>GPA/CGPA</b></h3>
+        </div>
+        <div class="box-body b-b">
+          <p class="m-a-0 ">
+          <div class="form-group row">
+            <div class="col-sm-5">
+              <select class="form-control c-select slct2" id="aca_session"></select>
+            </div>
+
+            <div class="col-sm-5">
+              <select class="form-control slct2 c-select" id="aca_cal_category"></select>
+            </div>
+
+
+
+            <div class="col-sm-1">
+              <button onclick="generateTable()"
+              class="btn btn-success"> <i class="fa fa-fw fa-file-excel-o"></i> Excel</button>
+            </div>
+            <div class="col-sm-1">
+             
+            </div>
+          </div>
+
+
+          <textarea class="hidden" id="dataList"></textarea>
+          <table class="table table-striped m-b-none" id="cotListPDF"></table>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-------------------------------------------------- modal generate pdf programme -------------------------------------------------->
+  <div id="mdl_reportExamTimeTable" class="modal fade" data-backdrop="true" display="block">
+    <div class="modal-dialog modal-lg fade-right-big " style="max-width: 80% !important;">
+      <div class="modal-content red-50">
+        <div class="modal-header red-700">
+          <h5 class="modal-title">Reporting Exam Timetable</h5>
+        </div>
+        <div id="" class="modal-body text-center p-lg" style="height: 30vw;">
+          <div class="row">
+            <div class="col-sm-12">
+
+              <div id="" class="box">
+
+                <div class="box-header">
+
+                <input type="hidden" id="fac_name">
+                  <input type="hidden" id="academicSession">
+                  <!-- <span class="label danger pull-right">6</span> -->
+                  <!-- <h3 class="pull-left">Reporting Programme</h3> -->
+                  <div class="row">
+
+                    <div class="box">
+
+                      <div class="none box-body p-v-md">
+                        <form id="formFilterPDF" class="form-inline" role="form">
+                          <div class="form-group mb-2">
+                            <label for="tarikh_mula" class="col-form-label">Start Date:</label>
+                            <input id="tarikh_mula" type="date" class="form-control" placeholder="Date">
+                          </div>
+                          <div class="form-group mx-sm-3 mb-2">
+                            <label for="tarikh_tamat" class="col-form-label">End Date:</label>
+                            <input id="tarikh_tamat" type="date" class="form-control" placeholder="Date">
+                          </div>
+                          <div class="form-group mb-2">
+                            <label for="prog_category_id" class="col-form-label">Category Program:</label>
+                            <select id="prog_category_id" class="form-control c-select">
+                              <option value="">--Choose Category Program--</option>
+                              <option value="External Invitation">External Invitation</option>
+                              <option value="Non-Credit Activities">Non-Credit Activities</option>
+                              <option value="Creditable Activities">Creditable Activities</option>
+                              <option value="Others">Others</option>
+                            </select>
+                          </div>
+                          <button type="submit" class="btn btn-info mb-2">Filter</button>
+                        </form>
+                      </div>
+
+                      <!-- <div class="box-divider m-a-0"></div> -->
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+                <table id="report_ExamTimeTableTab" class="table">
+                  <table id="report_ExamTimeTableTabpdf" class="none">
+
+                  </table>
+              </div>
+
+
+              <!-- <button class="pdfexport">Export to PDF</button> -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <!-- <button style="margin-right: 5%;" id="HAHA" class="md-btn md-raised green"> <i
+                class="fa fa-fw  fa-file-pdf-o"></i>
+              Download PDF</button> -->
+          <button id="generatePDF4" 
+            class="btn btn-outline-danger p-x-md"> <i class="fa fa-fw fa-file-pdf-o"></i>
+            PDF</button>
+          <!-- <button id=""    onclick="exportTableToXLSX()">Export to Excel</button> -->
+
+          <!-- <button type="button" class="btn btn-outline-danger p-x-md " onclick="exportTableToXLSX()"><i
+              class="fa fa-file-excel-o"></i> Excel</button> -->
+          <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn danger p-x-md" data-dismiss="modal">Yes</button> -->
+        </div>
+      </div><!-- /.modal-content -->
+    </div>
+  </div>
+  <!-------------------------------------------------- modal generate pdf -------------------------------------------------->
+
+  <!-- LOADING START -->
+  <div class="modal" id="loading_modal" data-backdrop="static">
+    <div class="modal-dialog">
+      <div style="padding-top: 50%;" class="text-center text-white"><span
+          class="fa fa-cog fa-spin fa-3x m-b"></span><br><i id="load_text">Loading...</i></div>
+    </div>
+  </div>
+  <!-- LOADING END -->
+
+
+  <script src="scripts/ajax.js"></script>
+  <script src="scripts/jspdf.umd.min.js"></script>
+  <script src="scripts/jspdf.plugin.autotable.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="adm_reportExamGPACGPA.js"></script>
+
+  <script>
+
+
+
+calCatList(function(){
+        $('#aca_cal_category').append('<option value="">- Choose Academic Category -</option>');
+        $.each(obj_acaField.data, function (i, item){
+        // console.log(item);
+
+            $('#aca_cal_category').append('<option value="'+item.pk_id+'">'+item.category+'</option>');
+
+
+        });
+
+        $('.slct2').select2({
+            width: null,
+            containerCssClass: ':all:'
+        });
+    });
+  </script>
+
+
+<!-- <script>
+
+  // function generatePDF4(name, idTable, facName, SessionAca) {
+  //     window.jsPDF = window.jspdf.jsPDF;
+
+  //     // Initialize jsPDF with landscape orientation and custom page size
+  //     var doc = new jsPDF({
+  //     orientation: 'portrait',
+  //     unit: 'in'
+  //     ,
+  //     format: 'a4'
+  // });
+  //     // Assuming A4 dimensions: width = 8.27in, height = 11.69in
+
+  //     // Start adding content to the PDF
+  //     doc.setFont('Arial');
+
+  //     var imgData = "../admin/images/LOGO-UCMI(Landscape).png";
+  //     imgWidth = 2.5;
+
+  //     var imgX = (doc.internal.pageSize.width - imgWidth) / 2;
+
+
+  //     // Add the image to the PDF
+  //     doc.addImage(imgData, 'JPEG', imgX, 0.5, imgWidth, 1); // Adjust position and size
+
+  //     doc.setFontSize(15);
+
+  //     // Centered text
+  //     var centerText = function (text, y) {
+  //         var textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+  //         var textX = (doc.internal.pageSize.width - textWidth) / 2;
+  //         doc.text(text, textX, y);
+  //     };
+
+  //     // Add centered text
+  //     var text1 = "VARIABLE MOVE SOLUTIONS";
+  //     centerText(text1, 2);
+
+  //     var text2 = "FINAL EXAMINATION ACADEMIC SESSION " + SessionAca;
+  //     centerText(text2, 2.3);
+
+  //     // text = facName;
+  //     // doc.text(text, 6, 3.4); // Adjust position
+
+  //     // Define the source element (your HTML table)
+  //     var source = $('#' + idTable)[0];
+
+  //     // Define the gap (adjust the value as needed)
+  //     var gap = 2.6; // Adjust this value to set the desired gap
+
+  //     // Generate the PDF from the table, starting with a gap
+  //     doc.autoTable({
+  //         html: source,
+  //         startY: gap,
+  //         styles: {
+  //         fontSize: 10, 
+  //         font: 'Arial',// Set the desired font size for the table content
+  //         }, 
+  //     });
+
+  //     // Save or download the PDF
+  //     doc.save('Reporting_' + name + '.pdf');
+  // }
+
+    function generatePDF4(name, idTable, facName, SessionAca) {
+      // Initialize a workbook
+      var wb = XLSX.utils.book_new();
+      
+      // Define the worksheet data
+      var wsData = [
+        ["VARIABLE MOVE SOLUTIONS"],
+        ["FINAL EXAMINATION ACADEMIC SESSION " + SessionAca],
+        [facName], // Add faculty name if needed
+      ];
+
+      // Add the worksheet to the workbook
+      var ws = XLSX.utils.aoa_to_sheet(wsData);
+      XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+      // Convert the HTML table to worksheet and add it to the workbook
+      var table = document.getElementById(idTable);
+      var tableData = XLSX.utils.table_to_sheet(table);
+      XLSX.utils.book_append_sheet(wb, tableData, "Sheet2");
+
+      // Save or download the Excel file
+      XLSX.writeFile(wb, 'Reporting_' + name + '.xlsx');
+    }
+</script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+
+<script>
+  function generatePDF4(name, idTable, facName, SessionAca) {
+    // Initialize a workbook
+    var wb = XLSX.utils.book_new();
+    
+    // Define the worksheet data
+    // var wsData = [
+    //   ["VARIABLE MOVE SOLUTIONS"],
+    //   ["FINAL EXAMINATION ACADEMIC SESSION " + SessionAca],
+    //   [facName], // Add faculty name if needed
+    // ];
+
+    // // Add the worksheet to the workbook
+    // var ws = XLSX.utils.aoa_to_sheet(wsData);
+    // XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+    // Convert the HTML table to worksheet and add it to the workbook
+    var table = document.getElementById(idTable);
+    var tableData = XLSX.utils.table_to_sheet(table);
+    XLSX.utils.book_append_sheet(wb, tableData, "FinalExam");
+
+    // Save or download the Excel file
+    XLSX.writeFile(wb, 'Reporting ' + name +'_'+ SessionAca+ '.xlsx');
+  }
+</script>

@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>VMS - Role Access</title>
+    <meta name="description" content="Responsive, Bootstrap, BS4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Flatkit">
+    <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+    <!-- style -->
+    <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap3.css" type="text/css" />
+    <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+    <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+    <link rel="stylesheet" href="libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="libs/select2/dist/css/select2-bootstrap.css">
+    <!-- build:css css/styles/app.min.css -->
+    <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+    <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+    <!-- endbuild -->
+    <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"> -->
+    <style>
+      .validationMessage {
+        text-align: left;
+        color: red;
+      }
+
+      .nav-link {
+        width: 100%; /* or any desired width */
+        /* text-align: center; */
+        display: inline-block;
+        padding: 10px;
+      }
+
+
+      .nav-link.active {
+        background-color: #4BC0C0;
+        /* Change this to your desired background color */
+        color: white;
+        /* Change this to your desired text color */
+      }
+
+     
+    </style>
+  </head>
+  <body>
+    <div class="app" id="app">
+      <!-- ############ LAYOUT START-->
+      <!-- aside -->
+      <!-- / -->
+      <!-- content -->
+      <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+        <div class="app-header white bg b-b">
+          <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+            <div class="navbar-item pull-left h5" id="pageTitle">
+              <button class="btn primary" title="Back" id="btnBack">
+                <i class="fa fa-arrow-left"></i>
+              </button>&nbsp; Role Access Settings
+            </div>
+            
+            <!-- nabar right -->
+            <!-- / navbar right -->
+          </div>
+        </div>
+        <div class="app-footer white bg p-a b-t">
+          <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+          <span class="text-sm text-muted">&copy; Copyright.</span>
+        </div>
+        <div class="app-body">
+          <!-- ############ PAGE START-->
+          <div class="row-col">
+            <div class="col-sm-3 col-lg-1 b-r">
+              <div class="p-y">
+                <div class="nav-active-border left b-primary" style="width: fit-content;">
+                  <ul class="nav nav-sm" id="navAccess"></ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-9 col-lg-10 light bg">
+              <div class="tab-content pos-rlt">
+                <div class="tab-pane active" id="tab-1">
+                  <div class="p-a-md b-b _600">Set Access by Role</div>
+                  <form id="addRoleForm" class="row" onsubmit="return false">
+                    <div class="col-6">
+                      <div class="box">
+                        <!-- <div class="box-header"><h1 id="roleName"></h1></div> -->
+                        <div class="box-body">
+                          <input type="text" class="form-control form-control-sm" id="PK_access" hidden />
+                          <div class="table-responsive">
+                            <table class="table table-flush-spacing table-bordered">
+                              <tbody>
+                                <tr style="background-color: #4BC0C0;">
+                                  <h2 id="roleName"></h2>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">ALL MODUL</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1"> All Access <span data-bs-toggle="tooltip" data-bs-placement="top" title="Allows a full access to the system">
+                                      <i data-feather="info"></i>
+                                    </span>
+                                  </td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="selectAll-access" />
+                                      <label class="form-check-label" for="selectAll"> All </label>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL SETTING</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Settings</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input " type="checkbox" id="setting_c" />
+                                        <label class="form-check-label" for="setting_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="setting_r" />
+                                        <label class="form-check-label" for="setting_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input lock"  type="checkbox" id="setting_u" />
+                                        <label class="form-check-label" for="setting_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input lock"  type="checkbox" id="setting_d" />
+                                        <label class="form-check-label" for="setting_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL DASHBOARD</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Dashboard</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input lock" disabled type="checkbox" id="dashboard_c" />
+                                        <label class="form-check-label" for="dashboard_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="dashboard_r" />
+                                        <label class="form-check-label" for="dashboard_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input lock" disabled type="checkbox" id="dashboard_u" />
+                                        <label class="form-check-label" for="dashboard_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input lock" disabled type="checkbox" id="dashboard_d" />
+                                        <label class="form-check-label" for="dashboard_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL ANNOUCEMENT</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Announcement</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input lock" type="checkbox" id="announcement_c" />
+                                        <label class="form-check-label" for="announcement_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="announcement_r" />
+                                        <label class="form-check-label" for="announcement_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input lock" type="checkbox" id="announcement_u" />
+                                        <label class="form-check-label" for="announcement_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input lock" type="checkbox" id="announcement_d" />
+                                        <label class="form-check-label" for="announcement_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                             
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Faculty</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_faculty_c" />
+                                        <label class="form-check-label" for="sc_faculty_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_faculty_r" />
+                                        <label class="form-check-label" for="sc_faculty_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_faculty_u" />
+                                        <label class="form-check-label" for="sc_faculty_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_faculty_d" />
+                                        <label class="form-check-label" for="sc_faculty_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Programme</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="sc_programme_c" />
+                                        <label class="form-check-label" for="sc_programme_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_programme_r" />
+                                        <label class="form-check-label" for="sc_programme_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_programme_u" />
+                                        <label class="form-check-label" for="sc_programme_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="sc_programme_d" />
+                                        <label class="form-check-label" for="sc_programme_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Course - Course Offer</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_courseOffer_c" />
+                                        <label class="form-check-label" for="sc_courseOffer_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_courseOffer_r" />
+                                        <label class="form-check-label" for="sc_courseOffer_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_courseOffer_u" />
+                                        <label class="form-check-label" for="sc_courseOffer_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_courseOffer_d" />
+                                        <label class="form-check-label" for="sc_courseOffer_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Course - Grading Scheme</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_gradScheme_c" />
+                                        <label class="form-check-label" for="sc_gradScheme_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_gradScheme_r" />
+                                        <label class="form-check-label" for="sc_gradScheme_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_gradScheme_u" />
+                                        <label class="form-check-label" for="sc_gradScheme_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_gradScheme_d" />
+                                        <label class="form-check-label" for="sc_gradScheme_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Course - Min/Max Credit</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_credit_c" />
+                                        <label class="form-check-label" for="sc_credit_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_credit_r" />
+                                        <label class="form-check-label" for="sc_credit_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_credit_u" />
+                                        <label class="form-check-label" for="sc_credit_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_credit_d" />
+                                        <label class="form-check-label" for="sc_credit_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Classroom</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_classroom_c" />
+                                        <label class="form-check-label" for="sc_classroom_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_classroom_r" />
+                                        <label class="form-check-label" for="sc_classroom_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_classroom_u" />
+                                        <label class="form-check-label" for="sc_classroom_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_classroom_d" />
+                                        <label class="form-check-label" for="sc_classroom_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Course Teaching Evaluation</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_cte_c" />
+                                        <label class="form-check-label" for="sc_cte_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_cte_r" />
+                                        <label class="form-check-label" for="sc_cte_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_cte_u" />
+                                        <label class="form-check-label" for="sc_cte_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="sc_cte_d" />
+                                        <label class="form-check-label" for="sc_cte_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL STUDENT</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Student</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="student_c" />
+                                        <label class="form-check-label" for="student_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="student_r" />
+                                        <label class="form-check-label" for="student_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="student_u" />
+                                        <label class="form-check-label" for="student_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="student_d" />
+                                        <label class="form-check-label" for="student_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL POLICY</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Policy</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="policy_c" />
+                                        <label class="form-check-label" for="policy_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="policy_r" />
+                                        <label class="form-check-label" for="policy_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="policy_u" />
+                                        <label class="form-check-label" for="policy_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="policy_d" />
+                                        <label class="form-check-label" for="policy_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL CE/CT</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">CE/CT</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="cect_c" />
+                                        <label class="form-check-label" for="cect_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="cect_r" />
+                                        <label class="form-check-label" for="cect_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="cect_u" />
+                                        <label class="form-check-label" for="cect_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="cect_d" />
+                                        <label class="form-check-label" for="cect_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL PROGRAMME CHANGE</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Programme Change</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="progChange_c" />
+                                        <label class="form-check-label" for="progChange_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="progChange_r" />
+                                        <label class="form-check-label" for="progChange_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="progChange_u" />
+                                        <label class="form-check-label" for="progChange_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="progChange_d" />
+                                        <label class="form-check-label" for="progChange_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL STUDENT WITHDRAW</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Student Withdraw</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="studWithdraw_c" />
+                                        <label class="form-check-label" for="studWithdraw_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="studWithdraw_r" />
+                                        <label class="form-check-label" for="studWithdraw_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="studWithdraw_u" />
+                                        <label class="form-check-label" for="studWithdraw_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="studWithdraw_d" />
+                                        <label class="form-check-label" for="studWithdraw_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL GRADUATION AUDIT</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Graduation Audit</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="gradAudit_c" />
+                                        <label class="form-check-label" for="gradAudit_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="gradAudit_r" />
+                                        <label class="form-check-label" for="gradAudit_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="gradAudit_u" />
+                                        <label class="form-check-label" for="gradAudit_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="gradAudit_d" />
+                                        <label class="form-check-label" for="gradAudit_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL LECTURER</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Lecturer</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="lecturer_c" />
+                                        <label class="form-check-label" for="lecturer_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="lecturer_r" />
+                                        <label class="form-check-label" for="lecturer_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="lecturer_u" />
+                                        <label class="form-check-label" for="lecturer_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="lecturer_d" />
+                                        <label class="form-check-label" for="lecturer_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL EXAMINATION</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Examination Type</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_examType_c" />
+                                        <label class="form-check-label" for="e_examType_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_examType_r" />
+                                        <label class="form-check-label" for="e_examType_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_examType_u" />
+                                        <label class="form-check-label" for="e_examType_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_examType_d" />
+                                        <label class="form-check-label" for="e_examType_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Timetable</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_timetable_c" />
+                                        <label class="form-check-label" for="e_timetable_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_timetable_r" />
+                                        <label class="form-check-label" for="e_timetable_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_timetable_u" />
+                                        <label class="form-check-label" for="e_timetable_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_timetable_d" />
+                                        <label class="form-check-label" for="e_timetable_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Examination Center</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_center_c" />
+                                        <label class="form-check-label" for="e_center_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_center_r" />
+                                        <label class="form-check-label" for="e_center_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_center_u" />
+                                        <label class="form-check-label" for="e_center_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_center_d" />
+                                        <label class="form-check-label" for="e_center_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Application</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_application_c" />
+                                        <label class="form-check-label" for="e_application_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_application_r" />
+                                        <label class="form-check-label" for="e_application_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_application_u" />
+                                        <label class="form-check-label" for="e_application_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="e_application_d" />
+                                        <label class="form-check-label" for="e_application_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Generate GPA/CGPA</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="e_generate_c" />
+                                        <label class="form-check-label" for="e_generate_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_generate_r" />
+                                        <label class="form-check-label" for="e_generate_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_generate_u" />
+                                        <label class="form-check-label" for="e_generate_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="e_generate_d" />
+                                        <label class="form-check-label" for="e_generate_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Pra-Senate</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_preSenate_c" />
+                                        <label class="form-check-label" for="e_preSenate_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_preSenate_r" />
+                                        <label class="form-check-label" for="e_preSenate_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_preSenate_u" />
+                                        <label class="form-check-label" for="e_preSenate_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_preSenate_d" />
+                                        <label class="form-check-label" for="e_preSenate_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">eSenat</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_eSenate_c" />
+                                        <label class="form-check-label" for="e_eSenate_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_eSenate_r" />
+                                        <label class="form-check-label" for="e_eSenate_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_eSenate_u" />
+                                        <label class="form-check-label" for="e_eSenate_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="e_eSenate_d" />
+                                        <label class="form-check-label" for="e_eSenate_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL TIMETABLE</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Timetable</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="timetable_c" />
+                                        <label class="form-check-label" for="timetable_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="timetable_r" />
+                                        <label class="form-check-label" for="timetable_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="timetable_u" />
+                                        <label class="form-check-label" for="timetable_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="timetable_d" />
+                                        <label class="form-check-label" for="timetable_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr style="background-color: #4BC0C0;">
+                                  <td class="text-nowrap fw-bolder pe-1 ps-1" colspan="2">MODUL Reporting</td>
+                                </tr>
+                                <tr>
+                                  <td class="text-nowrap fw-bolder pe-2 ps-2">Examination</td>
+                                  <td class="pe-2 ps-2">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="r_examination_c" />
+                                        <label class="form-check-label" for="r_examination_c"> Create </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" type="checkbox" id="r_examination_r" />
+                                        <label class="form-check-label" for="r_examination_r"> Read </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="r_examination_u" />
+                                        <label class="form-check-label" for="r_examination_u"> Update </label>
+                                      </div>
+                                      <div class="form-check me-3 me-lg-5">
+                                        <input class="form-check-input" disabled type="checkbox" id="r_examination_d" />
+                                        <label class="form-check-label" for="r_examination_d"> Delete </label>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="box-body text-right tutupBtn">
+                          <button type="submit" class="btn btn-outline-primary me-1  btn_update_setting">Save </button>
+                          <span id="btnReload"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="box">
+                        <div class="box-header" style="background-color: #4BC0C0;">
+                          <div class="row">
+                            <div class="col-6">
+                              <h3 style="color: #000000;">
+                                <b>STAFF LIST</b>
+                              </h3>
+                              <div class="box-tool">
+                                <ul class="nav">
+                                  <li class="nav-item inline m-r-1 btn_update_timetable">
+                                    <a class="nav-link2 text-muted btn_create_setting" data-toggle="modal" data-target="#reg-access" data-backdrop="static" data-keyboard="false">
+                                      <span class="">
+                                        <i class="fa fa-fw fa-plus"></i>
+                                        <span class="hidden-sm-down">Add Staff Role</span>
+                                      </span>
+                                    </a>
+                                  </li>
+                                  
+                                </ul>
+
+                                
+                              </div>
+                            </div>
+                            <!-- <div class ="col-6 text-right" ><a class="text-muted" data-toggle="modal" data-target="#reg-access" data-backdrop="static" data-keyboard="false"><span class=""><i class="fa fa-fw fa-plus"></i><span class="hidden-sm-down">Add Staff</span></span></a></div> -->
+                          </div>
+                        </div>
+                        <div class="box-body">
+                          <table id="roleList" class="table table-striped m-b-none"></table>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ############ PAGE END-->
+
+          <!-------------------------------------------------- modal add  -------------------------------------------------->
+          <div id="reg-access" style="width: 100%;" class="modal" data-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content" id="other">
+                <form role="form" id="formAddNewRole">
+                  <div class="modal-header purple-700">
+                    <h5 class="modal-title" style="color: white;">REGISTER STAFF ROLE</h5>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                    <div class="form-group row ">
+                      <label for="" class="col-sm-2 form-control-label">Name Staff</label>
+                      <div class="col-sm-10">
+                        <select class="form-control slct2 " id="FK_users" required></select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="" class="col-sm-2 form-control-label">Roles</label>
+                      <div class="col-sm-10">
+                        <!-- <select class="form-control slct2" id="FK_access" required></select> -->
+                        <input id="FK_access" type="hidden">
+                        <input type="text" class="form-control" id="FK_roleName" readonly>
+
+                        <!-- <input type="hidden" id="school_status"> -->
+                      </div>
+                    </div>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn info p-x-md" value="Register">
+                  </div>
+                </form>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+          </div>
+          <!-------------------------------------------------- end modal add  -------------------------------------------------->
+
+           <!-------------------------------------------------- modal update  -------------------------------------------------->
+           <div id="upt-access" style="width: 100%;" class="modal" data-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content" id="other">
+                <form role="form" id="formUptRole">
+                  <div class="modal-header purple-700">
+                    <h5 class="modal-title" style="color: white;">UPDATE STAFF ROLE</h5>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                    <div class="form-group row ">
+                      <label for="" class="col-sm-2 form-control-label">Staff Name</label>
+                      <div class="col-sm-10">
+                        <input class="form-control " id="FK_name" readonly></input>
+                        <input id="FK_usersRole" type="hidden">
+
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="" class="col-sm-2 form-control-label">Roles</label>
+                      <div class="col-sm-10">
+                        <select class="form-control slct2" id="FK_accessRole" required></select>
+                        <!-- <input id="FK_access" type="hidden"> -->
+                        <!-- <input type="text" class="form-control" id="FK_roleName" readonly> -->
+
+                        <!-- <select class="form-control slct2 " id="FK_users" required></select> -->
+
+
+                        <!-- <input type="hidden" id="school_status"> -->
+                      </div>
+                    </div>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn info p-x-md" value="Update">
+                  </div>
+                </form>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+          </div>
+          <!-------------------------------------------------- end update add  -------------------------------------------------->
+        </div>
+      </div>
+      <!-- / -->
+      <!-- ############ SWITHCHER START-->
+      <!-- ############ SWITHCHER END-->
+      <!-- ############ LAYOUT END-->
+    </div>
+    <!-- build:js scripts/app.min.js -->
+    <!-- jQuery -->
+    <script src="libs/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap -->
+    <script src="libs/tether/dist/js/tether.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- core -->
+    <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+    <script src="libs/PACE/pace.min.js"></script>
+    <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+    <script src="libs/blockUI/jquery.blockUI.js"></script>
+    <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+    <script src="scripts/config.lazyload.js"></script>
+    <script src="scripts/ui-load.js"></script>
+    <script src="scripts/ui-jp.js"></script>
+    <script src="scripts/ui-include.js"></script>
+    <script src="scripts/ui-device.js"></script>
+    <script src="scripts/ui-form.js"></script>
+    <script src="scripts/ui-modal.js"></script>
+    <script src="libs/footable2/js/footable.js"></script>
+    <script src="libs/footable2/js/footable.min.js"></script>
+    <script src="libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="sweet-alert/sweetalert2.js"></script>
+    <script src="sweet-alert/sweetalert2.min.js"></script>
+    <script src="scripts/ui-nav.js"></script>
+    <script src="scripts/ui-list.js"></script>
+    <script src="scripts/ui-screenfull.js"></script>
+    <script src="scripts/ui-scroll-to.js"></script>
+    <script src="scripts/ui-toggle-class.js"></script>
+    <script src="scripts/ui-taburl.js"></script>
+    <script src="scripts/ui-form.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+    <script src="bower_components/knockout-validation/dist/knockout.validation.min.js"></script>
+    <script src="config.js"></script>
+    <script src="scripts/action.min.js"></script>
+    <script src="callFunction.js"></script>
+    <script src="capaian.js?n=1"></script>
+
+    <script src="ttpn_access.js?n=3"></script>
+    <!-- <script src="capaian.js"></script> -->
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('selectAll-access').addEventListener('change', function() {
+          const checkboxes = document.querySelectorAll('input[type="checkbox"]:not(:disabled)');
+          checkboxes.forEach(checkbox => {
+            checkbox.checked = this.checked;
+            if (!this.checked) {
+        checkbox.value = '';
+      }
+          });
+
+        });
+      });
+    </script>
+
+    <!-- endbuild -->
+  </body>
+</html>

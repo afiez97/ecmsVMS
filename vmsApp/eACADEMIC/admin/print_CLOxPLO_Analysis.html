@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>aside - Bootstrap 4 web application</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+
+<body>
+  <div class="app" id="app">
+
+    <!-- ############ LAYOUT START-->
+
+    <!-- content -->
+    <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+      <div class="app-header white bg b-b">
+        <div class="navbar" data-pjax>
+          <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+            <i class="ion-navicon"></i>
+          </a>
+          <div class="navbar-item pull-left h5" id="pageTitle">
+            <button onclick="window.close()" class="btn btn-link text-primary"><i class="fa fa-arrow-left"></i></button>
+CLO vs PLO Analysis
+          </div>
+
+          <div class="col-md-4 pull-right text-right" style="margin: 10px;">
+            <!-- <button id="btnExcel" class="btn btn-success"><i class="fa fa-file-excel-o"></i> Excel</button> -->
+            <button class="btn btn-danger" id="download-pdf2">
+              <i class="fa fa-file-pdf-o"></i> PDF
+            </button>
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+      <div class="app-footer white bg p-a b-t">
+        <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+        <span class="text-sm text-muted">&copy; Copyright.</span>
+      </div>
+      <div class="app-body">
+
+        <!-- ############ PAGE START-->
+        <!-- only need a height for layout 4 -->
+        <div style="min-height: 200px">
+
+          <div class="padding">
+
+            <div class="row">
+
+              <div class="col-sm-12">
+                <div class="box">
+                  <div class="box-header b-b bg-danger">
+                    <h3 id="courseTitle" class="font-weight-bold"></h3>
+                    <!-- <small class="block text-muted">A bar chart    is a way of showing data as bars.</small> -->
+                  </div>
+
+                  <div class="box-body"  id="left-column">
+                    <!-- <input type="hidden" id="lectCrsId" value="1596">
+            <input type="hidden" id="coordinator" value="Yes">
+            <input type="hidden" id="grdSchmId" value="258">
+            <input type="hidden" id="fk_cotDet" value="4496"> -->
+                    <div class="row">
+                   <div class="col-sm-6">
+                    <div class="col-sm-9">
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">COURSE CODE : </div>
+                        <div class="col-sm-4 text-uppercase" id="courseCode"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">COURSE NAME : </div>
+                        <div class="col-sm-4 text-uppercase" id="fk_nameCourse"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">SEMESTER : </div>
+                        <div class="col-sm-4 text-uppercase" id="fk_crsSem"></div>
+                      </div>
+
+                    
+                    </div>
+                   </div>
+                 
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+     
+          
+            </div>
+
+
+
+            <div class="row">
+              <!-- push-md-1 -->
+
+      <div class="col-sm-6">
+        <div class="col-sm-12" >
+          <div class="box" id="">
+            <div class="box-header b-b">
+              <h3>CLO</h3>
+              <!-- <small class="block text-muted">A bar chart is a way of showing data as bars.</small> -->
+            </div>
+
+            <div class="box-body" id="right-column">
+              <table id="tableAchieveAnalysis" width="100%" class="table-bordered m-a-0"></table>
+              <textarea class="hidden" id="DTAchieveAnalysis"></textarea>
+              <!-- <table id="tableAchieveAnalysis" class="table-bordered m-a-0"></table> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <div class="box" id="">
+            <div class="box-header">
+              <h3>CLO Table</h3>
+              <!-- <small class="block text-muted">A bar chart is a way of showing data as bars.</small> -->
+            </div>
+
+
+      
+            <div class="box-body" id="right-column">
+              <table id="tableCloDet" width="100%" class="table-bordered m-a-0"></table>
+              <textarea class="hidden" id="datalistCloDet"></textarea>
+              <!-- <table id="tableAchieveAnalysis" class="table-bordered m-a-0"></table> -->
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm-6">
+        <div class="col-sm-12" >
+          <div class="box" id="">
+            <div class="box-header b-b">
+              <h3>PLO</h3>
+              <!-- <small class="block text-muted">A bar chart is a way of showing data as bars.</small> -->
+            </div>
+
+            <div class="box-body" id="right-column">
+              <table id="tableAchieveAnalysisPLO" width="100%" class="table-bordered m-a-0"></table>
+              <textarea class="hidden" id="DTAchieveAnalysisPLO"></textarea>
+              <!-- <table id="tableAchieveAnalysis" class="table-bordered m-a-0"></table> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <div class="box" id="">
+            <div class="box-header">
+              <h3>PLO Table</h3>
+              <!-- <small class="block text-muted">A bar chart is a way of showing data as bars.</small> -->
+            </div>
+
+
+      
+            <div class="box-body" id="right-column">
+              <table id="tablePLODet" width="100%" class="table-bordered m-a-0"></table>
+              <textarea class="hidden" id="datalistPLODet"></textarea>
+              <!-- <table id="tableAchieveAnalysis" class="table-bordered m-a-0"></table> -->
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+              <!-- <div style="height: 100vw; width: 100%;" id="preview-pdf"></div> -->
+
+              <div class="modal" id="loading_mode" data-backdrop="static">
+                <div class="modal-dialog">
+                  <div style="padding-top: 50%; color: #ffffff;" class="text-center text-white"><span
+                      class="fa fa-refresh fa-spin fa-3x m-b"></span>&nbsp;&nbsp;&nbsp;<i id="load_text">Prepare
+                      Mark...</i></div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+
+          <!-- ############ PAGE END-->
+
+        </div>
+      </div>
+      <!-- / -->
+
+
+      <!-- ############ LAYOUT END-->
+    </div>
+
+    <!-- build:js scripts/app.min.js -->
+    <!-- jQuery -->
+    <script src="libs/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap -->
+    <script src="libs/tether/dist/js/tether.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+
+
+
+    <script src="jsPDF/jspdf.min.js"></script>
+    <script src="jsPDF/pdfobjct.min.js"></script>
+    <script src="jsPDF/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="libs/footable2/js/footable.js"></script>
+    <script src="libs/footable2/js/footable.min.js"></script>
+
+
+    <script src="excel2json/xlsx.full.min.js"></script>
+    <script src="excel2json/tableToExcel.js"></script>
+    <script src="excel2json/xlsx.core.min.js"></script>
+    <script src="excel2json/js/jhxlsx.js"></script>
+    <script src="excel2json/js/FileSaver.js"></script>
+
+    <!-- core -->
+    <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+    <script src="libs/PACE/pace.min.js"></script>
+    <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+    <script src="libs/blockUI/jquery.blockUI.js"></script>
+    <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+    <script src="scripts/config.lazyload.js"></script>
+    <script src="scripts/ui-load.js"></script>
+    <script src="scripts/ui-jp.js"></script>
+    <script src="scripts/ui-include.js"></script>
+    <script src="scripts/ui-device.js"></script>
+    <script src="scripts/ui-form.js"></script>
+    <script src="scripts/ui-modal.js"></script>
+    <script src="scripts/ui-nav.js"></script>
+    <script src="scripts/ui-list.js"></script>
+    <script src="scripts/ui-screenfull.js"></script>
+    <script src="scripts/ui-scroll-to.js"></script>
+    <script src="scripts/ui-toggle-class.js"></script>
+    <script src="scripts/ui-taburl.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <script src="scripts/html2canvas.min.js"></script>
+
+
+
+    <script src="config.js"></script>
+    <script src="callFunction.js?n=1"></script>
+    <script src="scripts/action.min.js"></script>
+    <script src="funcLect.js"></script>
+    <script src="print_CLOxPLO_Analysis.js"></script>
+    <!-- ?n=1 -->
+
+    <!-- <script>
+      $(document).ready(function() {
+    var leftHeight = $('#left-column').outerHeight();
+    var rightHeight = $('#right-column').outerHeight();
+    var maxHeight = Math.max(leftHeight, rightHeight);
+    $('#left-column, #right-column').css('height', maxHeight + 'px');
+});
+
+    </script> -->
+    <!-- endbuild -->
+</body>
+
+</html>

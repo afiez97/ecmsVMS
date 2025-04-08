@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS - Pengurusan Pelajar</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+    <div class="app-header white bg b-b">
+          <div class="navbar" data-pjax>
+                <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                  <i class="ion-navicon"></i>
+                </a>
+                
+                <div class="navbar-item pull-left h5" id="pageTitle">
+                  <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                  Lecturer Details 
+                </div>
+                <!-- nabar right -->
+                <!-- / navbar right -->
+          </div>
+    </div>
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+    <div class="app-body">
+
+<!-- ############ PAGE START-->
+<!-- only need a height for layout 4 -->
+<div style="min-height: 200px">
+  <div class="padding">
+  
+    <div class="box">
+      <div class="box-header b-b">
+        <h3 id="lect_id">Staff Id</h3>
+      </div>
+      <div class="box-body">
+        <div class="">
+          <div class="row">
+            <div class="col-md-2 text-center">
+              <a href="#" class="">
+                <span class="avatar w-96">
+                  <!-- <img src="images/a2.jpg"> -->
+                  <img id="emp_photo" class="img-thumbnail" alt="..." width="50%">
+                  <i class="on b-white"></i>
+                </span>
+              </a>
+            </div>
+
+            <!-- right -->
+            <div class="col-md-10">
+              <div class="m-b nav-active-grey">
+                <ul class="nav nav-pills nav-stacked" data-ui-nav>
+                  <li class="nav-item active" id="navLectData">
+                    <a href="#" class="nav-link auto grey-300">
+                      <span class="pull-right text-muted m-r-xs">
+                        <i class="fa fa-plus inline"></i>
+                        <i class="fa fa-minus none"></i>
+                      </span>
+                      Details
+                    </a>
+                    <ul class="nav nav-sub text-sm">
+                      <div class="row p-a" id="divDetailStaff">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Name</label>
+                            <div class="col-sm-9 form-control-label" id="emp_name"></div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Staff No.</label>
+                            <div class="col-sm-9 form-control-label" id="emp_id"></div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Faculty</label>
+                            <div class="col-sm-9 form-control-label" id="fac_name"></div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Phone No.</label>
+                            <div class="col-sm-9 form-control-label" id="emp_mobileno">xxx</div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Email</label>
+                            <div class="col-sm-9 form-control-label" id="emp_email">xxx</div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Status</label>
+                            <div class="col-sm-9 form-control-label"><span id="emp_status"></span> (<span id="emp_substatus"></span>)</div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">IC No.</label>
+                            <div class="col-sm-9 form-control-label" id="emp_icno"></div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Gender</label>
+                            <div class="col-sm-9 form-control-label" id="emp_gender"></div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Race</label>
+                            <div class="col-sm-9 form-control-label" id="emp_race"></div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Religion</label>
+                            <div class="col-sm-9 form-control-label" id="emp_religion"></div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Issue Date</label>
+                            <div class="col-sm-9 form-control-label" id="emp_issuedate"></div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="" class="col-sm-3 form-control-label font-weight-bold">Issue Expired</label>
+                            <div class="col-sm-9 form-control-label" id="emp_issueexp"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="row">
+                
+              </div>
+              
+            </div>
+          </div>
+
+          <!-- button lecturer -->
+          <div class="row">
+            <div class="col-md-2 m-b-2">
+              <button class="btn primary btn-block text-left" id="btnLectCourseSett">Lecturer Course Settings</button>
+              <button class="btn primary btn-block text-left" id="btnTeachSett">Teaching Settings</button>
+              <!-- <button class="btn primary btn-block text-left" id="btnCanRepClass">Cancel/Replace Class</button> -->
+              <button class="btn primary btn-block text-left" id="btnPrintTimetbl">Timetable</button>
+              <!-- <button class="btn primary btn-block text-left" id="btnExamMarkSett">Examination Mark Range Setting</button> -->
+            </div>
+
+            <!-- right -->
+            <div class="col-md-10">
+              <!-------------------------------------------------- lecturer course setting -------------------------------------------------->
+              <div class="box collapse divBox" id="boxSetting">
+                <div class="box-header primary">
+                  <h3 id="">LECTURER COURSE SETTINGS</h3>
+                  <div class="box-tool">
+                    <ul class="nav">
+                      <li class="nav-item inline">
+                        <a class="nav-link text-muted" data-toggle="modal" data-target="#regLectCourse" title="Reply" id="btnAddNewRecord">
+                          <span class="">
+                            <i class="fa fa-fw fa-plus"></i>
+                            <span class="hidden-sm-down">New Record</span>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <p class="m-a-0 ">
+                    <div id="tblLectCrsList">
+                      <textarea class="hidden" id="dataList"></textarea>
+                      <table id="crList" class="table table-bordered"></table>
+                    </div>
+
+                    <!---------- add lecturer course ---------->
+                    <div id="regLectCourse" class="modal fade" data-backdrop="static">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header indigo-900">
+                              <h5 class="modal-title">REGISTER LECTURER COURSE</h5>
+                          </div>
+                          <form role="form" class="p-l-sm" id="formAddLectCourse">
+                          <div class="modal-body p-lg">
+                            <p>
+                                <input type="hidden" class="form-control" id="add_empId" value="">
+                                <div class="form-group row">
+                                    <label for="cur_year" class="col-sm-2 form-control-label">Session<span class="text-danger d-inline">*</span></label>
+                                    <div class="col-sm-4">
+                                      <select id="cur_year" class="form-control" required>
+                                        <option value="">-Choose-</option>
+                                      </select>
+                                    </div>
+
+                                    <label for="cur_semester" class="col-sm-2 form-control-label">Semester</label>
+                                    <div class="col-sm-4"> 
+                                      <select id="cur_semester" class="form-control">
+                                        <option value="0" selected>-Choose-</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                      </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="fac_id" class="col-sm-2 form-control-label">Faculty<span class="text-danger d-inline">*</span></label>
+                                  <div class="col-sm-10"> 
+                                    <select id="fac_id" class="form-control c-select" required></select>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="pgm_id" class="col-sm-2 form-control-label" >Programme<span class="text-danger d-inline">*</span></label>
+                                  <div class="col-sm-10">
+                                    <select class="form-control c-select" id="pgm_id" required></select>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="crs_code" class="col-sm-2 form-control-label">Course<span class="text-danger d-inline">*</span></label>
+                                    <div class="col-sm-10"> 
+                                      <select id="crs_code" class="form-control c-select" required></select>
+                                    </div>
+                                </div>
+                            </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn info p-x-md ">Save</button>
+                          </div>
+                        </form>
+                        </div><!-- /.modal-content -->
+                      </div>
+                    </div><!---------- end add lecturer course ---------->
+                  </p>
+                </div>
+              </div><!-------------------------------------------------- end lecturer course setting -------------------------------------------------->
+
+
+              <!-------------------------------------------------- teachings setting -------------------------------------------------->
+              <div class="box divBox collapse" id="boxTeachingSett">
+                <div class="box-header primary">
+                  <h3 id="">TEACHING SETTINGS</h3>
+                </div>
+                <div class="box-body">
+                  <p class="m-a-0 ">
+                    <form id="formTeachTime">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <input type="hidden" id="empId_Teach">
+                          <div class="form-group row">
+                            <label for="tme_min" class="col-md-3 form-control-label">Min. Teaching Time (hour)<span class="text-danger d-inline">*</span> </label>
+                            <div class="col-md-9"> 
+                                <input id="tme_min" type="text" class="form-control" required>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="tme_max" class="col-md-3 form-control-label">Max. Teaching Time (hour)<span class="text-danger d-inline">*</span> </label>
+                            <div class="col-md-9"> 
+                                <input id="tme_max" type="text" class="form-control" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Teaching Day Exceptions</label>
+                            <div class="col-md-9 m-t-1"> 
+                                <div class="form-check p-l-md">
+                                    <input class="form-check-input" type="checkbox" value="N" id="tme_mon">
+                                    <label class="form-check-label" for="isnin">Monday</label>
+                                  </div>
+                                  <div class="form-check p-l-md">
+                                    <input class="form-check-input" type="checkbox" value="N" id="tme_tue">
+                                    <label class="form-check-label" for="selasa">Tuesday</label>
+                                  </div>
+                                  <div class="form-check p-l-md">
+                                    <input class="form-check-input" type="checkbox" value="N" id="tme_wed">
+                                    <label class="form-check-label" for="rabu">Wednesday</label>
+                                  </div>
+                                  <div class="form-check p-l-md">
+                                    <input class="form-check-input" type="checkbox" value="N" id="tme_thu">
+                                    <label class="form-check-label" for="khamis">Thursday</label>
+                                  </div>
+                                  <div class="form-check p-l-md">
+                                    <input class="form-check-input" type="checkbox" value="N" id="tme_fri" >
+                                    <label class="form-check-label" for="jumaat">Friday</label>
+                                  </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row text-right p-a">
+                        <button type="submit" class="btn info p-x-md ">Save</button>
+                      </div>
+                    </form>
+                      <!-- <table class="table m-b-none" data-ui-jp="footable" data-filter="#filter" data-page-size="5">
+                          <thead>
+                            <tr>
+                                <th data-toggle="true">No.</th>
+                                <th data-hide="phone,tablet">Min. Teaching Time (hour)</th>
+                                <th data-hide="phone,tablet">Max. Teaching Time (hour)</th>
+                                <th data-hide="phone,tablet">Teaching Day Exceptions</th>
+                                <th data-hide="phone,tablet" class="text-center">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>1</td>
+                              <td>4</td>
+                              <td>Monday</td>
+                                <td data-value="1" class="text-center" style="width: 15%;">
+                                  <button class="btn success" title="Update" data-toggle="modal" data-target="#update-ttpnMengajar" data-ui-toggle-class="zoom" data-ui-target="#animate"><i class="ion-android-create"></i></button>
+                                </td>
+                            </tr>
+                          </tbody>
+                          <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                          </tfoot>
+                      </table> -->
+
+                        <div id="reg-ttpnMengajar" class="modal fade" data-backdrop="static">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-header indigo-900">
+                                  <h5 class="modal-title">REGISTER TEACHING SETTINGS</h5>
+                              </div>
+                              <div class="modal-body  p-lg">
+                                <p>
+                                  <form role="form" class="p-l-sm">
+                                    <div class="form-group row">
+                                        <label for="namaPensyarah" class="col-md-2 form-control-label">Lecturer<span class="text-danger d-inline">*</span></label>
+                                        <div class="col-md-8 ">
+                                          <select id="namaPensyarah" class="form-control" required>
+                                            <option selected>Select Lecturer's Name</option>
+                                            <option>Prof. AAAAAA</option>
+                                            <option>Prof. BBBBBB</option>
+                                            <option>Dr. CCCCCC</option>
+                                          </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label for="min_masaMengajar" class="col-md-2 form-control-label">Min. Teaching Time (hour)<span class="text-danger d-inline">*</span> </label>
+                                      <div class="col-md-2"> 
+                                          <input id="min_masaMengajar" type="text" class="form-control" >
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label for="max_masaMengajar" class="col-md-2 form-control-label">Max. Teaching Time (hour)<span class="text-danger d-inline">*</span> </label>
+                                      <div class="col-md-2"> 
+                                          <input id="max_masaMengajar" type="text" class="form-control" >
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label class="col-md-2 form-control-label">Teaching Day Exceptions</label>
+                                      <div class="col-md-8 m-t-1"> 
+                                          <div class="form-check p-l-md">
+                                              <input class="form-check-input" type="checkbox" value="isnin" id="isnin">
+                                              <label class="form-check-label" for="isnin">
+                                                Monday
+                                              </label>
+                                            </div>
+                                            <div class="form-check p-l-md">
+                                              <input class="form-check-input" type="checkbox" value="selasa" id="selasa">
+                                              <label class="form-check-label" for="selasa">
+                                                Tuesday
+                                              </label>
+                                            </div>
+                                            <div class="form-check p-l-md">
+                                              <input class="form-check-input" type="checkbox" value="rabu" id="rabu">
+                                              <label class="form-check-label" for="rabu">
+                                                Wednesday
+                                              </label>
+                                            </div>
+                                            <div class="form-check p-l-md">
+                                              <input class="form-check-input" type="checkbox" value="khamis" id="khamis">
+                                              <label class="form-check-label" for="khamis">
+                                                Thursday
+                                              </label>
+                                            </div>
+                                            <div class="form-check p-l-md">
+                                              <input class="form-check-input" type="checkbox" value="jumaat" id="jumaat" >
+                                              <label class="form-check-label" for="jumaat">
+                                                Friday
+                                              </label>
+                                            </div>
+                                      </div>
+                                    </div>                      
+                                  </form>
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn info p-x-md " data-dismiss="modal"  data-toggle="modal" data-target="#mesejEcms" >Save</button>
+                              </div>
+                            </div><!-- /.modal-content -->
+                          </div>
+                        </div>
+
+                        <div id="update-ttpnMengajar" class="modal fade" data-backdrop="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-header indigo-900">
+                                  <h5 class="modal-title">UPDATE TEACHING SETTINGS</h5>
+                              </div>
+                              <div class="modal-body p-lg">
+                                <p>
+                                  <form role="form" class="p-l-sm">
+                                      <div class="form-group row">
+                                          <label for="ud_namaPensyarah" class="col-md-2 form-control-label">Lecturer<span class="text-danger d-inline">*</span></label>
+                                          <div class="col-md-8 ">
+                                            <select id="ud_namaPensyarah" class="form-control" required>
+                                              <option selected>Select Lecturer's Name</option>
+                                              <option>Prof. AAAAAA</option>
+                                              <option>Prof. BBBBBB</option>
+                                              <option>Dr. CCCCCC</option>
+                                            </select>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="ud_min_masaMengajar" class="col-md-2 form-control-label">Min. Teaching Time (hour)<span class="text-danger d-inline">*</span> </label>
+                                        <div class="col-md-2"> 
+                                            <input id="ud_min_masaMengajar" type="text" class="form-control" >
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="ud_max_masaMengajar" class="col-md-2 form-control-label">Max. Teaching Time (hour)<span class="text-danger d-inline">*</span> </label>
+                                        <div class="col-md-2"> 
+                                            <input id="ud_max_masaMengajar" type="text" class="form-control" >
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label class="col-md-2 form-control-label">Teaching Day Exceptions</label>
+                                        <div class="col-md-8 m-t-1"> 
+                                            <div class="form-check p-l-md">
+                                                <input class="form-check-input" type="checkbox" value="isnin" id="isnin">
+                                                <label class="form-check-label" for="isnin">
+                                                  Monday
+                                                </label>
+                                              </div>
+                                              <div class="form-check p-l-md">
+                                                <input class="form-check-input" type="checkbox" value="selasa" id="selasa">
+                                                <label class="form-check-label" for="selasa">
+                                                  Tuesday
+                                                </label>
+                                              </div>
+                                              <div class="form-check p-l-md">
+                                                <input class="form-check-input" type="checkbox" value="rabu" id="rabu">
+                                                <label class="form-check-label" for="rabu">
+                                                  Wednesday
+                                                </label>
+                                              </div>
+                                              <div class="form-check p-l-md">
+                                                <input class="form-check-input" type="checkbox" value="khamis" id="khamis">
+                                                <label class="form-check-label" for="khamis">
+                                                  Thursday
+                                                </label>
+                                              </div>
+                                              <div class="form-check p-l-md">
+                                                <input class="form-check-input" type="checkbox" value="jumaat" id="jumaat" >
+                                                <label class="form-check-label" for="jumaat">
+                                                  Friday
+                                                </label>
+                                              </div>
+                                        </div>
+                                      </div>                      
+                                    </form>
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn success p-x-md" data-dismiss="modal" data-toggle="modal" data-target="#mesejEcms">Update</button>
+                                <button type="button" class="btn danger p-x-md">Remove</button>
+                              </div>
+                            </div><!-- /.modal-content -->
+                          </div>
+                        </div>
+
+                  </p>
+                </div>
+              </div><!-------------------------------------------------- teachings setting -------------------------------------------------->
+
+
+              <!-------------------------------------------------- timetable -------------------------------------------------->
+              <div class="box divBox collapse" id="boxTimetable">
+                <div class="box-header primary">
+                  <h3 id="">TIMETABLE</h3>
+                </div>
+                <div class="box-body">
+                  <div class="row p-a">
+                    <div class="col-md-6">
+                        <div class="form-group row ">
+                          <div class="col-md-5">
+                            <select class="form-control c-select" id="cur_year_timetbl">
+                              <option>-Choose Session-</option>
+                            </select>
+                          </div>
+
+                          <div class="col-md-5">
+                            <select data-bind="" class="form-control c-select " id="">
+                              <option>-Choose Semester-</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                            </select>
+                          </div>
+
+                          <div class="col-md-2">
+                            <button type="button" class="btn primary" title="Search" id="btnSearch"><i class="ion-search"></i></button>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  
+                  <p class="m-a-0 ">
+                      <table class="table m-b-none" id="tblLectTimetbl">
+                          <thead>
+                            <tr>
+                                <th data-toggle="true">No.</th>
+                                <th>Session</th>
+                                <th>Semester</th>
+                                <th data-hide="phone,tablet" class="text-center">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>2021/2022</td>
+                              <td>4</td>
+                                <td class="text-center" style="width: 15%;">
+                                  <button class="btn grey" title="Print"><i class="ion-printer"></i></button>
+                                </td>
+                            </tr>
+                          </tbody>
+                          <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                          </tfoot>
+                      </table>
+
+                        <div id="reg-ttpnMengajar" class="modal fade" data-backdrop="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-header indigo-900">
+                                  <h5 class="modal-title">REGISTER TEACHING SETTINGS</h5>
+                              </div>
+                              <div class="modal-body  p-lg">
+                                <p>
+                                  <form role="form" class="p-l-sm">
+                                    <div class="form-group row">
+                                        <label for="namaPensyarah" class="col-md-2 form-control-label">Lecturer<span class="text-danger d-inline">*</span></label>
+                                        <div class="col-md-8 ">
+                                          <select id="namaPensyarah" class="form-control" required>
+                                            <option selected>Select Lecturer's Name</option>
+                                            <option>Prof. AAAAAA</option>
+                                            <option>Prof. BBBBBB</option>
+                                            <option>Dr. CCCCCC</option>
+                                          </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label for="min_masaMengajar" class="col-md-2 form-control-label">Min. Teaching Time (hour)<span class="text-danger d-inline">*</span> </label>
+                                      <div class="col-md-2"> 
+                                          <input id="min_masaMengajar" type="text" class="form-control" >
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label for="max_masaMengajar" class="col-md-2 form-control-label">Max. Teaching Time (hour)<span class="text-danger d-inline">*</span> </label>
+                                      <div class="col-md-2"> 
+                                          <input id="max_masaMengajar" type="text" class="form-control" >
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label class="col-md-2 form-control-label">Teaching Day Exceptions</label>
+                                      <div class="col-md-8 m-t-1"> 
+                                          <div class="form-check p-l-md">
+                                              <input class="form-check-input" type="checkbox" value="isnin" id="isnin">
+                                              <label class="form-check-label" for="isnin">
+                                                Monday
+                                              </label>
+                                            </div>
+                                            <div class="form-check p-l-md">
+                                              <input class="form-check-input" type="checkbox" value="selasa" id="selasa">
+                                              <label class="form-check-label" for="selasa">
+                                                Tuesday
+                                              </label>
+                                            </div>
+                                            <div class="form-check p-l-md">
+                                              <input class="form-check-input" type="checkbox" value="rabu" id="rabu">
+                                              <label class="form-check-label" for="rabu">
+                                                Wednesday
+                                              </label>
+                                            </div>
+                                            <div class="form-check p-l-md">
+                                              <input class="form-check-input" type="checkbox" value="khamis" id="khamis">
+                                              <label class="form-check-label" for="khamis">
+                                                Thursday
+                                              </label>
+                                            </div>
+                                            <div class="form-check p-l-md">
+                                              <input class="form-check-input" type="checkbox" value="jumaat" id="jumaat" >
+                                              <label class="form-check-label" for="jumaat">
+                                                Friday
+                                              </label>
+                                            </div>
+                                      </div>
+                                    </div>                      
+                                  </form>
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn info p-x-md " data-dismiss="modal"  data-toggle="modal" data-target="#mesejEcms" >Save</button>
+                              </div>
+                            </div><!-- /.modal-content -->
+                          </div>
+                        </div>
+
+                        <div id="update-ttpnMengajar" class="modal fade" data-backdrop="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-header indigo-900">
+                                  <h5 class="modal-title">UPDATE TEACHING SETTINGS</h5>
+                              </div>
+                              <div class="modal-body p-lg">
+                                <p>
+                                  <form role="form" class="p-l-sm">
+                                      <div class="form-group row">
+                                          <label for="ud_namaPensyarah" class="col-md-2 form-control-label">Lecturer<span class="text-danger d-inline">*</span></label>
+                                          <div class="col-md-8 ">
+                                            <select id="ud_namaPensyarah" class="form-control" required>
+                                              <option selected>Select Lecturer's Name</option>
+                                              <option>Prof. AAAAAA</option>
+                                              <option>Prof. BBBBBB</option>
+                                              <option>Dr. CCCCCC</option>
+                                            </select>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="ud_min_masaMengajar" class="col-md-2 form-control-label">Min. Teaching Time (hour)<span class="text-danger d-inline">*</span> </label>
+                                        <div class="col-md-2"> 
+                                            <input id="ud_min_masaMengajar" type="text" class="form-control" >
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="ud_max_masaMengajar" class="col-md-2 form-control-label">Max. Teaching Time (hour)<span class="text-danger d-inline">*</span> </label>
+                                        <div class="col-md-2"> 
+                                            <input id="ud_max_masaMengajar" type="text" class="form-control" >
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label class="col-md-2 form-control-label">Teaching Day Exceptions</label>
+                                        <div class="col-md-8 m-t-1"> 
+                                            <div class="form-check p-l-md">
+                                                <input class="form-check-input" type="checkbox" value="isnin" id="isnin">
+                                                <label class="form-check-label" for="isnin">
+                                                  Monday
+                                                </label>
+                                              </div>
+                                              <div class="form-check p-l-md">
+                                                <input class="form-check-input" type="checkbox" value="selasa" id="selasa">
+                                                <label class="form-check-label" for="selasa">
+                                                  Tuesday
+                                                </label>
+                                              </div>
+                                              <div class="form-check p-l-md">
+                                                <input class="form-check-input" type="checkbox" value="rabu" id="rabu">
+                                                <label class="form-check-label" for="rabu">
+                                                  Wednesday
+                                                </label>
+                                              </div>
+                                              <div class="form-check p-l-md">
+                                                <input class="form-check-input" type="checkbox" value="khamis" id="khamis">
+                                                <label class="form-check-label" for="khamis">
+                                                  Thursday
+                                                </label>
+                                              </div>
+                                              <div class="form-check p-l-md">
+                                                <input class="form-check-input" type="checkbox" value="jumaat" id="jumaat" >
+                                                <label class="form-check-label" for="jumaat">
+                                                  Friday
+                                                </label>
+                                              </div>
+                                        </div>
+                                      </div>                      
+                                    </form>
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn success p-x-md" data-dismiss="modal" data-toggle="modal" data-target="#mesejEcms">Update</button>
+                                <button type="button" class="btn danger p-x-md">Remove</button>
+                              </div>
+                            </div><!-- /.modal-content -->
+                          </div>
+                        </div>
+
+                  </p>
+                </div>
+              </div><!-------------------------------------------------- timetable -------------------------------------------------->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+<!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+  
+  <!-- ############ SWITHCHER START-->
+  <!-- ############ SWITHCHER END-->
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+  
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  
+
+  <!-- <script src="adm_lecturer.js"></script> -->
+  <script src="config.js"></script>
+  <script src="lecturer_details.js"></script>
+<!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Access</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .btn {
+            display: block;
+            width: 220px;
+            padding: 12px;
+            margin: 15px auto;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        .btn:hover {
+            background: white;
+            color: #764ba2;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img src="logo-landscape.png" alt="Logo">
+        <h2>Select Module</h2>
+        <a href="https://picoms.oliveintel.com/admin/admin_login.html" class="btn">ADMIN</a>
+        <a href="https://picoms.oliveintel.com/hepa/hepa_login.html" class="btn">HEPA</a>
+        <a href="https://picoms.oliveintel.com/student/picoms_login.html" class="btn">STUDENT</a>
+    </div>
+</body>
+</html>

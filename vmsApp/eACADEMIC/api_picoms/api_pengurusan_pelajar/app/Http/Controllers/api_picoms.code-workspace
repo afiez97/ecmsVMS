@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\.."
+		},
+		{
+			"path": "..\\..\\..\\..\\api_public_access"
+		},
+		{
+			"path": "..\\..\\..\\..\\api_tetapan_picoms"
+		},
+		{
+			"path": "..\\..\\..\\..\\api_polisi"
+		},
+		{
+			"path": "..\\..\\..\\..\\api_auth"
+		},
+		{
+			"path": "..\\..\\..\\..\\api_tukar_program"
+		}
+	],
+	"settings": {}
+}

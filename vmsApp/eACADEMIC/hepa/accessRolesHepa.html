@@ -1,0 +1,263 @@
+
+
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <span class="navbar-item text-md">Register Roles Staff</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-muted" data-toggle="modal" data-target="#mdl_assignRoles">
+          <span class="">
+            <i class="fa fa-fw fa-plus"></i>
+            <span class="hidden-sm-down">New Record</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+  </div>
+</div>
+
+<!-- FOOTER INSERT  -->
+<div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+<div class="app-body">
+
+  <!-- CONTENT START -->
+  <div style="min-height: mh-200">
+    <div class="padding">
+      <!-- <i class="material-icons md-24">(.*)</i>   <em>$1</em>-->
+      <div id="assignSU" class="box nav-active-border b-info none">
+        <ul class="nav nav-md">
+          <li class="nav-item inline">
+            <a class="nav-link active" href="#" data-toggle="tab" data-target="#tab_superadmin">
+              <span class="text-md">Super Admin</span>
+              <!-- <small class="block text-muted hidden-sm-down">Super Admin</small> -->
+            </a>
+          </li>
+          <li class="nav-item inline">
+            <a class="nav-link" href="#" data-toggle="tab" data-target="#tab_adminProgram">
+              <span class="text-md">Admin Programme
+                <!-- <span class="hidden-sm-down">(AP)</span> -->
+              </span>
+              <!-- <small class="block text-muted hidden-sm-down">Admin Programme</small> -->
+            </a>
+          </li>
+          <li class="nav-item inline">
+            <a class="nav-link" href="#" data-toggle="tab" data-target="#tab_adminDisc">
+              <span class="text-md">Admin Discipline</span>
+              <!-- <small class="block text-muted hidden-sm-down">Admin Discipline</small> -->
+            </a>
+          </li>
+          <li class="nav-item inline">
+            <a class="nav-link" href="#" data-toggle="tab" data-target="#tab_adminHostel">
+              <span class="text-md">Admin Hostel</span>
+              <!-- <small class="block text-muted hidden-sm-down">Admin Hostel</small> -->
+            </a>
+          </li>
+
+          <li class="nav-item inline">
+            <a class="nav-link" href="#" data-toggle="tab" data-target="#tab_adminCounseling">
+              <span class="text-md">Admin Counseling</span>
+              <!-- <small class="block text-muted hidden-sm-down">Admin Hostel</small> -->
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content clear b-t">
+          <div class="tab-pane active" id="tab_superadmin">
+            <div class="box-body">
+              <div>
+                <div class="table-wrap">
+                  <textarea class="hidden" id="dataListsuperadmin"></textarea>
+                  <table id="list_superadmin" class="table table-striped superadmin" data-sorting="true"></table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="tab-pane" id="tab_adminProgram">
+
+            <div class="box-body">
+              <div class="table-wrap">
+                <textarea class="hidden" id="datalist_adminProgram"></textarea>
+                <table id="list_adminProgram" class="table table-striped superadmin" data-sorting="true"></table>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="tab-pane" id="tab_adminDisc">
+            <div class="box-body">
+              <div class="table-wrap">
+                <textarea class="hidden" id="datalist_adminDiscipline"></textarea>
+                <table id="list_adminDiscipline" class="table table-striped superadmin" data-sorting="true"></table>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab_adminHostel">
+
+            <div class="box-body">
+              <div class="table-wrap">
+                <textarea class="hidden" id="datalist_adminHostel"></textarea>
+                <table id="list_adminHostel" class="table table-striped superadmin" data-sorting="true"></table>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="tab-pane" id="tab_adminCounseling">
+
+            <div class="box-body">  
+              <div id="nakreplaceKejap" class="table-wrap">
+                <textarea class="hidden" id="datalist_adminCounseling"></textarea>
+                <table id="list_adminCounseling" class="table table-striped adminCounseling" data-sorting="true"></table>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <div id="assignAdminHostel" class="box nav-active-border b-info none">
+        <ul class="nav nav-md">
+          <li class="nav-item inline">
+            <a class="nav-link active" href="#" data-toggle="tab" data-target="#tab_SuperHostel">
+              <span class="text-md">Admin Hostel</span>
+              <small class="block text-muted hidden-sm-down">Admin Hostel</small>
+            </a>
+          </li>
+          <li class="nav-item inline">
+            <a class="nav-link" href="#" data-toggle="tab" data-target="#tab_Warden">
+              <span class="text-md">Register Warden<span class="hidden-sm-down">(AP)</span></span>
+              <small class="block text-muted hidden-sm-down">Google material design icons</small>
+            </a>
+          </li>
+
+        </ul>
+        <div class="tab-content clear b-t">
+          <div class="tab-pane active" id="tab_SuperHostel">
+            <div class="box-body">
+              <div>
+                <div class="table-wrap">
+                  <textarea class="hidden" id="datalist_adminHostel"></textarea>
+                  <table id="list_adminHostel" class="table table-striped adminHostel" data-sorting="true"></table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="tab-pane" id="tab_Warden">
+
+            <div class="box-body">
+              <div class="table-wrap">
+                <textarea class="hidden" id="datalist_warden"></textarea>
+                <table id="list_warden" class="table table-striped warden" data-sorting="true"></table>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <div id="assignAdminCoun" class="box nav-active-border b-info none">
+        <ul class="nav nav-md">
+          <li class="nav-item inline">
+            <a class="nav-link active" href="#" data-toggle="tab" data-target="#tab_superCoun">
+              <span class="text-md">Admin Counseling</span>
+              <!-- <small class="block text-muted hidden-sm-down">Admin Counseling</small> -->
+            </a>
+          </li>
+          <li class="nav-item inline">
+            <a class="nav-link" href="#" data-toggle="tab" data-target="#tab_adminCounselor">
+              <span class="text-md">Register Counselor<span class="hidden-sm-down">(AP)</span></span>
+              <!-- <small class="block text-muted hidden-sm-down">Google material design icons</small> -->
+            </a>
+          </li>
+
+        </ul>
+        <div class="tab-content clear b-t">
+          <div class="tab-pane active" id="tab_superCoun">
+            <div class="box-body">
+              <div>
+                <div id="nakreplaceKejapChild" class="table-wrap">
+                  <textarea class="hidden" id="datalist_adminCounseling"></textarea>
+                  <table id="list_adminCounseling" class="table table-striped adminCounseling" data-sorting="true"></table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="tab-pane" id="tab_adminCounselor">
+
+            <div class="box-body">
+              <div class="table-wrap">
+                <textarea class="hidden" id="datalist_counselor"></textarea>
+                <table id="list_counselor" class="table table-striped counselor" data-sorting="true"></table>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+      <!-------------------------------------------------- modal add  -------------------------------------------------->
+      <div id="mdl_assignRoles" style="width: 100%;" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content" id="other">
+            <form role="form" id="formAdd">
+              <div class="modal-header purple-700">
+                <h5 class="modal-title">Register Role</h5>
+              </div>
+              <div class="modal-body p-lg">
+                <p>
+                <div class="form-group row ">
+                  <label for="" class="col-sm-2 form-control-label">Name Staff</label>
+                  <div class="col-sm-10">
+                    <select class="form-control c-select slct2" id="FK_users" required></select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Roles</label>
+                  <div class="col-sm-10">
+                    <select class="form-control c-select" id="FK_capaianjenis" required></select>
+                  </div>
+                </div>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn info p-x-md" value="Register">
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal add  -------------------------------------------------->
+
+
+    </div>
+  </div>
+
+</div>
+<script src="scripts/action.min.js"></script>
+<script src="config.js"></script>
+<script src="scripts/ajax.js"></script>
+<script src="accessRoles.js"></script>

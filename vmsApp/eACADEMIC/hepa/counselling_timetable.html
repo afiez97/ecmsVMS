@@ -1,0 +1,139 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Counseling</span>
+			        </li>
+			        <li class="nav-item" id="addTimeTable">
+				        <a class="nav-link text-muted" data-toggle="modal" data-target="#counselling-timetable">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li>     
+            
+
+             
+            
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+           
+              <div id="KaunselorList" class="form-group row">
+                <div class="col-md-2">
+                  <label class="form-control-label">Name Counselor</label>
+                </div>
+                <div class="col-md-3">
+                  <!-- <select class="form-control" id="optionCoun" required ></select> -->
+                  <select class="form-control" id="optionCoun" required onchange="SelectCoun(this)"></select>
+
+                </div>
+              </div>  
+                <div class="box">
+                  <div class="box-header green-700">
+                    <h3><b>TIMETABLE</b></h3>
+                  </div>
+                  <div class="box-body b-b">
+                    <p class="m-a-0">
+                      <div id="tableTimetbl">
+                        <input type="hidden" id="fk_caunselor">
+                     
+                      </div>
+                    </p>
+                  </div>
+                </div>
+            </div>
+
+
+            <!-------------------------------------------------- modal Add Timetable -------------------------------------------------->
+            <div id="counselling-timetable" class="modal fade" data-backdrop="static">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                    <form role="form" id="formAddTimetbl">
+                      <div class="modal-header green-700">
+                          <h5 class="modal-title">ADD TIMETABLE</h5>
+                      </div>
+                      <div class="modal-body p-lg">
+                        <p>
+                            <div class="form-group row">
+                              <label for="" class="col-sm-3 form-control-label">Day<span class="text-danger"> *</span></label>
+                              <div class="col-sm-9">
+                                <select class="form-control c-select" id="counseling_day" required>
+                                  <option value="">- Choose -</option>
+                                  <option value="Monday">Monday</option>
+                                  <option value="Tuesday">Tuesday</option>
+                                  <option value="Wednesday">Wednesday</option>
+                                  <option value="Thursday">Thursday</option>
+                                  <option value="Friday">Friday</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-3 form-control-label">Time Slot<span class="text-danger"> *</span></label>
+                              <div class="col-sm-9">
+                                <input type="time" class="form-control" id="coun_timeslot" placeholder="Time Slot" required>
+                              </div>
+                            </div>
+                        </p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn info p-x-md" value="Save">
+                      </div>                                      
+                    </form>
+                </div><!-- /.modal-content -->
+              </div>
+            </div><!-------------------------------------------------- end modal Add Timetable -------------------------------------------------->
+
+
+            <!-------------------------------------------------- modal view -------------------------------------------------->
+            <div id="mdlView" class="modal fade" display="block" data-backdrop="true">
+              <div class="modal-dialog modal-lg fade-right-big" style="max-width: 80% !important;">
+                <div class="modal-content">
+                    <form role="form" id="formUptCounseling">
+                      <div class="modal-header green-700">
+                          <h5 class="modal-title">VIEW COUNSELING</h5>
+                      </div>
+                      <div class="modal-body p-lg">
+
+                        <p class="m-a-0">
+                          <div id="">
+                            <textarea class="hidden" id="dataList"></textarea>
+                            <table id="detTimetable" class="table m-b-none"></table>
+                          </div>
+                        </p>
+               
+                      </div>
+                      <div class="modal-footer ">
+                        <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                      </div>                                      
+                    </form>
+                </div><!-- /.modal-content -->
+              </div>
+            </div><!-------------------------------------------------- end modal view -------------------------------------------------->
+
+        </div>
+    </div>
+
+    <script src="scripts/ajax.js"></script>
+    <script src="counselling_timetable.js"></script>

@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=cloneDeep;var _typeCheck=require("./type-check");function cloneDeep(a){if((0,_typeCheck.isNull)(a)||!(0,_typeCheck.isObject)(a)||"isActiveClone"in a)return a;var b=a.constructor();for(var c in a)Object.prototype.hasOwnProperty.call(a,c)&&(a.isActiveClone=null,b[c]=cloneDeep(a[c]),delete a.isActiveClone);return b}//# sourceMappingURL=clone-deep.js.map
+// https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript

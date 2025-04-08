@@ -1,0 +1,287 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+  
+            <ul class="nav navbar-nav">
+              <li class="nav-item">
+                  <span class="navbar-item text-md">Credit Exemption/Credit Transfer</span>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-lokasi" title="Reply" data-backdrop="static" data-keyboard="false">
+                    <span class="">
+                      <i class="fa fa-fw fa-plus"></i>
+                      <span class="hidden-sm-down">Rekod Baru</span>
+                    </span>
+                </a>
+              </li> -->
+            </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+  
+    <!-- FOOTER INSERT -->
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+
+    <div class="modal" id="loading_modal" data-backdrop="static">
+        <div class="modal-dialog">
+          <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+        </div>
+      </div>
+  
+    <div class="app-body">
+  
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box" style="margin-bottom: 100px;">
+                  <div class="box-header light-blue-900" data-toggle="collapse" href="#form_setup" style="cursor: pointer;">
+                    <h3><b>CREDIT EXEMPTION APPLICATION</b><span class="fa fa-plus pull-right"></span></h3>
+                    <!-- <small>Senarai Lokasi</small> -->
+                  </div>
+                  <div class="box-body" >
+                    <p class="m-a-0">
+                      <form id="form_setup" class="collapse" role="form">
+                        <div class="row p-a p-b-0">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Student ID</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="studentid" placeholder="Student ID" readonly>
+                                    </div>
+                                </div>
+        
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Student Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="std_name" placeholder="Student Name" readonly>
+                                    </div>
+                                </div>
+        
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Programme</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" class="form-control" id="pgm_id" placeholder="Programme" readonly>
+                                        <input type="text" class="form-control" id="programme" placeholder="Programme" readonly>
+                                        <!-- <select class="form-control c-select">
+                                            <option>-Pilih-</option>
+                                            <option>Diploma</option>
+                                        </select> -->
+                                    </div>
+                                </div>
+        
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Semester</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="std_semester" required placeholder="Semester">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row m-b-0">
+                                    <label for="" class="col-sm-2 form-control-label">Previous Level of Education</label>
+                                    <div class="col-sm-10">
+                                        <select id="std_edu" class="form-control c-select" required>
+                                            <option value="">-Choose-</option>
+                                            <option value="STPM">STPM</option>
+                                            <option value="Matriculation">Matriculation</option>
+                                            <option value="Diploma">Diploma</option>
+                                            <option value="Degree">Degree</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Previous IPTA/IPTS</label>
+                                    <div class="col-sm-10">
+                                        <select id="std_pre_universiti" class="form-control c-select" required>
+                                            <option value="">-Choose-</option>
+                                            <option value="UITM">UITM</option>
+                                            <option value="UNIZA">UNIZA</option>
+                                            <option value="UNISEL">UNISEL</option>
+                                            <option value="UTM">UTM</option>
+                                            <option value="UKM">UKM</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Previous Programme</label>
+                                    <div class="col-sm-10">
+                                        <select id="std_pre_program" class="form-control c-select" required>
+                                            <option value="">-Choose-</option>
+                                            <option value="Pengurusan">Pengurusan</option>
+                                            <option value="Penyelidikan">Penyelidikan</option>
+                                            <option value="Kejururawatan">Kejururawatan</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Transcript</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" id="std_transkrip" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row m-b-0">
+                                    <label for="" class="col-sm-2 form-control-label">Processing Fees</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" id="std_fee" required>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                        <div class="row p-a p-t-0 mt-2 text-center">
+                            <button type="submit" class="btn info">Save</button>
+                        </div>
+                        </form>
+                        
+                        <div id="cect_det" class="p-l m-b-md"></div>
+
+
+                        <!-- modal add course -->
+                        <div id="mdlAddCourse" class="modal fade" data-backdrop="static">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content" id="other">
+                                  <form role="form" id="form_register">
+                                    <div class="modal-header light-blue-900">
+                                        <h5 class="modal-title">ADD COURSE</h5>
+                                    </div>
+                                    <div class="modal-body p-lg">
+                                      <p>
+                                        <input type="hidden" id="fk_cect">
+                                        <div class="grey-300 m-b-2"><span class="font-weight-bold text-dark p-l-1">PICOMS Course</span></div>
+                                        <div class="form-group row ">
+                                            <label for="" class="col-sm-2 form-control-label ">Course Code</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="course_code" placeholder="Course Code">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Course Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="course_name" placeholder="Course Name">
+                                            </div>
+                                        </div>
+    
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Credit Hours</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="crt_hour" placeholder="Credit Hours">
+                                            </div>
+                                        </div>
+    
+                                        <div class="grey-300 m-b-2"><span class="font-weight-bold text-dark p-l-1">Previous Course</span></div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Course Code</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="pv_course_code" placeholder="Course Code">
+                                            </div>
+                                        </div>
+    
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Course Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="pv_course_name" placeholder="Course Name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Credit Hours</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="pv_crt_hour" placeholder="Credit Hours">
+                                            </div>
+                                        </div>
+                                      </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                      <input type="submit" class="btn info p-x-md" value="Save">
+                                    </div>                                      
+                                  </form>
+                              </div><!-- /.modal-content -->
+                            </div>
+                        </div>
+
+                        <!-- modal edit course -->
+                        <div id="mdlUptCourse" class="modal fade" data-backdrop="static">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content" id="other">
+                                  <form role="form" id="form_upt">
+                                    <div class="modal-header light-blue-900">
+                                        <h5 class="modal-title">UPDATE COURSE</h5>
+                                    </div>
+                                    <div class="modal-body p-lg">
+                                      <p>
+                                        <div class="grey-300 m-b-2"><span class="font-weight-bold text-dark p-l-1">PICOMS Course</span></div>
+                                        <div class="form-group row ">
+                                            <label for="" class="col-sm-2 form-control-label ">Course Code</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="upt_course_code" placeholder="Course Code">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Course Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="upt_course_name" placeholder="Course Name">
+                                            </div>
+                                        </div>
+    
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Credit Hours</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="upt_crt_hour" placeholder="Credit Hours">
+                                            </div>
+                                        </div>
+    
+                                        <div class="grey-300 m-b-2"><span class="font-weight-bold text-dark p-l-1">Previous Course</span></div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Course Code</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="upt_pv_course_code" placeholder="Course Code">
+                                            </div>
+                                        </div>
+    
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Course Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="upt_pv_course_name" placeholder="Course Name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Credit Hours</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="upt_pv_crt_hour" placeholder="Credit Hours">
+                                            </div>
+                                        </div>
+                                      </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                      <input type="submit" class="btn success p-x-md" value="Update">
+                                    </div>                                      
+                                  </form>
+                              </div><!-- /.modal-content -->
+                            </div>
+                        </div>
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+  
+    </div>
+    <script src="scripts/ajax.js"></script>
+    <script src="pljr_mohonCE.js"></script>

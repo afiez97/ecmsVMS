@@ -1,0 +1,121 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Setting</span>
+			        </li>
+			        <li class="nav-item">
+				        <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-kursus" data-backdrop="static" data-keyboard="false">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header light-green-900">
+                    <h3><b>COURSE</b></h3>
+                    <small>Course List</small>
+                  </div>
+                  <div class="box-body light lt">
+                    <p class="m-a-0">
+                      <div id="tableCourse">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table class="table m-b-none" id="courseList"></table>
+                      </div>
+
+                          <div id="reg-kursus" class="modal fade" data-backdrop="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <form role="form" data-bind="submit: Register">
+                                <div class="modal-header light-green-900">
+                                    <h5 class="modal-title">REGISTER COURSE</h5>
+                                </div>
+                                <div class="modal-body p-lg">
+                                  <p>
+                                      <div class="form-group row">
+                                        <label for=" fac_id" class="col-sm-3 form-control-label">Faculty<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-9">
+                                          <select class="form-control c-select" data-bind="value: fac_id" id="fac_id"></select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="kodKursus" class="col-sm-3 form-control-label">Course Code <span class="text-danger"> *</span></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" data-bind="value: crs_code" oninput="courseCodeChecking(this)" id="crs_code" placeholder="eg: MPU2113">
+                                            <span id="check"></span>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="namaKursus" class="col-sm-3 form-control-label">Course Name<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" data-bind="value: crs_name" id="crs_name" placeholder="Course Name">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="" class="col-sm-3 form-control-label">Course Classification <span class="text-danger"> *</span></label>
+                                        <div class="col-sm-3">
+                                          <select class="form-control c-select" data-bind="value: crs_type" id="crs_type" ></select>
+                                        </div>
+
+                                        <label for="" class="col-sm-2 form-control-label">Credit Value</label>
+                                        <div class="col-sm-4">
+                                            <input type="number" class="form-control" data-bind="value: crs_credit" id="crs_credit" placeholder="Credit Value">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="" class="col-sm-3 form-control-label">Price (RM)</label>
+                                        <div class="col-sm-3">
+                                            <input type="number" class="form-control" data-bind="value: crs_price" id="crs_price" placeholder="Price (RM)">
+                                        </div>
+
+                                        <label for="" class="col-sm-2 form-control-label">Status</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control c-select" data-bind="value: crs_status" id="crs_status"></select>
+                                        </div>
+                                      </div>
+                                  </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                  <input type="submit" class="btn info p-x-md " value="Save" id="submit-course">
+                                </div>
+                              </form>
+                              </div><!-- /.modal-content -->
+                            </div>
+                          </div>
+                          
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+    <script src="kursusSubjek.js"></script>
+    <script src="bower_components/knockout-validation/dist/knockout.validation.min.js"></script>

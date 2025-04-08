@@ -1,0 +1,159 @@
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Registration Info</span>
+			        </li>
+              <li class="nav-item">
+                <a href="javascript:void(0);" id="btn_update" class="navbar-item text-primary"><i class="fa fa-cog"></i> UPDATE</a>
+              </li>
+			        <!-- <li class="nav-item">
+				        <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-lokasi" title="Reply" data-backdrop="static" data-keyboard="false">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">Rekod Baru</span>
+				            </span>
+				        </a>
+			        </li> -->
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+     <!-- FOOTER INSERT  -->
+     <div class="app-footer white bg p-a b-t">
+        <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+        <span class="text-sm text-muted">&copy; Copyright.</span>
+      </div>
+  
+      <div class="modal" id="loading_modal" data-backdrop="static">
+        <div class="modal-dialog">
+          <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+        </div>
+      </div>
+  
+      <div class="app-body mt-2">
+        <div class="row-col">
+            <div class="row-row">
+                <div class="col-md-12">
+                    <div class="box" id="">
+                        <div class="box-body">
+                          <p class="m-a-0">
+                            <form role="form" id="form_std_registration">
+                              <div class="row p-a">
+                                <div class="col-sm-6">
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Payment via</label>
+                                    <div class="col-sm-10">
+                                      <select class="form-control c-select" name="srg_payment_via" id="srg_payment_via" required>
+                                      </select>
+                                    </div>
+                                  </div>
+            
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Receipt No.</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="srg_payment_resit" id="srg_payment_resit" placeholder="Receipt No." required>
+                                    </div>
+                                  </div>
+                                </div>
+            
+                                <div class="col-sm-6">
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Introducer Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="srg_introducer_name" id="srg_introducer" placeholder="Introducer Name" required>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Payment Receipt</label>
+                                    <div class="col-sm-10">
+                                      <a id="link_payment_resitdoc" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                        <input type="file" class="btn-primary" name="srg_payment_resitdoc" id="srg_payment_resitdoc" onchange="validateFile('srg_payment_resitdoc')"> 
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+            
+                              <div class="row p-a">
+                                <div class="row p-l-2"><h6><b>UPLOAD DOCUMENTS</b></h6></div>
+                                <div class="col-md-6">
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Offer Letter</label>
+                                    <div class="col-sm-10">
+                                      <a id="link_offer_letter" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                      <input type="file" class="btn-primary" name="srg_offer_letter" id="srg_offerLetter" onchange="validateFile('srg_offerLetter')" >
+                                    </div>
+                                  </div>
+            
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Acceptance Letter</label>
+                                    <div class="col-sm-10">
+                                      <a id="link_accept_letter" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                        <input type="file" class="btn-primary" name="srg_accept_letter" id="srg_acceptance" onchange="validateFile('srg_acceptance')" >
+                                    </div>
+                                  </div>
+            
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Student IC(Colored)</label>
+                                    <div class="col-sm-10">
+                                      <a id="link_ic_pict" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                        <input type="file" class="btn-primary" name="srg_ic_pict" id="srg_studIC" onchange="validateFile('srg_studIC')"> 
+                                    </div>
+                                  </div>
+            
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Birth Certificate(Colored)</label>
+                                    <div class="col-sm-10">
+                                      <a id="link_birth_cert" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                        <input type="file" class="btn-primary" name="srg_birth_cert" id="srg_birthCert" onchange="validateFile('srg_birthCert')"> 
+                                    </div>
+                                  </div>
+                                </div>
+            
+                                <div class="col-md-6">
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Father/Guardian/ Spouse IC(Colored)</label>
+                                    <div class="col-sm-10">
+                                      <a id="link_father_ic" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                      <input type="file" class="btn-primary" name="srg_father_ic" id="srg_fatherIC" onchange="validateFile('srg_fatherIC')">
+                                    </div>
+                                  </div>
+            
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Mother/Guardian/ Spouse IC(Colored)</label>
+                                    <div class="col-sm-10">
+                                      <a id="link_mother_ic" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                      <input type="file" class="btn-primary" name="srg_mother_ic" id="srg_motherIC" onchange="validateFile('srg_motherIC')">
+                                    </div>
+                                  </div>
+            
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">SPM/STPM Certificate <span><i class="ion-information-circled" title="SPM/STPM/Foundation/Certificate/Diploma/Others Certificate"></i></span></label>
+                                    <div class="col-sm-10">
+                                      <a id="link_spm_doc" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                      <input type="file" class="btn-primary" name="srg_spm_doc" id="srg_spmCert" onchange="validateFile('srg_spmCert')">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+            
+                              <div class="row p-a text-right">
+                                <button type="submit" class="btn info">Save</button>
+                              </div>
+                              
+                            </form>
+                          </p>
+                        </div>
+                      </div> 
+                </div>
+            </div>
+        </div>
+                
+      </div>

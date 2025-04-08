@@ -1,0 +1,118 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Examination</span>
+			        </li>
+			      </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header primary">
+                    <h3><b>EXAMINATION DETAILS</b></h3>
+                    <!-- <small>Senarai Lokasi</small> -->
+                  </div>
+                  <div class="box-body">
+                    <p class="m-a-0">
+                      <form role="form">
+                        <div class="row p-a">
+                          <div class="col-md-3">
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Year</label>
+                              <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                  <option>- Choose -</option>
+                                  <option>2020</option>
+                                  <option>2020/2021</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Semester</label>
+                              <div class="col-sm-10">
+                                <select class="form-control c-select">
+                                  <option>- Choose- -</option>
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                  <option>6</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                          </div>
+                        </div>
+                      </form>
+                    </p>
+
+                    <!-- senarai pelajar -->
+                    <div class="row p-a text-right">
+                      <button type="submit" class="btn light"><i class="ion-printer"></i></button>
+                    </div>
+                    <table class="table m-b-none" data-ui-jp="footable" data-filter="#filter" data-page-size="5">
+                      <thead class="">
+                        <tr>
+                            <th data-hide="phone,tablet">Course Code</th>
+                            <th data-toggle="true" >Course Name</th>
+                            <th class="text-center">Section</th>
+                            <th class="text-center">Credit</th>
+                            <th class="text-center">Attendance (%)</th>
+                            <th class="text-center">Warning Letter</th>
+                            <th class="text-center">Coursework Marks (%)</th>
+                            <th class="text-center">Grade</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                            <td>ABC12345</td>
+                            <td>Fisioterap</td>
+                            <td class="text-center">17</td>
+                            <td class="text-center">4</td>
+                            <td class="text-center">100</td>
+                            <td class="text-center">-</td>
+                            <td class="text-center">40.46</td>
+                            <td class="text-center">B</td>
+                        </tr>
+                      </tbody>
+                      <tfoot class="hide-if-no-paging">
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <ul class="pagination"></ul>
+                            </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+
+                
+              </div>
+        </div>
+
+    </div>

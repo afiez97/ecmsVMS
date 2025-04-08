@@ -1,0 +1,500 @@
+<style>
+  /* Custom styles for extra-large modal */
+  .modal-xl {
+    max-width: 90%; /* Adjust the width as needed */
+    width: 90%; /* This makes sure the modal scales responsively */
+  }
+
+  @media (min-width: 1300px) {
+    .modal-xl {
+      max-width: 1240px; /* This can be adjusted to your preference */
+    }
+  }
+</style>
+<style>
+  /* START TOOLTIP STYLES */
+[tooltip] {
+  position: relative; /* opinion 1 */
+}
+
+/* Applies to all tooltips */
+[tooltip]::before,
+[tooltip]::after {
+  text-transform: none; /* opinion 2 */
+  font-size: .9em; /* opinion 3 */
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  display: none;
+  opacity: 0;
+}
+[tooltip]::before {
+  content: '';
+  border: 5px solid transparent; /* opinion 4 */
+  z-index: 1001; /* absurdity 1 */
+}
+[tooltip]::after {
+  content: attr(tooltip); /* magic! */
+  
+  /* most of the rest of this is opinion */
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  
+  /* 
+    Let the content set the size of the tooltips 
+    but this will also keep them from being obnoxious
+    */
+  min-width: 3em;
+  max-width: 21em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 1ch 1.5ch;
+  border-radius: .3ch;
+  box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
+  background: #333;
+  color: #fff;
+  z-index: 1000; /* absurdity 2 */
+}
+
+/* Make the tooltips respond to hover */
+[tooltip]:hover::before,
+[tooltip]:hover::after {
+  display: block;
+}
+
+/* don't show empty tooltips */
+[tooltip='']::before,
+[tooltip='']::after {
+  display: none !important;
+}
+
+/* FLOW: UP */
+[tooltip]:not([flow])::before,
+[tooltip][flow^="up"]::before {
+  bottom: 100%;
+  border-bottom-width: 0;
+  border-top-color: #333;
+}
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::after {
+  bottom: calc(100% + 5px);
+}
+[tooltip]:not([flow])::before,
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::before,
+[tooltip][flow^="up"]::after {
+  left: 50%;
+  transform: translate(-50%, -.5em);
+}
+
+/* FLOW: DOWN */
+[tooltip][flow^="down"]::before {
+  top: 100%;
+  border-top-width: 0;
+  border-bottom-color: #333;
+}
+[tooltip][flow^="down"]::after {
+  top: calc(100% + 5px);
+}
+[tooltip][flow^="down"]::before,
+[tooltip][flow^="down"]::after {
+  left: 50%;
+  transform: translate(-50%, .5em);
+}
+
+/* FLOW: LEFT */
+[tooltip][flow^="left"]::before {
+  top: 50%;
+  border-right-width: 0;
+  border-left-color: #333;
+  left: calc(0em - 5px);
+  transform: translate(-.5em, -50%);
+}
+[tooltip][flow^="left"]::after {
+  top: 50%;
+  right: calc(100% + 5px);
+  transform: translate(-.5em, -50%);
+}
+
+/* FLOW: RIGHT */
+[tooltip][flow^="right"]::before {
+  top: 50%;
+  border-left-width: 0;
+  border-right-color: #333;
+  right: calc(0em - 5px);
+  transform: translate(.5em, -50%);
+}
+[tooltip][flow^="right"]::after {
+  top: 50%;
+  left: calc(100% + 5px);
+  transform: translate(.5em, -50%);
+}
+
+/* KEYFRAMES */
+@keyframes tooltips-vert {
+  to {
+    opacity: .9;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes tooltips-horz {
+  to {
+    opacity: .9;
+    transform: translate(0, -50%);
+  }
+}
+
+/* FX All The Things */ 
+[tooltip]:not([flow]):hover::before,
+[tooltip]:not([flow]):hover::after,
+[tooltip][flow^="up"]:hover::before,
+[tooltip][flow^="up"]:hover::after,
+[tooltip][flow^="down"]:hover::before,
+[tooltip][flow^="down"]:hover::after {
+  animation: tooltips-vert 300ms ease-out forwards;
+}
+
+[tooltip][flow^="left"]:hover::before,
+[tooltip][flow^="left"]:hover::after,
+[tooltip][flow^="right"]:hover::before,
+[tooltip][flow^="right"]:hover::after {
+  animation: tooltips-horz 300ms ease-out forwards;
+}
+
+
+
+
+
+
+
+
+
+
+/* UNRELATED to tooltips */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  background: #ededed;
+}
+main {
+  flex: 1 1 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+aside {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #49b293;
+  color: #fff;
+  padding: 1em;
+}
+main div {
+  text-align: center;
+  color: #353539;
+}
+main span {
+  padding: .5em 1em;
+  margin: .5em;
+  display: inline-block;
+  background: #dedede;
+}
+
+aside a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  padding: .4em 1em;
+}
+
+</style>
+<!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Graduation Audit</span>
+			        </li>
+			      </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="modal" id="loading_modal_audit" data-backdrop="static">
+      <div class="modal-dialog">
+        <div style="padding-top: 50%;" class="text-center text-white"><span
+            class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+      </div>
+    </div>
+
+    <!-- <div class="modal" id="loading_modal_audit2" data-backdrop="static">
+      <div class="modal-dialog">
+        <div style="padding-top: 50%;" class="text-center text-white"><span
+            class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+      </div>
+    </div> -->
+
+    <div class="app-body">
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-12">
+              <!-- <div class="col-md-12 offset-md-1 mt-2"> -->
+              <div class="box" id="divCOT">
+                <div class="box-header blue-grey-800">
+                  <h3><b>Student List </b></h3>
+                </div>
+                <div class="box-body b-b">
+                  <p class="m-a-0">
+                    <div id="tableCot">
+                      <div class="form-group row">
+                        <input type="text" hidden class="form-control" name="std_studentid" id="matric_no" readonly >
+
+                        <div class="col-sm-2">
+                          <label for="intake_filter" class="col-form-label">Intake:</label>
+                          <select class="form-control slct2 c-select" id="intake_filter" required></select>
+                        </div>
+                        <!-- <div class="col-sm-2">
+                          <label for="aca_session" class="col-form-label">Session:</label>
+                          <select class="form-control slct2 c-select" id="aca_session" required></select>
+                        </div> -->
+                        
+                        <div class="col-sm-2">
+                          <label for="cal_category" class="col-form-label">Category:</label>
+                          <select class="form-control slct2 c-select" id="cal_category" required></select>
+                        </div>
+
+                        <div class="col-sm-2">
+                          <label for="fac_id" class="col-form-label">Faculty:</label>
+                          <select class="form-control slct2 c-select" id="fac_id" required></select>
+
+                        </div>
+
+                        <div class="col-sm-2">
+                          <label for="pgm_id" class="col-form-label">Programme:</label>
+                          <select class="form-control slct2 c-select" id="pgm_id" required></select>
+                        </div>
+
+                        
+
+                        <!-- <div class="col-sm-3">
+                          <label for="chkInOutdate" class="col-form-label">Programme:</label>
+                          <input id="chkInOutdate" type="month" class="form-control" placeholder="Date">
+                        </div> -->
+
+                        <div class="row">
+                          <div class="col-sm-4">
+                              <div class="" id = "btnPDF">
+                                  
+                              </div>
+                          </div>
+                        </div>
+
+                        
+
+                      </div>
+                      <textarea class="hidden" id="dataList"></textarea>
+                      <table class="table table-striped m-b-none" id="tableGraduationAudit"></table>
+                      <table class="" id="tableGraduationAuditpdf"></table>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              
+            </div>
+        </div>
+    </div><!--- end app-body -->
+
+   <!-- .modal -->
+   <div id="modalTranscriptMain" class="modal modalTranscript fade" data-backdrop="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <!-- <div class="modal-header #22b66e"> -->
+        <div class="modal-header" style="background-color: #22b66e; color: #fff;">
+          <h5 class="modal-title">Academic Transcript</h5>
+        </div>
+        <div class="modal-body p-lg">
+          <p class="formResetTranscript">
+            <span class="hidden" id="acaCal"></span>
+
+            <div class="row">
+              <div class="col-md-6" >
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Name </div>
+                  <div class="col-sm-9 text-uppercase" id="ATstudname"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Gender</div>
+                  <div class="col-sm-9 text-uppercase" id="ATgender"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Nationality</div>
+                  <div class="col-sm-9 text-uppercase" id="ATnationality"></div>
+                </div>
+            
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">IC/Passport Number</div>
+                  <div class="col-sm-9 text-uppercase" id="ATic"></div>
+                </div>
+              </div>
+            
+              <div class="col-md-6" >
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Matric Number </div>
+                  <div class="col-sm-9 text-uppercase" id="ATstudID"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Programme </div>
+                  <div class="col-sm-9 text-uppercase" id="ATProgram"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Year Enrolled </div>
+                  <div class="col-sm-9 text-uppercase" id="ATyearStart"></div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3 font-weight-bold">Year Completed </div>
+                  <div class="col-sm-9 text-uppercase" id="ATyearEnd"></div>
+                  <div class="col-sm-9 text-uppercase" id="ATstatusAcademic" hidden></div>
+                  <div class="col-sm-9 text-uppercase" id="ATSenate" hidden></div>
+                </div>
+              </div>
+            </div>
+            
+            
+
+            <hr>
+            <div class = "box">
+              <!-- <table class="table table-bordered table-striped m-b-none hiddenTranscript" data-sorting="true" id="list_cect"  ></table> -->
+              <span id ="tableCect"></span>
+              <!-- <table class="table table-bordered table-striped m-b-none hiddenTranscript" data-sorting="true" id="list_cect" hidden></table> -->
+
+            </div>
+            <hr>
+
+
+
+            <!-- <table class="table table-striped m-b-none" data-sorting="true" id="divLectDetails"></table> -->
+            <div class="col-md-12">
+              <div class="box" id="divLectDetailsAT">
+                <ul class="nav nav-pills nav-stacked" data-ui-nav id="divListSemAT"></ul>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="box" >
+                <div class ="box-body">
+                  <div class="row">
+                    <div class="form-group row">
+                      <div class="col-sm-4 font-weight-bold">TOTAL CREDIT EARNED </div>
+                      <div class="col-sm-1 font-weight-bold">: </div>
+                      <div class="col-sm-7 text-uppercase" id="ATtce"></div>
+                    </div>
+  
+                    <div class="form-group row">
+                      <div class="col-sm-4 font-weight-bold">TOTAL CREDIT TRANSFER</div>
+                      <div class="col-sm-1 font-weight-bold">: </div>
+                      <div class="col-sm-7 text-uppercase" id="ATtct"></div>
+                    </div>
+  
+                    <!-- <div class="form-group row">
+                      <div class="col-sm-4 font-weight-bold">GRAND TOTAL CREDIT</div>
+                      <div class="col-sm-1 font-weight-bold">: </div>
+                      <div class="col-sm-7 text-uppercase" id="ATgtc"></div>
+                    </div> -->
+                
+                    <div class="form-group row">
+                      <div class="col-sm-4 font-weight-bold">CUMULATIVE GRADE POINT AVERAGE</div>
+                      <div class="col-sm-1 font-weight-bold">: </div>
+                      <div class="col-sm-7 text-uppercase" id="ATcgpa"></div>
+                    </div>
+                  </div>
+
+                </div>
+                
+              </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn dark-white p-x-md" id="buttonHideTranscript">Close</button>
+          <!-- <button type="button" class="btn dark-white p-x-md" id="buttonHideTranscript">No</button> -->
+          <!-- <button type="button" class="btn danger p-x-md" data-dismiss="modalTranscript">Yes</button> -->
+          <!-- <div id ="buttonCECT"></div> -->
+
+          <button type="button" class="btn btn-outline-danger p-x-md buttonCect" id="printAcademicTranscriptCECT"><i class="fa fa-file-pdf-o"></i> Print</button>
+          <button type="button" class="btn btn-outline-danger p-x-md buttonNoCect" id="printAcademicTranscript"><i class="fa fa-file-pdf-o"></i> Print</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div>
+  </div>
+  <!-- / .modal -->
+
+
+  <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
+  <div id="modalAcademicTranscript" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog modal-lg" style="max-width: 80% !important;">
+      <div class="modal-content">
+          <div class="modal-header teal-500">
+            <h5 class="modal-title">ACADEMIC TRANSCRIPT </h5>
+          </div>
+          <div class="modal-body p-lg" >
+              <div class="box">
+                <div class="box-body">
+                  <div class ="row">
+                    <div class ="col-sm-12" >
+                      <table class="table table-striped m-b-none"  id="testtable" style="font-size: 10px;"></table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="modal-footer">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-danger p-x-md" id="printTimeTableExam"><i class="fa fa-file-pdf-o"></i> Print</button>
+              </div>
+
+      </div><!-- /.modal-content -->
+    </div>
+  </div>
+</div>
+
+    <script src="scripts/ajax.js"></script>
+    <script src="scripts/jspdf.umd.min.js"></script>
+    <script src="scripts/jspdf.plugin.autotable.js"></script>
+    <script src="scripts/html2canvas.min.js"></script>
+  
+    
+    <script src="callFunction.js"></script>
+    <script src="adm_gradAudit.js?n=2"></script>
+    <!-- <script src="cot.js"></script> -->
+    <script>
+      function displayFileName() {
+          var input = document.getElementById('WLfile');
+          var fileName = input.files[0].name;
+          document.getElementById('fileName').innerText = fileName;
+      }
+  </script>
+  
+  

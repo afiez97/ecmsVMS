@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title_print">Summary GPA</title>
+
+    <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Flatkit">
+    <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="196x196" href="images/logo.png">    
+
+    <!-- style -->
+    <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+    <!-- style -->
+    <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+    <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+    <link rel="stylesheet" href="libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="libs/select2/dist/css/select2-bootstrap.css">
+
+    <!-- build:css css/styles/app.min.css -->
+    <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+    <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+    <!-- endbuild -->
+    <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+    <style>
+    .validationMessage {
+        text-align: left;
+        color: red;
+    }
+
+    .active .nav_lectCrsSttgs { max-height: fit-content; }
+
+    .table {
+        font-size: smaller;
+    }
+    </style>    
+</head>
+<body>
+    <div class="container">
+        <h6 class="text-center">
+            <img src="images/LOGO-UCMI(Landscape).png" alt="LOGO-UCMI" width="30%"><br>
+            <b>STUDENT ACADEMIC STANDING<br><span id="fac_name"></span><br> <span id="pgm_name">-</span></b>
+        </h6>
+
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <p>Final Examination <span class="pull-right">Academic Session : <span id="session">No Data</span></span></p>
+
+                <table id="tbl" class="table table-striped table-bordered table-condensed">
+                    <thead class="purple-200">
+                        <tr>
+                            <th>No.</th><th>Ambilan</th><th>Semester</th>
+                            <th>Bilangan Pelajar</th><th>Kedudukan Akademik</th>
+                            <th>CGPA</th><th>Catatan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list_data">
+                        <tr>
+                            <td  rowspan="3" >1.</td><td rowspan="3" id="cal_intake"></td><td rowspan="3" id="semester_intake"></td>
+                            <td id="total_gs">-</td><td><i>Good Standing</i></td><td>CGPA >= 2.00<br>(CGPA of 2.00 and above)</td><td></td>
+                        </tr>
+                        <tr>
+                            <!-- <td colspan="3"></td> -->
+                            <td id="total_cs">-</td><td><i>Conditional Standing</i></td><td>2.00 > CGPA >= 1.50<br>(CGPA of 1.51 to 1.99)</td><td></td>
+                        </tr>
+                        <tr>
+                            <!-- <td colspan="3"></td> -->
+                            <td id="total_f">-</td><td><i>Fail</i></td><td>CGPA <= 1.50<br>(CGPA of 1.50 and below)</td><td></td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="purple-700">
+                        <tr><td colspan="3" class="text-right"><b>Total</b></td><td id="total_std"><p class="text-center">27</p></td><td colspan="3"></td></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+  <!-- Bootstrap -->
+    <script src="libs/tether/dist/js/tether.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- core -->
+    <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+    <script src="libs/excel2json/xlsx.full.min.js"></script>
+    <script src="libs/PACE/pace.min.js"></script>
+    <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+    <script src="libs/blockUI/jquery.blockUI.js"></script>
+    <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+  
+    <script src="scripts/config.lazyload.js"></script>
+    <script src="scripts/ui-load.js"></script>
+    <script src="scripts/ui-jp.js"></script>
+    <script src="sweet-alert/sweetalert2.js"></script>
+    <script src="sweet-alert/sweetalert2.min.js"></script>
+    <script src="libs/footable2/js/footable.js"></script>
+    <script src="libs/footable2/js/footable.min.js"></script>
+    <script src="libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="scripts/ui-include.js"></script>
+    <script src="scripts/ui-device.js"></script>
+    <script src="scripts/ui-form.js"></script>
+    <script src="scripts/ui-modal.js"></script>
+    <script src="scripts/ui-nav.js"></script>
+    <script src="scripts/ui-list.js"></script>
+    <script src="scripts/ui-screenfull.js"></script>
+    <script src="scripts/ui-scroll-to.js"></script>
+    <script src="scripts/ui-toggle-class.js"></script>
+    <script src="scripts/ui-taburl.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+    <script src="bower_components/knockout-validation/dist/knockout.validation.min.js"></script>
+    <!-- <script>
+        window.localStorage.jqStorage-aside-Setting = {"folded":false,"container":false,"color":"warn","bg":"","upt_loc_type":"2"};
+    </script> -->
+    <script src="config.js"></script>
+    <script src="scripts/action.min.js"></script>
+    <script src="print_summary.js"></script>
+    <!-- <script src="livejs.js"></script> -->
+    
+</body>
+</html>

@@ -1,0 +1,124 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Setting</span>
+			        </li>
+			        <li class="nav-item">
+				        <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-fakPensyarah" data-backdrop="static" data-keyboard="false">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header indigo-800">
+                    <h3><b>ACADEMIC STAFF</b></h3>
+                  </div>
+                  <div class="box-body light lt">
+                    <p class="m-a-0">
+                      <div id="tableFacPensyarah">
+                          <input type="hidden" id="clgId">
+                          <textarea class="hidden" id="dataList"></textarea>
+                          <table class="table m-b-none" id="facpensyarahList"></table>
+                      </div>
+
+                      <!-------------------------------------------------- add lecturer -------------------------------------------------->
+                      <div id="reg-fakPensyarah" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <form role="form" id="formAddLect">
+                              <div class="modal-header indigo-800">
+                                  <h5 class="modal-title">ADD ACADEMIC STAFF</h5>
+                              </div>
+                              <div class="modal-body p-lg">
+                                <p>
+                                    <div class="form-group row">
+                                      <label for="fakulti" class="col-sm-3 form-control-label">Faculty<span class="text-danger"> *</span></label>
+                                      <div class="col-sm-9">
+                                          <select class="form-control c-select slct2" id="fac_id"></select>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label for="namaPensyarah" class="col-sm-3 form-control-label">Academic Staff<span class="text-danger"> *</span></label>
+                                      <div class="col-sm-9">
+                                          <select class="form-control c-select slct2" id="emp_id"></select>
+                                      </div>
+                                    </div>
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                <input type="submit" class="btn info p-x-md " value="Save">
+                              </div>
+                            </form>
+                          </div><!-- /.modal-content -->
+                        </div>
+                      </div><!-------------------------------------------------- end add lecturer -------------------------------------------------->
+
+                      <!-------------------------------------------------- update lecturer -------------------------------------------------->
+                      <div id="update-fakPensyarah" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <form role="form" id="formUptFacLecturer">
+                              <div class="modal-header indigo-800">
+                                  <h5 class="modal-title">UPDATE ACADEMIC STAFF</h5>
+                              </div>
+                              <div class="modal-body p-lg">
+                                <p>
+                                      <div class="form-group row">
+                                        <label for="fakulti" class="col-sm-3 form-control-label">Faculty<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-9">
+                                          <input type="hidden" id="upt_id">
+                                          <select class="form-control c-select slct2" id="upt_fac_id"></select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="namaPensyarah" class="col-sm-3 form-control-label">Academic Staff<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control c-select slct2" id="upt_emp_id"></select>
+                                        </div>
+                                      </div>
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                <input type="submit" class="btn success p-x-md" value="Update">
+                              </div>    
+                            </form>
+                          </div><!-- /.modal-content -->
+                        </div>
+                      </div><!-------------------------------------------------- end update lecturer -------------------------------------------------->
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+
+    <script src="callFunction.js"></script>
+    <script src="fakultiPensyarah.js"></script>

@@ -1,0 +1,50 @@
+           <!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Summary Timetable By Course</title>
+      <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+      <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 text-right" style="margin: 10px;">
+            <button onclick="window.close()" class="btn btn-link text-primary"><i class="fa fa-arrow-left"></i></button>
+            <button id="btnExcel" class="btn btn-success"><i class="fa fa-file-excel-o"></i> Excel</button>
+          </div>
+        </div>
+      </div>
+      <div style="height: 100vw; width: 100%;" id="preview-pdf"></div>
+
+      <div class="modal" id="loading_mode" data-backdrop="static">
+        <div class="modal-dialog">
+          <div style="padding-top: 50%; color: #ffffff;" class="text-center text-white"><span class="fa fa-refresh fa-spin fa-3x m-b"></span>&nbsp;&nbsp;&nbsp;<i id="load_text">Prepare Mark...</i></div>
+        </div>
+      </div>
+      <!-- LOADING END -->
+      
+      <script src="libs/jquery/dist/jquery.js"></script>
+      <script src="jquery.min.js"></script>
+      <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+      <script src="jsPDF/jspdf.min.js"></script>
+      <script src="jsPDF/pdfobjct.min.js"></script>
+      <script src="jsPDF/jspdf.plugin.autotable.min.js"></script>
+      
+      <script src="excel2json/xlsx.full.min.js"></script>
+      <script src="excel2json/tableToExcel.js"></script>
+      <script src="excel2json/xlsx.core.min.js"></script>
+      <script src="excel2json/js/jhxlsx.js"></script>
+      <script src="excel2json/js/FileSaver.js"></script>
+      <!-- <script src="scripts/json-function/dist/package/index.js"></script> -->
+      
+
+      <script src="config.js"></script>
+      <script src="callFunction.js"></script>
+      <script src="scripts/action.min.js"></script>
+      <!-- <script src="funcLect.js"></script> -->
+      <script src="print_summary_tmtdet.js"></script>
+  </body>
+</html>

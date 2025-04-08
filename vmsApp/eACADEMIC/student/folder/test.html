@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="reg-cot">
+    <form role="form" data-bind="submit: RegisterCot">
+        <div class="modal-header blue-grey-800">
+            <h5 class="modal-title">REGISTER COURSE OFFER</h5>
+        </div>
+        <div class="modal-body p-lg">
+          <p>
+              <div class="form-group row">
+                <label for="program" class="col-sm-2 form-control-label">Programme<span class="text-danger"> *</span></label>
+                <div class="col-sm-10">
+                  <select class="form-control c-select" data-bind="value: pgm_id" id="pgm_id"></select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="ambilanCOT" class="col-sm-2 form-control-label">Intake<span class="text-danger"> *</span></label>
+                <div class="col-sm-10">
+                  <select class="form-control c-select" data-bind="value: cot_intake" id="cot_intake"></select>
+                </div>
+              </div>                                    
+
+              <div class="form-group row">
+                <label for="semester" class="col-sm-2 form-control-label">Semester<span class="text-danger"> *</span></label>
+                <div class="col-sm-10">
+                  <select class="form-control c-select" data-bind="value: cot_semester" id="cot_semester"></select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="jenisCOT" class="col-sm-2 form-control-label">Study Scheme</label>
+                <div class="col-sm-10">
+                  <select class="form-control c-select" data-bind="value: cot_category" id="cot_category"></select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="kursus" class="col-sm-2 form-control-label">Semester Type</label>
+                <div class="col-sm-10">
+                  <select class="form-control c-select" data-bind="value: cot_type_sem" id="cot_type_sem"></select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="tahun" class="col-sm-2 form-control-label">Academic Session</label>
+                <div class="col-sm-10">
+                  <select class="form-control c-select" data-bind="value: cot_yearno" id="cot_yearno"></select>
+                </div>
+              </div>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn info p-x-md " id="simpan_kredit">Save</button>
+        </div>
+      </form>
+    </div>
+</body>
+<script src="libs/jquery/dist/jquery.js"></script>
+<script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+  <script src="bower_components/knockout-validation/dist/knockout.validation.min.js"></script>
+<script src="config.js"></script>
+    <script>
+var RegisterModel = function () {
+    var self = this;
+    self.pgm_id = ko.observable("").extend({
+        required: true,
+    });
+
+    self.cot_intake = ko.observable("").extend({
+        required: true,
+    });
+
+    self.cot_semester = ko.observable("").extend({
+        required: true,
+    });
+
+    self.cot_category = ko.observable("").extend({
+        required: true,
+    });
+
+    self.cot_type_sem = ko.observable("").extend({
+        required: true,
+    });
+
+    self.cot_yearno = ko.observable("").extend({
+        required: true,
+    });
+
+    self.RegisterCot = function () {
+
+        var error = ko.validation.group(self);
+
+        if (error().length > 0) {
+            error.showAllMessages();
+            return;
+        }
+
+        var param = {
+            twmTitle: self.pgm_id(),
+            twmDescription: self.cot_intake(),
+            twmSdate: self.cot_semester(),
+            twmEdate: self.cot_category(),
+            twmStatus: self.cot_type_sem(),
+            twmYear: self.cot_yearno()
+        }
+        // console.log(param)
+
+        var form = new FormData();
+
+        form.append("pgm_id", self.pgm_id());
+        form.append("cot_intake", self.cot_intake());
+        form.append("cot_semester", self.cot_semester());
+        form.append("cot_category", self.cot_category());
+        form.append("cot_type_sem", self.cot_type_sem());
+        form.append("cot_yearno", self.cot_yearno());
+
+        swal({
+            title: "Register Course Offer",
+            text: "Are You Sure?",
+            type: "question",
+            showCancelButton: true,
+            confirmButtonText: "Save",
+            confirmButtonColor: "#2196f3",
+            closeOnConfirm: true,
+            allowOutsideClick: false,
+            html: false
+        }).then(function () {
+            var settings = {
+                "url": host + "api_tetapan_picoms/public/addCoursecot",
+                "method": "POST",
+                "timeout": 0,
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                "data": form
+            };
+
+            $.ajax(settings).done(function (response) {
+                // console.log(response);
+                result = JSON.parse(response);
+                if (!result.success) {
+                    swal(result.message, result.data, "error");
+                    return;
+                }
+
+                sessionStorage.token = result.token;
+                window.location.replace("adminPage.html");
+            });
+        });
+
+    };
+    //Dropdown Program List
+    var settings = {
+        "url": host+ "api_tetapan_picoms/public/programmeList",
+        "method": "GET",
+        "timeout": 0,
+        // "header":{
+        //     "Authentication": "ASDCM"+window.sessionStorage.token
+        //   }
+    };
+
+    $.ajax(settings).done(function (response) {
+        //LIST OPTION
+        $('#pgm_id').append($('<option>', {
+            value: "",
+            text: "Choose Programme"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#pgm_id').append($('<option>', {
+                value: item.pgm_id,
+                text: item.pgm_name
+            }));
+        });
+
+        //LIST OPTION UPDATE
+        $('#upt_pgm_id').append($('<option>', {
+            value: "",
+            text: "Choose Programme"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#upt_pgm_id').append($('<option>', {
+                value: item.pgm_id,
+                text: item.pgm_name
+            }));
+        });
+
+    });
+    // END Dropdown Program List
+
+    //Dropdown Ambilan List
+    var settings = {
+        "url": host + "api_tetapan_picoms/public/intakeList",
+        "method": "GET",
+        "timeout": 0,
+        // "header":{
+        //     "Authentication": "ASDCM"+window.sessionStorage.token
+        //   }
+    };
+
+    $.ajax(settings).done(function (response) {
+        //LIST OPTION
+        $('#cot_intake').append($('<option>', {
+            value: "",
+            text: "Choose Intake"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#cot_intake').append($('<option>', {
+                value: item.intake_name,
+                text: item.intake_name
+            }));
+        });
+
+        //LIST OPTION UPDATE
+        $('#upt_cot_intake').append($('<option>', {
+            value: "",
+            text: "Choose Intake"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#upt_cot_intake').append($('<option>', {
+                value: item.intake_name,
+                text: item.intake_name
+            }));
+        });
+
+    });
+    // END Dropdown Ambilan List
+
+    //Dropdown Semester List
+    var settings = {
+        "url": host + "api_tetapan_picoms/public/semesterList",
+        "method": "GET",
+        "timeout": 0,
+        // "header":{
+        //     "Authentication": "ASDCM"+window.sessionStorage.token
+        //   }
+    };
+
+    $.ajax(settings).done(function (response) {
+        //LIST OPTION
+        $('#cot_semester').append($('<option>', {
+            value: "",
+            text: "Choose Semester"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#cot_semester').append($('<option>', {
+                value: item.semester_name,
+                text: item.semester_name
+            }));
+        });
+
+        //LIST OPTION UPDATE
+        $('#upt_cot_semester').append($('<option>', {
+            value: "",
+            text: "Choose Semester"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#upt_cot_semester').append($('<option>', {
+                value: item.semester_name,
+                text: item.semester_name
+            }));
+        });
+
+    });
+    // END Dropdown Semester List
+
+    //Dropdown Kategori List
+    var settings = {
+        "url": host + "api_tetapan_picoms/public/acaareaList",
+        "method": "GET",
+        "timeout": 0,
+        // "header":{
+        //     "Authentication": "ASDCM"+window.sessionStorage.token
+        //   }
+    };
+
+    $.ajax(settings).done(function (response) {
+        //LIST OPTION
+        $('#cot_category').append($('<option>', {
+            value: "",
+            text: "Choose Study Scheme"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#cot_category').append($('<option>', {
+                value: item.aca_area_name,
+                text: item.aca_area_name
+            }));
+        });
+
+        //LIST OPTION UPDATE
+        $('#upt_cot_category').append($('<option>', {
+            value: "",
+            text: "Choose Study Scheme"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#upt_cot_category').append($('<option>', {
+                value: item.aca_area_name,
+                text: item.aca_area_name
+            }));
+        });
+
+    });
+    // END Dropdown Kategori List
+
+    //Dropdown Sem Type List
+    var settings = {
+        "url": host + "api_tetapan_picoms/public/semtypeList",
+        "method": "GET",
+        "timeout": 0,
+        // "header":{
+        //     "Authentication": "ASDCM"+window.sessionStorage.token
+        //   }
+    };
+
+    $.ajax(settings).done(function (response) {
+        //LIST OPTION
+        $('#cot_type_sem').append($('<option>', {
+            value: "",
+            text: "Choose Semester Type"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#cot_type_sem').append($('<option>', {
+                value: item.sem_type_code_short,
+                text: item.sem_type_name
+            }));
+        });
+
+        //LIST OPTION UPDATE
+        $('#upt_cot_type_sem').append($('<option>', {
+            value: "",
+            text: "Choose Semester Type"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#upt_cot_type_sem').append($('<option>', {
+                value: item.sem_type_code_short,
+                text: item.sem_type_name
+            }));
+        });
+
+    });
+    // END Dropdown Sem Type List
+
+    //Dropdown Tahun List
+    var settings = {
+        "url": host + "api_tetapan_picoms/public/durationList",
+        "method": "GET",
+        "timeout": 0,
+        // "header":{
+        //     "Authentication": "ASDCM"+window.sessionStorage.token
+        //   }
+    };
+
+    $.ajax(settings).done(function (response) {
+        //LIST OPTION
+        $('#cot_yearno').append($('<option>', {
+            value: "",
+            text: "Choose Academic Session"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#cot_yearno').append($('<option>', {
+                value: item.duration_name,
+                text: item.duration_name
+            }));
+        });
+
+        //LIST OPTION UPDATE
+        $('#upt_cot_yearno').append($('<option>', {
+            value: "",
+            text: "Choose Academic Session"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#upt_cot_yearno').append($('<option>', {
+                value: item.duration_name,
+                text: item.duration_name
+            }));
+        });
+
+    });
+    // END Dropdown Tahun List
+
+    //Dropdown Kursus & Pra Syarat Kursus List
+    var settings = {
+        "url": host + "api_tetapan_picoms/public/courseList",
+        "method": "GET",
+        "timeout": 0,
+        // "header":{
+        //     "Authentication": "ASDCM"+window.sessionStorage.token
+        //   }
+    };
+
+    $.ajax(settings).done(function (response) {
+        //LIST OPTION
+        $('#crs_code').append($('<option>', {
+            value: "",
+            text: "Choose Course Code"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#crs_code').append($('<option>', {
+                value: item.crs_code,
+                text: item.crs_code
+            }));
+        });
+
+        //LIST OPTION UPDATE
+        $('#upt_crs_code').append($('<option>', {
+            value: "",
+            text: "Choose Academic Session"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#upt_crs_code').append($('<option>', {
+                value: item.crs_code,
+                text: item.crs_code
+            }));
+        });
+
+        //LIST OPTION
+        $('#ccd_prerequisite_crs').append($('<option>', {
+            value: "",
+            text: "Choose Course Code"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#ccd_prerequisite_crs').append($('<option>', {
+                value: item.crs_code,
+                text: item.crs_code
+            }));
+        });
+
+        //LIST OPTION UPDATE
+        $('#upt_ccd_prerequisite_crs').append($('<option>', {
+            value: "",
+            text: "Choose Academic Session"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#upt_ccd_prerequisite_crs').append($('<option>', {
+                value: item.crs_code,
+                text: item.crs_code
+            }));
+        });
+
+    });
+    // END Dropdown Kursus & Pra Syarat Kursus List
+
+    //Dropdown Pra Syarat COT List
+    var settings = {
+        "url": host + "api_tetapan_picoms/public/decisionList",
+        "method": "GET",
+        "timeout": 0,
+        // "header":{
+        //     "Authentication": "ASDCM"+window.sessionStorage.token
+        //   }
+    };
+
+    $.ajax(settings).done(function (response) {
+        //LIST OPTION
+        $('#ccd_prerequisite').append($('<option>', {
+            value: "",
+            text: "Choose Course Code"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#ccd_prerequisite').append($('<option>', {
+                value: item.decision_name,
+                text: item.decision_name
+            }));
+        });
+
+        //LIST OPTION UPDATE
+        $('#upt_ccd_prerequisite').append($('<option>', {
+            value: "",
+            text: "Choose Academic Session"
+        }));
+        $.each(response.data, function (i, item) {
+            $('#upt_ccd_prerequisite').append($('<option>', {
+                value: item.decision_name,
+                text: item.decision_name
+            }));
+        });
+
+    });
+    // END Dropdown Pra Syarat COT List
+
+   
+}
+
+const RegisterCot = document.querySelector("#reg-cot");
+ko.applyBindings(new RegisterModel(), RegisterCot);    
+    </script>
+</html>

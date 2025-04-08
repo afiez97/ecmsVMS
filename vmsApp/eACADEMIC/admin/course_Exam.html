@@ -1,0 +1,173 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+                <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+
+			          	<span class="navbar-item text-md">Examination</span>
+			        </li>
+			        <li class="nav-item " id="liRekodBaru">
+				        <a class="nav-link text-muted btn_create_e_timetable" id="btnNew" data-toggle="modal" data-target="#reg-course-exam" data-backdrop="static" data-keyboard="false">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+
+        <!-- CONTENT START -->
+        
+
+
+        <div style="min-height: mh-200">
+
+
+            <div class="col-md-10 offset-md-1 mt-2">
+
+
+                <!-------------------------------------------------- Grading Scheme -------------------------------------------------->
+                <div class="box" id="divSkemaMarkah">
+                  <div class="box-header teal">
+                    <h3><b>COURSE EXAMINATION</b></h3>
+                  </div>
+                  <div class="box-body b-b">
+
+                    <div class="row">
+                      <input type="hidden" id="withdrawId">
+                      <div class="col-md-6">
+                        <!-- <div class="form-group row">
+                          <div class="col-sm-3 font-weight-bold">Student Id</div>
+                          <div class="col-sm-9 text-uppercase" id="stu_id">-</div>
+                        </div> -->
+            
+                        <div class="form-group row">
+                          <div class="col-sm-3 font-weight-bold">Academic Session</div>
+                          <div class="col-sm-9 text-uppercase" id="crs_session">-</div> 
+                        </div>
+            
+                        <div class="form-group row">
+                          <div class="col-sm-3 font-weight-bold">Category</div>
+                          <div class="col-sm-9 text-uppercase" id="crs_category">-</div>
+                        </div>
+                      </div>
+            
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-sm-3 font-weight-bold">Course</div>
+                          <div class="col-sm-9" id="crs_course">-</div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="col-sm-3 font-weight-bold">Total Student</div>
+                          <div class="col-sm-9" id="crs_tstudent">-</div>
+                        </div>
+  
+                      </div>
+                    </div>
+                    <hr>
+
+                    <p class="m-a-0">
+                      <div id="tableSkema">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table class="table table-striped m-b-none" id="crsExam"></table>
+                        <!-- <table class="table table-striped m-b-none" id="skemaList"></table> -->
+                      </div>
+
+                      <!-- add grading scheme -->
+                      <div id="reg-course-exam" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <form role="form" id="formAddExam">
+                              <div class="modal-header teal">
+                                  <h5 class="modal-title">REGISTER COURSE EXAMINATION</h5>
+                              </div>
+                              <div class="modal-body  p-lg">
+                                <p>
+                                    <input type="hidden" id="crsCode">
+                                    <input type="hidden" id="acaCal">
+                                    <!-- <input type="hidden" id="acaCal"> -->
+                                    <div class="form-group row">
+                                      <label for="" class="col-sm-1 form-control-label">Paper Type</label>
+                                      <div class="col-md-11">
+                                          <select class="form-control c-select slct2" id="tbl_paper_type"  required></select>
+                                          <!-- <select class="form-control c-select slct2" id="tbl_paper_type" onchange="checkId(this)" required></select> -->
+                                      </div>
+                                    </div>
+                                    <!-- start exam type -->
+                                    <div class="form-group row">
+                                      <label for="" class="col-sm-1 form-control-label">Exam Type</label>
+                                      <div class="col-md-11">
+                                          <select class="form-control c-select slct2" id="fk_exam_type"  required></select>
+                                          <!-- <select class="form-control c-select slct2" id="tbl_paper_type" onchange="checkId(this)" required></select> -->
+                                      </div>
+                                    </div>
+                                    <!-- end exam type -->
+
+                                    <div class="form-group row">
+                                      <label for="" class="col-sm-1 form-control-label">Date</label>
+                                      <div class="col-md-11">
+                                        <input type="date" class="form-control" id="tbl_date_start">
+                                        <!-- <span class="text-danger" id="check"></span> -->
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label for="" class="col-sm-1 form-control-label">Start Time</label>
+                                      <div class="col-md-11">
+                                        <input type="time" class="form-control" id="tbl_time_start">
+                                        <!-- <span class="text-danger" id="check"></span> -->
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label for="" class="col-sm-1 form-control-label">End Time</label>
+                                      <div class="col-md-11">
+                                        <input type="time" class="form-control" id="tbl_time_end">
+                                        <!-- <span class="text-danger" id="check"></span> -->
+                                      </div>
+                                    </div>
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                <input type="submit" class="btn info p-x-md " id="btnSubmit" value="Save">
+                              </div>
+                            </form>
+                          </div><!-- /.modal-content -->
+                        </div>
+                      </div>
+                    </p>
+                  </div>
+                </div><!-------------------------------------------------- end Grading Scheme -------------------------------------------------->
+
+
+               
+              </div>
+        </div>
+    </div>
+
+    
+    <script src="callFunction.js"></script>
+    
+    <script src="course_Exam.js"></script>
+    <script src="capaian.js"></script>
+
+    

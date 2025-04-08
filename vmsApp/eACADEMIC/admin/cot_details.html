@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/select2/dist/css/select2.css">
+  <link rel="stylesheet" href="libs/select2-bootstrap-theme/dist/select2-bootstrap.css">
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+    <div class="app-header white bg b-b">
+          <div class="navbar" data-pjax>
+                <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                  <i class="ion-navicon"></i>
+                </a>
+                
+                <div class="navbar-item pull-left h5 " id="pageTitle">
+                  <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                  Course Offer Details
+                </div>
+                <!-- nabar right -->
+                <!-- / navbar right -->
+          </div>
+    </div>
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+    
+    <div class="app-body">
+      <!-- ############ PAGE START-->
+      <!-- only need a height for layout 4 -->
+      <div style="min-height: 200px">
+        <div class="padding">
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <div class="row-col b-a white m-b">
+                <!-- left -->
+                <div class="col-md-7">
+                  <div class="box-header b-b">
+                    <h3 class="font-weight-bold">DETAILS</h3>
+                  </div>
+                  <div class="box-body m-l-2 m-r-2">
+                    <p class="m-a-0 ">
+                      <div class="row m-b-2">
+                        <input type="hidden" id="pk_id">
+                        <div class="form-group row">
+                          <div class="col-sm-2 font-weight-bold">Session Intake</div>
+                          <div class="col-sm-10" id="dtp_year"></div>
+                        </div>
+      
+                        <div class="form-group row">
+                          <div class="col-sm-2 font-weight-bold">Intake</div>
+                          <div class="col-sm-10" id="dtp_intake"></div>
+                        </div>
+      
+                        <div class="form-group row">
+                          <div class="col-sm-2 font-weight-bold">Programme</div>
+                          <div class="col-sm-10 text-uppercase" id="programme"></div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="col-sm-2 font-weight-bold">Category</div>
+                          <div class="col-sm-10 text-uppercase" id="pgm_acaCal"></div>
+                        </div>
+                      </div>
+                    </p>
+                  </div>
+                </div>
+    
+                <!-- right -->
+                <div class="col-md-4 b-l no-border-sm" id="divSemester">
+                  <div class="box-header b-b">
+                    <h3 class="font-weight-bold">SEMESTER</h3>
+                  </div>
+    
+                  <div class="box-body m-l-2 m-r-2">
+                    <form class="formSem" id="formAddSem">
+                      <div class="row">
+                        <input type="hidden" id="pk_sem">
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label font-weight-bold">Academic Session</label>
+                          <div class="col-sm-9">
+                            <select class="form-control slct2" id="aca_calendar" required></select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label font-weight-bold">Semester</label>
+                          <div class="col-sm-9">
+                            <input type="number" class="form-control" id="pgm_semester" required>
+                          </div>
+                        </div>
+    
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label font-weight-bold">Type</label>
+                          <div class="col-sm-9">
+                            <select class="form-control c-select" id="sem_type" required></select>
+                          </div>
+                        </div>
+    
+                        <div class="text-right">
+                          <button type="button" class="btn white p-x-md divSem" id="newSemester">Reset</button>
+                          <span id="divBtn"><button type="submit" class="btn info p-x-md divSem btn_create_sc_courseOffer">Save</button></span>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <div class="box">
+                <div class="box-header b-b">
+                  <h3 class="font-weight-bold">COURSE LIST</h3>
+                  <div class="box-tool">
+                    <ul class="nav">
+                      <li class="nav-item inline">
+                        <a class="nav-link text-muted divSem" data-toggle="modal" data-target="#mdlCourse">
+                          <span class="btn_create_sc_courseOffer">
+                            <i class="fa fa-fw fa-plus"></i>
+                            <span class="hidden-sm-down">New Record</span>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <p class="m-a-0 ">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="b-b b-primary nav-active-primary">
+                          <textarea class="hidden" id="dataSem"></textarea>
+                          <ul class="nav nav-tabs" id="navTabs"></ul>
+                        </div>
+                        <div class="tab-content p-a-0" id="tabContent"></div>
+                      </div>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-------------------------------------------------- add Course -------------------------------------------------->
+          <div id="mdlCourse" class="modal fade" data-backdrop="static">
+            <div id="details" class="modal-dialog">
+              <div class="modal-content">
+                <form role="form" id="formAddDetails">
+                <div class="modal-header purple-700">
+                    <h5 class="modal-title">ADD COURSE</h5>
+                </div>
+                <div class="modal-body p-lg">
+                  <p>
+                    <input type="hidden" id="fk_sem">
+                    <div class="form-group row">
+                      <label for="" class="col-sm-4 form-control-label">Faculty</label>
+                      <div class="col-sm-8">
+                        <select class="form-control c-select slct2" id="fac_id" onchange="getCourse(this)" required></select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row" title="Choose Faculty to view list">
+                      <label for="" class="col-sm-4 form-control-label">Course Code<span class="text-info"> *</span></label>
+                      <div class="col-sm-8">
+                        <select class="form-control c-select slct2" id="crs_code" onchange="getCourseCounted(this)"  required></select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-4 form-control-label">Semester</label>
+                      <div class="col-sm-8">
+                        <select class="form-control c-select slct2" id="cot_semester" required></select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-4 form-control-label">Course Classification<span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <select class="form-control c-select" id="crs_type" required></select>
+                      </div>
+                    </div>
+
+                    <!-- <div class="form-group row">
+                    <label for="" class="col-sm-4 form-control-label">In Progress<span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="checkbox"  id="in_progress">
+                      </div>
+                    </div> -->
+
+                    <!-- <div class="form-group row">
+                      <label class="md-check">
+                        <input type="checkbox" checked id="upt_chkCGPA">
+                        <i class="green"></i>
+                        Counted CGPA
+                      </label>
+                    </div> -->
+
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                  <input type="submit" class="btn info p-x-md btn_create_sc_courseOffer" value="Save" id="regPerincian">
+                </div>
+              </form>
+              </div><!-- /.modal-content -->
+            </div>
+          </div><!-------------------------------------------------- end add Course -------------------------------------------------->
+
+
+          <!-------------------------------------------------- update Course -------------------------------------------------->
+          <div id="updatePerincian" class="modal fade" data-backdrop="static">
+            <div id="" class="modal-dialog">
+              <div class="modal-content">
+                <form role="form" id="formUpdateDetails">
+                <div class="modal-header p-a-0 purple-700">
+                  <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+                  <div class="p-a b-b">
+                    <span class="h5">UPDATE COURSE</span>
+                  </div>
+                </div>
+                <div class="modal-body p-lg">
+                  <p>
+                    <div class="row p-l-1 p-r-1 divSem">
+                      <input type="hidden" id="ccd_id">
+                      <div class="form-group row">
+                        <label for="" class="col-sm-4 form-control-label">Faculty</label>
+                        <div class="col-sm-8">
+                          <select class="form-control c-select slct2" id="upt_fac_id" onchange="getCourseUpt(this)"></select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row" title="Choose Faculty to view list">
+                        <label for="tahun" class="col-sm-4 form-control-label">Course Code<span class="text-info"> *</span></label>
+                        <div class="col-sm-8">
+                          <select class="form-control c-select slct2" id="crs_code_upt" required></select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-4 form-control-label">Semester</label>
+                        <div class="col-sm-8">
+                          <select class="form-control c-select slct2" id="cot_semester_upt" required></select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-4 form-control-label">Course Classification<span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                          <select class="form-control c-select" id="upt_crs_type" required></select>
+                        </div>
+                      </div>
+<!-- 
+                      <div class="form-group row">
+                        <label for="" class="col-sm-4 form-control-label">In Progress<span class="text-danger">*</span></label>
+                          <div class="col-sm-8">
+                            <input type="checkbox"  id="upt_in_progress">
+                          </div>
+                        </div> -->
+
+                      <hr class="m-t-2">
+
+                      <div class="row">
+                        <div class="col-sm-12" style="text-align: right;">
+                          <input type="submit" class="btn success p-x-md " value="Update" id="regPerincian">
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
+
+                    <div class="row p-a collapse" id="divPreReqCrsList">
+                      <h6 class="font-weight-bold">PRE-REQUISITE COURSE LIST</h6>
+                      <table class="table table-striped m-b-none m-b-0" id="tblPreReqCrs"></table>
+                    </div>
+                  </p>
+                </div>
+              </form>
+              </div><!-- /.modal-content -->
+            </div>
+          </div><!-------------------------------------------------- end update Course -------------------------------------------------->
+
+
+          <!-------------------------------------------------- add lecturer -------------------------------------------------->
+          <div id="mdlLecturer" class="modal fade" data-backdrop="static">
+            <div id="" class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header p-a-0 cyan-500">
+                    <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+                    <div class="p-a b-b">
+                      <span class="h5">ADD LECTURER</span>
+                    </div>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                      <div class="row p-l-1 p-r-1 divSem">
+                        <form role="form" id="formAddLect">
+                          <input type="hidden" id="cotDet_id">
+                          <input type="hidden" id="crsId">
+                          <input type="hidden" id="lectCrsId">
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Lecturer</label>
+                            <div class="col-sm-10">
+                              <span id="slctLect"><select class="form-control c-select slct2" id="cot_det_lect" required></select></span>
+                              <input type="text" class="form-control" id="view_lecturer" style="display: none;" disabled>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <div class="col-sm-6">
+                              <label class="md-check">
+                                <input type="checkbox" id="coordinator"><i class="green"></i>
+                                Coordinator
+                              </label>
+                            </div>
+
+                            <div class="col-sm-6" style="text-align: right;">
+                              <input type="button" class="btn white p-x-md" id="btnReset" value="Reset">
+                              <input type="submit" class="btn info p-x-md btn_create_sc_courseOffer" value="Save">
+                            </div>
+                          </div>
+                        </form>
+                        <hr>
+                      </div>
+
+                      <div class="row m-a-2">
+                        <h6 class="cyan-700 p-r-1 p-l-1"><b>LECTURER LIST</b></h6>
+                        <textarea class="hidden" id="dataLect"></textarea>
+                        <table class="table table-striped m-b-none" id="tblLecturer"></table>
+                      </div>
+                    </p>
+                  </div>
+              </div><!-- /.modal-content -->
+            </div>
+          </div><!-------------------------------------------------- end add lecturer -------------------------------------------------->
+ <!-------------------------------------------------- modal View -------------------------------------------------->
+ <div id="modalMapping" class="modal fade" data-backdrop="static">
+  <form id="generateObe">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content" >
+      <div class="modal-header" style="background-color: #4BC0C0;">
+        <h5 class="modal-title">PLO vs CLO Mapping <strong id=""></strong></h5>
+      </div>
+      <!-- <form id="formChkIn"> -->
+        <div class="modal-body p-lg">
+          <p>
+          <div class="row">
+            <div class="col-md-12">
+                <div class="box-body">
+                  <div class="col-md-12">
+                    
+                    <input type="hidden" id="pgm_id">
+                    <input type="hidden" id="fk_course">
+                    <input type="hidden" id="id_obe_plo_generate">
+                    <p class="m-a-0">
+                      <textarea class="hidden" id="CLOlist"></textarea>
+                    <table id="mappingList" class="table table-striped m-b-none"></table>
+                    <!-- <table id="listProgramdet" class="table table-striped m-b-none"></table> -->
+                    </p>
+                </div>
+             
+            </div>
+          </div>
+          
+          </p>
+          
+        </div>
+
+        
+        
+      <!-- </form> -->
+    </div><!-- /.modal-content -->
+    <div class="modal-footer">
+      <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn white p-x-md" >Save</button>
+    </div>
+  </div>
+</form>
+</div>
+<!-------------------------------------------------- end modal View -------------------------------------------------->
+
+          
+        </div>
+      </div>
+
+      <!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+  
+  <!-- ############ SWITHCHER START-->
+  <!-- ############ SWITHCHER END-->
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="libs/select2/dist/js/select2.full.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+
+  <script src="config.js"></script>
+  <script src="scripts/action.min.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="cot_details.js?n=2"></script>
+  <script src="capaian.js"></script>
+<!-- endbuild -->
+</body>
+</html>

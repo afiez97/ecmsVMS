@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <div class="padding">
+    <div class="navbar">
+      <div class="pull-center">
+        <!-- brand -->
+        <a href="index.html" class="navbar-brand">
+        	<!-- <div data-ui-include="'images/logo-picoms.png'"></div> -->
+        	<img src="images/logo-picoms.png" alt="." class="">
+        	<!-- <span class="hidden-folded inline">PICOMS</span> -->
+        </a>
+        <!-- / brand -->
+      </div>
+    </div>
+  </div>
+  <div class="b-t">
+    <div class="center-block w-xxl w-auto-xs p-y-md text-center">
+      <div class="p-a-md mt-3">
+        <div >
+          <form id="logmasuk" >
+            <div class="form-group">
+              <input type="text" id="std_nomatrik" class="form-control" placeholder="Student Id" required>
+            </div>
+            <div class="form-group">
+              <input type="password" id="std_katalaluan" class="form-control" placeholder="Password" required>
+            </div>
+            <input type="submit" class="btn btn-lg btn-block warn p-x-lg" value="Login">
+            <span id="page" class="hidden">2</span>
+            <!-- <a type="button" class="btn btn-lg btn-block warning p-x-lg" data-toggle="modal" data-target="#eTawaran" data-backdrop="static" data-keyboard="false">eTawaran</a> -->
+          </form>
+
+          <!-- LOADING START -->
+          <div class="modal" id="loading_modal" data-backdrop="static">
+            <div class="modal-dialog">
+              <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-refresh fa-spin fa-3x m-b"></span><br><i>Tunggu Sebentar...</i></div>
+            </div>
+          </div>
+          <!-- LOADING END -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div id="eTawaran" class="modal fade" data-backdrop="true">
+    <div class="modal-dialog modal-lg">
+      <div id="form-tawaran" >
+        <form role="form" data-bind="submit:hantar_tawaran" method="post">
+          <div class="modal-content">
+            <div class="modal-header warning">
+                <h5 class="modal-title">MOHON eTAWARAN</h5>
+            </div>
+            <div class="modal-body text-center p-lg">
+              <p>
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Nama</label>
+                  <div class="col-sm-10">
+                    <input type="text" data-bind="value: std_nama" class="form-control" placeholder="Nama">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">No. Kad Pengenalan/Pasport</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control"  data-bind="value: std_nokp" placeholder="No. Kad Pengenalan/Pasport">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">Emel</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" data-bind="value: std_emel" placeholder="Emel">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="" class="col-sm-2 form-control-label">No. Telefon</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" data-bind="value: std_notel" placeholder="No. Telefon">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="namaKolej" class="col-sm-2 form-control-label">Program</label>
+                  <div class="col-sm-10">
+                      <select class="form-control c-select"  data-bind="value: std_program_id">
+                          <option>-Pilih Program-</option>
+                          <option>DIPLOMA IN OCCUPATIONAL SAFETY AND HEALTH</option>
+                          <option>DIPLOMA IN MEDICAL LABORATORY TECHNOLOGY</option>
+                          <option>DIPLOMA IN MEDICAL ASSISTANT</option>
+                      </select>
+                  </div>
+                </div>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn white p-x-md " data-dismiss="modal" value="Batal">
+              <input type="submit" class="btn warning p-x-md " value="Simpan">
+            </div>
+          </div><-- /.modal-content --
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <!-- <script src="bower_components/knockout/dist/knockout.js"></script>
+  <script src="bower_components/knockout-validation/dist/knockout.validation.min.js"></script> -->
+  <script src="config.js"></script>
+  <script>
+    window.location.replace("picoms_login.html");
+  </script>
+<!-- endbuild -->
+</body>
+</html>

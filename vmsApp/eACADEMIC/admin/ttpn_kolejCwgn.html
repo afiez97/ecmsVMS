@@ -1,0 +1,179 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Setting</span>
+			        </li>
+			        <li class="nav-item">
+				        <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-kolej">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header purple-700">
+                    <h3><b>CAMPUS</b></h3>
+                    <small>List of Campus</small>
+                  </div>
+                  <div class="box-body light lt">
+                    <p class="m-a-0">
+                      <div id="tableKolej">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table id="kolejList" class="table m-b-none"></table>
+                      </div>
+
+                        <div id="reg-kolej" class="modal fade" data-backdrop="static">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content" id="other">
+                                <form role="form" data-bind="submit: Register">
+                                  <div class="modal-header purple-500">
+                                      <h5 class="modal-title">CAMPUS INFORMATION</h5>
+                                  </div>
+                                  <div class="modal-body p-lg">
+                                    <p>
+                                        <div class="form-group row ">
+                                          <label for="kodKolej" class="col-sm-2 form-control-label ">Campus Code</label>
+                                          <div class="col-sm-10">
+                                            <input type="text" class="form-control" data-bind="value: clg_id" oninput="collegeCodeChecking(this)" placeholder="Campus Code">
+                                            <span id="check"></span>
+                                          </div>
+                                        </div>
+                                        <div class="form-group row">
+                                          <label for="namaKolej" class="col-sm-2 form-control-label">Campus Name</label>
+                                          <div class="col-sm-10">
+                                            <input type="text" class="form-control" data-bind="value: clg_name" placeholder="Campus Name">
+                                          </div>
+                                        </div>
+    
+                                        <div class="form-group row">
+                                          <label for="alamatKolej" class="col-sm-2 form-control-label">Campus Address</label>
+                                          <div class="col-sm-10">
+                                            <input type="text" class="form-control" data-bind="value: clg_address1" placeholder="Address 1"><br/>
+                                            <input type="text" class="form-control" data-bind="value: clg_address2" placeholder="Address 2"><br/>
+                                            <input type="text" class="form-control" data-bind="value: clg_address3" placeholder="Address 3"><br/>
+                                          </div>
+                                        </div>
+    
+                                        <div class="form-group row">
+                                          <label for="notel" class="col-sm-2 form-control-label">Phone No.</label>
+                                          <div class="col-sm-10">
+                                            <input type="number" class="form-control" data-bind="value: clg_phoneno" placeholder="Phone No.">
+                                          </div>
+                                        </div>
+    
+                                        <div class="form-group row">
+                                          <label for="nofax" class="col-sm-2 form-control-label">Fax No.</label>
+                                          <div class="col-sm-10">
+                                            <input type="number" class="form-control" data-bind="value: clg_faxno" placeholder="Fax No.">
+                                          </div>
+                                        </div>
+                                        <div class="form-group row">
+                                          <label for="emel" class="col-sm-2 form-control-label">Email</label>
+                                          <div class="col-sm-10">
+                                            <input type="email" class="form-control" data-bind="value: clg_email" placeholder="Email">
+                                          </div>
+                                        </div>
+                                    </p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                    <input type="submit" class="btn info p-x-md"  id="btnSubmit" value="Save">
+                                  </div>                                      
+                                </form>
+                            </div><!-- /.modal-content -->
+                          </div>
+                        </div>
+
+                          <div id="update-kolej" class="modal fade" data-backdrop="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <form role="form" >
+                                <div class="modal-header purple-500">
+                                    <h5 class="modal-title">CAMPUS UPDATE</h5>
+                                </div>
+                                <div class="modal-body p-lg">
+                                  <p>
+                                      <div class="form-group row hidden">
+                                        <label for="kodKolej" class="col-sm-2 form-control-label">Branch Id</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" data-bind="value: clg_id, readonly: true" id="upt_clg_id" placeholder="Branch Id">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="namaKolej" class="col-sm-2 form-control-label">Name</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control"data-bind="value: clg_name" id="upt_clg_name" placeholder="Name">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="alamatKolej" class="col-sm-2 form-control-label">Address</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" data-bind="value: clg_address1" id="upt_clg_address1" placeholder="Address 1"><br/>
+                                          <input type="text" class="form-control" data-bind="value: clg_address2" id="upt_clg_address2" placeholder="Address 2"><br/>
+                                          <input type="text" class="form-control" data-bind="value: clg_address3" id="upt_clg_address3" placeholder="Address 3"><br/>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="notel" class="col-sm-2 form-control-label">Phone No.</label>
+                                        <div class="col-sm-10">
+                                          <input type="number" class="form-control" data-bind="value: clg_phoneno" id="upt_clg_phoneno" placeholder="Phone No.">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="nofax" class="col-sm-2 form-control-label">Fax No.</label>
+                                        <div class="col-sm-10">
+                                          <input type="number" class="form-control" data-bind="value: clg_faxno" id="upt_clg_faxno" placeholder="Fax No.">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="emel" class="col-sm-2 form-control-label">Email</label>
+                                        <div class="col-sm-10">
+                                          <input type="email" class="form-control" data-bind="value: clg_email" id="upt_clg_email" placeholder="Email">
+                                        </div>
+                                      </div>
+                                      
+                                  </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                  <input class="btn success p-x-md " type="button" value="Update" id="upt_kolej">
+                                </div>
+                              </form>
+                              </div><!-- /.modal-content -->
+                            </div>
+                          </div>
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+    <script src="scripts/ajax.js"></script>
+    <script src="ttpn_kolejCwgn.js"></script>

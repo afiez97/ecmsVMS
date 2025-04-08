@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS - Pengurusan Pelajar</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/select2/dist/css/select2.css">
+  <link rel="stylesheet" href="libs/select2-bootstrap-theme/dist/select2-bootstrap.css">
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+  <style>
+    .validationMessage {
+      text-align: left;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- ############ LAYOUT START-->
+
+      <!-- aside -->
+      <!-- / -->
+      
+      <!-- content -->
+      <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+        <div class="app-header white bg b-b">
+              <div class="navbar" data-pjax>
+                    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                      <i class="ion-navicon"></i>
+                    </a>
+                    
+                    <div class="navbar-item pull-left h5" id="pageTitle">
+                      <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                      Course Settings
+                    </div>
+                    <!-- nabar right -->
+                    <!-- / navbar right -->
+              </div>
+        </div>
+        <div class="app-footer white bg p-a b-t">
+          <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+          <span class="text-sm text-muted">&copy; Copyright.</span>
+        </div>
+        
+        <div class="app-body">
+          <!-- ############ PAGE START-->
+          <!-- only need a height for layout 4 -->
+          <div style="min-height: 200px">
+            <div class="padding">
+              <div class="row">
+
+                <!-- list -->
+                <div class="col-md-12">
+                  <div class="box">
+                    <div class="box-header b-b">
+                      <h3>LIST OF COURSE</h3>
+                      <div class="box-tool">
+                        <ul class="nav" id="">
+                          <li class="nav-item inline">
+                            <a class="nav-link text-muted btn_create_setting" data-toggle="modal" data-target="#register" data-backdrop="static" data-keyboard="false">
+                              <span class="">
+                                <i class="fa fa-fw fa-plus"></i>
+                                <span class="hidden-sm-down">New Record</span>
+                              </span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="box-body">
+                      <div id="tableProgram">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table class="table table-striped m-b-none" id="courseList"></table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-------------------------------------------------- modal Register Course -------------------------------------------------->
+                <div id="register" class="modal fade" data-backdrop="static">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <form role="form" id="formAddCourse">
+                        <div class="modal-header teal-900">
+                            <h5 class="modal-title">REGISTER COURSE</h5>
+                        </div>
+                        <div class="modal-body p-lg">
+                          <p>
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Course<span class="text-danger"> *</span></label>
+                              <div class="col-sm-10">
+                                <textarea class="form-control" rows="2" id="crs_name" placeholder="Course Name" required></textarea>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Code<span class="text-danger"> *</span></label>
+                              <div class="col-sm-4">
+                                <input type="text" class="form-control" id="crs_code" oninput="courseCodeChecking(this)" placeholder="eg: MPU2113" required>
+                                <span class="text-danger" id="check"></span>
+                              </div>
+
+                              <label for="" class="col-sm-2 form-control-label">Price (RM)</label>
+                              <div class="col-sm-4">
+                                <input type="number" class="form-control" id="crs_price" placeholder="Price (RM)">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Faculty<span class="text-danger"> *</span></label>
+                              <div class="col-sm-4">
+                                  <select class="form-control c-select slct2" id="fac_id" required></select>
+                              </div>
+
+                              <label for="" class="col-sm-2 form-control-label">Price (USD)</label>
+                              <div class="col-sm-4">
+                                <input type="number" class="form-control" id="crs_price_usd" placeholder="Price (USD)">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Credit Value</label>
+                              <div class="col-sm-4">
+                                <input type="number" class="form-control" id="crs_credit" placeholder="Credit Value">
+                              </div>
+
+                              <label for="" class="col-sm-2 form-control-label">Status</label>
+                              <div class="col-sm-4">
+                                <select class="form-control c-select" id="crs_status"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label class="md-check">
+                                <input type="checkbox" checked id="chkCGPA">
+                                <i class="green"></i>
+                                Counted CGPA
+                              </label>
+                            </div>
+                          </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                          <input type="submit" class="btn info p-x-md " value="Save" id="submit-course">
+                        </div>                                      
+                    </form>
+                    </div><!-- /.modal-content -->
+                  </div>
+                </div><!-------------------------------------------------- end modal Register Course -------------------------------------------------->
+                
+              </div>
+            </div>
+          </div>
+          <!-- ############ PAGE END-->
+        </div>
+      </div>
+      <!-- / -->
+
+      
+      <!-- ############ SWITHCHER START-->
+      <!-- ############ SWITHCHER END-->
+
+    <!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <script src="libs/select2/dist/js/select2.full.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  
+  <script src="bower_components/knockout/dist/knockout.js"></script>
+  <script src="bower_components/knockout-validation/dist/knockout.validation.min.js"></script>
+
+  <script src="scripts/action.min.js"></script>
+  <script src="config.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="ttpn_kursus.js"></script>
+  <script src="capaian.js"></script>
+<!-- endbuild -->
+</body>
+</html>

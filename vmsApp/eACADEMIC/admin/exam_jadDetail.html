@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/select2/dist/css/select2.css">
+  <link rel="stylesheet" href="libs/select2-bootstrap-theme/dist/select2-bootstrap.css">
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+    <div class="app-header white bg b-b">
+          <div class="navbar" data-pjax>
+                <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                  <i class="ion-navicon"></i>
+                </a>
+                
+                <div class="navbar-item pull-left h5" id="pageTitle">
+                  <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                  Details
+                </div>
+                <!-- nabar right -->
+                <!-- / navbar right -->
+          </div>
+    </div>
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+    
+    <div class="app-body">
+      <!-- ############ PAGE START-->
+      <!-- only need a height for layout 4 -->
+      <div style="min-height: 200px">
+        <div class="padding">
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <div class="box p-a-2">
+                <div class="b-b b-primary nav-active-primary">
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#" data-toggle="tab" data-target="#tab4">TIMETABLE</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-toggle="tab" data-target="#tab5">STUDENT LIST</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-toggle="tab" data-target="#tab6">ADD VENUE & INVIGILATOR</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="tab-content p-a">
+                  <!-------------------------------------------------- tab timetable -------------------------------------------------->
+                  <div class="tab-pane animated fadeIn text-muted active" id="tab4">
+                    <input type="hidden" id="pkId">
+                    <input type="hidden" id="fk_acaCal">
+                    <input type="hidden" id="fk_course">
+                    
+
+                    <div class="form-group row">
+                      <div class="col-md-2 font-weight-bold">Academic Session</div>
+                      <div class="col-md-10" id="cur_year"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-md-2 font-weight-bold">Category</div>
+                      <div class="col-md-10 text-uppercase" id="cal_category"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-md-2 font-weight-bold">Course</div>
+                      <div class="col-md-10 text-uppercase" id="crs_name"></div>
+                    </div>
+                    <hr>
+                    
+                    <form id="formExamTimetbl">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="font-weight-bold">Paper Type</label>
+                            <select id="tbl_paper_type" class="form-control"></select>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="font-weight-bold">Date</label>
+                            <input type="date" id="tbl_date_start" class="form-control" required>
+                          </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="tbl_time_start" class="font-weight-bold">Start Time</label>
+                            <input type="time" id="tbl_time_start" class="form-control" >
+                          </div>
+      
+                          <div class="form-group">
+                              <label for="tbl_time_end" class="font-weight-bold">End Time</label>
+                              <input type="time" id="tbl_time_end" class="form-control" >
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6 text-right p-r-1">
+                          <button type="button" class="btn danger p-x-md btn_delete_e_timetable" id="btnDelTimetbl">Delete</button>
+                          <button type="submit" class="btn info p-x-md btn_update_e_timetable" id="btnSaveTimetbl">Save</button>                          
+                        </div>                        
+                      </div>
+                    </form>
+                  </div>
+                  <!-------------------------------------------------- end tab timetable -------------------------------------------------->
+
+                  <!-------------------------------------------------- tab student -------------------------------------------------->
+                  <div class="tab-pane animated fadeIn text-muted" id="tab5">
+                    <!-- list student -->
+                    <div class="box m-b-0" id="divStdList">
+                      <div class="box-header b-b">
+                        <h3 class="font-weight-bold">STUDENT LIST</h3>
+                        <div class="box-tool">
+                          <ul class="nav">
+                            <li class="nav-item inline">
+                             
+                              <div class="btn-group">
+                                <button id = "btnGeneratePdf"></button>
+                                <button id="btnGenerate" class="btn btn-sm info">GENERATE</button>
+                              </div>
+
+
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="box-body">
+                        <div class="row">
+                        <input type="hidden" id="totalStudent">
+
+                          <textarea class="hidden" id="dataList"></textarea>
+                          <table class="table table-striped m-b-none" id="tblStudent"></table>
+                          <table class="table table-striped m-b-none" id="tblStudentpdf"></table>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- list table no. -->
+                    <div class="box m-b-0 collapse" id="divTblNo">
+                      <div class="box-header b-b">
+                        <h3 class="font-weight-bold">STUDENT LIST</h3>
+                        <div class="box-tool">
+                          <ul class="nav">
+                            <li class="nav-item inline">
+
+                              <!-- <a class="nav-link text-muted" id="btnReset">
+                                <button class="md-btn md-flat m-b-sm w-xs text-success">RESET</button>
+                              </a> -->
+                              <div class="btn-group">
+                                <button id = "btnResetPdf"></button>
+                                <!-- <button onclick="generatePDF('Student List', 'tblExamNopdf')" class="btn btn-sm danger"><i class="fa fa-fw fa-file-pdf-o"></i> PDF</button> -->
+                                <button id="btnReset" class="btn btn-sm info">RESET</button>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="box-body">
+                        <div class="row m-a-1">
+                          <textarea class="hidden" id="tblNoList"></textarea>
+                          <table class="table m-b-none" id="tblExamNo"></table>
+                          <table class="table m-b-none" id="tblExamNopdf"></table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-------------------------------------------------- end tab student -------------------------------------------------->
+
+                  <!-------------------------------------------------- tab venue & invigilator -------------------------------------------------->
+                  <div class="tab-pane animated fadeIn text-muted" id="tab6">
+                    <div class="row hideDiv p-l-1 p-r-1 p-t-1" id="divAddVenue">
+                      <form class="formActnVenue" id="formVenue">
+                        <input type="hidden" id="exmVenue_id">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="font-weight-bold">Campus</label>
+                              <select id="cam_id" class="form-control slct2 slctVenue" required></select>
+                            </div>
+                          </div>
+      
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label class="font-weight-bold">Capacity </label>
+                              <input type="text" id="capacity" class="form-control" readonly>
+                            </div>
+                          </div>
+    
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label class="font-weight-bold">Start No. </label>
+                              <input type="text" id="startNo" class="form-control" readonly>
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group" title="Select Campus to view list">
+                              <label class="font-weight-bold">Venue <span class="text-info">*</span></label>
+                              <select id="tbl_venue" class="form-control slct2 slctVenue" required></select>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+    
+                        <div class="row text-right p-r-1" id="btnActnVenue">
+                          <button type="submit" class="btn info p-x-md btn_update_e_timetable" id="btnSave">Save</button>
+                        </div>
+                      </form>
+                    </div>
+  
+                    <div class="row" id="divTableVenue">
+                      <div class="col-md-12">
+                        <hr>
+                        <h6 class="font-weight-bold">LIST VENUE</h6>
+                        <textarea class="hidden" id="dataVenueList"></textarea>
+                        <table class="table table-striped m-b-none" id="tblVenue"></table>
+                        <hr>
+  
+                        <div class="row text-right p-r-1">
+                          <button type="button" class="md-btn md-flat m-b-sm text-success hideDiv" id="btnGnrtTblNo">Generate Table No.</button>
+                          <button type="button" class="md-btn md-flat m-b-sm text-danger" id="btnResetTblNo">Reset</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-------------------------------------------------- end tab venue & invigilator -------------------------------------------------->
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+          <!-------------------------------------------------- add Invigilator -------------------------------------------------->
+          <div id="mdlLecturer" class="modal fade" data-backdrop="static">
+            <div id="" class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header p-a-0 cyan-500">
+                    <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+                    <div class="p-a b-b">
+                      <span class="h5">ADD INVIGILATOR</span>
+                    </div>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                      <div class="">
+                        <form role="form" id="formExmInvigilator">
+                          <input type="hidden" id="exmVenueId">
+                          <div class="form-group row">
+                            <div class="col-sm-12">
+                              <select class="form-control slct2 c-select" id="tbl_invigilator" required></select>
+                            </div>
+                          </div>
+  
+                          <div class="form-group row">
+                            <div class="col-sm-6">
+                              <label class="md-check">
+                                <input type="checkbox" id="chiefInvgltr"><i class="green"></i>
+                                Chief
+                              </label>
+                            </div>
+  
+                            <div class="col-sm-6" style="text-align: right;">
+                              <input type="submit" class="btn info p-x-md" value="Save">
+                            </div>
+                          </div>
+                        </form>
+                        <hr>
+                      </div>
+
+                      <div class="row m-a-2">
+                        <h6 class="cyan-700 p-r-1 p-l-1"><b>INVIGILATOR LIST</b></h6>
+                        <textarea class="hidden" id="dataLect"></textarea>
+                        <table class="table table-striped m-b-none" id="tblLecturer"></table>
+                      </div>
+                    </p>
+                  </div>
+              </div><!-- /.modal-content -->
+            </div>
+          </div>
+          <!-------------------------------------------------- end add Invigilator -------------------------------------------------->
+        
+          <div class="modal" id="loading_modal" data-backdrop="static">
+            <div class="modal-dialog">
+              <div style="padding-top: 50%;" class="text-center text-white"><span
+                  class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+  
+  <!-- ############ SWITHCHER START-->
+  <!-- ############ SWITHCHER END-->
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <script src="libs/select2/dist/js/select2.full.min.js"></script>
+
+  <script src="scripts/jspdf.umd.min.js"></script>
+  <script src="scripts/jspdf.plugin.autotable.js"></script>
+  <script src="config.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="scripts/action.min.js"></script>
+  <script src="exam_jadDetail.js?n=7"></script>
+  <script src="capaian.js"></script>
+<!-- endbuild -->
+</body>
+</html>

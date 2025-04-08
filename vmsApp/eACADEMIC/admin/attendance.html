@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/select2/dist/css/select2.css">
+  <link rel="stylesheet" href="libs/select2-bootstrap-theme/dist/select2-bootstrap.css">
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+
+</head>
+<body>
+  <div class="app" id="app">
+  <!-- ############ LAYOUT START-->
+    
+    <!-- content -->
+    <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+      <div class="app-header white bg b-b">
+            <div class="navbar" data-pjax>
+                  
+                  <div class="navbar-item pull-left h5" id="pageTitle">                    
+                    ATTENDANCE VMS
+                  </div>
+                  <!-- nabar right -->
+                  <!-- / navbar right -->
+            </div>
+      </div>
+      <div class="app-footer white bg p-a b-t">
+        <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+        <span class="text-sm text-muted">&copy; Copyright.</span>
+      </div>
+      
+      <div class="app-body">
+
+        <!-- ############ PAGE START-->
+        <!-- only need a height for layout 4 -->
+        <div style="min-height: 200px">
+          <div class="padding">
+            <div class="row">
+              <div class="col-md-10 offset-md-1">
+                <div class="col-sm-3">
+                  <form id="form_attendance" class="form-group">
+                      <div class="input-group m-b">
+                          <input type="text" class="form-control" name="studentid" id="studentid" required placeholder="Matric No...">
+                          <span class="input-group-btn">
+                            <button type="submit" class="btn purple-100" type="button"><i class="fa fa-search"></i> Find</button>
+                          </span>
+                        </div>
+                  </form>                    
+                </div>
+                <div class="col-md-12">
+                  <p>Date Attendance : <b class="text-success" id="date_attendance"></b>&nbsp;&nbsp;&nbsp;Week : <b id="att_week"></b></p>
+                </div>
+
+                <div class="row-col b-a white m-b">
+                  <!-- left -->                  
+                  <div class="col-md-8">                    
+                    <div class="box-header b-b">
+                      <h3 class="font-weight-bold">DETAILS ATTENDANCE</h3>
+                    </div>
+      
+                    <div class="box-body">
+                      <div class="row m-a-1">
+                        <input type="hidden" id="tmtDet_id">
+                        <input type="hidden" id="yearTmt">
+                        <input type="hidden" id="fk_course">
+                        <input type="hidden" id="fk_acaCal">
+
+                        <div class="col-md-12">
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Academic Session</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_year"></div>
+                          </div>
+      
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Course</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_course"></div>
+                          </div>
+
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Day/Time</div>
+                            <div class="col-sm-9 text-uppercase"><span id="tmt_day"></span> - <span id="tmt_time"></span></div>
+                          </div>
+      
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Slot</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_slot"></div>
+                          </div>
+  
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Venue</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_location"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- ############ PAGE END-->   
+        <!-- modal-qrcode -->
+        <div class="modal fade" id="modal_save" data-backdrop="static">
+          <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <b class="text-success"><i class="fa fa-user"></i> Student Found!</b>
+                </div>
+                  <div class="modal-body">
+                      <div class="m-a-1">
+                        <p>Student : <span id="sti_name"></span> </p>
+                        <p>Matric No : <span id="std_studentid"></span></p>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <form id="form_showByPassword">
+                              <div class="input-group">
+                                <input type="password" name="passwords" required placeholder="Password" id="passwords" class="form-control">
+                                <div class="input-group-btn">
+                                  <button type="submit" class="btn btn-default"><i class="fa fa-arrow-right"></i></button>
+                                </div>
+                              </div>
+                              <span id="text_info"></span>
+                            </form>
+                            
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="javascript:void(0)" class="btn btn-default" data-dismiss="modal">Cancel</a>
+                    <button disabled class="btn btn-success" id="save_btn">Attend</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- modal-qrcode -->     
+
+      <!-- modal-details -->
+      <div class="modal fade" id="modal_details" data-backdrop="static">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <b class="text-success"><i class="fa fa-user"></i> Successfully Attend</b>
+              </div>
+                <div class="modal-body">
+                    <div class="m-a-1">
+                      <p>Student : <span id="sti_name_det"></span> </p>
+                      <p>Matric No : <span id="std_studentid_det"></span></p>
+                      <hr>
+                      <div class="row">
+                        <!-- <div class="col-md-6">
+                          <form id="form_showByPassword">
+                            <div class="input-group">
+                              <input type="password" name="passwords" required placeholder="Password" id="passwords" class="form-control">
+                              <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-arrow-right"></i></button>
+                              </div>
+                            </div>
+                            <span id="text_info"></span>
+                          </form>
+                          
+                        </div> -->
+
+                        <div class="col-md-12">
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Academic Session</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_year_det"></div>
+                          </div>
+      
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Course</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_course_det"></div>
+                          </div>
+
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Day/Time</div>
+                            <div class="col-sm-9 text-uppercase"><span id="tmt_day_det"></span> - <span id="tmt_time"></span></div>
+                          </div>
+      
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Slot</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_slot_det"></div>
+                          </div>
+  
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Venue</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_location_det"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <!-- <a href="javascript:void(0)" class="btn btn-default" data-dismiss="modal">Cancel</a> -->
+                  <button class="btn btn-success" id="ok_btn">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal-details -->   
+
+        <!-- LOADING START -->
+        <div class="modal" id="loading_modal" data-backdrop="static">
+          <div class="modal-dialog">
+            <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+          </div>
+        </div>
+        <!-- LOADING END -->
+
+      </div><!-- end app-body -->
+    </div><!-- end content -->
+    <!-- / -->
+
+    
+    <!-- ############ SWITHCHER START-->
+    <!-- ############ SWITHCHER END-->
+
+  <!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="libs/select2/dist/js/select2.full.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <script src="excel2json/xlsx.full.min.js"></script>
+  <script src="excel2json/tableToExcel.js"></script>
+  <script src="excel2json/xlsx.core.min.js"></script>
+  <script src="excel2json/js/jhxlsx.js"></script>
+  <script src="excel2json/js/FileSaver.js"></script>
+  
+
+  <script src="config.js"></script>
+  <!-- <script src="callFunction.js"></script> -->
+  <script src="scripts/action.min.js"></script>
+  <script src="attendance.js?n=1"></script>
+  
+<!-- endbuild -->
+</body>
+</html>

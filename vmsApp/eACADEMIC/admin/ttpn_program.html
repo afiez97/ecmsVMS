@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/select2/dist/css/select2.css">
+  <link rel="stylesheet" href="libs/select2-bootstrap-theme/dist/select2-bootstrap.css">
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+  <style>
+    .validationMessage {
+      text-align: left;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- ############ LAYOUT START-->
+
+      <!-- aside -->
+      <!-- / -->
+      
+      <!-- content -->
+      <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+        <div class="app-header white bg b-b">
+              <div class="navbar" data-pjax>
+                    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                      <i class="ion-navicon"></i>
+                    </a>
+                    
+                    <div class="navbar-item pull-left h5" id="pageTitle">
+                      <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                      Programme Settings
+                    </div>
+                    <!-- nabar right -->
+                    <!-- / navbar right -->
+              </div>
+        </div>
+        <div class="app-footer white bg p-a b-t">
+          <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+          <span class="text-sm text-muted">&copy; Copyright.</span>
+        </div>
+        
+        <div class="app-body">
+          <!-- ############ PAGE START-->
+          <!-- only need a height for layout 4 -->
+          <div style="min-height: 200px">
+            <div class="padding">
+              <div class="row">
+
+                <!-- list -->
+                <div class="col-md-10 offset-md-1">
+                  <div class="box">
+                    <div class="box-header b-b">
+                      <h3 class="font-weight-bold">LIST OF PROGRAMME</h3>
+                      <div class="box-tool">
+                        <ul class="nav" id="">
+                          <li class="nav-item inline">
+                            <a class="nav-link btn_create_setting" title="Add New" id="btnAddProgram" data-toggle="modal" data-target="#reg-program"><i class="ion-plus-circled"></i></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="box-body">
+                      <div id="tableProgram">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table class="table table-striped m-b-none" id="programList"></table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-------------------------------------------------- modal Register Programme -------------------------------------------------->
+                <div id="reg-program" class="modal fade" data-backdrop="static">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <form role="form" id="formAddPgm">
+                        <div class="modal-header teal-900">
+                            <h5 class="modal-title">REGISTER PROGRAMME</h5>
+                        </div>
+                        <div class="modal-body p-lg">
+                          <p>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group row">
+                                  <label for="namaProgram" class="col-sm-2 form-control-label">Programme</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="pgm_name" placeholder="Programme Name" required>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="kodFakulti" class="col-sm-2 form-control-label">Code<span class="text-danger"> *</span></label>
+                                  <div class="col-sm-4">
+                                    <input type="text"  class="form-control" data-bind="value: pgm_id" id="pgm_id" oninput="codeChecking(this)" placeholder="Programme Code">
+                                    <span class="text-danger" id="check"></span>
+                                  </div>
+
+                                  <label for="" class="col-sm-2 form-control-label">MQF Level</label>
+                                  <div class="col-sm-4">
+                                    <select class="form-control c-select slct2" id="pgm_mqflevel"></select>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="namaFakulti" class="col-sm-2 form-control-label">Faculty<span class="text-danger"> *</span></label>
+                                  <div class="col-sm-4">
+                                      <select class="form-control c-select slct2" id="fac_id" required></select>
+                                  </div>
+
+                                  <label for="tempoh" class="col-sm-2 form-control-label">Duration of Study</label>
+                                  <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="pgm_duration" placeholder="eg: 2 Years 6 Months">
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="pgm_category" class="col-sm-2 form-control-label">Level of Study</label>
+                                  <div class="col-sm-4">
+                                    <select class="form-control c-select slct2" id="pgm_category"></select>
+                                  </div>
+
+                                  <label for="pgm_tcrdpass" class="col-sm-2 form-control-label">Total Credit Pass</label>
+                                  <div class="col-sm-4">
+                                      <input type="number" class="form-control" id="pgm_tcrdpass" placeholder="eg: 120">
+                                  </div>
+
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="pgm_area" class="col-sm-2 form-control-label">Academic Calendar</label>
+                                  <div class="col-sm-4">
+                                    <select class="form-control c-select slct2" id="pgm_area"></select>
+                                  </div>
+
+                                  <label for="" class="col-sm-2 form-control-label">Tuition Fee(RM)</label>
+                                  <div class="col-sm-4">
+                                      <input type="text" class="form-control" id="tuition_fee" placeholder="Tuition Fee(RM)">
+                                  </div>
+
+                                  
+                                </div>
+    
+                                <div class="form-group row">
+                                  <label for="pgm_mode" class="col-sm-2 form-control-label">Mode of Study</label>
+                                  <div class="col-sm-4">
+                                    <select class="form-control c-select slct2" id="pgm_mode"></select>
+                                  </div>
+
+                                  <label for="" class="col-sm-2 form-control-label">Tuition Fee(USD)</label>
+                                  <div class="col-sm-4">
+                                      <input type="text" class="form-control" id="tuition_fee_usd" placeholder="Tuition Fee(USD)">
+                                  </div>
+
+                                  
+                                </div>
+
+                                <div class="form-group row">
+                                  
+                                  <label for="pgm_status" class="col-sm-2 form-control-label">Status</label>
+                                  <div class="col-sm-4">
+                                    <select class="form-control c-select slct2" id="pgm_status" required></select>
+                                  </div>
+                                  
+                                </div>
+
+
+
+
+                              </div>
+                            </div>
+                          </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                          <input type="submit" class="btn info p-x-md " value="Save" id="submit-program">
+                        </div>                                      
+                      </form>
+                    </div><!-- /.modal-content -->
+                  </div>
+                </div><!-------------------------------------------------- end modal Register Programme -------------------------------------------------->
+                
+              </div>
+            </div>
+          </div>
+          <!-- ############ PAGE END-->
+        </div>
+      </div>
+      <!-- / -->
+
+      
+      <!-- ############ SWITHCHER START-->
+      <!-- ############ SWITHCHER END-->
+
+    <!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <script src="libs/select2/dist/js/select2.full.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  
+  <script src="bower_components/knockout/dist/knockout.js"></script>
+  <script src="bower_components/knockout-validation/dist/knockout.validation.min.js"></script>
+
+  <script src="scripts/action.min.js"></script>
+  <script src="config.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="ttpn_program.js"></script>
+  <script src="capaian.js"></script>
+<!-- endbuild -->
+</body>
+</html>

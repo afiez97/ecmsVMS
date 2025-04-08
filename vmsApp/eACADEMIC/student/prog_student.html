@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Student Portal</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+  <style>
+    .validationMessage {
+      text-align: left;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+    <div class="app-header white bg b-b">
+          <div class="navbar" data-pjax>
+                <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                  <i class="ion-navicon"></i>
+                </a>
+                
+                <div class="navbar-item pull-left h5">
+                  <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                  Details Programme & Activity
+                </div>
+                <!-- nabar right -->
+                <!-- / navbar right -->
+          </div>
+    </div>
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+  
+    <div class="app-body">
+
+      <!-- ############ PAGE START-->
+      <!-- only need a height for layout 4 -->
+      <div style="min-height: 200px">
+        <div class="padding">
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <div class="box">
+                <div class="box-header b-b">
+                  <h3 class="font-weight-bold">DETAILS</h3>
+                  <div class="box-tool">
+                    <ul class="nav approved">
+                      <li class="nav-item inline m-r-1">
+                        <a class="nav-link" title="Update" data-toggle="modal" data-target="#mdlUpdate" id="btnMdlUpdate">
+                            <i class="ion-android-create" style="color: #22b66e;"></i>
+                        </a>
+                      </li>
+                      <li class="nav-item inline m-r-1">
+                        <a class="nav-link" title="Remove" id="btnDelete">
+                            <i class="ion-trash-b" style="color: #ef193c"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+    
+                <div class="box-body">
+                  <div class="row p-a-1">
+                    <div class="col-md-6">
+                      <input type="hidden" id="prog_id">
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Programme</div>
+                        <div class="col-sm-9 text-uppercase" id="view_prog_title"></div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Campus</div>
+                        <div class="col-sm-9 text-uppercase" id="view_clg_id"></div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Programme Category	</div>
+                        <div class="col-sm-9 text-uppercase" id="view_prog_kat"></div>
+                      </div>
+                      
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Organize By</div>
+                        <div class="col-sm-9 text-uppercase" id="view_prog_org"></div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Cooperation</div>
+                        <div class="col-sm-9 text-uppercase" id="view_prog_vent"></div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Advisor</div>
+                        <div class="col-sm-9 text-uppercase" id="view_prog_advisor"></div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Venue</div>
+                        <div class="col-sm-9 text-uppercase" id="view_prog_venue"></div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Cost</div>
+                        <div class="col-sm-9 text-uppercase" id="view_prog_cost"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Allocation Requested</div>
+                        <div class="col-sm-9" id="prog_peruntukan"></div>
+                      </div>
+
+                      
+                    </div>
+    
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Date</div>
+                        <div class="col-sm-9" id="view_prog_startdate"></div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Proposal</div>
+                        <div class="col-sm-9" id="view_progProposal"></div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Report</div>
+                        <div class="col-sm-9" id="view_progReport"></div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Certificate</div>
+                        <div class="col-sm-9" id="view_progCert"></div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Status</div>
+                        <div class="col-sm-9" id="view_prog_status"></div>
+                      </div>
+                      <div class="form-group row">
+                        <!-- <div class="form-group row m-b-0"> -->
+                        <div class="col-sm-3 font-weight-bold">Total Participant</div>
+                        <div class="col-sm-9 text-uppercase" id="view_prog_participate"></div>
+                      </div>
+                      
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Allocation Approved</div>
+                        <div class="col-sm-9" id="prog_alloc_approve"></div>
+                      </div>
+                  
+                      <div class="form-group row">
+                        <div class="col-sm-3 font-weight-bold">Remark</div>
+                        <div class="col-sm-9 text-uppercase" id="view_prog_statusremark"></div>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <div class="box">
+                <div class="box-header b-b">
+                  <h3 class="font-weight-bold">STUDENT LIST</h3>
+                  <div class="box-tool">
+                    <ul class="nav">
+                      <li class="nav-item inline m-r-1">
+                        <a class="nav-link" title="New Record" data-toggle="modal" data-target="#mdlAdd" id="btnMdlUpdate">
+                            <i class="fa fa-fw fa-plus" style="color: #329ef4;"></i>
+                        </a>
+                      </li>
+                      <li class="nav-item inline m-r-1">
+                        <a class="nav-link" title="Upload" data-toggle="modal" data-target="#mdlUpload" id="btnUpload">
+                            <i class="fa fa-upload" style="color: #58c5c5"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+    
+                <div class="box-body">
+                  <div class="row p-a">
+                    <textarea class="hidden" id="dataList"></textarea>
+                    <table id="listData" class="table m-b-none"></table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-------------------------------------------------- modal edit program & activity -------------------------------------------------->
+          <div id="mdlUpdate" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <form role="form" id="formUptReport">
+                  <div class="modal-header purple-700">
+                    <h5 class="modal-title">UPDATE PROGRAMME & ACTIVITY</h5>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                      <div class="form-group row ">
+                        <label for="" class="col-sm-2 form-control-label ">Programme<span class="text-danger"> *</span></label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="upt_prog_title" placeholder="Programme Name" required>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-2 form-control-label ">Campus<span class="text-danger"> *</span></label>
+                        <div class="col-sm-4">
+                          <select class="form-control c-select" id="upt_clg_id" required></select>
+                        </div>
+
+                        <label for="" class="col-sm-2 form-control-label">Cost<span class="text-danger"> *</span></label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="upt_prog_cost" placeholder="RM " required>
+                        </div>
+
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-2 text-nowrap form-control-label">Programme Category</label>
+                        <div class="col-sm-4">
+                          <select class="form-control c-select" id="upt_prog_kat" required="">
+                          <option value="">- Choose -</option>
+                          <option value="External Invitation">External Invitation</option>
+                          <option value="Creditable Activities">Creditable Activities</option>
+                          <option value="Non-Credit Activities">Non-Credit Activities</option>
+                          <option value="Others">Others</option>
+                          </select>
+                        </div>
+
+                        <label for="" class="col-sm-2 form-control-label">Allocation requested</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="upt_prog_peruntukan">
+                        </div>
+
+                      </div>
+
+                      <div class="form-group row">
+                       
+
+                        <label for="" class="col-sm-2 form-control-label">Organize By<span class="text-danger"> *</span></label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="upt_prog_org" placeholder="Organize" required>
+                        </div>
+
+                        <label for="" class="col-sm-2 form-control-label">Start Date<span class="text-danger"> *</span></label>
+                        <div class="col-sm-4">
+                          <input type="date" class="form-control" id="upt_prog_startdate" required>
+                        </div>
+
+                        
+                      </div>
+
+                      <div class="form-group row">
+
+                        <label for="" class="col-sm-2 form-control-label">Cooperation</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="upt_prog_vent" placeholder="Cooperation">
+                        </div>
+
+                        <label for="" class="col-sm-2 form-control-label">End Date<span class="text-danger"> *</span></label>
+                        <div class="col-sm-4">
+                          <input type="date" class="form-control" id="upt_prog_enddate" required>
+                        </div>
+
+                      </div>
+
+                      <div class="form-group row">
+
+                        <label for="" class="col-sm-2 form-control-label">Advisor</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="upt_prog_advisor" placeholder="Advisor">
+                        </div>
+
+                        <label for="" class="col-sm-2 form-control-label">Total Participant</label>
+                        <div class="col-sm-4">
+                          <input type="number" class="form-control" id="upt_prog_participate" placeholder="">
+                        </div>
+          
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-2 form-control-label">Venue</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="upt_prog_venue" placeholder="Venue">
+                        </div>
+          
+                        <!-- <label for="" class="col-sm-2 form-control-label">Proposal<span class="text-danger"> *</span></label>
+                        <div class="col-sm-4">
+                          <input type="file" class="form-control chkProposal" id="upt_prog_proposal" name="prog_proposal" required>
+                          <span class="text-info">PDF only (less than 5MB)</span>
+                        </div> -->
+                        <label class="col-sm-2 form-control-label">Proposal</label>
+                        <div class="col-sm-4">
+                          <div class="row">
+                            <div class="col-md-2">
+                              <span id="view_prog_proposal"></span>
+                            </div>
+                            <div class="col-md-10 p-l-0"><input type="file" class="form-control chkProposal"
+                                id="upt_prog_proposal">
+                            </div>
+                          </div>
+                          <span class="text-info">PDF only (less than 5MB)</span>
+                          <input type="hidden" class="form-control" id="exist_prog_proposal">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-2 form-control-label">Allocation Approved</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="upt_prog_alloc_approve" placeholder="" disabled>
+                        </div>
+          
+                      </div>
+                      <!-- <div class="form-group row">
+                        
+                      </div> -->
+                  </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn success p-x-md" id="upt_prog" >Update</button>
+                  </div>
+                </form>
+              </div><!-- /.modal-content -->
+            </div>
+          </div><!-------------------------------------------------- end modal edit program & activity -------------------------------------------------->
+
+
+          <!-------------------------------------------------- modal add student -------------------------------------------------->
+          <div id="mdlAdd" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form role="form" id="formAdd">
+                  <div class="modal-header blue-900">
+                    <h5 class="modal-title">ADD STUDENT</h5>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                      <input type="hidden" id="id_program">
+                      <div class="form-group row">
+                        <label for="" class="col-sm-2 form-control-label ">Matric No.</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="att_nomatrik" placeholder="Matric No." required>
+                          <span id="check"></span>
+                        </div>
+                      </div>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn info p-x-md" id="btnSaveStd">Save</button>
+                  </div>
+                </form>
+              </div><!-- /.modal-content -->
+            </div>
+          </div><!-------------------------------------------------- end modal add student -------------------------------------------------->
+
+
+          <!-------------------------------------------------- modal upload student list -------------------------------------------------->
+          <div id="mdlUpload" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form role="form" id="form_excel">
+                  <div class="modal-header blue-900">
+                    <h5 class="modal-title">UPLOAD STUDENT LIST</h5>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                      <div class="form-group row">
+                        <label for="" class="col-sm-2 form-control-label ">Upload</label>
+                        <div class="col-sm-10">
+                          <input type="file" class="form-control" name="excel_file" id="excel_file" required>
+                          <span id="tempStd"></span>
+                        </div>
+                      </div>
+                      <textarea class="hidden" rows="10" cols="30" id="list_data"></textarea>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn info p-x-md">Save</button>
+                  </div>
+                </form>
+              </div><!-- /.modal-content -->
+            </div>
+          </div><!-------------------------------------------------- end modal upload student list -------------------------------------------------->
+
+        </div>
+      </div>
+      <!-- ############ PAGE END-->
+    </div>
+  </div>
+  <!-- / -->
+
+  
+  <!-- ############ SWITHCHER START-->
+  <!-- ############ SWITHCHER END-->
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+
+  <script src="callFunctionStd.js"></script>
+  <script src="config.js"></script>
+  <!-- <script src="jquery.min.js"></script> -->
+  <script src="excel2json/xlsx.full.min.js"></script>
+  <script src="prog_student.js"></script>
+<!-- endbuild -->
+</body>
+</html>

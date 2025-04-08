@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/select2/dist/css/select2.css">
+  <link rel="stylesheet" href="libs/select2-bootstrap-theme/dist/select2-bootstrap.css">
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+  <style>
+    .disabled {
+        pointer-events: none;
+        color: gray;
+        cursor: not-allowed;
+    }
+</style>
+</head>
+<body>
+  <div class="app" id="app">
+  <!-- ############ LAYOUT START-->
+    
+    <!-- content -->
+    <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+      <div class="app-header white bg b-b">
+            <div class="navbar" data-pjax>
+                  <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                    <i class="ion-navicon"></i>
+                  </a>
+                  
+                  <div class="navbar-item pull-left h5" id="pageTitle">
+                    <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                    TIMETABLE
+                  </div>
+                  <!-- nabar right -->
+                  <!-- / navbar right -->
+            </div>
+      </div>
+      <div class="app-footer white bg p-a b-t">
+        <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+        <span class="text-sm text-muted">&copy; Copyright.</span>
+      </div>
+      
+      <div class="app-body">
+
+        <!-- ############ PAGE START-->
+        <!-- only need a height for layout 4 -->
+        <div style="min-height: 200px">
+          <div class="padding">
+            <div class="row">
+              <div class="col-md-10 offset-md-1">
+                <div class="row-col b-a white">
+                  <!-- right -->
+                  <div class="col-md-4 b-r no-border-sm" id="">
+                    <div class="box-header b-b">
+                      <h3 class="font-weight-bold">WEEK</h3>
+                      <div class="box-tool">
+                        <ul class="nav">
+                          <li class="nav-item inline btn_create_lecturer">
+                            <a class="nav-link text-muted divSem" data-toggle="modal" data-target="#mdlWeek" id="btnNewRecord">
+                              <span class="">
+                                <i class="fa fa-fw fa-plus"></i>
+                                <span class="hidden-sm-down">New Record</span>
+                              </span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+    
+                    <div class="box-body m-l-2 m-r-2">
+                      <div class="row">
+                        <textarea class="hidden" id="dataAtdWeek"></textarea>
+                        <table class="table table-striped m-b-none" id="tblAtdWeek"></table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- left -->
+                  <div class="col-md-8">
+                    <div class="box-header b-b">
+                      <h3 class="font-weight-bold">DETAILS</h3>
+                    </div>
+      
+                    <div class="box-body">
+                      <div class="row m-a-1">
+                        <input type="hidden" id="tmtDet_id">
+                        <input type="hidden" id="yearTmt">
+                        <input type="hidden" id="fk_course">
+                        <input type="hidden" id="fk_acaCal">
+
+                        <div class="col-md-12">
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Academic Session</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_year"></div>
+                          </div>
+  
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Category</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_category"></div>
+                          </div>
+      
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Course</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_course"></div>
+                          </div>
+
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Day</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_day"></div>
+                          </div>
+  
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Time</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_time"></div>
+                          </div>
+      
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Slot</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_slot"></div>
+                          </div>
+  
+                          <div class="form-group row">
+                            <div class="col-sm-3 font-weight-bold">Venue</div>
+                            <div class="col-sm-9 text-uppercase" id="tmt_location"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row-col white m-b">
+                  <div class="col-md-12">
+                    <button class="btn btn-outline-danger m-a btn_summary m-t"><i class="fa fa-file-pdf-o"></i> Summary</button> *Please insert all week for the subject slot to get the actual result
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-10 offset-md-1">
+                <div class="box">
+                  <div class="box-header b-b">
+                    <h3 class="font-weight-bold title_week" id="titleStd">STUDENT</h3>
+                  </div>
+                  <div class="box-body">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3>Statistic Attendance</h3>
+                            <small class="block text-muted title_week"></small>
+                          </div>
+                          <div class="box-body">
+                            <div id="statAttd" data-ui-jp="echarts" style="height:300px" ></div>
+                            <div class="box p-a">
+                              <div class="pull-right m-l">
+                                <span data-ui-jp="sparkline" data-ui-options="[70,30], {type:'pie', height:36, sliceColors:['#4BC0C0','transparent']}" class="sparkline inline"></span>
+                              </div>
+                              <div class="clear">
+                                <h4 class="m-a-0 text-md"><a href="javascript:void(0);"><span id="percent"></span> <span class="text-sm">Attendance</span></a></h4>
+                                <small class="text-muted title_week"></small>
+                              </div>
+                            </div>                            
+                          </div>
+                        </div>                        
+                      </div>
+                      <div class="col-md-8">
+                        <textarea class="hidden" id="dataStdList"></textarea>
+                        <table class="table table-striped m-b-none" id="tblStudent"></table>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-------------------------------------------------- add Week -------------------------------------------------->
+            <div id="mdlWeek" class="modal fade" data-backdrop="static">
+              <div id="details" class="modal-dialog">
+                <div class="modal-content">
+                  <form role="form" id="formAddWeek">
+                  <div class="modal-header primary">
+                      <h5 class="modal-title" id="mdlHeader">ADD WEEK</h5>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                      <input type="hidden" id="pk_week">
+                      <div class="form-group row">
+                        <label class="col-sm-2 form-control-label font-weight-bold">Date</label>
+                        <div class="col-sm-10">
+                          <input type="date" class="form-control" id="att_date" required>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-2 form-control-label font-weight-bold">Week</label>
+                        <div class="col-sm-10">
+                          <input type="number" class="form-control" id="att_week" required></input>
+                          <!-- <input type="number" class="form-control" id="att_hour" required></input> -->
+                        </div>
+                      </div>
+                      
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn info p-x-md" id="btnAction" value="Save">
+                  </div>
+                  </form>
+                </div><!-- /.modal-content -->
+              </div>
+            </div><!-------------------------------------------------- end add Week -------------------------------------------------->
+          </div>
+        </div>
+
+        <!-- ############ PAGE END-->
+
+        <!-- modal-qrcode -->
+        <div class="modal fade" id="modal_qr">
+          <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <b id="title_att"></b>
+                </div>
+                  <div class="modal-body">
+                      <div class="m-a-1 text-center">                        
+                          <canvas id="qrcode"></canvas>
+                          <br><i id="url_qrcode"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- modal-qrcode -->
+
+      <!-- modal_attend -->
+      <div class="modal fade" id="modal_attend">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header"><h4>Status Attend</h4></div>
+            <form id="form_attend">
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="hidden" name="tmtDet" id="tmtDet">
+                    <input type="hidden" name="fk_week" id="fk_week">
+                    <input type="hidden" name="atd_id" id="atd_id">
+                    <div class="form-group">
+                      <label for="status_attend">Status Attend</label>
+                      <select name="status_attend" id="status_attend" class="form-control">
+                        <option value="Absent">Absent</option>
+                        <option value="Attend">Attend</option>
+                        <option value="Excuse">Excuse</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="status_attend">Letter</label>
+                      <input type="file" name="upload_file" id="upload_file" class="bg-success">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="std_studentid"></label><br>
+                    <label class="sti_name"></label><br>
+                    <label class="pgm_id"></label><br>
+                    <textarea name="remark" id="remark" cols="30" rows="5" class="form-control" placeholder="Remark"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- END MODAL ATTEND -->
+
+        <!-- LOADING START -->
+        <div class="modal" id="loading_modal" data-backdrop="static">
+          <div class="modal-dialog">
+            <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+          </div>
+        </div>
+        <!-- LOADING END -->
+
+      </div><!-- end app-body -->
+    </div><!-- end content -->
+    <!-- / -->
+
+    
+    <!-- ############ SWITHCHER START-->
+    <!-- ############ SWITHCHER END-->
+
+  <!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="libs/select2/dist/js/select2.full.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <script src="excel2json/xlsx.full.min.js"></script>
+  <script src="excel2json/tableToExcel.js"></script>
+  <script src="excel2json/xlsx.core.min.js"></script>
+  <script src="excel2json/js/jhxlsx.js"></script>
+  <script src="excel2json/js/FileSaver.js"></script>
+  <script src="scripts/qrious.min.js.js"></script>
+
+
+  <script src="config.js"></script>
+  <script src="scripts/action.min.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="detLectTimetbl.js"></script>
+  <script src="capaian.js"></script>
+  
+<!-- endbuild -->
+</body>
+</html>

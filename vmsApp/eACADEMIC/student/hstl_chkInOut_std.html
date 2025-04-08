@@ -1,0 +1,379 @@
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <span class="navbar-item text-md">Hostel</span>
+      </li>
+      <li class="nav-item">
+        <span class="navbar-item text-md"><button class="btn btn-icon warning" type="button" id="printStdHstl"
+            title="Print"><i class="ion-ios-printer-outline"></i></button></span>
+      </li>
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+  </div>
+</div>
+
+<!-- FOOTER INSERT  -->
+<div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+<div class="app-body">
+
+  <!-- CONTENT START -->
+  <div style="min-height: mh-200">
+    <div class="col-md-10 offset-md-1 mt-2">
+      <div class="box">
+        <div class="box-header lime-900">
+          <h3><b>CHECK IN / CHECK OUT LIST</b></h3>
+        </div>
+        <div class="box-body b-b">
+          <p class="m-a-0">
+          <div id="">
+            <input type="hidden" id="studentId">
+            <input type="hidden" id="stdIcNo">
+            <input type="hidden" id="stdName">
+            <textarea class="hidden" id="dataChkInOutList"></textarea>
+            <table id="chkInOutList" class="table table-bordered table-striped m-b-none"></table>
+          </div>
+          </p>
+        </div>
+      </div>
+
+
+      <!-------------------------------------------------- modal check out -------------------------------------------------->
+      <div id="hostelChkOut" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form role="form" id="formCheckOut">
+              <div class="modal-header lime-900">
+                <h5 class="modal-title">CHECK OUT</h5>
+              </div>
+              <div class="modal-body p-lg">
+                <p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <input type="hidden" id="chkInOut_id">
+                    <input type="hidden" id="chkInStts">
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3 form-control-label">Check Out<span
+                          class="text-danger">*</span></label>
+                      <div class="col-sm-9">
+                        <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                                format: 'DD/MM/YYYY',
+                                minDate: moment().subtract(1, 'days'),
+                                defaultDate: moment(),
+                                icons: {
+                                    time: 'fa fa-clock-o',
+                                    date: 'fa fa-calendar',
+                                    up: 'fa fa-chevron-up',
+                                    down: 'fa fa-chevron-down',
+                                    previous: 'fa fa-chevron-left',
+                                    next: 'fa fa-chevron-right',
+                                    today: 'fa fa-screenshot',
+                                    clear: 'fa fa-trash',
+                                    close: 'fa fa-remove'
+                                }
+                            }">
+                          <input type='text' class="form-control" id="checkOut" />
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+
+                        <!-- <input type="date" class="form-control" id="checkOut" required> -->
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-3 form-control-label">Reason<span class="text-danger"> *</span></label>
+                      <div class="col-sm-9">
+                        <!-- <select class="form-control" id="branch_id" required></select>
+                                       -->
+                        <select class="form-control" id="reason" required>
+                          <option value="">- Choose -</option>
+                          <option value="Change Hostel">Change Hostel</option>
+                          <option value="Deferred">Deferred</option>
+                          <option value="Withdraw">Withdraw</option>
+                          <option value="Graduated">Graduated</option>
+                          <option value="Practical">Practical</option>
+                          <option value="Not Reside Hostel">Not Reside Hostel</option>
+                          <option value="Semester Break">Semester Break</option>
+                        </select>
+
+                      </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <a href="#" class="text-info">Survey Form.pdf</a>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn success p-x-md" value="Update">
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal add check out -------------------------------------------------->
+
+
+      <!-------------------------------------------------- modal add Change -------------------------------------------------->
+      <div id="hostelChange" class="modal fade" data-backdrop="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form role="form" id="formAddChange">
+              <div class="modal-header lime-900">
+                <h5 class="modal-title">ADD HOSTEL CHANGE</h5>
+              </div>
+              <div class="modal-body p-lg">
+                <p>
+                  <input type="hidden" id="pk_chkInOut">
+                  <input type="hidden" id="pk_booking">
+                  <input type="hidden" id="date_apply">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group row">
+                      <label class="col-sm-2 form-control-label">Campus <span class="text-danger">*</span></label>
+                      <div class="col-sm-10">
+                        <select class="form-control c-select" id="branch_id" required></select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row" title="Select Campus to view list">
+                      <label class="col-sm-2 form-control-label">Hostel<span class="text-danger"> *</span></label>
+                      <div class="col-sm-10">
+                        <select class="form-control c-select" id="hostel_id" required></select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row" title="Select Hostel to view list">
+                      <label class="col-sm-2 form-control-label">Block <span class="text-danger">*</span></label>
+                      <div class="col-sm-10">
+                        <select class="form-control c-select" id="block_id" required></select>
+                      </div>
+                    </div>
+                    <!-- <label class="col-sm-2 form-control-label">Room <span class="text-info">*</span></label> -->
+
+                    <div class="form-group row" title="Select Block to view list">
+                      <label class="col-sm-2 form-control-label">Room <span class="text-danger">*</span></label>
+                      <div class="col-sm-10">
+                        <select class="form-control c-select" id="room_id" required></select>
+                      </div>
+                    </div>
+
+                    <!-- <div class="form-group row m-b-0">
+                                    <label class="col-sm-2 form-control-label">Reason</label>
+                                    <div class="col-sm-10">
+                                      <textarea class="form-control" rows="4" id="change_reason"></textarea>
+                                    </div>
+                                  </div> -->
+
+
+                    <div class="form-group row" title="Select list">
+                      <label class="col-sm-2 form-control-label">Reason <span class="text-danger">*</span></label>
+                      <div class="col-sm-10">
+                        <select class="form-control c-select" id="change_reason" required>
+                          <option value="">- Choose -</option>
+                          <option value="Programme">Programme</option>
+                          <option value="Practical">Practical</option>
+                          <option value="Conflict">Conflict</option>
+                          <option value="Order">Order</option>
+                          <option value="Facilities">Facilities</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row" title="Select Block to view list">
+                      <label class="col-sm-2 form-control-label">Remark <span class="text-danger">*</span></label>
+                      <div class="col-sm-10">
+                        <textarea required class="form-control" rows="5" id="remark_std"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn info p-x-md" value="Submit">
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal add Change -------------------------------------------------->
+
+
+      <!-------------------------------------------------- modal Check In -------------------------------------------------->
+      <div id="mdlCheckIn" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header lime-900">
+              <h5 class="">VIEW BOOKING</h5>
+            </div>
+            <form id="formChkIn">
+              <div class="modal-body p-lg">
+                <p>
+                  <input type="hidden" id="chkInOutId">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group row">
+                      <div class="col-sm-2 font-weight-bold">Hostel</div>
+                      <div class="col-sm-10 text-uppercase" id="hostel"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-2 font-weight-bold">Warden</div>
+                      <div class="col-sm-10 text-uppercase" id="warden"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-2 font-weight-bold">Check In</div>
+                      <div class="col-sm-10" id="expected_chkInDate"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-2 font-weight-bold">Status</div>
+                      <div class="col-sm-10" id="checkIn_status"></div>
+                    </div>
+
+                    <!-- <div class="form-group row">
+                      <label for="" class="col-sm-2 form-control-label font-weight-bold">Date</label>
+                      <div class="col-sm-4">
+                        <input type="date" class="form-control" id="checkIn" required>
+                      </div>
+                    </div> -->
+                    <div class="form-group row m-b-0">
+                      <label for="" class="col-sm-2 form-control-label font-weight-bold">Date</label>
+
+                      <div class="col-sm-4">
+                        <div class='input-group date' data-ui-jp="datetimepicker" data-ui-options="{
+                              format: 'DD/MM/YYYY',
+                              minDate: moment(),
+                              defaultDate: moment(),
+                              icons: {
+                                  time: 'fa fa-clock-o',
+                                  date: 'fa fa-calendar',
+                                  up: 'fa fa-chevron-up',
+                                  down: 'fa fa-chevron-down',
+                                  previous: 'fa fa-chevron-left',
+                                  next: 'fa fa-chevron-right',
+                                  today: 'fa fa-screenshot',
+                                  clear: 'fa fa-trash',
+                                  close: 'fa fa-remove'
+                              }
+                          }">
+                          <input type='text' class="form-control" id="checkIn" />
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <!-- <a id="usrManual" target="_blank"  download="User Manual HEPA (Admin)v1.pdf"> -->
+                        <!-- <a href="#" id="readRegulationsLink" class=""><span class="label info">Read Hostel Regulation</span></a> -->
+                        <a id="readRegulationsLink" href="images/01-HOSTEL_REGULATIONS.pdf" target="_blank">
+                          <span class="label info">Read Hostel Regulations</span>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="md-check">
+                        <input type="checkbox" id="check_agree" required>
+                        <i class="green"></i>
+                        By ticking, you are confirming that you have read, understood and agree on Hostel Regulation's
+                        <u>terms and conditions</u>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+
+                  </div>
+                </div>
+                </p>
+              </div>
+              <div class="modal-footer ">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn success p-x-md divChkInOut" value="Check In" id="btnCheckIn">
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal Check In -------------------------------------------------->
+
+
+      <!-------------------------------------------------- modal View -------------------------------------------------->
+      <div id="mdlViewData" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header lime-900">
+              <h5 class="modal-title">VIEW CHECK IN/CHECK OUT STATUS</h5>
+            </div>
+            <form id="formChkIn">
+              <div class="modal-body p-lg">
+                <p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Hostel</div>
+                      <div class="col-sm-9 text-uppercase" id="view_hostel"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Check In</div>
+                      <div class="col-sm-9" id="view_checkIn"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Check In Status</div>
+                      <div class="col-sm-9" id="view_checkIn_status"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Check Out</div>
+                      <div class="col-sm-9" id="view_checkOut"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Check Out Status</div>
+                      <div class="col-sm-9" id="view_chkOutStts"></div>
+                    </div>
+                  </div>
+                </div>
+                </p>
+              </div>
+              <div class="modal-footer ">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal View -------------------------------------------------->
+
+    </div>
+  </div>
+</div>
+
+<script src="scripts/ajax.js"></script>
+<script src="hstl_chkInOut_std.js?n=3"></script>
+<script src="hstl_chg_std.js?n=5"></script>

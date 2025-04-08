@@ -1,0 +1,223 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Examination</span>
+			        </li>
+			        <li class="nav-item">
+				        <a class="nav-link text-muted" title="Tambah Rekod Baru" data-toggle="modal" data-target="#reg-pusatPeperiksaan" title="Reply">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header blue-grey-900">
+                    <h3><b>GRADING </b></h3>
+                    <small>Examination Grading</small>
+                  </div>
+                  <div class="box-body light lt">                    
+                    <p class="m-a-0 ">
+                        <div class="row">
+                            <div class="col-sm-12">
+                              <div class="b-b b-primary nav-active-teal">
+                                <ul class="nav nav-tabs">
+                                  <li class="nav-item">
+                                    <a class="nav-link active" href="#" data-toggle="tab" data-target="#Undergraduate">Undergraduate</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="tab" data-target="#PostgraduateC">Postgraduate (Coursework)</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="tab" data-target="#PostgraduateR">Postgraduate (Research)</a>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="tab-content p-a">
+                                <!-- Undergraduate starts here-->
+                                <div class="tab-pane animated fadeIn text-muted active" id="Undergraduate">
+                                  <textarea class="hidden" id="dataList"></textarea>
+                                  <table class="table m-b-none" id="tblUndergraduate"></table>
+                                </div>
+
+                                <!-- Postgraduate (Coursework) starts here-->
+                                <div class="tab-pane animated fadeIn text-muted" id="PostgraduateC">
+                                  <textarea class="hidden" id="dataListCrswrk"></textarea>
+                                  <table class="table m-b-none" id="tblCoursework"></table>
+                                </div>
+
+                                <!-- Postgraduate (Research) starts here-->
+                                <div class="tab-pane animated fadeIn text-muted" id="PostgraduateR">
+                                  <textarea class="hidden" id="dataListRsrch"></textarea>
+                                  <table class="table m-b-none" id="tblResearch"></table>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-------------------------------------------------- modal register -------------------------------------------------->
+                          <div id="reg-pusatPeperiksaan" class="modal fade" data-backdrop="static">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header blue-grey-900">
+                                    <h5 class="modal-title">REGISTER GRADE EXAMINATION</h5>
+                                </div>
+                                <form role="form" class="p-l-sm p-t-md" id="formGredUndergrad">
+                                <div class="modal-body p-lg">
+                                  <div class="form-group row">
+                                    <label for="grd_category" class="col-md-2 col-form-label">Category<span class="text-danger d-inline">*</span></label>
+                                    <div class="col-md-4">
+                                        <select class="form-control" id="grd_category" required></select>
+                                    </div>
+
+                                    <label for="grd_id" class="col-md-2 col-form-label">Code Grade<span class="text-danger d-inline">*</span></label>
+                                    <div class="col-md-4">
+                                        <select class="form-control" id="grd_id" required></select>
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="form-group row">
+                                      <label for="grd_score" class="col-md-2 col-form-label">Marks From<span class="text-danger d-inline">*</span></label>
+                                      <div class="col-md-4">
+                                        <input type="number" class="form-control" id="grd_score" required>
+                                      </div>
+
+                                      <label for="grd_score_to" class="col-md-2 col-form-label">Marks To<span class="text-danger d-inline">*</span></label>
+                                      <div class="col-md-4">
+                                        <input type="number" class="form-control" id="grd_score_to" required>
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="form-group row">
+                                    <label for="course_code" class="col-md-2 col-form-label">Quality Point<span class="text-danger d-inline">*</span></label>
+                                    <div class="col-md-4">
+                                      <input type="text" class="form-control" id="quality_point" required>
+                                      <!-- <select class="form-control" id="quality_point" required></select> -->
+                                    </div>
+
+                                    <label for="grd_status" class="col-md-2 col-form-label">Status</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control" id="grd_status">
+                                          <option value="" selected>-Choose-</option>
+                                          <option value="Active">Active</option>
+                                          <option value="In-active">In-active</option>
+                                        </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <label for="grd_remarks" class="col-md-2 col-form-label">Remarks</label>
+                                    <div class="col-md-10">
+                                      <textarea class="form-control" id="grd_remarks" rows="3"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                  <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                  <button type="submit" class="btn info p-x-md ">Save</button>
+                                </div>
+                                </form>
+                              </div><!-- /.modal-content -->
+                            </div>
+                          </div><!-------------------------------------------------- end modal register -------------------------------------------------->
+
+
+                          <!-------------------------------------------------- modal update Grade -------------------------------------------------->
+                          <div id="update-undergraduate" class="modal fade" data-backdrop="static">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header blue-grey-900">
+                                    <h5 class="modal-title">UPDATE GRADE EXAMINATION</h5>
+                                </div>
+                                <div class="modal-body p-lg">
+                                    <form role="form" class="p-l-sm p-t-md" id="formUptUndergrad">
+                                      <input type="hidden" id="pk_id">
+                                      <div class="form-group row">
+                                          <label for="grd_category" class="col-md-2 col-form-label">Category</label>
+                                          <div class="col-md-4">
+                                              <input type="text" class="form-control" id="upt_grd_category" readonly>
+                                          </div>
+
+                                          <label for="upt_grd_id" class="col-md-2 col-form-label">Code Grade<span class="text-danger d-inline">*</span></label>
+                                          <div class="col-md-4">
+                                              <select class="form-control c-select" id="upt_grd_id" required></select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="upt_grd_score" class="col-md-2 col-form-label">Marks From<span class="text-danger d-inline">*</span></label>
+                                          <div class="col-md-4">
+                                            <input type="number" class="form-control" id="upt_grd_score" required>
+                                          </div>
+
+                                          <label for="upt_grd_score_to" class="col-md-2 col-form-label">Marks To<span class="text-danger d-inline">*</span></label>
+                                          <div class="col-md-4">
+                                            <input type="number" class="form-control" id="upt_grd_score_to" required>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="upt_course_code" class="col-md-2 col-form-label">Quality Point<span class="text-danger d-inline">*</span></label>
+                                        <div class="col-md-4">
+                                          <input type="text" class="form-control" id="upt_quality_point" required>
+                                        </div>
+
+                                        <label for="upt_grd_status" class="col-md-2 col-form-label">Status</label>
+                                          <div class="col-md-4">
+                                              <select class="form-control" id="upt_grd_status">
+                                                  <option value="" selected>-Choose-</option>
+                                                  <option value="Active">Active</option>
+                                                  <option value="In-active">In-active</option>
+                                              </select>
+                                          </div>
+                                      </div>
+                          
+                                      <div class="form-group row">
+                                        <label for="upt_grd_remarks" class="col-md-2 col-form-label">Remarks</label>
+                                        <div class="col-md-10">
+                                          <textarea class="form-control" id="upt_grd_remarks" rows="3"></textarea>
+                                        </div>
+                                      </div>
+
+                                      <div class="row text-right p-a">
+                                        <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn success p-x-md ">Update</button>
+                                      </div>
+                                    </form>
+                                </div>
+                              </div><!-- /.modal-content -->
+                            </div>
+                          </div><!-------------------------------------------------- end modal update Grade -------------------------------------------------->
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+
+    <script src="exam_penggredan.js"></script>
+

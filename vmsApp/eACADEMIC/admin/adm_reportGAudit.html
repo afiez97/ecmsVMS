@@ -1,0 +1,216 @@
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Reporting Examination (Graduation Audit)</span>
+			        </li>
+			      </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="modal" id="loading_modal" data-backdrop="static">
+      <div class="modal-dialog">
+        <div style="padding-top: 50%;" class="text-center text-white"><span
+            class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+      </div>
+    </div>
+
+    <div class="app-body">
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-12">
+              <!-- <div class="col-md-12 offset-md-1 mt-2"> -->
+              <div class="box" id="divCOT">
+                <div class="box-header blue-grey-800">
+                  <h3><b>Student List </b></h3>
+                </div>
+                <div class="box-body b-b">
+                  <p class="m-a-0">
+                    <div id="tableCot">
+                      <div class="form-group row">
+                        <div class="col-sm-3">
+                          <label for="cal_category" class="col-form-label">Category:</label>
+                          <select class="form-control slct2 c-select" id="cal_category" required></select>
+                        </div>
+
+                        <div class="col-sm-3">
+                          <label for="fac_id" class="col-form-label">Faculty:</label>
+                          <select class="form-control slct2 c-select" id="fac_id" required></select>
+
+                        </div>
+
+                        <div class="col-sm-3">
+                          <label for="pgm_id" class="col-form-label">Programme:</label>
+                          <select class="form-control slct2 c-select" id="pgm_id" required></select>
+                        </div>
+
+                        <!-- <div class="col-sm-3">
+                          <label for="chkInOutdate" class="col-form-label">Programme:</label>
+                          <input id="chkInOutdate" type="month" class="form-control" placeholder="Date">
+                        </div> -->
+
+                        <div class="row">
+                          <div class="col-sm-3">
+                              <div class="" id = "btnPDF">
+                                  
+
+                                <label for="" class="col-form-label" style="display: block; height: 35px;"></label>
+                                <button type="button" onclick="generateTable()" class="btn btn-info">
+                                    <i class="fa fa-fw fa-filter"></i>Filter
+                                </button>
+                                <button id="" onclick="generateGradPDF('Graduation Audit', 'tableReportGraduationAudit')" class="btn md-raised green">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
+                                    <strong>Download PDF</strong>
+                                </button>
+                          
+                                <button id="reloadButton" class="btn grey-200 text-info " onclick="location.reload()">
+                                  <i class="fa fa-fw fa-refresh"></i>
+                                  <strong>Clear</strong>
+                                </button>
+                                
+
+
+
+
+
+
+
+
+
+                              </div>
+                          </div>
+                        </div>
+
+                        
+
+                      </div>
+                      <textarea class="hidden" id="dataList"></textarea>
+                      <table class="table table-striped m-b-none" id="tableReportGraduationAudit"></table>
+                      <table class="" id="tableReportGraduationAuditpdf"></table>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              
+            </div>
+
+
+            <!-------------------------------------------------- list CECT -------------------------------------------------->
+<div id="mdlStdListCECT" class="modal fade" data-backdrop="static">
+  <div class="modal-dialog modal-lg" style="max-width: 80% !important;">
+    <div class="modal-content">
+      <div class="modal-header teal-500">
+        <h5 class="modal-title">List Course Exemption/ Transfer Student</h5>
+
+      </div>
+      <div class="modal-body p-lg">
+        <p class="">
+          <span class="hidden" id="acaCal"></span>
+       
+        
+          <div class="row m-x-3">
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <div class="col-sm-4 font-weight-bold">Name of Candidate</div>
+                <div class="col-sm-8 text-uppercase" id="studname"></div>
+              </div>
+      
+              <div class="form-group row">
+                <div class="col-sm-4 font-weight-bold">I/C</div>
+                <div class="col-sm-8  text-uppercase" id="studic"></div>
+              </div>
+      
+             
+      
+              <div class="form-group row">
+                <div class="col-sm-4 font-weight-bold">Intake</div>
+                <div class="col-sm-8  text-uppercase" id="studintake"></div>
+              </div>
+            </div>
+    
+    
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <div class="col-sm-4 font-weight-bold">Matrices No.</div>
+                <div class="col-sm-8  text-uppercase" id="studid"></div>
+              </div>
+      
+              <div class="form-group row">
+                <div class="col-sm-4 font-weight-bold">Program</div>
+                <div class="col-sm-8  text-uppercase" id="studprog"></div>
+              </div>
+  
+                 <!-- <div class="form-group row">
+              <div class="col-sm-2 font-weight-bold">Academic Session</div>
+              <div class="col-sm-10 text-uppercase" id="cmsession">2021/2022 - 3</div>
+            </div> -->
+            </div>
+         
+          </div>
+        </p>
+        
+       
+        <textarea class="hidden" id="dataListStd"></textarea>
+        <textarea class="hidden" id="dataListCECT"></textarea>
+
+        <hr>
+
+        <table class="table table-striped m-b-none" data-sorting="true" id="tableCECTListed"></table>
+
+      
+
+        <div class="modal-footer">
+          <button type="button" class="btn white p-x-md" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-danger p-x-md" id="print_cect"><i
+              class="fa fa-file-pdf-o"></i> Print</button>
+
+        </div>
+
+
+      </div><!-- /.modal-content -->
+    </div>
+  </div>
+
+</div>
+<!-------------------------------------------------- list CECT -------------------------------------------------->
+
+        </div>
+
+
+
+    </div><!--- end app-body -->
+
+    <script src="scripts/ajax.js"></script>
+    <script src="scripts/jspdf.umd.min.js"></script>
+    <script src="scripts/jspdf.plugin.autotable.js"></script>
+    <script src="callFunction.js"></script>
+    <script src="adm_reportGAudit.js?n=3"></script>
+    <!-- <script src="cot.js"></script> -->
+
+
+    <script>
+      $("#print_cect").on("click", function (e) {
+
+        e.preventDefault(); // Prevent the default action
+    // Store the data in localStorage
+    localStorage.setItem("studname", $("#studname").text());
+    localStorage.setItem("studic", $("#studic").text());
+    localStorage.setItem("studid", $("#studid").text());
+    localStorage.setItem("studprog", $("#studprog").text());
+    localStorage.setItem("studintake", $("#studintake").text());
+  
+    window.open("print_cect.html");
+
+  });
+
+    </script>

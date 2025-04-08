@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS - Pengurusan Pelajar</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+  <style>
+    .validationMessage {
+      text-align: left;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- ############ LAYOUT START-->
+
+      <!-- aside -->
+      <!-- / -->
+      
+      <!-- content -->
+      <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+        <div class="app-header white bg b-b">
+              <div class="navbar" data-pjax>
+                    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                      <i class="ion-navicon"></i>
+                    </a>
+                    
+                    <div class="navbar-item pull-left h5" id="pageTitle">
+                      <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                      Examination Grade Settings
+                    </div>
+                    <!-- nabar right -->
+                    <!-- / navbar right -->
+              </div>
+        </div>
+        <div class="app-footer white bg p-a b-t">
+          <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+          <span class="text-sm text-muted">&copy; Copyright.</span>
+        </div>
+        
+        <div class="app-body">
+          <!-- ############ PAGE START-->
+          <!-- only need a height for layout 4 -->
+          <div style="min-height: 200px">
+            <div class="padding">
+              <div class="row">
+                <!-------------------------------------------------- form Add -------------------------------------------------->
+                <div class="col-md-4" id="divAdd">
+                  <div class="box" id="reg-kolej">
+                    <div class="box-header b-b" id="divHeader">
+                      <h3>ADD GRADE</h3>
+                    </div>
+                    <div class="box-body">
+                      <form role="form" id="formGredUndergrad">
+                        <!-- <input type="hidden" id="pk_id"> -->
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label ">Category<span class="text-danger d-inline">*</span></label>
+                              <select class="form-control" id="grd_category" required></select>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label">Code Grade<span class="text-danger d-inline">*</span></label>
+                              <select class="form-control" id="grd_id" required></select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label">Marks From<span class="text-danger d-inline">*</span></label>
+                              <input type="number" class="form-control" id="grd_score" required>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label">Marks To<span class="text-danger d-inline">*</span></label>
+                              <input type="number" class="form-control" id="grd_score_to" required>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label">Grade Point<span class="text-danger d-inline">*</span></label>
+                              <input type="text" class="form-control" id="quality_point" required>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label">Status</label>
+                              <select class="form-control" id="grd_status"></select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group m-b-2">
+                          <label for="" class="form-control-label ">Remarks</label>
+                          <textarea class="form-control" id="grd_remarks" rows="3"></textarea>
+                        </div>
+
+                        
+                        <div class="text-right btn_create_setting" id="divButton"><hr>
+                          <button type="submit" class="btn info p-x-md ">Save</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div><!-------------------------------------------------- end form Add -------------------------------------------------->
+
+
+                <!-------------------------------------------------- form Update -------------------------------------------------->
+                <div class="col-md-4 collapse" id="divUpdate">
+                  <div class="box" id="reg-kolej">
+                    <div class="box-header b-b" id="divHeader">
+                      <h3>UPDATE GRADE</h3>
+                      <div class="box-tool">
+                        <ul class="nav" id="">
+                          <li class="nav-item inline">
+                              <a class="nav-link" title="Cancel" id="btnCancel"><i class="ion-close-circled"></i></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="box-body">
+                      <form role="form" id="formUptUndergrad">
+                        <input type="hidden" id="pk_id">
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label ">Category</label>
+                              <input type="text" class="form-control" id="upt_grd_category" readonly>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label">Code Grade<span class="text-danger d-inline">*</span></label>
+                              <select class="form-control c-select" id="upt_grd_id" required></select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label">Marks From<span class="text-danger d-inline">*</span></label>
+                              <input type="number" class="form-control" id="upt_grd_score" required>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label">Marks To<span class="text-danger d-inline">*</span></label>
+                              <input type="number" class="form-control" id="upt_grd_score_to" required>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label">Grade Point<span class="text-danger d-inline">*</span></label>
+                              <input type="text" class="form-control" id="upt_quality_point" required>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label for="" class="form-control-label">Status</label>
+                              <select class="form-control" id="upt_grd_status"></select>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="form-group m-b-2">
+                          <label for="" class="form-control-label">Remarks</label>
+                          <textarea class="form-control" id="upt_grd_remarks" rows="3"></textarea>
+                        </div>
+
+                        <hr>
+                        <div class="text-right" id="divButton">
+                          <button type="submit" class="btn success p-x-md btn_update_setting">Update</button>
+                          <button type="button" class="btn danger p-x-md btn_delete_setting" id="btnDelete">Delete</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div><!-------------------------------------------------- end form Update -------------------------------------------------->
+
+
+                <!-------------------------------------------------- list -------------------------------------------------->
+                <div class="col-md-8">
+                  <div class="box">
+                    <div class="box-header b-b">
+                      <h3>LIST OF EXAMINATION GRADING</h3>
+                    </div>
+                    <div class="box-body">
+                      <p class="m-a-0 ">
+                        <div class="row">
+                            <div class="col-sm-12">
+                              <div class="b-b b-primary nav-active-teal">
+                                <ul class="nav nav-tabs">
+                                  <li class="nav-item">
+                                    <a class="nav-link active" href="#" data-toggle="tab" data-target="#Undergraduate">UNDERGRADUATE</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="tab" data-target="#PostgraduateC">POSTGRADUATE (COURSEWORK)</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="tab" data-target="#PostgraduateR">POSTGRADUATE (RESEARCH)</a>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="tab-content p-a">
+                                <!-- Undergraduate starts here-->
+                                <div class="tab-pane animated fadeIn text-muted active" id="Undergraduate">
+                                  <textarea class="hidden" id="dataList"></textarea>
+                                  <table class="table m-b-none" id="tblUndergraduate"></table>
+                                </div>
+
+                                <!-- Postgraduate (Coursework) starts here-->
+                                <div class="tab-pane animated fadeIn text-muted" id="PostgraduateC">
+                                  <textarea class="hidden" id="dataListCrswrk"></textarea>
+                                  <table class="table m-b-none" id="tblCoursework"></table>
+                                </div>
+
+                                <!-- Postgraduate (Research) starts here-->
+                                <div class="tab-pane animated fadeIn text-muted" id="PostgraduateR">
+                                  <textarea class="hidden" id="dataListRsrch"></textarea>
+                                  <table class="table m-b-none" id="tblResearch"></table>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                          
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-------------------------------------------------- end list -------------------------------------------------->
+              </div>
+            </div>
+          </div>
+          <!-- ############ PAGE END-->
+        </div>
+      </div>
+      <!-- / -->
+
+      
+      <!-- ############ SWITHCHER START-->
+      <!-- ############ SWITHCHER END-->
+
+    <!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  
+  <script src="bower_components/knockout/dist/knockout.js"></script>
+  <script src="bower_components/knockout-validation/dist/knockout.validation.min.js"></script>
+
+  <script src="scripts/action.min.js"></script>
+  <script src="config.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="ttpn_examGrade.js"></script>
+  <script src="capaian.js"></script>
+<!-- endbuild -->
+</body>
+</html>

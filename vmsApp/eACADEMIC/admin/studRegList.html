@@ -1,0 +1,241 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<a id="infoPljr"><span class="navbar-item text-md">Pendaftaran Pelajar</span></a>
+			        </li>
+			        <!-- <li class="nav-item">
+				        <a class="nav-link text-muted" id="listPljr">
+				            <span class="">
+				            	<i class="fa fa-fw fa-list"></i>
+				            	<span class="hidden-sm-down">Senarai Pelajar</span>
+				            </span>
+				        </a>
+			        </li> -->
+			      </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT -->
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box" id="divCarian">
+                  <div class="box-header purple-700">
+                    <h3><b>CARIAN SENARAI PELAJAR BARU</b></h3>
+                    <!-- <small>Senarai Lokasi</small> -->
+                  </div>
+                  <div class="box-body">
+                    <p class="m-a-0">
+                      <form role="form">
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">ID Pelajar</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" placeholder="ID Pelajar">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Nama Pelajar</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" placeholder="Nama Pelajar">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">No. Kad Pengenalan</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="" placeholder="No. Kad Pengenalan">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Program</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select">
+                                      <option>-Pilih-</option>
+                                      <option>Diploma</option>
+                                  </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row p-a text-center">
+                          <button type="submit" class="btn warn">Cari</button>
+                        </div>
+                        
+                      </form>
+                    </p>
+
+                    <!-- senarai pelajar -->
+                    <table class="table m-b-none" data-ui-jp="footable" data-filter="#filter" data-page-size="5">
+                      <thead class="warn">
+                        <tr>
+                            <th data-hide="phone,tablet">
+                                ID Pelajar
+                            </th>
+                            <th data-toggle="true" >
+                                Nama Pelajar
+                            </th>
+                            <th>
+                                No. Kad Pengenalan
+                            </th>
+                            <th >
+                                Program
+                            </th>
+                            <th data-hide="phone,tablet" data-name="Date Of Birth">
+                                Status
+                            </th>
+                            <th>
+                                Tindakan
+                            </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                            <td>PH10170006</td>
+                            <td>Nur Adila binti Abd Nasir</td>
+                            <td>000000-00-0000</td>
+                            <td>Diploma</td>
+                            <td>Aktif</td>
+                            <td data-value="1">
+                              <button class="btn purple-600" data-toggle="modal" data-target="#updatePljrBaru" data-ui-toggle-class="zoom" data-ui-target="#animate" id="btnEdit"><i class="ion-android-create"></i></button>
+                            </td>
+                        </tr>
+                      </tbody>
+                      <tfoot class="hide-if-no-paging">
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <ul class="pagination"></ul>
+                            </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+
+                <div id="updatePljrBaru" class="modal fade" data-backdrop="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header purple-500">
+                          <!-- <div class="col-md-12"> -->
+                            <h5 class="modal-title">PERINCIAN PELAJAR</h5>
+                            <!-- <div class="box-tool f-22">
+                              <ul class="nav">
+                                <li class="nav-item inline">
+                                  <button class="nav-link md-flat md-button " id="disabledButton" value="1"  onclick='handleClick(this);'  data-toggle="tooltip" data-placement="right" title="Kemaskini Fakulti">
+                                    <i class="fa fa-fw fa-pencil"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </div> -->
+                            
+                          <!-- </div> -->
+                        </div>
+                        <div class="modal-body text-center p-lg">
+                          <p>
+                            <form role="form">
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">ID Pelajar</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" disabled data-bind="value: std_studentid" placeholder="ID Pelajar">
+                                    </div>
+                                </div>
+  
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Bayaran Melalui</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control disabled" disabled id="namaLokasi" placeholder="Bayaran Melalui">
+                                    </div>
+                                </div>
+  
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Resit Bayaran</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" disabled data-bind="value: std_resit" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+      
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Salinan Kad Pengenalan</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" disabled data-bind="value: std_nokp_upload" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+      
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Salinan Sijil SPM</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" disabled data-bind="value: std_spm_upload" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+      
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Salinan Sijil STPM/Matrikulasi</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" disabled data-bind="value: std_stpm_upload" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+      
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Salinan Sijil Diploma</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" disabled data-bind="value: std_diploma_upload" class="form-control" placeholder="Gambar">
+                                    </div>
+                                </div>
+      
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 form-control-label">Salinan Sijil Ijazah</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" disabled data-bind="value: std_ijazah_upload" class="form-control" placeholder="Gambar">
+                                    </div>
+                                </div>
+  
+                                <div class="form-group row">
+                                    <label for="status" class="col-sm-2 form-control-label">Status</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control c-select ">
+                                            <option>-Pilih-</option>
+                                            <option>Aktif</option>
+                                            <option>Tidak Aktif</option>
+                                        </select>
+                                    </div>
+                                </div>
+                              
+                            </form>
+                          </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn purple p-x-md saveBtn" >Simpan</button>
+                          <button type="button" class="btn white p-x-md " data-dismiss="modal">Batal</button>
+                          <!-- <button type="button" class="btn danger p-x-md deleteBtn" >Padam</button> -->
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <script src="pljr_info.js"></script> -->

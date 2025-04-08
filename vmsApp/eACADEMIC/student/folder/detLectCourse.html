@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS - Pengurusan Pelajar</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+    <div class="app-header white bg b-b">
+          <div class="navbar" data-pjax>
+                <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                  <i class="ion-navicon"></i>
+                </a>
+                
+                <div class="navbar-item pull-left h5" id="pageTitle">
+                  <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                  Lecture Course Setting Details
+                </div>
+                <!-- nabar right -->
+                <!-- / navbar right -->
+          </div>
+    </div>
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+<!---------- modal update lecturer course setting ---------->
+<div id="update-lectCrs" class="modal fade" data-backdrop="static">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form role="form" id="formUptLectCrs">
+        <div class="modal-header indigo-900">
+            <h5 class="modal-title">UPDATE LECTURER COURSE</h5>
+        </div>
+        <div class="modal-body p-lg">
+          <p>
+              <div class="form-group row">
+                  <label for="upt_cur_year" class="col-sm-2 form-control-label">Session<span class="text-danger d-inline">*</span></label>
+                  <div class="col-sm-4">
+                    <select id="upt_cur_year" class="form-control" required>
+                      <option value="">-Choose-</option>
+                    </select>
+                  </div>
+
+                  <label for="upt_cur_semester" class="col-sm-2 form-control-label">Semester</label>
+                  <div class="col-sm-4"> 
+                    <select id="upt_cur_semester" class="form-control">
+                      <option value="0" selected>Choose</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="upt_fac_id" class="col-sm-2 form-control-label">Faculty<span class="text-danger d-inline">*</span></label>
+                <div class="col-sm-10"> 
+                  <!-- <input type="text" id="upt_fac_id"> -->
+                  <select id="upt_fac_id" class="form-control c-select" required>
+                    <option value="">-Choose-</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="upt_pgm_id" class="col-sm-2 form-control-label" >Programme<span class="text-danger d-inline">*</span></label>
+                <div class="col-sm-10">
+                  <!-- <input type="text" id="upt_pgm_id"> -->
+                  <select class="form-control c-select" id="upt_pgm_id" required>
+                    <option value="">-Choose-</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                  <label for="upt_crs_code" class="col-sm-2 form-control-label">Course<span class="text-danger d-inline">*</span></label>
+                  <div class="col-sm-10"> 
+                    <!-- <input type="text" id="upt_crs_code"> -->
+                    <select id="upt_crs_code" class="form-control c-select" required>
+                      <option value="">-Choose-</option>
+                    </select>
+                  </div>
+              </div>                                   
+            
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn success p-x-md ">Update</button>
+        </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div>
+</div><!---------- end modal update lecturer course setting ---------->    
+    <div class="app-body">
+
+<!-- ############ PAGE START-->
+<!-- only need a height for layout 4 -->
+<div style="min-height: 200px">
+  <div class="padding">
+  
+    <div class="box">
+      <div class="box-header b-b">
+        <h3>Details</h3>
+        <div class="box-tool">
+          <ul class="nav">
+            <li class="nav-item inline m-r-1">
+              <a class="nav-link" title="Update" data-toggle="modal" data-target="#update-lectCrs" title="Update" id="btnUpdateLectCrs">
+                  <i class="ion-android-create" style="color: #22b66e;"></i>
+              </a>
+            </li>
+            <li class="nav-item inline m-r-1">
+              <a class="nav-link" title="Remove" id="btnDelLectCrs">
+                  <i class="ion-trash-b" style="color: #ef193c"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+            <input type="hidden" id="pk_id">
+            <div class="form-group row">
+              <label for="" class="col-sm-3 form-control-label font-weight-bold">Faculty</label>
+              <div class="col-sm-9 form-control-label" id="fac_id"></div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 form-control-label font-weight-bold">Lecturer</label>
+              <div class="col-sm-9 form-control-label" id="emp_id"></div> 
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 form-control-label font-weight-bold">Programme</label>
+              <div class="col-sm-9 form-control-label" id="pgm_id"></div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label for="" class="col-sm-3 form-control-label font-weight-bold">Course</label>
+              <div class="col-sm-9 form-control-label" id="crs_code"></div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 form-control-label font-weight-bold">Session</label>
+              <div class="col-sm-9 form-control-label" id="cur_year"></div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 form-control-label font-weight-bold">Semester</label>
+              <div class="col-sm-9 form-control-label" id="cur_semester"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row p-a">
+          <button class="md-btn md-raised m-b-sm w-xs purple" data-toggle="modal" data-target="#regMarks">Add Marks</button>
+
+          <!-------------------------------------------------- add marks -------------------------------------------------->
+          <div id="regMarks" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header purple-700">
+                    <h5 class="modal-title">Add Marks</h5>
+                </div>
+                <form role="form" class="p-l-sm" id="formAddMarks">
+                <div class="modal-body p-lg">
+                  <p>
+                    <div class="form-group row">
+                      <div class="col-md-6">
+                        <select class="form-control c-select" id="cot_intake_month">
+                          <option value="">-Month Intake-</option>
+                          <option value="JAN">JAN</option>
+                          <option value="FEB">FEB</option>
+                          <option value="MAC">MAC</option>
+                          <option value="APR">APR</option>
+                          <option value="MAY">MAY</option>
+                          <option value="JUN">JUN</option>
+                          <option value="JUL">JUL</option>
+                          <option value="AUG">AUG</option>
+                          <option value="SEP">SEP</option>
+                          <option value="OCT">OCT</option>
+                          <option value="NOV">NOV</option>
+                          <option value="DEC">DEC</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <select class="form-control c-select" id="cot_intake_year">
+                          <option value="">-Year Intake-</option>
+                          <option value="2021">2021</option>
+                          <option value="2022">2022</option>
+                          <option value="2023">2023</option>
+                          <option value="2024">2024</option>
+                          <option value="2025">2025</option>
+                          <option value="2026">2026</option>
+                          <option value="2027">2027</option>
+                          <option value="2028">2028</option>
+                          <option value="2029">2029</option>
+                          <option value="2030">2030</option>
+                          <option value="2031">2031</option>
+                          <option value="2032">2032</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-md-6">
+                        <select class="form-control" id="non_obe_type" required>
+                          <option value="">-Marks Type-</option>
+                          <option value="Assignment">Assignment</option>
+                          <option value="Practical">Practical</option>
+                          <option value="Test">Test</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="number" class="form-control" placeholder="Mark (%)" id="non_obe_percentage">
+                      </div>
+                    </div>
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn info p-x-md ">Save</button>
+                </div>
+              </form>
+              </div><!-- /.modal-content -->
+            </div>
+          </div><!-------------------------------------------------- end add marks -------------------------------------------------->
+
+        </div>
+
+        <div class="row">
+          <!-------------------------------------------------- assignment -------------------------------------------------->
+          <div class="col-md-4">
+            <div class="box">
+              <div class="box-header light lt">
+                <h3>Assignment</h3>
+              </div>
+              <div class="box-body">
+                <!-- update assignment -->
+                <div class="row m-b collapse" id="divUptAssignment">
+                  <form id="formUptAssignment">
+                    <input type="hidden" id="pk_id_assignment">
+                    <input type="hidden" id="non_obe_type_upt">
+                    <div class="col-sm-4 p-l-0">
+                      <select class="form-control c-select" id="cot_intake_month_upt">
+                        <option value="">-Month Intake-</option>
+                        <option value="JAN">JAN</option>
+                        <option value="FEB">FEB</option>
+                        <option value="MAC">MAC</option>
+                        <option value="APR">APR</option>
+                        <option value="MAY">MAY</option>
+                        <option value="JUN">JUN</option>
+                        <option value="JUL">JUL</option>
+                        <option value="AUG">AUG</option>
+                        <option value="SEP">SEP</option>
+                        <option value="OCT">OCT</option>
+                        <option value="NOV">NOV</option>
+                        <option value="DEC">DEC</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 p-l-0">
+                      <select class="form-control c-select" id="cot_intake_year_upt">
+                        <option value="">-Year Intake-</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                        <option value="2031">2031</option>
+                        <option value="2032">2032</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 p-l-0">
+                      <input type="number" class="form-control" placeholder="Mark (%)" id="non_obe_percentage_upt">
+                    </div>
+                    <div class="col-sm-2 p-l-0">
+                      <button type="submit" class="btn btn-icon success" title="Update"><i class="fa fa-save"></i></button>
+                      <button type="button" class="btn btn-icon white" id="btnCloseUptAss" title="Close"><i class="fa fa-close"></i></button>
+                    </div>
+                  </form>
+                </div>
+
+                <p class="m-a-0 ">
+                  <textarea class="hidden" id="dataList"></textarea>
+                  <table class="table m-b-none" id="tblAssMark"></table>
+                </p>
+              </div>
+            </div>
+          </div><!-------------------------------------------------- end assignment -------------------------------------------------->
+
+          <!-------------------------------------------------- practical -------------------------------------------------->
+          <div class="col-md-4">
+            <div class="box">
+              <div class="box-header light lt">
+                <h3>Practical</h3>
+              </div>
+              <div class="box-body">
+                <!-- update practical -->
+                <div class="row m-b collapse" id="divUptPractical">
+                  <form id="formUptPractical">
+                    <input type="hidden" id="pk_id_practical">
+                    <input type="hidden" id="non_obe_type_prac">
+                    <div class="col-sm-4 p-l-0">
+                      <select class="form-control c-select" id="cot_intake_month_prac">
+                        <option value="">-Month Intake-</option>
+                        <option value="JAN">JAN</option>
+                        <option value="FEB">FEB</option>
+                        <option value="MAC">MAC</option>
+                        <option value="APR">APR</option>
+                        <option value="MAY">MAY</option>
+                        <option value="JUN">JUN</option>
+                        <option value="JUL">JUL</option>
+                        <option value="AUG">AUG</option>
+                        <option value="SEP">SEP</option>
+                        <option value="OCT">OCT</option>
+                        <option value="NOV">NOV</option>
+                        <option value="DEC">DEC</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 p-l-0">
+                      <select class="form-control c-select" id="cot_intake_year_prac">
+                        <option value="">-Year Intake-</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                        <option value="2031">2031</option>
+                        <option value="2032">2032</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 p-l-0">
+                      <input type="text" class="form-control" placeholder="Mark (%)" id="non_obe_percentage_prac">
+                    </div>
+                    <div class="col-sm-2 p-l-0">
+                      <button type="submit" class="btn btn-icon success" title="Update"><i class="fa fa-save"></i></button>
+                      <button type="button" class="btn btn-icon white" id="btnClosePrac" title="Close"><i class="fa fa-close"></i></button>
+                    </div>
+                  </form>
+                </div>
+
+                <p class="m-a-0 ">
+                  <textarea class="hidden" id="dataListPrac"></textarea>
+                  <table class="table m-b-none" id="tblPracMark"></table>
+                </p>
+              </div>
+            </div>
+          </div><!-------------------------------------------------- practical -------------------------------------------------->
+
+          <!-------------------------------------------------- test -------------------------------------------------->
+          <div class="col-md-4">
+            <div class="box">
+              <div class="box-header light lt">
+                <h3>Test</h3>
+              </div>
+              <div class="box-body">
+                <!-- update test -->
+                <div class="row m-b collapse" id="divUptTest">
+                  <form id="formUptTest">
+                    <input type="hidden" id="pk_id_test">
+                    <input type="hidden" id="non_obe_type_test">
+                    <div class="col-sm-4 p-l-0">
+                      <select class="form-control c-select" id="cot_intake_month_test">
+                        <option value="">-Month Intake-</option>
+                        <option value="JAN">JAN</option>
+                        <option value="FEB">FEB</option>
+                        <option value="MAC">MAC</option>
+                        <option value="APR">APR</option>
+                        <option value="MAY">MAY</option>
+                        <option value="JUN">JUN</option>
+                        <option value="JUL">JUL</option>
+                        <option value="AUG">AUG</option>
+                        <option value="SEP">SEP</option>
+                        <option value="OCT">OCT</option>
+                        <option value="NOV">NOV</option>
+                        <option value="DEC">DEC</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 p-l-0">
+                      <select class="form-control c-select" id="cot_intake_year_test">
+                        <option value="">-Year Intake-</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                        <option value="2031">2031</option>
+                        <option value="2032">2032</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 p-l-0">
+                      <input type="text" class="form-control" placeholder="Mark (%)" id="non_obe_percentage_test">
+                    </div>
+                    <div class="col-sm-2 p-l-0">
+                      <button type="submit" class="btn btn-icon success" title="Update"><i class="fa fa-save"></i></button>
+                      <button type="button" class="btn btn-icon white" id="btnCloseTest" title="Close"><i class="fa fa-close"></i></button>
+                    </div>
+                  </form>
+                </div>
+
+                <p class="m-a-0 ">
+                  <textarea class="hidden" id="dataListTest"></textarea>
+                  <table class="table m-b-none" id="tblTestMark"></table>
+                </p>
+              </div>
+            </div>
+          </div><!-------------------------------------------------- test -------------------------------------------------->
+        </div>
+      </div>
+    </div>
+
+    
+  
+  </div>
+</div>
+
+<!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+  
+  <!-- ############ SWITHCHER START-->
+  <!-- ############ SWITHCHER END-->
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+
+  <script src="config.js"></script>
+  <script src="detLectCourse.js"></script>
+<!-- endbuild -->
+</body>
+</html>

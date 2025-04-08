@@ -1,0 +1,185 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Setting</span>
+			        </li>
+			        <li class="nav-item" id="liRekodBaru">
+				        <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-kalendar" data-backdrop="static" data-keyboard="false">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box" id="boxKalAkademik">
+                  <div class="box-header light-blue-900">
+                    <h3><b>ACADEMIC CALENDAR</b></h3>
+                    <small>List of Academic Calendar </small>
+                  </div>
+                  <div class="box-body light lt">
+                    <p class="m-a-0">
+                      <div id="tableKalAkademik">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table class="table m-b-none" id="kalAkademikList"></table>
+                      </div>
+
+                      <!------------------------------ modal add academic calendar ------------------------------>
+                      <div id="reg-kalendar" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <form role="form" id="formAddAcaCal">
+                            <div class="modal-header light-blue-900">
+                                <h5 class="modal-title">REGISTER ACADEMIC CALENDAR</h5>
+                            </div>
+                            <div class="modal-body p-lg">
+                              <p>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="" class="form-control-label">Academic Session<span class="text-danger"> *</span></label>
+                                      <select class="form-control" id="cur_year" required></select>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="" class="form-control-label">Intake<span class="text-danger"> *</span></label>
+                                      <select class="form-control" id="cal_intake" required>
+                                        <option>- Choose -</option>
+                                      </select>
+                                      <span class="text-info">*Choose Academic Session to view Intake</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="" class="form-control-label">Semester</label>
+                                      <input type="text" class="form-control" id="cal_cohort" readonly>
+                                    </div>
+
+                                    <!-- <div class="form-group">
+                                      <label for="" class="form-control-label">Study Scheme <span class="text-danger"> *</span></label>
+                                      <select class="form-control c-select" data-bind="value: cal_semno" id="cal_semno"></select>
+                                    </div> -->
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="" class="form-control-label">Academic Field<span class="text-danger"> *</span></label>
+                                      <select class="form-control c-select" id="cal_category" required></select>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="semester" class="form-control-label">Semester Type<span class="text-danger"> *</span></label>
+                                      <select class="form-control c-select" id="cal_type_sem" required></select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                              <input class="btn info p-x-md " type="submit" value="Save" id="">
+                            </div>
+                          </form>
+                          </div><!-- /.modal-content -->
+                        </div>
+                      </div><!------------------------------ end modal add academic calendar ------------------------------>
+
+                    </p>
+                  </div>
+                </div>
+
+                <!-- perincian -->
+                <div class="box collapse" id="boxPerincianKA">
+                  <div class="box-header light-blue-900">
+                    <h3><b>ACADEMIC CALENDAR DETAILS</b></h3>
+                    <small>List of Academic Calendar Details</small>
+
+                    <div class="box-tool f-22">
+                      <ul class="nav">
+                        <li class="nav-item inline">
+                          <button class="nav-link md-flat md-button " id="btnTambahPKA" value="1"  title="Add Details"  data-toggle="modal" data-target="#tambahPerincian" data-backdrop="static" data-keyboard="false">
+                            <i class="ion-plus-circled"></i>
+                          </button>
+                          <button class="nav-link md-flat md-button " id="" value="1"  data-toggle="tooltip" data-placement="right" title="Back">
+                            <i class="ion-arrow-return-left"></i>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="box-body light lt">
+                    <div class="box">
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Academic Session</b></div>
+                              <div class="col-sm-9" id="curYear">2021</div>
+                            </div>
+      
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Intake</b></div>
+                              <div class="col-sm-9" id="calIntake"></div>
+                            </div>
+      
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Semester</b></div>
+                              <div class="col-sm-9" id="calCohort"></div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Academic Field</b></div>
+                              <div class="col-sm-9" id="calCategory"></div>
+                            </div>
+
+                            <!-- <div class="form-group row">
+                              <div class="col-sm-3"><b>Study Scheme </b></div>
+                              <div class="col-sm-9" id="calSemno"></div>
+                            </div> -->
+    
+                            <div class="form-group row">
+                              <div class="col-sm-3"><b>Semester Type</b></div>
+                              <div class="col-sm-9" id="calTypeSem"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    
+                    <p class="m-a-0">
+                      
+
+                      
+
+                      
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+
+    <script src="ttpn_kalAkademik.js"></script>
+    <script src="scripts/ajax.js"></script>

@@ -1,0 +1,572 @@
+<style>
+   /* Ensure the body and container have a solid background color */
+   body, #boxStudentDetail {
+            background-color: white;
+        }
+
+        /* Optional: Styling the box to match expected print dimensions */
+        #boxStudentDetail {
+            width: 100%; /* Or specific width */
+            padding: 20px; /* Optional padding */
+            box-sizing: border-box;
+        }
+
+        .box-header- {
+            padding: 20px;
+        }
+
+        .hidden-table {
+    display: none;
+}
+</style>
+
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <span class="navbar-item text-md">Reporting Student Info</span>
+      </li>
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+  </div>
+</div>
+
+<!-- FOOTER INSERT  -->
+<div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+<div class="modal" id="loading_modal" data-backdrop="static">
+  <div class="modal-dialog">
+    <div style="padding-top: 50%;" class="text-center text-white"><span
+        class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+  </div>
+</div>
+
+<div class="app-body">
+  <!-- CONTENT START -->
+  <div style="min-height: mh-200">
+    <div class="col-md-12">
+      <!-- <div class="col-md-12 offset-md-1 mt-2"> -->
+      <div class="box" id="divCOT">
+        <div class="box-header blue-grey-800">
+          <h3><b>Student List </b></h3>
+        </div>
+        <div class="box-body b-b">
+          <p class="m-a-0">
+          <div id="tableCot">
+            <div class="form-group row">
+
+
+              <div class="col-sm-2">
+                <label for="acaCal_std" class="col-form-label">Academic Session:</label>
+                <select required class="form-control slct2 c-select" id="acaCal_std" ></select>
+              </div>
+
+
+              <div class="col-sm-2">
+                <label for="cal_category" class="col-form-label">Academic Category:</label>
+                <select class="form-control slct2 c-select" id="cal_category" ></select>
+              </div>
+              <div class="col-sm-2">
+                <label for="fk_camp" class="col-form-label">Campus:</label>
+                <select class="form-control slct2 c-select" id="fk_camp" ></select>
+              </div>
+              <div class="col-sm-2">
+                <label for="fac_id" class="col-form-label">Faculty:</label>
+                <select disabled class="form-control slct2 c-select" id="fac_id" >Select Campus First</select>
+
+              </div>      
+
+              <div class="col-sm-2">
+                <label for="sts_student" class="col-form-label">Status:</label>
+                <select class="form-control slct2 c-select" id="sts_student" ></select>
+              </div>
+           
+              <div class="row">
+                <div id="btnPDF" class="col-sm-2">
+
+                  <div class="row">
+                    <label for="" class="col-form-label" style="display: block; height: 35px;"></label>
+                    <button style="width: 95px;" type="button" onclick="generateTable()" class="btn btn-info">
+                      <i class="fa fa-fw fa-filter"></i>Filter
+                    </button>
+
+                    <button style="width: 167px;" id=""
+                      onclick="generatePDFReporting('STUDENT LIST', 'tableListStdReporting')"
+                      class="btn md-raised danger">
+                      <i class="fa  fa-file-pdf-o"></i>
+                      <strong> Download PDF</strong>
+                    </button>
+                  </div>
+
+                  <div class="row mt-1">
+
+                    <button id="reloadButton" class="btn grey-200 text-info " onclick="location.reload()">
+                      <i class="fa fa-fw fa-refresh"></i>
+                      <strong>Clear</strong>
+                    </button>
+
+                    <button id="excelBtn" onclick="btnExport('tableListStdReporting')"
+                      class="btn md-raised green">
+                      <i class="fa fa-file-excel-o"></i>
+                      <strong>Download Excel</strong>
+                    </button>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+
+            </div>
+            <textarea class="hidden" id="dataList_tableListStd"></textarea>
+            <table class="table table-striped m-b-none tableListStdReporting" hidden id="tableListStdReporting"></table>
+            <table class="table table-striped m-b-none " id="tableListStd"></table>
+          </div>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+       <!-- top modal -->
+       <div class="modal fade" id="mdlStdDetail">
+        <div class="modal-top white b-b" style="height:100vh">
+            <div class="row-col">
+              <a data-dismiss="modal"  id="closeMdlBtm" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+              <div class="p-a b-b">
+                <span class="h5">Student Info</span>
+              </div>
+              <div class="row-row">
+                <div class="row-body">
+                  <div class="row-inner">
+                    <div class="row p-a-2 grey-100">
+                
+                      <div class="col-md-12">
+                        <div class="col-md-12 mt-2">
+                          <input type="text" id="idStd" hidden value="">
+                          <div id="boxStudentDetail" class="box">
+                            <div id="btnPrintGrad"><button class="btn green-200 m-a m-t" onclick="printHtmlToPdf('boxStudentDetail')" style="position: absolute; right: 0;">
+                            <i class="fa fa-print"></i> Print
+                        </button></div>
+                            <!-- <div hidden id = "dataList"></div> -->
+                            <!-- <button class="btn green-200 m-a btn_summary m-t" onclick="viewStudent('` + std_studentid + `','` + datastd.sti_name + `','` + item.fk_acaCal + `','` + item.cur_year + `','` +item.cal_cohort + `','` + item.std_semester + `')"  id ="resultprint" `+btn_disabled+`>
+                              <i class="fa fa-print"></i> Print
+                            </button> -->
+                            <div class="box-header- p-a-3 text-center">
+                              <img src="images/LOGO-UCMI(Landscape).png" alt="." class="" style="width: 50%;">
+                              <h4><b>Variable Move Solutions</b></h4>
+                              <h4><b>GRADUATION AUDIT</b></h4>
+                            </div>
+                            <hr>
+                            <div class="box-body">
+                              <p class="m-a-0">
+                                </p><form role="form">
+                                  <div class="row p-a ">
+                                    <div class="col-sm-4 offset-sm-2">
+                                      
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>Registration Session</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="aca_session">2021/2022</div>
+                                      </div>
+            
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>Name</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="stdName">SHARIFAH IZLEEN SHAQILLA BINTI SYED ISMAIL</div>
+                                      </div>
+            
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>Student ID</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="stu_id">BBS04220001</div>
+                                      </div>
+            
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>IC No.</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="sti_icno">000502080478</div>
+                                      </div>
+            
+                                      
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>CAMPUS</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="mdl_clg">ADAPT</div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>FACULTY</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="mdl_fac_name">FACULTY OF HEALTH SCIENCES</div>
+                                      </div>
+            
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>Programme</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="mdl_progName">BACHELOR OF BIOMEDICAL SCIENCE (HONOURS)</div>
+                                      </div>
+            
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>CURRENT INTAKE</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="mdl_intakeStd">Active</div>
+                                      </div>
+            
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>SEMESTER</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="mdl_semester">Active</div>
+                                      </div>
+            
+                                      <div class="form-group row mdl_week">
+                                        <div class="col-sm-5 text-uppercase"><b>WEEK</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="mdl_week">Active</div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>STUDENT EMAIL</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="mdl_stdEmail">Active</div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>PERSONAL EMAIL</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="mdl_personalEmail">Active</div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5 text-uppercase"><b>PHONE NO.</b></div>
+                                        <div class="col-sm-7 text-uppercase" id="mdl_phoneNo">Active</div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>NATIONALITY</b></div>
+                                        <div class="col-sm-7" id="mdl_national">Active</div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>DATE OF BIRTH (DD/MM/YYYY)</b></div>
+                                        <div class="col-sm-7" id="mdl_dob"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>GENDER</b></div>
+                                        <div class="col-sm-7" id="mdl_gender">Active</div>
+                                      </div>
+
+                                    </div> 
+            
+                                    <div class="col-sm-6">
+                                      
+            
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>OKU STATUS</b></div>
+                                        <div class="col-sm-7" id="mdl_okuStatus"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>RACE</b></div>
+                                        <div class="col-sm-7" id="mdl_race"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>RELIGION</b></div>
+                                        <div class="col-sm-7" id="mdl_religion"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>MARITIAL STATUS</b></div>
+                                        <div class="col-sm-7" id="mdl_maritalStatus"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>HOME ADDRESS</b></div>
+                                        <div class="col-sm-7" id="mdl_homeAddress"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>POSTCODE</b></div>
+                                        <div class="col-sm-7" id="mdl_postcode"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>STATE</b></div>
+                                        <div class="col-sm-7" id="mdl_state"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>ACADEMIC QUALIFICATIONS</b></div>
+                                        <div class="col-sm-7" id="mdl_academicQualifications"></div>
+                                      </div>
+
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>PREVIOUS INSTITUTIONS ATTENDED</b></div>
+                                        <div class="col-sm-7" id="mdl_previousInstitutions"></div>
+                                      </div>
+
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>YEAR OF GRADUATION (YYYY)</b></div>
+                                        <div class="col-sm-7" id="mdl_yearOfGraduation"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>ASNAF CATEGORY</b></div>
+                                        <div class="col-sm-7" id="mdl_asnafCategory"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>SPONSORSHIP NAME</b></div>
+                                        <div class="col-sm-7" id="mdl_sponsorshipName"></div>
+                                      </div>
+
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>ACADEMIC STATUS</b></div>
+                                        <div class="col-sm-7" id="mdl_academicStatus"></div>
+                                      </div>
+
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>CGPA</b></div>
+                                        <div class="col-sm-7" id="mdl_cgpa"></div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-5"><b>STATUS</b></div>
+                                        <div class="col-sm-7" id="mdl_status"></div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </form>
+                                <hr>
+            
+                            </div>
+                          </div>
+                          
+                        </div>
+
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-a b-t">
+                <!-- <a href="#" class="text-muted"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+                <a href="#" class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a> -->
+              </div>
+            </div>
+        </div>
+      </div>
+      <!-- end modal new add student -->
+
+
+
+  </div>
+</div><!--- end app-body -->
+
+<script src="scripts/ajax.js"></script>
+<script src="scripts/jspdf.umd.min.js"></script>
+<script src="scripts/jspdf.plugin.autotable.js"></script>
+<script src="scripts/html2canvas.min.js"></script>
+<script src="scripts/tableToExcel.js"></script>
+
+<script src="callFunction.js"></script>
+<script src="adm_reportStdInfo.js?n=5"></script>
+<!-- <script src="cot.js"></script> -->
+
+
+<!-- <script>
+  $(document).ready(function () {
+    var reloadButton = $('#boxStudentDetail');
+
+    // Get the width and height of the button
+    var buttonWidth = reloadButton.outerWidth(); // Includes padding and border
+    var buttonHeight = reloadButton.outerHeight(); // Includes padding and border
+
+    console.log('Button width: ' + buttonWidth + 'px');
+    console.log('Button height: ' + buttonHeight + 'px');
+  });
+
+</script> -->
+
+
+<script>
+  function generatePDFReporting(name, idTable) {
+  
+  $("#loading_modal_audit").modal('show');
+
+  setTimeout(() => {
+    // function generateGradPDF(name, idTable,  location, yearExam) {
+      window.jsPDF = window.jspdf.jsPDF; //nie pnting utk call jspdf pnya library
+      // Initialize jsPDF
+      var doc = new jsPDF('landscape');
+      var pageWidth = doc.internal.pageSize.width;
+    
+      // Start adding content to the PDF
+    
+      let fixtimeDate = (new Date().toLocaleString()).split(', ');
+      let fixTD = fixtimeDate[1] + ', ' + fixtimeDate[0];
+      
+      // landscape
+      doc.setFontSize(7);
+      // doc.setFont("helvetica", "normal");
+      doc.setFont('helvetica');
+    
+      doc.text(fixTD, 268, 3);
+      
+      // Set the font for the entire document to Arial
+      // doc.setFont('Arial');
+      doc.setFont('helvetica');
+    
+      var imgData = "../admin/images/LOGO-UCMI(Landscape).png";
+    
+      // Add the image to the PDF
+      doc.addImage(imgData, 'JPEG', 110, 10, 69 , 25);
+    
+      var imgEndY = 25 + 10;
+
+
+
+      doc.setFontSize(15);
+// Text content to be centered
+var text = "VARIABLE MOVE SOLUTIONS";
+
+// Calculate the width of the text
+var textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+
+// Calculate the X coordinate to center the text
+var pageWidth = doc.internal.pageSize.getWidth();
+var textX = (pageWidth - textWidth) / 2;
+
+// Position for the text
+var textY = imgEndY + 5;
+
+// Add text content to the PDF
+doc.text(text, textX, textY); // Adjust position
+doc.setFontSize(15);
+var textStartY = imgEndY + 5; // The Y position where the text starts
+
+// Calculate the text's ending Y position
+var fontSize = 15; // The font size used
+var textEndY = textStartY + (fontSize / 2.835); // Approximate height in points (1 pt = 1/72 inches, 1 inch = 25.4 mm)
+
+
+doc.setFont('helvetica');
+
+      doc.setFontSize(15);
+      var text = name;
+      var textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+      var textX = (pageWidth - textWidth) / 2;
+      doc.text(text, textX, textEndY+5);
+    
+
+var nameTextStartY = textEndY + 5; // The Y position where the name text starts
+
+// Calculate the name text's ending Y position
+var nameFontSize = 12; // The font size used
+var nameTextEndY = nameTextStartY + (nameFontSize / 2.835); // Approximate height in points
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // Define the source element (your HTML table)
+      var source = $('#' + idTable)[0];
+    
+      
+
+
+      var gap = nameTextEndY; // Adjust this value to set the desired gap
+      // var gap = 45; // Adjust this value to set the desired gap
+    
+      // Generate the PDF from the table, starting with a gap
+      // Add styles option to set the font size for the table content
+      doc.autoTable({
+        html: source,
+        startY: gap,
+        styles: {
+          fontSize: 8, 
+          font: 'helvetica',// Set the desired font size for the table content
+        },
+        headStyles: {
+            fontSize: 10,
+            // font: 'Arial',
+            fillColor: [211, 211, 211],
+            textColor: [0, 0, 0],
+            lineColor: [0, 0, 0],
+        },
+        bodyStyles: {
+            fontSize: 8 ,
+            // font: 'Arial',
+        },
+      });
+      
+    
+      // Save or download the PDF
+      doc.save('Reporting_' + name + '.pdf');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      // $("#loading_modal").modal('hide');
+      // console.log('Hiding modal...');
+    $("#loading_modal_audit").modal('hide');
+  }, 1);
+  
+}
+
+
+function validateForm() {
+  const acaCalStd = document.getElementById("acaCal_std");
+  const calCategory = document.getElementById("cal_category");
+
+  // Check if Academic Session is selected
+  if (!acaCalStd.value) {
+    alert("Please select an Academic Session.");
+    acaCalStd.focus(); // Optional: Focus on the empty field
+    return false; // Prevent form submission
+  }
+
+  // Check if Academic Category is selected
+  if (!calCategory.value) {
+    alert("Please select an Academic Category.");
+    calCategory.focus(); // Optional: Focus on the empty field
+    return false; // Prevent form submission
+  }
+
+  // If all validations pass, return true to allow form submission
+  return true;
+}
+
+</script>

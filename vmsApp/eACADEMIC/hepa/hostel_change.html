@@ -1,0 +1,211 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Hostel</span>
+			        </li>
+              <!-- <li class="nav-item" id="reportProgramme">
+                <a class="nav-link text-muted" data-toggle="modal"
+                 data-target="#mdl_reportchngeHostel"> 
+                 <span class=""> <i class="fa fa-fw fa-pencil-square-o"></i>
+                    <span
+                     class="hidden-sm-down">Reporting Hostel Change
+                   </span>
+                  </span> 
+                 </a>
+                </li> -->
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header lime-900">
+                    <h3><b>HOSTEL CHANGE LIST</b></h3>
+                  </div>
+                  <div class="box-body light lt">
+                    <p class="m-a-0">
+                      <div id="">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table id="changeList" class="table m-b-none"></table>
+                      </div>
+                    </p>
+                  </div>
+                </div>
+
+ 
+                <!-------------------------------------------------- modal update -------------------------------------------------->
+                <div id="updateChange" class="modal fade" data-backdrop="static">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form role="form" id="formUptChange">
+                          <div class="modal-header lime-900">
+                              <h5 class="modal-title">HOSTEL CHANGE</h5>
+                          </div>
+                          <div class="modal-body p-lg">
+                            <p>
+                              <input type="hidden" id="pk_id">
+                              <input type="hidden" id="std_id">
+                              <input type="hidden" id="campus_id">
+                              <input type="hidden" id="hstl_id">
+                              <input type="hidden" id="blok_id">
+                              <input type="hidden" id="room_id">
+
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group row">
+                                    <div class="col-sm-3 font-weight-bold">Matric No.</div>
+                                    <div class="col-sm-9 text-uppercase" id="upt_stud_id"></div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <div class="col-sm-3 font-weight-bold">Student</div>
+                                    <div class="col-sm-9 text-uppercase" id="upt_stud_name"></div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <div class="col-sm-3 font-weight-bold">Gender</div>
+                                    <div class="col-sm-9 text-uppercase" id="upt_stud_gender"></div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <div class="col-sm-3 font-weight-bold">Hostel</div>
+                                    <div class="col-sm-9 text-uppercase" id="upt_hostel_id"></div>
+                                  </div>
+
+                                  <div class="form-group row m-b-0">
+                                    <div class="col-sm-3 font-weight-bold">Reason</div>
+                                    <div class="col-sm-9 text-uppercase" id="upt_change_reason"></div>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <div class="form-group row editStatus">
+                                    <label class="col-sm-3 form-control-label font-weight-bold">Status</label>
+                                    <div class="col-sm-9">
+                                      <select class="form-control c-select" id="chg_status" required>
+                                        <option value="">- Choose -</option>
+                                        <option value="Verify">Verify</option>
+                                        <option value="Accept">Accept</option>
+                                        <option value="Reject">Reject</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row editStatus">
+                                    <label class="col-sm-3 form-control-label font-weight-bold">Check-in Date</label>
+                                    <div class="col-sm-9">
+                                      <div class="input-group date" data-ui-jp="datetimepicker" data-ui-options="{
+                                                                    format: 'DD/MM/YYYY',
+                                                                    minDate: moment(),
+                                                                    defaultDate: moment(),
+                                                                    icons: {
+                                                                        time: 'fa fa-clock-o',
+                                                                        date: 'fa fa-calendar',
+                                                                        up: 'fa fa-chevron-up',
+                                                                        down: 'fa fa-chevron-down',
+                                                                        previous: 'fa fa-chevron-left',
+                                                                        next: 'fa fa-chevron-right',
+                                                                        today: 'fa fa-screenshot',
+                                                                        clear: 'fa fa-trash',
+                                                                        close: 'fa fa-remove'
+                                                                    }
+                                                                }">
+                                        <input type="text" class="form-control" id="checkIn">
+                                        <span class="input-group-addon">
+                                          <span class="fa fa-calendar"></span>
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row editStatus">
+                                    <label class="col-sm-3 form-control-label font-weight-bold">Remark</label>
+                                    <div class="col-sm-9">
+                                      <textarea class="form-control" rows="5" id="change_remark"></textarea>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row viewData">
+                                    <div class="col-sm-3 font-weight-bold">Status</div>
+                                    <div class="col-sm-9" id="upt_change_status"></div>
+                                  </div>
+
+                                  <div class="form-group row viewData">
+                                    <div class="col-sm-3 font-weight-bold">Remark</div>
+                                    <div class="col-sm-9 text-uppercase" id="view_remark"></div>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                              
+                              <div id="label_status" class="label bg-warning">Room Not Available</div>
+                              
+                            </p>
+                          </div>
+                          <div class="modal-footer ">
+                            <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                            <input type="submit" class="btn success p-x-md editStatus" disabled value="Update">
+                          </div>                                      
+                        </form>
+                    </div><!-- /.modal-content -->
+                  </div>
+                </div><!-------------------------------------------------- end modal update -------------------------------------------------->
+             
+               <!-------------------------------------------------- modal generate pdf -------------------------------------------------->
+   <div id="mdl_reportchngeHostel" class="modal fade" data-backdrop="true" display="block">
+    <div class="modal-dialog modal-lg fade-right-big " style="max-width: 80% !important;">
+      <div class="modal-content lime-50">
+        <div class="modal-header lime-700">
+          <h5 class="modal-title">Reporting Hostel Change</h5>
+        </div>
+        <div id="" class="modal-body text-center p-lg"  style="height: 30vw;">
+          <div class="row">
+            <div class="col-sm-12">
+              <div id="" class="box">
+                <div class="box-header">
+                  <h3 class="pull-left">Reporting Hostel Change</h3>
+                </div>
+                <table id="report_chgHostel" class="table"> </table>
+              </div>
+
+            </div>
+       
+          </div>        
+        </div>
+        <div class="modal-footer">
+          
+          <button id="" onclick="generatePDF('Hostel Change', 'report_chgHostel')" class="btn md-raised green">             <i class="fa fa-fw fa-pencil-square-o"></i>
+            Download PDF</button>
+          <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div>
+  </div>
+
+              </div>
+        </div>
+    </div>
+    
+    <script src="scripts/jspdf.umd.min.js"></script>
+    <script src="scripts/jspdf.plugin.autotable.js"></script>
+    <script src="scripts/action.min.js"></script>
+    <script src="callFunction.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <script src="hostel_change.js?n=1"></script>

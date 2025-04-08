@@ -1,0 +1,527 @@
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <span class="navbar-item text-md">Hostel</span>
+      </li>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" aria-expanded="false">
+          <span class="btn btn-xs lime-500 rounded dropdown-toggle">
+            Reporting
+          </span>
+        </a>
+        <div class="dropdown-menu text-color pull-right" role="menu">
+          <a class="dropdown-item" data-toggle="modal" data-target="#mdl_reportcheckInHostel">
+            <i class="fa fa-inbox"></i>
+            Check-In Report
+          </a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#mdl_reportcheckOutHostel">
+            <i class="fa fa-check-square-o"></i>
+            Check-Out Report
+          </a>
+          <a class="dropdown-item none" data-toggle="modal" data-target="#mdl_reportchngeHostel">
+            <i class="fa fa-file-o"></i>
+            Change Hostel Report
+          </a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#mdl_reportChkInOut">
+            <i class="fa fa-file-o"></i>
+            Details Report
+          </a>
+          
+        </div>
+      </li> -->
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+
+  </div>
+</div>
+
+<!-- FOOTER INSERT  -->
+<div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+<div class="app-body">
+
+  <!-- CONTENT START -->
+  <div style="min-height: mh-200">
+    <div class="col-md-10 offset-md-1 mt-2">
+      <!-- list student assigned hostel -->
+      <div class="box">
+        <div class="box-header lime-900">
+          <h3><b>CHECK IN / CHECK OUT LIST</b></h3>
+        </div>
+        <div class="box-body b-b">
+          <p class="m-a-0">
+          <div class="form-group row">
+            <div class="col-md-3">
+              <input type="text" class="form-control" id="std_id" placeholder="Enter Student Id">
+              <input type="hidden" id="std_name">
+            </div>
+            <div class="col-md-9">
+              <button class="btn btn-icon warning" type="button" id="printStdHstl" title="Print" disabled><i
+                  class="ion-ios-printer-outline"></i></button>
+            </div>
+          </div>
+
+          <textarea class="hidden" id="dataList"></textarea>
+          <table id="chkInOutList" class="table table-striped m-b-none"></table>
+          </p>
+        </div>
+      </div>
+
+
+      <!-------------------------------------------------- modal check out -------------------------------------------------->
+      <div id="hostelChkOut" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form role="form" id="formCheckOut">
+              <div class="modal-header lime-900">
+                <h5 class="modal-title">CHECK OUT</h5>
+              </div>
+              <div class="modal-body p-lg">
+                <p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <input type="hidden" id="chkInOut_id">
+                    <input type="hidden" id="chkInStts">
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3 form-control-label">Check Out<span
+                          class="text-danger">*</span></label>
+                      <div class="col-sm-9">
+                        <input type="date" class="form-control" id="checkOut" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3 form-control-label">Status</label>
+                      <div class="col-sm-9">
+                        <select class="form-control c-select" id="checkOut_status">
+                          <option value="">- Choose -</option>
+                          <option value="New">New</option>
+                          <option value="Accept">Accept</option>
+                          <option value="Reject">Reject</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3 form-control-label">Reason</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="checkOut_reason" placeholder="Enter Reason" readonly>
+
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <!-- <label for="" class="col-sm-3 form-control-label"></label> -->
+                      <div class="col-sm-12">
+                        <a href="#" class="text-info">Survey Form.pdf</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                <input type="submit" class="btn success p-x-md" value="Update">
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal add check out -------------------------------------------------->
+
+
+      <!-------------------------------------------------- modal View -------------------------------------------------->
+      <div id="mdlViewData" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header lime-900">
+              <h5 class="modal-title">VIEW CHECK IN/CHECK OUT STATUS</h5>
+            </div>
+            <form id="formChkIn">
+              <div class="modal-body p-lg">
+                <p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Matric No.</div>
+                      <div class="col-sm-9 text-uppercase" id="matricNo"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Name</div>
+                      <div class="col-sm-9 text-uppercase" id="sti_name"></div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Hostel</div>
+                      <div class="col-sm-9 text-uppercase" id="hostel"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Check In</div>
+                      <div class="col-sm-9" id="checkIn"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Check In Status</div>
+                      <div class="col-sm-9" id="checkIn_status"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Check Out</div>
+                      <div class="col-sm-9" id="view_checkOut"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Check Out Status</div>
+                      <div class="col-sm-9" id="view_chkOutStts"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3 font-weight-bold">Reason</div>
+                      <div class="col-sm-9" id="view_chkOutReason"></div>
+                    </div>
+
+                  </div>
+                </div>
+                </p>
+              </div>
+              <div class="modal-footer ">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end modal View -------------------------------------------------->
+
+
+
+
+
+
+      <!-------------------------------------------------- modal report check-in pdf -------------------------------------------------->
+      <div id="mdl_reportcheckInHostel" class="modal fade" data-backdrop="true" display="block">
+        <div class="modal-dialog modal-lg fade-right-big " style="max-width: 80% !important;">
+          <div class="modal-content lime-50">
+            <div class="modal-header lime-700">
+              <h5 class="modal-title">Report Check-In Hostel</h5>
+            </div>
+            <div id="" class="modal-body text-center p-lg" style="height: 30vw;">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="" class="box">
+                    <div class="box-body p-v-md">
+                      <form id="formFilterHostelChkIn" class="form-inline" role="form">
+                        <div class="form-group mb-2 pull">
+                          <label for="chkIndate" class="col-form-label">Month:</label>
+                          <input id="chkIndate" type="month" class="form-control" placeholder="Date">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-info mb-2">Filter</button>
+                      </form>
+                    </div>
+                    <div class="box-header">
+                      <h3 class="pull-left">Check In Report</h3>
+                    </div>
+                    <table id="report_InHostel" class="table"> </table>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="" onclick="generatePDF('Check-In', 'report_InHostel', 'chkIndate')"
+                class="btn md-raised green"> <i class="fa fa-fw fa-pencil-square-o"></i>
+                Download PDF</button>
+              <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- modal report check-in pdf -------------------------------------------------->
+
+      <!-------------------------------------------------- modal report check-out pdf -------------------------------------------------->
+      <div id="mdl_reportcheckOutHostel" class="modal fade" data-backdrop="true" display="block">
+        <div class="modal-dialog modal-lg fade-right-big " style="max-width: 80% !important;">
+          <div class="modal-content lime-50">
+            <div class="modal-header lime-700">
+              <h5 class="modal-title">Report Check-Out Hostel</h5>
+            </div>
+            <div id="" class="modal-body text-center p-lg" style="height: 30vw;">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="" class="box">
+                    <div class="box-body p-v-md">
+                      <form id="formFilterHostelChkOut" class="form-inline" role="form">
+                        <div class="form-group mb-2 pull">
+                          <label for="chkOutdate" class="col-form-label">Month:</label>
+                          <input id="chkOutdate" type="month" class="form-control" placeholder="Date">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-info mb-2">Filter</button>
+                      </form>
+                    </div>
+                    <div class="box-header">
+                      <h3 class="pull-left">Check-Out Hostel Report</h3>
+                    </div>
+                    <table id="report_OutHostel" class="table"> </table>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="" onclick="generatePDF('Check_out', 'report_OutHostel', 'chkOutdate')"
+                class="btn md-raised green"> <i class="fa fa-fw fa-pencil-square-o"></i>
+                Download PDF</button>
+              <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- modal report check-out pdf -------------------------------------------------->
+
+
+
+      <!------------------------------------- modal report check-out pdf -------------------------------------------------->
+      <div id="mdl_reportChkInOut" class="modal fade" data-backdrop="true" display="block">
+        <div class="modal-dialog modal-lg fade-right-big " style="max-width: 80% !important;">
+          <div class="modal-content lime-50">
+            <div class="modal-header lime-700">
+              <h5 class="modal-title">Report Hostel <a data-dismiss="modal" class="pull-right text-muted text-lg">×</a>
+              </h5>
+
+            </div>
+            <div id="" class="modal-body text-center p-lg" style="height: 30vw;">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="" class="box">
+                    <div class="box-header">
+                      <!-- <span class="label danger pull-right">6</span> -->
+                      <!-- <h3 class="pull-left">Reporting Programme</h3> -->
+                      <div class="row">
+
+                        <div class="box">
+                          <!-- <div class="box-header">
+                      <h2>Inline form</h2>
+                      <small>Add ".form-inline" to your &lt;form&gt; for left-aligned and inline-block controls. This only applies to forms within viewports that are at least 768px wide.</small>
+                    </div> -->
+                          <div class="box-body p-v-md">
+                            <form id="formFilterHostelDet" class="form-inline" role="form">
+                              <div class="form-group mb-2">
+                                <label for="chkInOutdate" class="col-form-label">Month:</label>
+                                <input id="chkInOutdate" type="month" class="form-control" placeholder="Date">
+                              </div>
+                              <div class="form-group mb-2">
+                                <label for="FK_status_Student" class="col-form-label">Status Student:</label>
+                                <select id="FK_status_Student" class="form-control c-select">
+                                  <option value="">--Choose Status Student--</option>
+                                  <option value="1">Active</option>
+                                  <option value="2">Alumni</option>
+                                  <option value="3">Paid</option>
+                                  <option value="4">Registered</option>
+                                  <option value="5">Suspended</option>
+                                  <option value="6">Extend</option>
+                                  <option value="7">With-draw</option>
+                                  <option value="8">Graduated</option>
+                                  <option value="9">In-active</option>
+                                  <option value="10">Deferred</option>
+                                  <option value="11">Missing In Action</option>
+                                  <option value="12">Passed Away</option>
+                                  <option value="13">Terminated</option>
+                                  <option value="14">Change Programme</option>
+
+                                </select>
+                              </div>
+                              <div class="form-group mb-2">
+                                <label for="ChkInOutSelect" class="col-form-label">Hostel Status:</label>
+                                <select id="ChkInOutSelect" class="form-control c-select">
+                                  <option value="">--Choose Category Program--</option>
+                                  <option value="in">Check In</option>
+                                  <option value="out">Check Out</option>
+                                </select>
+                              </div>
+                              <button type="submit" class="btn btn-info mb-2">Filter</button>
+                              <button id=""
+                                onclick="generatePDF('Check In/Out Report', 'report_reportChkInOut', 'chkInOutdate')"
+                                class="btn md-raised green">
+                                <i class="fa fa-fw fa-pencil-square-o"></i>
+                                Download PDF</button>
+                            </form>
+                          </div>
+
+                          <div class="box-divider m-a-0"></div>
+
+                        </div>
+
+
+                      </div>
+
+                    </div>
+                    <table id="report_reportChkInOut" class="table"> </table>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!-- <button id="" onclick="generatePDF('Check In/Out Report', 'report_reportChkInOut')" class="btn md-raised green">       
+                <i class="fa fa-fw fa-pencil-square-o"></i>
+          Download PDF</button> -->
+              <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- modal report check-out pdf -------------------------------------------------->
+
+
+      <!-------------------------------------------------- modal generate pdf -------------------------------------------------->
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<script src="scripts/jspdf.umd.min.js"></script>
+<script src="scripts/jspdf.plugin.autotable.js"></script>
+<script src="scripts/html2canvas.min.js"></script>
+<script src="callFunction.js"></script>
+<script src="scripts/ajax.js"></script>
+<script src="hostel_chkInOut.js"></script>
+
+
+<script>
+  function generatePDF(name, idTable, date) {
+
+    if (date === 'undefined' || $('#' + date + '').val() === '') {
+      datePDf = "";
+    }
+    else {
+      // alert('test');
+      datePDf = " (" + $('#' + date + '').val() + ")";
+    }
+
+    window.jsPDF = window.jspdf.jsPDF; //nie pnting utk call jspdf pnya library
+    var doc = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+    });
+
+    // Create a gradient effect with three colors (purple, maroon, red) on the left side
+    var gradientColors = ['#743d89', '#973d78', '#ac3869'];
+    var gradientWidth = 1.4; // Width of each color segment
+    var gradientHeight = doc.internal.pageSize.height;
+
+    for (var i = 0; i < gradientColors.length; i++) {
+      doc.setFillColor(gradientColors[i]);
+      doc.rect(i * gradientWidth, 0, gradientWidth, gradientHeight, 'F');
+    }
+
+    var a4Width = 210;
+
+    // Image dimensions
+    var originalWidth = 275.59; // Replace with the actual width of your image
+    var originalHeight = 67.818; // Replace with the actual height of your image
+
+    // Calculate the new width and height (60% of A4 width while maintaining aspect ratio)
+    var newWidth = 0.6 * a4Width;
+    var newHeight = (newWidth / originalWidth) * originalHeight;
+
+    // Calculate the X-coordinate to center the image on the A4 page
+    var xCoordinate = (a4Width - newWidth) / 2;
+
+    // Add the image to the document with the calculated width, height, and centered position
+    doc.addImage("images/logo_reporting.png", "JPEG", xCoordinate, 10, newWidth, newHeight);
+
+    doc.setFont("helvetica", "bold");
+    var textCenterX = doc.internal.pageSize.width / 2;
+    doc.setFontSize(14); // Set the font size to 10
+    doc.text('BAHAGIAN HAL EHWAL PELAJAR DAN ALUMNI', textCenterX, 50, { align: "center" });
+
+
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(13); // Set the font size to 8
+    var textCenterX = doc.internal.pageSize.width / 2;
+    doc.text('UNIT PENGURUSAN HOSTEL', textCenterX, 58, { align: "center" });
+
+
+    const text = "Reporting " + name + " Hostel" + datePDf;
+    doc.setFontSize(15);
+    // Set the font type for the text
+    doc.setFont("helvetica", "bold");
+    const textWidth = doc.getTextWidth(text);
+    // Set the position for the text
+    const textX = 20; // X position
+    const textY = 80; // Y position
+
+
+    doc.text(text, textX, textY);
+
+    // Set the underline color
+    doc.setDrawColor(0, 0, 0); // RGB color for the underline
+
+    // Draw the original-size underline
+    const underlineLength1 = textWidth + 20; // Length of the underline
+    const underlineWidth1 = 1.5; // Width of the underline
+    doc.setLineWidth(underlineWidth1);
+    doc.line(textX, textY + 2, textX + underlineLength1, textY + 2);
+
+    // Set the color for the second underline (purple)
+    doc.setDrawColor(128, 0, 128); // RGB color for purple
+
+    // Draw the second underline with double the width
+    const underlineLength2 = textWidth * (30 / 100); // Same length as the first underline
+    const underlineWidth2 = underlineWidth1 * 2; // Double the width
+    doc.setLineWidth(underlineWidth2);
+    doc.line(textX, textY + 2, textX + underlineLength2, textY + 2);
+
+
+
+    // Define the source element (your HTML table)
+    var source = $('#' + idTable)[0];
+
+
+
+    // Generate the PDF from the table, starting below the text
+    doc.autoTable({
+      html: source,
+      startY: 100, // Adjusted start position below the text
+      margin: { top: 40 },
+      theme: 'grid',
+      styles: { fillColor: false, textColor: 0 },
+      headerStyles: { fillColor: '#9c4298', textColor: 255 },
+    });
+
+    doc.addImage("images/footer_reporting.png", "JPEG", 6, 276, 200, 20);
+
+    // Save or download the PDF
+    doc.save('Reporting_' + name + '.pdf');
+    // doc.save('Reporting_change_hostel.pdf');
+  }
+
+</script>

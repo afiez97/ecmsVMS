@@ -1,0 +1,48 @@
+{
+  "name": "json-function",
+  "version": "1.8.39",
+  "description": "It allows you to use methods such as where, limit, select, orderBy on JSON data.",
+  "main": "dist/package/index.js",
+  "types": "dist/package/index.d.ts",
+  "scripts": {
+    "test": "cross-env TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' mocha -r ts-node/register -r ignore-styles -r jsdom-global/register test/**/*.spec.ts",
+    "build": "tsc && babel --presets es2015 -d dist/ dist"
+  },
+  "author": "Aykut Kardaş",
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.7",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.9.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-minify": "^0.5.1",
+    "chai": "^4.2.0",
+    "cross-env": "^5.2.1",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^13.0.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1",
+    "typescript": "3.7.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aykutkardas/json-function.git"
+  },
+  "keywords": [
+    "json",
+    "parse",
+    "filter",
+    "array",
+    "query"
+  ],
+  "bugs": {
+    "url": "https://github.com/aykutkardas/json-function/issues"
+  },
+  "homepage": "https://github.com/aykutkardas/json-function#readme",
+  "dependencies": {}
+}

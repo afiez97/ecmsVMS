@@ -1,0 +1,1156 @@
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a id="infoPljr"><span class="navbar-item text-md">Biodata</span></a>
+      </li>
+      <li class="nav-item">
+        <a href="javascript:void(0);" id="upt_btn" class="navbar-item text-primary"><i class="fa fa-cog"></i> UPDATE</a>
+      </li>
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+  </div>
+</div>
+
+<!-- FOOTER INSERT -->
+<div class="app-footer white bg p-a b-t">
+  <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+  <span class="text-sm text-muted">&copy; Copyright.</span>
+</div>
+
+<div class="modal" id="loading_modal" data-backdrop="static">
+  <div class="modal-dialog">
+    <div style="padding-top: 50%;" class="text-center text-white"><span
+        class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+  </div>
+</div>
+
+<div class="app-body">
+
+  <!-- CONTENT START -->
+  <div style="min-height: mh-200">
+    <div class="col-md-10 offset-md-1 mt-2">
+      <div class="m-b" id="accordion">
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <!-- <span class="pull-right label success text-sm">Updated</span> -->
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#c_1">
+              <i class="fa fa-user"></i> Student Info
+            </a>
+          </div>
+          <div id="c_1" class="collapse in">
+            <div class="box-body">
+              <form role="form">
+                <div class="row p-a">
+                  <div class="col-sm-12">
+                    <div class="text-left">
+                      <img id="sti_image" style="border: 0;" width="10%" class="img-thumbnail" alt="...">
+                    </div>
+                  </div>
+                </div>
+                <div class="row p-a">
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Student Id</b></div>
+                      <div id="student_id" class="col-sm-9 text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Student Name</b></div>
+                      <div id="student_name" class="col-sm-9 text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Programme</b></div>
+                      <div id="programs" class="col-sm-9 text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Session / Intake</b></div>
+                      <div class="col-sm-9 text-uppercase">
+                        <span id="session"></span> / <span id="cur_intake"></span>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Gender</b></div>
+                      <div id="gender" class="col-sm-9 text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Citizen Status</b></div>
+                      <div id="national" class="col-sm-9 text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Race</b></div>
+                      <div id="race" class="col-sm-9 text-uppercase"></div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Native Status</b></div>
+                      <div id="local" class="col-sm-9 text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Religion</b></div>
+                      <div id="religion" class="col-sm-9 text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Handicapped</b></div>
+                      <div id="handicap" class="col-sm-9 text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Blood Type</b></div>
+                      <div id="blood" class="col-sm-9 text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Email</b></div>
+                      <div id="emails" class="col-sm-9"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Bank</b></div>
+                      <div id="bank" class="col-sm-9 text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Account No.</b></div>
+                      <div id="acc_no" class="col-sm-9"></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div> <!-- panel-info -->
+
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <!-- <span class="pull-right label success text-sm">Updated</span> -->
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#c_4" class="text-capitalize">
+              <i class="fa fa-users"></i> Guardian/Spouse Info
+            </a>
+          </div>
+          <div id="c_4" class="collapse">
+            <div class="box-body">
+              <form role="form">
+                <div class="row p-a">
+                  <b>Father/Guardian/Spouse Info</b>
+                  <hr>
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>IC No.</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_father_icno"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Name</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_father_name"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Phone No.</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_father_contactno"></div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Relationship</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_father_relationship"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Nationality</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_father_nationality"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Address</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_father_address"></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <form role="form">
+                <div class="row p-a">
+                  <b>Mother/Guardian Wife's Info</b>
+                  <hr>
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>IC No.</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_mother_icno"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Name</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_mother_name"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Phone No.</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_mother_contactno"></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Relationship</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_mother_relationship"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Nationality</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_mother_nationality"></div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-3"><b>Address</b></div>
+                      <div class="col-sm-9 text-uppercase" id="dis_mother_address"></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <!-- <span class="pull-right label success text-sm">Updated</span> -->
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#c_2">
+              <i class="fa fa-certificate"></i> Sijil Pelajaran Malaysia / Muet
+            </a>
+          </div>
+          <div id="c_2" class="collapse">
+            <div class="box-body">
+              <div class="row p-a">
+                <div class="col-md-6">
+                  <table class="table table-striped">
+                    <tr>
+                      <th>Bahasa Melayu</th>
+                      <td id="sta_bm_spm_dis"></td>
+                    </tr>
+                    <tr>
+                      <th>Bahasa Inggeris</th>
+                      <td id="sta_bi_spm_dis"></td>
+                    </tr>
+                    <tr>
+                      <th>Matematik</th>
+                      <td id="sta_math_spm_dis"></td>
+                    </tr>
+                    <tr>
+                      <th>Sejarah</th>
+                      <td id="sta_his_spm_dis"></td>
+                    </tr>
+                    <tr>
+                      <th>Pendidikan islam</th>
+                      <td id="sta_islam_spm_dis"></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <table class="table table-striped">
+                    <tr>
+                      <th id="sta_sub_1"></th>
+                      <td id="sta_other_1"></td>
+                    </tr>
+                    <tr>
+                      <th id="sta_sub_2"></th>
+                      <td id="sta_other_2"></td>
+                    </tr>
+                    <tr>
+                      <th id="sta_sub_3"></th>
+                      <td id="sta_other_3"></td>
+                    </tr>
+                    <tr>
+                      <th id="sta_sub_4"></th>
+                      <td id="sta_other_4"></td>
+                    </tr>
+                    <tr>
+                      <th id="sta_sub_5"></th>
+                      <td id="sta_other_5"></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- panel-parents -->
+
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <!-- <span class="pull-right label success text-sm">Updated</span> -->
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#c_3">
+              <i class="fa fa-university"></i> Education Background
+            </a>
+          </div>
+          <div id="c_3" class="collapse">
+            <div class="box-body">
+              <table class="table table-bordered table-striped table-condensed" id="acaHistory"></table>
+            </div>
+          </div>
+        </div> <!-- panel-parents -->
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal fade" id="modal-update">
+  <div class="modal-top white b-b" style="height:950px">
+    <div class="row-col">
+      <a id="btn_cancel_modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+      <div class="p-a b-b">
+        <span class="h5">Update Student Info</span>
+      </div>
+
+      <div class="row-row">
+        <div class="row-body">
+          <div class="row-inner">
+            <div class="row p-a-2">
+              <h5><span id="sti_name_upt"></span> - <span id="sti_icno_upt"></span></h5>
+              <input type="hidden" id="pgm_fk" />
+              <input type="hidden" id="pgm_id" />
+              <input type="hidden" name="sti_nationality_upt" id="sti_nationality_upt">
+              <div class="b-b p-t-2 b-success nav-active-success">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#" data-toggle="tab" data-target="#tabNew1"
+                      id="link_tabNew1">Personal</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew2" id="link_tabNew2">Parents &
+                      Heirs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew4" id="link_tabNew4">Sijil
+                      Pelajaran Malaysia</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="tab" data-target="#tabAcaHistory"
+                      id="link_acaHistory">Education Background</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="tab" data-target="#updSecurity"
+                      id="btn_updSecurity">Update Security</a>
+                  </li>
+                </ul>
+              </div> <!--nav-tabs-->
+
+              <div class="tab-content p-a m-b-md">
+                <!-------------------------------------------------- tab Personal -------------------------------------------------->
+                <div class="tab-pane animated fadeIn text-muted active" id="tabNew1">
+                  <div class="box" id="divKemaskini">
+                    <div class="box-body">
+                      <div class="m-a-0">
+                        <form id="form_std_info">
+                          <div class="row p-a">
+                            <div class="row p-l-2">
+                              <h6><b>PERSONAL INFO</b></h6>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Matric No.</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="std_studentid" id="matric_no" readonly>
+                                </div>
+                              </div>
+
+                              <!-- <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Level of Education</label>
+                                  <div class="col-sm-10">
+                                      <select class="form-control c-select" id="level_edu"></select>
+                                  </div>
+                                </div> -->
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Faculty</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="fac_name" id="fac_name" readonly>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Academic Status</label>
+                                <div class="col-sm-4">
+                                  <select class="form-control c-select" disabled name="status_academic"
+                                    id="sts_status"></select>
+                                </div>
+
+                                <label for="" class="col-sm-2 form-control-label">Duration of Study</label>
+                                <div class="col-sm-4">
+                                  <input type="text" class="form-control" name="duration_std" id="duration_std"
+                                    placeholder="eg: 3 YEARS 8 MONTHS">
+                                </div>
+                              </div>
+
+                              <!-- <div class="form-group row">
+                                  <label for="" class="col-sm-2 form-control-label">Student Email</label>
+                                  <div class="col-sm-10">
+                                      <input type="email" class="form-control" id="stud_email">
+                                  </div>
+                                </div> -->
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Personal Email</label>
+                                <div class="col-sm-10">
+                                  <input type="email" class="form-control" name="sti_email" id="sti_email_upt" required>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Gender</label>
+                                <div class="col-sm-4">
+                                  <select class="form-control c-select" required name="sti_gender"
+                                    id="sti_gender"></select>
+                                </div>
+
+                                <label for="" class="col-sm-2 form-control-label">Race</label>
+                                <div class="col-sm-4">
+                                  <select class="form-control c-select" required name="sti_race"
+                                    id="upt_sti_race"></select>
+                                  <!-- <select class="form-control c-select" required name="sti_race" id="upt_sti_race"></select> -->
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Religion</label>
+                                <div class="col-sm-4">
+                                  <select class="form-control c-select" required name="sti_religion"
+                                    id="sti_religion_upt"></select>
+                                </div>
+
+                                <label for="" class="col-sm-2 form-control-label">Marital Status</label>
+                                <div class="col-sm-4">
+                                  <select class="form-control c-select" required name="marital_status"
+                                    id="marital_status">
+                                    <option value="">- Choose -</option>
+                                    <option value="SINGLE">SINGLE</option>
+                                    <option value="MARRIED">MARRIED</option>
+                                  </select>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">OKU Status</label>
+                                <div class="col-sm-4">
+                                  <select class="form-control c-select" name="sti_status_oku" id="sti_status_oku_upt"
+                                    required></select>
+                                </div>
+
+                                <label for="" class="col-sm-2 form-control-label">Alumni/Staff Status</label>
+                                <div class="col-sm-4">
+                                  <select type="text" class="form-control" name="staff_alumi" id="staff_alumi">
+                                    <option value="YES">YES</option>
+                                    <option value="NO">NO</option>
+                                  </select>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Blood Type</label>
+                                <div class="col-sm-4">
+                                  <select class="form-control c-select" name="sti_blood_type"
+                                    id="sti_blood_type"></select>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Remarks</label>
+                                <div class="col-sm-10">
+                                  <textarea rows="3" class="form-control" name="remark" id="remark"></textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row p-a">
+                            <!-- place info -->
+                            <div class="row p-l-2">
+                              <h6><b>PLACE INFO</b></h6>
+                            </div>
+                            <div class="col-sm-6">
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Home Address</label>
+                                <div class="col-sm-10">
+                                  <textarea rows="3" class="form-control" name="sti_address_1" id="sti_address"
+                                    required></textarea>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Postcode</label>
+                                <div class="col-sm-4">
+                                  <input type="number" class="form-control" name="sti_postcode" id="sti_postcode"
+                                    required placeholder="Postcode">
+                                </div>
+
+                                <label for="" class="col-sm-2 form-control-label">State</label>
+                                <div class="col-sm-4">
+                                  <select class="form-control c-select" name="sti_state" id="sti_state"
+                                    required></select>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Home No.</label>
+                                <div class="col-sm-10">
+                                  <input type="number" class="form-control" name="sti_contactno_home"
+                                    id="sti_contactno_home" placeholder="Home No.">
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                <div class="col-sm-10">
+                                  <input type="number" class="form-control" name="sti_contactno_mobile"
+                                    id="sti_contactno_mobile" required placeholder="Phone No.">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row p-a">
+                            <!-- bank info -->
+                            <div class="row p-l-2">
+                              <h6><b>BANK ACCOUNT INFO</b></h6>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Bank</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="sti_bank_id" id="sti_bank_id" required
+                                    placeholder="Bank">
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Account No.</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="sti_bank_accountno"
+                                    id="sti_bank_accountno" required placeholder="Account No.">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-6"></div>
+                          </div>
+
+                          <div class="row p-a">
+                            <!-- sponsorship info -->
+                            <div class="row p-l-2">
+                              <h6><b>SPONSORSHIP</b></h6>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="form-group row">
+                                <label for="" class="col-sm-2 form-control-label">Sponsorship Name</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="sti_sponsorship" id="sti_sponsorship"
+                                    required placeholder="Name">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-6"></div>
+                          </div>
+
+                          <div class="row p-a text-right">
+                            <button type="submit" class="btn info">Save</button>
+                          </div>
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-------------------------------------------------- end tab Personal -------------------------------------------------->
+
+                <!-------------------------------------------------- tab Parents & Heirs -------------------------------------------------->
+                <div class="tab-pane animated fadeIn text-muted" id="tabNew2">
+                  <div class="box" id="">
+                    <div class="box-body">
+                      <form id="form_std_parent">
+                        <p class="m-a-0">
+                          <!-- <form role="form"> -->
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="">
+                              <h6><b>FATHER/GUARDIAN/SPOUSE INFO</b></h6>
+                            </div>
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">NRIC/Passport No.</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" name="par_father_icno" id="par_father_ic"
+                                  required placeholder="IC No.">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Title</label>
+                              <div class="col-sm-10">
+                                <select class="form-control c-select" required name="par_father_title"
+                                  id="par_father_title"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Name</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" name="par_father_name" required
+                                  id="par_father_name" placeholder="Name">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                              <div class="col-sm-10">
+                                <input type="number" class="form-control" required name="par_father_contactno"
+                                  id="par_father_contactno" placeholder="Phone No.">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Relationship</label>
+                              <div class="col-sm-10">
+                                <select class="form-control" required name="par_father_relationship"
+                                  id="par_father_relationship"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Nationality</label>
+                              <div class="col-sm-10">
+                                <select class="form-control c-select" required name="par_father_nationality"
+                                  id="par_father_nationality"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Address</label>
+                              <div class="col-sm-10">
+                                <textarea class="form-control" rows="3" required name="par_father_address"
+                                  id="par_father_address" placeholder="Address"></textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-6">
+                            <div class="">
+                              <h6><b>MOTHER/GUARDIAN WIFE'S INFO</b></h6>
+                            </div>
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">NRIC/Passport No.</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" required name="par_mother_icno"
+                                  id="par_mother_ic" placeholder="IC No.">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Title</label>
+                              <div class="col-sm-10">
+                                <select class="form-control c-select" required name="par_mother_title"
+                                  id="par_mother_title"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Name</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" required name="par_mother_name"
+                                  id="par_mother_name" placeholder="Name">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                              <div class="col-sm-10">
+                                <input type="number" class="form-control" required name="par_mother_contactno"
+                                  id="par_mother_contactno" placeholder="Phone No.">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Relationship</label>
+                              <div class="col-sm-10">
+                                <select class="form-control" required name="par_mother_relationship"
+                                  id="par_mother_relationship"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Nationality</label>
+                              <div class="col-sm-10">
+                                <select class="form-control c-select" required name="par_mother_nationality"
+                                  id="par_mother_nationality"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Address</label>
+                              <div class="col-sm-10">
+                                <textarea class="form-control" rows="3" vrequired name="par_mother_address"
+                                  id="par_mother_address" placeholder="Address"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row p-a text-right">
+                          <button type="submit" class="btn info">Save</button>
+                        </div>
+                        </p>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-------------------------------------------------- end tab Parents & Heirs -------------------------------------------------->
+
+                <!-------------------------------------------------- tab Academic History -------------------------------------------------->
+                <div class="tab-pane animated fadeIn text-muted" id="tabAcaHistory">
+                  <div class="box" id="">
+                    <div class="box-body">
+                      <p class="m-a-0">
+                      <form id="form_std_acaHistory">
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="">
+                              <h6><b>INFO</b></h6>
+                              <p id="status_form" class="green-200 p-l">Mode Create Form</p>
+                            </div>
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Alumni/Staff Status</label>
+                              <div class="col-sm-10">
+                                <input type="hidden" name="pk_id" id="id_acaHistory">
+                                <input type="text" class="form-control" name="std_alumni" required id="std_alumni"
+                                  placeholder="Alumni/Staff Status">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">MUET Status</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" name="std_muet" id="std_muet"
+                                  placeholder="MUET Status">
+                              </div>
+                            </div>
+                            <div class="p-t">
+                              <h6><b>EDUCATION FORM</b></h6>
+                            </div>
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Previous Level of Education</label>
+                              <div class="col-sm-10">
+                                <select class="form-control c-select" name="std_eduLevel" required
+                                  id="std_eduLevel"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Previous Institution Attended</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" name="std_preUniversity" required
+                                  id="std_preUniversity" placeholder="Previous Institution Attended">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Student Status</label>
+                              <div class="col-sm-4">
+                                <select class="form-control c-select" name="std_status" required
+                                  id="std_status"></select>
+                              </div>
+
+                              <label for="" class="col-sm-2 form-control-label">Year of Graduation(YYYY)</label>
+                              <div class="col-sm-4">
+                                <input type="text" class="form-control" name="std_year" required id="std_year"
+                                  placeholder="eg: 2022">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">CGPA</label>
+                              <div class="col-sm-4">
+                                <input type="text" class="form-control" name="std_cgpa" required id="acaHistory_cgpa"
+                                  placeholder="Cumulative Grade Point Average">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Scroll & Transcript Academic
+                                Status</label>
+                              <div class="col-sm-10">
+                                <input type="file" class="form-control" name="std_transcript" id="std_transcript"
+                                  placeholder="Scroll & Transcript Academic Status">
+                              </div>
+                            </div>
+
+                            <div class="row p-a">
+                              <button type="submit" class="btn info">Save</button>
+                              <button type="reset" id="reset_btn" class="btn grey-200">Cancel
+
+                              </button>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div>
+                              <h6><b>EDUCATION HISTORY</b></h6>
+                            </div>
+                            <table id="acaHistoryList" class="table table-striped table-bordered"></table>
+                          </div>
+                        </div>
+
+                      </form>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-------------------------------------------------- end tab Academic History -------------------------------------------------->
+
+                <!-------------------------------------------------- tab Academic -------------------------------------------------->
+                <div class="tab-pane animated fadeIn text-muted" id="tabNew4">
+                  <div class="box" id="">
+                    <div class="box-body">
+                      <p class="m-a-0">
+                      <form id="form_std_academic">
+                        <div class="row p-a">
+                          <div class="row p-l-2">
+                            <h6><b>Sijil Pelajaran Malaysia</b></h6>
+                          </div>
+
+                          <div class="col-md-4 m-r-1">
+                            <div class="form-group row b-b p-b-1">
+                              <label for="" class="col-sm-4 form-control-label">Bahasa Malaysia (SPM)</label>
+                              <div class="col-sm-4">
+                                <select class="form-control c-select" required name="sta_bm_spm"
+                                  id="sta_bm_spm"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row b-b p-b-1">
+                              <label for="" class="col-sm-4 form-control-label">English (SPM)</label>
+                              <div class="col-sm-4">
+                                <select class="form-control c-select" required name="sta_bi_spm"
+                                  id="sta_bi_spm"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row b-b p-b-1">
+                              <label for="" class="col-sm-4 form-control-label">Mathematic (SPM)</label>
+                              <div class="col-sm-4">
+                                <select class="form-control c-select" required name="sta_math_spm"
+                                  id="sta_math_spm"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row b-b p-b-1">
+                              <label for="" class="col-sm-4 form-control-label">History (SPM)</label>
+                              <div class="col-sm-4">
+                                <select class="form-control c-select" required name="sta_his_spm"
+                                  id="sta_his_spm"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row b-b p-b-1">
+                              <label for="" class="col-sm-4 form-control-label">Islam (SPM)</label>
+                              <div class="col-sm-4">
+                                <select class="form-control c-select" name="sta_islam_spm" id="sta_islam_spm"></select>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-7">
+                            <div class="form-group row b-b p-b-1">
+                              <label for="" class="col-sm-4 form-control-label">Other Subject 1 (SPM)</label>
+                              <div class="col-sm-6 m-b-1">
+                                <select class="form-control c-select" name="sta_sub1_spm" id="sta_sub1_spm">
+                                  <option value="">- Subject -</option>
+                                </select>
+                              </div>
+                              <div class="col-sm-2">
+                                <select class="form-control c-select" name="sta_other1_spm"
+                                  id="sta_other1_spm"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row b-b p-b-1">
+                              <label for="" class="col-sm-4 form-control-label">Other Subject 2 (SPM)</label>
+                              <div class="col-sm-6 m-b-1">
+                                <select class="form-control c-select" name="sta_sub2_spm" id="sta_sub2_spm">
+                                  <option value="">- Subject -</option>
+                                </select>
+                              </div>
+                              <div class="col-sm-2">
+                                <select class="form-control c-select" name="sta_other2_spm"
+                                  id="sta_other2_spm"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row b-b p-b-1">
+                              <label for="" class="col-sm-4 form-control-label">Other Subject 3 (SPM)</label>
+                              <div class="col-sm-6 m-b-1">
+                                <select class="form-control c-select" name="sta_sub3_spm" id="sta_sub3_spm">
+                                  <option value="">- Subject -</option>
+                                </select>
+                              </div>
+                              <div class="col-sm-2">
+                                <select class="form-control c-select" name="sta_other3_spm"
+                                  id="sta_other3_spm"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row b-b p-b-1">
+                              <label for="" class="col-sm-4 form-control-label">Other Subject 4 (SPM)</label>
+                              <div class="col-sm-6 m-b-1">
+                                <select class="form-control c-select" name="sta_sub4_spm" id="sta_sub4_spm">
+                                  <option value="">- Subject -</option>
+                                </select>
+                              </div>
+                              <div class="col-sm-2">
+                                <select class="form-control c-select" name="sta_other4_spm"
+                                  id="sta_other4_spm"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row b-b p-b-1">
+                              <label for="" class="col-sm-4 form-control-label">Other Subject 5 (SPM)</label>
+                              <div class="col-sm-6 m-b-1">
+                                <select class="form-control c-select" name="sta_sub5_spm" id="sta_sub5_spm">
+                                  <option value="">- Subject -</option>
+                                </select>
+                              </div>
+                              <div class="col-sm-2">
+                                <select class="form-control c-select" name="sta_other5_spm"
+                                  id="sta_other5_spm"></select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row p-a">
+                          <div class="row p-l-2">
+                            <h6><b>SPM CERTIFICATE</b></h6>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Certificate</label>
+                              <div class="col-sm-10">
+                                <a id="link_cert_doc" class="label red-300 disabled m-b" target="_blank">Document</a>
+                                <input type="file" class="btn-primary" name="sta_spm_doc" id="sta_spm_doc">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">MUET</label>
+                              <div class="col-sm-4">
+                                <select class="form-control c-select" name="sta_muet" id="sta_muet"></select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row p-a text-right">
+                          <button type="submit" class="btn info">Save</button>
+                        </div>
+
+                      </form>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-------------------------------------------------- end tab Academic -------------------------------------------------->
+
+                <!-------------------------------------------------- tab Student Status -------------------------------------------------->
+                <div class="tab-pane animated fadeIn text-muted" id="tabNew7">
+                  <div class="box" id="">
+                    <div class="box-body">
+                      <p class="m-a-0">
+                        <!-- <form role="form"> -->
+                      <div class="row p-a">
+                        <!-- <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div> -->
+                        <div class="col-sm-6">
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Session</label>
+                            <div class="col-sm-10">
+                              <select class="form-control c-select" data-bind="value: sts_cur_year"
+                                id="sts_cur_year"></select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Intake</label>
+                            <div class="col-sm-10">
+                              <select class="form-control c-select" data-bind="value: sts_cur_intake"
+                                id="sts_cur_intake"></select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Semester</label>
+                            <div class="col-sm-10">
+                              <select class="form-control c-select" data-bind="value: sts_semester"
+                                id="sts_semester"></select>
+                            </div>
+                          </div>
+
+
+                        </div>
+
+                        <div class="col-sm-6">
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Date of Commencement of Studies</label>
+                            <div class="col-sm-10">
+                              <input type="date" class="form-control" id="sts_date_joined"
+                                data-bind="value: sts_date_joined">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="" class="col-sm-2 form-control-label">Graduation Date</label>
+                            <div class="col-sm-10">
+                              <input type="date" class="form-control" id="sts_date_complete"
+                                data-bind="value: sts_date_complete">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row p-a text-right">
+                        <a href="#" class="btn white" onclick="triggerTab('New6')"><i class="fa  fa-chevron-left"></i>
+                          Previous</a>
+                        <input type="submit" class="btn info" id="btn-save" value="Save">
+                        <!-- <button type="submit" class="btn info">Save</button> -->
+                      </div>
+
+                      <!-- </form> -->
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-------------------------------------------------- tab Student Status -------------------------------------------------->
+
+
+                <!-------------------------------------------------- tab update password std -------------------------------------------------->
+                <div class="tab-pane animated fadeIn text-muted" id="updSecurity">
+                  <div class="box" id="">
+                    <div class="box-body">
+                      <p class="m-a-0">
+                        <!-- <form role="form"> -->
+                      <div class="row p-a">
+                        <!-- <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div> -->
+                        <div class="p-a-md">
+                          <div class="clearfix m-b-lg">
+                            <form role="form" class="col-md-6 offset-md-3 p-a-0">
+
+
+                              <div class="form-group row">
+                                <label class="col-sm-12 form-control-label">Old Password</label>
+                                <div class="col-sm-12">
+                                  <div class="input-group">
+                                    <input id="oldPassword" type="password" class="form-control">
+                                    <span class="input-group-btn">
+                                      <button class="btn white active" type="button"
+                                        onclick="togglePasswordVisibility('oldPassword')">
+                                        <span id="eyeIcon_oldPassword" class="fa fa-eye-slash"></span>
+                                        <!-- fa-eye-slash -->
+                                      </button>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label class="col-sm-12 form-control-label">New Password</label>
+                                <div class="col-sm-12">
+                                  <div class="input-group">
+                                    <input id="newPassword" type="password" class="form-control">
+                                    <span class="input-group-btn">
+                                      <button class="btn white active" type="button"
+                                        onclick="togglePasswordVisibility('newPassword')">
+                                        <span id="eyeIcon_newPassword" class="fa fa-eye-slash"></span>
+                                      </button>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="form-group row">
+                                <label class="col-sm-12 form-control-label">Re-type New Password</label>
+                                <div class="col-sm-12">
+                                  <div class="input-group">
+                                    <input id="newPasswordAgain" type="password" class="form-control">
+                                    <span class="input-group-btn">
+                                      <button class="btn white active" type="button"
+                                        onclick="togglePasswordVisibility('newPasswordAgain')">
+                                        <span id="eyeIcon_newPasswordAgain" class="fa fa-eye-slash"></span>
+                                      </button>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <span type="" id="myButton" class="btn btn-info m-t">Update</span>
+                            </form>
+                          </div>
+
+
+                        </div>
+
+
+                      </div>
+
+                      <div class="row p-a text-right">
+                        <!-- <input type="submit" class="btn info" id="btn-save" value="Save"> -->
+                      </div>
+
+                      <!-- </form> -->
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-------------------------------------------------- tab update password std -------------------------------------------------->
+
+              </div><!-- div content -->
+
+            </div><!-- row p-a-2 -->
+          </div>- <!-- row-innner -->
+        </div> <!-- row-body -->
+      </div><!-- row-row -->
+
+    </div>
+  </div>
+</div>
+
+<script src="pljr_info.js?n=1"></script>
+<script>
+
+  // Initialize tooltips when the document is ready
+  $(document).ready(function () {
+
+  
+  });
+  
+</script>

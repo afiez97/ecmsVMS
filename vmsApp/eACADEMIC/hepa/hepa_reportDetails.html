@@ -1,0 +1,113 @@
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+      <div class="navbar" data-pjax>
+          <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+            <i class="ion-navicon"></i>
+          </a>
+
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <span class="navbar-item text-md">Reporting Hostel (Details)</span>
+            </li>
+          </ul>
+          <!-- nabar right -->
+          <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+      </div>
+  </div>
+
+  <!-- FOOTER INSERT  -->
+  <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+  <div class="app-body">
+      <!-- CONTENT START -->
+      <div style="min-height: mh-200">
+          <div class="col-md-10 offset-md-1 mt-2">
+            <div class="box" id="divCOT">
+              <div class="box-header blue-grey-800">
+                <h3><b>Details List </b></h3>
+              </div>
+              <div class="box-body b-b">
+                <p class="m-a-0">
+                  <div id="tableCot">
+                    <div class="form-group row">
+
+                      <div class="col-sm-2">
+                        <!-- <select class="form-control slct2 c-select" id="sti_baitulmal" required></select> -->
+                        <label for="chkInOutdate" class="col-form-label">Month:</label>
+                        <input id="chkInOutdate" type="month" class="form-control" placeholder="Date">
+                      </div>
+
+                      <div class="col-sm-3">
+                        <label for="FK_status_Student" class="col-form-label">Status Student:</label>
+                        <select id="FK_status_Student" class="form-control c-select">
+                          <option value="">--Choose Status Student--</option>
+                          <option value="1">Active</option>
+                          <option value="2">Alumni</option>
+                          <option value="3">Paid</option>
+                          <option value="4">Registered</option>
+                          <option value="5">Suspended</option>
+                          <option value="6">Extend</option>
+                          <option value="7">With-draw</option>
+                          <option value="8">Graduated</option>
+                          <option value="9">In-active</option>
+                          <option value="10">Deferred</option>
+                          <option value="11">Missing In Action</option>
+                          <option value="12">Passed Away</option>
+                          <option value="13">Terminated</option>
+                          <option value="14">Change Programme</option>
+
+                        </select>
+                      </div>
+
+                      <div class="col-sm-3">
+                        <label for="ChkInOutSelect" class="col-form-label">Hostel Status:</label>
+                        <select id="ChkInOutSelect" class="form-control c-select">
+                          <option value="">--Choose Category Program--</option>
+                          <option value="in">Check In</option>
+                          <option value="out">Check Out</option>
+                          <option value="new">New</option>
+                        </select>
+                      </div>
+                   
+                      <div class="row">
+                        <div class="col-sm-4">
+                            <div class="">
+                                <label for="" class="col-form-label" style="display: block; height: 35px;"></label>
+                                <button type="button" onclick="generateTable()" class="btn btn-info">
+                                    <i class="fa fa-fw fa-filter"></i>Filter
+                                </button>
+                                <button id="" onclick="generatePDF('Details', 'tableReportListStudent')" class="btn md-raised green ml-2">
+                                    <!-- Adding 'ml-2' class for margin-left -->
+                                    <i class="fa fa-fw fa-pencil-square-o"></i> <strong>Download PDF</strong>
+                                </button>
+                            </div>
+                        </div>
+                      </div>
+                    
+                    
+                    
+
+                      
+
+                    </div>
+                    <textarea class="hidden" id="dataList"></textarea>
+                    <table class="table table-striped m-b-none" id="tableReportListStudent"></table>
+                    <table class="" id="tableReportListStudentpdf"></table>
+                  </div>
+                </p>
+              </div>
+
+                                  <table id="tableReportListStudent" class="table">
+
+            </div>
+            
+          </div>
+      </div>
+  </div><!--- end app-body -->
+
+  <script src="scripts/ajax.js"></script>
+  <script src="scripts/jspdf.umd.min.js"></script>
+  <script src="scripts/jspdf.plugin.autotable.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="hepa_reportDetails.js?n=1"></script>
+  <!-- <script src="cot.js"></script> -->

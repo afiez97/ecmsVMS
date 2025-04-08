@@ -1,0 +1,68 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Settings</span>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="modal" id="loading_modal" data-backdrop="static">
+      <div class="modal-dialog">
+        <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+      </div>
+    </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <!-------------------------------------------------- Programme -------------------------------------------------->
+                <div class="box" id="divProgram">
+                  <div class="box-header teal-900">
+                    <h3><b>PROGRAMME</b></h3>
+                    <!-- <small>Programme List</small> -->
+                  </div>
+                  <div class="box-body light lt">
+                    <p class="m-a-0">
+                        <div id="tableProgram">
+                          <input type="hidden" id="clg_id">
+                          <div class="form-group row">
+                            <div class="col-sm-6">
+                              <select id="fac_id" class="form-control c-select slct2">
+                                <option value="">- Choose Faculty -</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <textarea class="hidden" id="dataList"></textarea>
+                          <table class="table m-b-none" id="programList"></table>
+                        </div>
+                    </p>
+                  </div>
+                </div><!-------------------------------------------------- end Programme -------------------------------------------------->
+              </div>
+        </div>
+
+    </div>
+    <script src="scripts/ajax.js"></script>
+    <script src="callFunction.js"></script>
+    <script src="program.js"></script>
+    <script src="capaian.js"></script>
+
+
+    

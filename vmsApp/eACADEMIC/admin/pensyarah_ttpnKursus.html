@@ -1,0 +1,298 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Lecturer</span>
+			        </li>
+			        <li class="nav-item">
+				        <a class="nav-link text-muted" title="Tambah Rekod Baru" data-toggle="modal" data-target="#reg-kursus" title="Reply">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header indigo-900">
+                    <h3><b>LECTURER COURSE SETTING</b></h3>
+                    <small>Lecturer Course Setting</small>
+                  </div>
+                  <div class="box-body light lt">
+                    <div class="m-b-2 pull-right">
+                      Search: <input id="filter" type="text" class="form-control input-sm w-auto inline m-r"/>
+                    </div>
+                    <p class="m-a-0 ">
+                        <table class="table m-b-none" data-ui-jp="footable" data-filter="#filter" data-page-size="5">
+                            <thead>
+                              <tr>
+                                  <th data-toggle="true">No.</th>
+                                  <th data-hide="phone,tablet">Faculty</th>
+                                  <th data-hide="phone,tablet">Lecturer</th>
+                                  <th data-hide="phone,tablet">Programme</th>
+                                  <th data-hide="phone,tablet">Course</th>
+                                  <th data-hide="phone,tablet">Session</th>
+                                  <th data-hide="phone,tablet">Semester</th>
+                                  <th data-hide="phone,tablet" class="text-center">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                  <td>1</td>
+                                  <td>Fakulti Sains Kesihatan</td>
+                                  <td>Prof. AAAAA</td>
+                                  <td>Diploma Sains Kejururawatan</td>
+                                  <td>okok</td>
+                                  <td>2020/2021</td>
+                                  <td>1</td>
+                                  <td data-value="1" class="text-center" style="width: 15%;">
+                                    <button class="btn success" title="Update" data-toggle="modal" data-target="#update-kursus" data-ui-toggle-class="zoom" data-ui-target="#animate"><i class="ion-android-create"></i></button>
+                                    <a href="detLectCourse.html" class="btn accent" title="Details" id="btnPerincian"><i class="ion-ios-list-outline"></i></a>
+                                    <button class="btn danger" title="Remove"  data-toggle="modal" data-target="#mesejEcms"><i class="ion-trash-b"></i></button>
+                                  </td>
+                              </tr>
+                              <tr>
+                                <td>1</td>
+                                <td>Fakulti Sains Kesihatan</td>
+                                <td>Prof. BBBBBBB</td>
+                                <td>Foundation in Occupational Safety and Health (OSH)</td>
+                                <td>okok</td>
+                                <td>2020/2021</td>
+                                <td>4</td>
+                                <td data-value="1" class="text-center">
+                                  <button class="btn success" title="Update" data-toggle="modal" data-target="#update-kursus" data-ui-toggle-class="zoom" data-ui-target="#animate"><i class="ion-android-create"></i></button>
+                                  <button class="btn accent" title="Details" id="btnPerincian1"><i class="ion-ios-list-outline"></i></button>
+                                  <button class="btn danger" title="Remove" data-toggle="modal" data-target="#mesejEcms"><i class="ion-trash-b"></i></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot class="hide-if-no-paging">
+                              <tr>
+                                  <td colspan="8" class="text-center">
+                                      <ul class="pagination"></ul>
+                                  </td>
+                              </tr>
+                            </tfoot>
+                          </table>
+
+                          <div id="reg-kursus" class="modal fade" data-backdrop="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header indigo-900">
+                                    <h5 class="modal-title">REGISTER LECTURER COURSE</h5>
+                                </div>
+                                <div class="modal-body p-lg">
+                                  <p>
+                                    <form role="form" class="p-l-sm">
+                                      <div class="form-group row">
+                                          <label for="sesiKursus" class="col-sm-2 form-control-label">Session<span class="text-danger d-inline">*</span></label>
+                                          <div class="col-sm-8 ">
+                                            <select id="sesiKursus" class="form-control" required>
+                                              <option selected>Choose...</option>
+                                              <option>2020/2021</option>
+                                            </select>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="fakultiKursus" class="col-sm-2 form-control-label">Faculty</label>
+                                        <div class="col-sm-8"> 
+                                          <select id="fakultiKursus" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <option>Fakulti Sains Kesihatan</option>
+                                            </select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="lectKursus" class="col-sm-2 form-control-label">Lecturer<span class="text-danger d-inline">*</span></label>
+                                        <div class="col-sm-8"> 
+                                          <select id="lectKursus" class="form-control" required>
+                                            <option selected>Choose...</option>
+                                            <option>Prof. A</option>
+                                            <option>Prof. B</option>
+                                            <option>Dr. Abcde</option>
+                                            </select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                          <label for="namaKursus" class="col-sm-2 form-control-label">Course<span class="text-danger d-inline">*</span></label>
+                                          <div class="col-sm-8"> 
+                                            <select id="namaKursus" class="form-control" required>
+                                              <option selected>Choose...</option>
+                                              <option>okok</option>
+                                              <option>okokokok</option>
+                                            </select>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                          <label for="namaProgram" class="col-sm-2 form-control-label">Program</label>
+                                          <div class="col-sm-8">
+                                            <select id="namaProgram" class="form-control">
+                                              <option selected>Choose...</option>
+                                              <option>Diploma Sains Kejururawatan</option>
+                                              <option>Foundation in Occupational Safety and Health (OSH)</option>
+                                              </select>
+                                          </div>
+                                      </div>
+
+                                        <div class="form-group row">
+                                          <label for="semKursus" class="col-sm-2 form-control-label">Semester</label>
+                                          <div class="col-sm-8"> 
+                                            <select id="semKursus" class="form-control">
+                                              <option selected>Choose...</option>
+                                              <option>1</option>
+                                              <option>2</option>
+                                              <option>3</option>
+                                              <option>4</option>
+                                              <option>5</option>
+                                              </select>
+                                          </div>
+                                        </div>                                      
+                                    </form>
+                                  </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                  <button type="button" class="btn info p-x-md " data-dismiss="modal"  data-toggle="modal" data-target="#mesejEcms" >Save</button>
+                                </div>
+                              </div><!-- /.modal-content -->
+                            </div>
+                          </div>
+
+                          <div id="update-kursus" class="modal fade" data-backdrop="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header pink-700">
+                                    <h5 class="modal-title">UPDATE LECTURER COURSE</h5>
+                                </div>
+                                <div class="modal-body p-lg">
+                                  <p>
+                                    <form role="form" class="p-l-sm">
+                                      <div class="form-group row">
+                                          <label for="ud_sesiKursus" class="col-sm-2 form-control-label">Session<span class="text-danger d-inline">*</span></label>
+                                          <div class="col-sm-8 ">
+                                            <select id="ud_sesiKursus" class="form-control" required>
+                                              <option selected>Choose...</option>
+                                              <option>2020/2021</option>
+                                            </select>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="ud_fakultiKursus" class="col-sm-2 form-control-label">Faculty</label>
+                                        <div class="col-sm-8"> 
+                                          <select id="ud_fakultiKursus" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <option>Fakulti Sains Kesihatan</option>
+                                            </select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="ud_lectKursus" class="col-sm-2 form-control-label">Lecturer<span class="text-danger d-inline">*</span></label>
+                                        <div class="col-sm-8"> 
+                                          <select id="ud_lectKursus" class="form-control" required>
+                                            <option selected>Choose...</option>
+                                            <option>Prof. A</option>
+                                            <option>Prof. B</option>
+                                            <option>Dr. Abcde</option>
+                                            </select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                          <label for="ud_namaKursus" class="col-sm-2 form-control-label">Course<span class="text-danger d-inline">*</span></label>
+                                          <div class="col-sm-8"> 
+                                            <select id="ud_namaKursus" class="form-control" required>
+                                              <option selected>Choose...</option>
+                                              <option>okok</option>
+                                              <option>okokokok</option>
+                                            </select>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                          <label for="ud_namaProgram" class="col-sm-2 form-control-label">Program</label>
+                                          <div class="col-sm-8">
+                                            <select id="ud_namaProgram" class="form-control">
+                                              <option selected>Choose...</option>
+                                              <option>Diploma Sains Kejururawatan</option>
+                                              <option>Foundation in Occupational Safety and Health (OSH)</option>
+                                              </select>
+                                          </div>
+                                      </div>
+
+                                        <div class="form-group row">
+                                          <label for="ud_semKursus" class="col-sm-2 form-control-label">Semester</label>
+                                          <div class="col-sm-8"> 
+                                            <select id="ud_semKursus" class="form-control">
+                                              <option selected>Choose...</option>
+                                              <option>1</option>
+                                              <option>2</option>
+                                              <option>3</option>
+                                              <option>4</option>
+                                              <option>5</option>
+                                              </select>
+                                          </div>
+                                        </div>                                      
+                                    </form>
+                                  </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                  <button type="button" class="btn success p-x-md " data-dismiss="modal" data-toggle="modal" data-target="#mesejEcms">Update</button>
+                                </div>
+                              </div><!-- /.modal-content -->
+                            </div>
+                          </div>
+
+                          <!-- .modal -->
+                          <div id="mesejEcms" class="modal fade" data-backdrop="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Mesej eCMS</h5>
+                                </div>
+                                <div class="modal-body text-center p-lg">
+                                  <p>Are you sure to execute this action?</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">No</button>
+                                  <button type="button" class="btn danger p-x-md" data-dismiss="modal">Yes</button>
+                                </div>
+                              </div><!-- /.modal-content -->
+                            </div>
+                          </div>
+                          <!-- / .modal -->
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+

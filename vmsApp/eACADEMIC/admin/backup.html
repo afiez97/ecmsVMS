@@ -1,0 +1,1899 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<a id="infoPljr"><span class="navbar-item text-md">Students</span></a>
+			        </li>
+			      </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT -->
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box" id="divCarian">
+                  <div class="box-header teal-900">
+                    <h3><b>LIST OF STUDENTS</b></h3>
+                    <!-- <small>Senarai Lokasi</small> -->
+                  </div>
+                  <div class="box-body">
+                    <div class="row p-a m-b-2 text-right">
+                      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#topModalNew" data-ui-toggle-class="zoom" data-ui-target="#animate"><i class="fa fa-fw fa-plus"></i> Add</button>
+                    </div>
+
+                    <div class="m-b-2 pull-right">
+                      Search: <input id="filter" type="text" class="form-control input-sm w-auto inline m-r"/>
+                    </div>
+                    <!-- senarai pelajar -->
+                    <div id="listStudent">
+                      <textarea class="hidden" id="dataList"></textarea>
+                      <table class="table m-b-none" id="tableStudent" data-ui-jp="footable" data-filter="#filter" data-page-size="5">
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- top modal -->
+                <div class="modal fade" id="topModalNew">
+                  <div class="modal-top white b-b" style="height:950px">
+                      <div class="row-col">
+                        <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+                        <div class="p-a b-b">
+                          <span class="h5">Student Info Register</span>
+                        </div>
+                        <div class="row-row">
+                          <div class="row-body">
+                            <div class="row-inner">
+                              <div class="row p-a-2">
+                                <div class="col-sm-12" id="reg-student">
+                                  <form role="form" data-bind="submit: Register">
+                                    <div class="box">
+                                      <div class="box-header light lt">
+                                        <div class="row">
+                                          <div class="col-xs-6 col-md-5"></div>
+                                          <div class="col-xs-6 col-md-2">
+                                            <div class="text-center">
+                                              <img src="images/nopic.png" class="img-thumbnail" alt="..." width="50%">
+                                              <input type="file" class="form-control m-t-1" placeholder="Picture">
+                                            </div>
+                                          </div>
+                                          <div class="col-xs-6 col-md-5"></div>
+                                        </div>
+                                        <div class="row m-t-2">
+                                          <div class="col-xs-6 col-md-6">
+                                            <div class="form-group row">
+                                              <label for="" class="col-sm-2 form-control-label">Student ID</label>
+                                              <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="std_studentid" data-bind="value: std_studentid" placeholder="Student ID">
+                                              </div>
+                                            </div>
+                
+                                            <div class="form-group row">
+                                              <label for="" class="col-sm-2 form-control-label">Name</label>
+                                              <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="sti_name" data-bind="value: sti_name" placeholder="Name">
+                                              </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                              <label for="" class="col-sm-2 form-control-label">IC No.</label>
+                                              <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="sti_icno" data-bind="value: sti_icno" placeholder="IC No.">
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-xs-6 col-md-6">
+                                            <div class="form-group row">
+                                              <label for="" class="col-sm-2 form-control-label">Programme</label>
+                                              <div class="col-sm-10">
+                                                <select class="form-control c-select" id="pgm_id" data-bind="value: pgm_id"></select>
+                                              </div>
+                                            </div>
+                  
+                                            <div class="form-group row">
+                                              <label for="" class="col-sm-2 form-control-label">Course</label>
+                                              <div class="col-sm-10">
+                                                  <select class="form-control c-select" id="crs_code" data-bind="value: crs_code"></select>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+
+                                    <div class="b-b b-success nav-active-success">
+                                      <ul class="nav nav-tabs">
+                                        <li class="nav-item">
+                                          <a class="nav-link active" href="#" data-toggle="tab" data-target="#tabNew1">Personal</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew2">Parents & Heirs</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew3">Registration</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew4">Academic</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew5">Timetable</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew6">Financial</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#" data-toggle="tab" data-target="#tabNew7">Student Status</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="tab-content p-a m-b-md">
+                                      <div class="tab-pane animated fadeIn text-muted active" id="tabNew1">
+                                        <div class="box" id="divKemaskini">
+                                          <div class="box-body">
+                                            <p class="m-a-0">
+                                              
+                                                <div class="row p-a">
+                                                  <div class="row p-l-2"><h6><b>PERSONAL INFO</b></h6></div>
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Gender</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select" id="sti_gender" data-bind="value: sti_gender"></select>
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Nationality</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select"- id="sti_nationality" data-bind="value: sti_nationality"></select>
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Race</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select" id="sti_race" data-bind="value: sti_race"></select>
+                                                      </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Native Status</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select" id="sti_status_bumiputra" data-bind="value: sti_status_bumiputra"></select>
+                                                      </div>
+                                                    </div>
+                        
+                                                    
+                                                  </div>
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Religion</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select" id="sti_religion" data-bind="value: sti_religion"></select>
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">OKU Status</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select" id="sti_status_oku" data-bind="value: sti_status_oku"></select>
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Blood Type</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select" id="sti_blood_type" data-bind="value: sti_blood_type"></select>
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Email</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="sti_email" data-bind="value: sti_email" placeholder="Email">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div class="row p-a">
+                                                  <!-- place info -->
+                                                  <div class="row p-l-2"><h6><b>PLACE INFO</b></h6></div>
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Address</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="sti_address_1" data-bind="value: sti_address_1" placeholder="Address 1">
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label"></label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="sti_address_2" data-bind="value: sti_address_2" placeholder="Address 2">
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label"></label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="sti_address_3" data-bind="value: sti_address_3" placeholder="Address 3">
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Postcode</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="sti_postcode" data-bind="value: sti_postcode" placeholder="Postcode">
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">State</label>
+                                                      <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="sti_state" data-bind="value: sti_state"></select>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Home No.</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="sti_contactno_home" data-bind="value: sti_contactno_home" placeholder="Home No.">
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="sti_contactno_mobile" data-bind="value: sti_contactno_mobile" placeholder="Phone No.">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div class="row p-a">
+                                                  <!-- bank info -->
+                                                  <div class="row p-l-2"><h6><b>BANK ACCOUNT INFO</b></h6></div>
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Bank</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="sti_bank_id" data-bind="value: sti_bank_id" placeholder="Bank">
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Account No.</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="sti_bank_accountno" data-bind="value: sti_bank_accountno" placeholder="Account No.">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-sm-6"></div>
+                                                </div>
+
+                                                <div class="row p-a text-right">
+                                                  <a  href="#" class="btn info" data-toggle="tab" data-target="#tabNew2">Save</a>
+                                                  <!-- <input type="submit" class="btn info" value="Saves"> -->
+                                                </div>
+                                                
+                                              <!-- </form> -->
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <!-- tab Parents & Heirs -->
+                                      <div class="tab-pane animated fadeIn text-muted" id="tabNew2">
+                                        <div class="box" id="">
+                                          <div class="box-body">
+                                            <p class="m-a-0">
+                                              <!-- <form role="form"> -->
+                                                <div class="row p-a">
+                                                  <div class="col-sm-6">
+                                                    <div class=""><h6><b>FATHER INFO</b></h6></div>
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Name</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="par_father_name" data-bind="value: par_father_name" placeholder="Name" >
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Address</label>
+                                                      <div class="col-sm-10">
+                                                        <textarea class="form-control" rows="3" id="par_father_address" data-bind="value: par_father_address" placeholder="Address" ></textarea>
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="par_father_contactno" data-bind="value: par_father_contactno" placeholder="Phone No." >
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Occupation</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="par_father_occupation" data-bind="value: par_father_occupation" placeholder="Occupation" >
+                                                      </div>
+                                                    </div>
+                                                  </div>
+  
+                                                  <div class="col-sm-6">
+                                                    <div class=""><h6><b>HEIR INFO</b></h6></div>
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Name</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="par_nextofkin" data-bind="value: par_nextofkin" placeholder="Name" >
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Address</label>
+                                                      <div class="col-sm-10">
+                                                        <textarea class="form-control" rows="3" id="par_kin_address" data-bind="value: par_kin_address" placeholder="Address" ></textarea>
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="par_kin_contactno" data-bind="value: par_kin_contactno" placeholder="Phone No." >
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a">
+                                                  <div class="col-sm-6">
+                                                    <div class=""><h6><b>MOTHER INFO</b></h6></div>
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Name</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="par_mother_name" data-bind="value: par_mother_name" placeholder="Name" >
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Address</label>
+                                                      <div class="col-sm-10">
+                                                        <textarea class="form-control" rows="3" id="par_mother_address" data-bind="value: par_mother_address" placeholder="Address" ></textarea>
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="par_mother_contactno" data-bind="value: par_mother_contactno" placeholder="Phone No." >
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Occupation</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="par_mother_occupation" data-bind="value: par_mother_occupation" placeholder="Occupation" >
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  
+                                                  <div class="col-sm-6">
+                                                    <div class=""><h6><b>OTHER INFO</b></h6></div>
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Family Income</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="par_family_income" data-bind="value: par_family_income" placeholder="Family Income" >
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Total Dependent</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="par_family_responsibility" data-bind="value: par_family_responsibility" placeholder="Total Dependent" >
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Parental Relationship</label>
+                                                      <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="par_parent_relation" data-bind="value: par_parent_relation">
+                                                            <option>-Choose-</option>
+                                                            <option>Masih Bersama</option>
+                                                            <option>Bercerai Hidup</option>
+                                                            <option>Bercerai Mati</option>
+                                                            <option>Tiada Ibu/Bapa</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Student Stay With</label>
+                                                      <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="par_living_with" data-bind="value: par_living_with">
+                                                          <option>-Choose-</option>
+                                                          <option>Ibu Bapa (Keluarga)</option>
+                                                          <option>Ibu</option>
+                                                          <option>Bapa</option>
+                                                          <option>Saudara Mara/Waris</option>
+                                                          <option>Keluarga Angkat</option>
+                                                          <option>Datuk & Nenek</option>
+                                                          <option>Rumah Anak Yatim</option>
+                                                      </select>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a text-right">
+                                                  <a  href="#" class="btn info" data-toggle="tab" data-target="#tabNew3">Save</a>
+                                                  <!-- <button type="submit" class="btn info">Save</button> -->
+                                                </div>
+                                                
+                                              <!-- </form> -->
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <!-- tab Registration -->
+                                      <div class="tab-pane animated fadeIn text-muted" id="tabNew3">
+                                        <div class="box" id="">
+                                          <div class="box-body">
+                                            <p class="m-a-0">
+                                              <!-- <form role="form"> -->
+                                                <div class="row p-a">
+                                                  <div class="row p-l-2"><h6><b>REGISTRATION INFO</b></h6></div>
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Payment via</label>
+                                                      <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="srg_payment_via" data-bind="value: srg_payment_via" >
+                                                        </select>
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Receipt No.</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="text" class="form-control" id="srg_payment_resit" data-bind="value: srg_payment_resit"  placeholder="Receipt No.">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+  
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Upload Receipt</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="file" data-bind="fileInput: srg_payment_resitdoc, customFileInput: {
+                                                          buttonClass: 'btn btn-success',
+                                                          fileNameClass: 'disabled form-control',
+                                                          onClear: onClear,
+                                                        }" accept="image/*" >
+                                                        <span style="display: none;" id="load_tmp">
+                                                          <span class="text-muted fa fa-refresh fa-spin m-l"></span> <i>Tunggu Sebentar...</i>
+                                                        </span>
+                                                        
+                                                          <!-- <input type="file" class="form-control" id="srg_payment_resitdoc" data-bind="value: srg_payment_resitdoc"  placeholder=""> -->
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a text-right">
+                                                  <input type="submit" class="btn info" value="Saves">
+                                                  <!-- <button type="submit" class="btn info">Save</button> -->
+                                                </div>
+                                                
+                                              <!-- </form> -->
+                                            </p>
+                                          </div>
+                                        </div> 
+                                      </div>
+
+                                      <!-- tab Academic -->
+                                      <div class="tab-pane animated fadeIn text-muted" id="tabNew4">
+                                        <div class="box" id="">
+                                          <div class="box-body">
+                                            <p class="m-a-0">
+                                              <!-- <form role="form"> -->
+                                                <div class="row p-a">
+                                                  <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div>
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Programme</label>
+                                                      <div class="col-sm-10">
+                                                      <select class="form-control c-select" disabled  >
+                                                          <option>-Choose-</option>
+                                                          <option>Diploma</option>
+                                                      </select>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+  
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Course</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select" disabled  >
+                                                              <option>-Choose-</option>
+                                                              <option>Fisioterapi</option>
+                                                          </select>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a">
+                                                  <div class="row p-l-2"><h6><b>MUET AND BAHASA MELAYU</b></h6></div>
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">MUET</label>
+                                                      <div class="col-sm-10">
+                                                      <select class="form-control c-select"  >
+                                                          <option>-Choose-</option>
+                                                          <option>Band 1</option>
+                                                          <option>Band 2</option>
+                                                          <option>Band 3</option>
+                                                          <option>Band 4</option>
+                                                          <option>Band 5</option>
+                                                          <option>Band 6</option>
+                                                      </select>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+  
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Bahasa Melayu (SPM)</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select"  >
+                                                              <option>-Choose-</option>
+                                                              <option>A+</option>
+                                                              <option>A</option>
+                                                              <option>A-</option>
+                                                          </select>
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Bahasa Melayu (STPM)</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select"  >
+                                                              <option>-Choose-</option>
+                                                              <option>A+</option>
+                                                              <option>A</option>
+                                                              <option>A-</option>
+                                                          </select>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a">
+                                                  <div class="row p-l-2"><h6><b>ACADEMIC CERTIFICATE</b></h6></div>
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Certificate</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="file" class="form-control"   placeholder="Gambar">
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">SPM</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="file" class="form-control"   placeholder="Gambar">
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">STPM</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="file" class="form-control"   placeholder="Gambar">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+  
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Diploma</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="file" class="form-control"   placeholder="Gambar">
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Degree</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="file" class="form-control"   placeholder="Gambar">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a text-right">
+                                                  <button type="submit" class="btn info">Save</button>
+                                                </div>
+                                                
+                                              <!-- </form> -->
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <!-- tab Timetable -->
+                                      <div class="tab-pane animated fadeIn text-muted" id="tabNew5">
+                                        <div class="box" id="">
+                                          <div class="box-body">
+                                            <!-- <p class="m-a-0">
+                                              <form role="form">
+                                                <div class="row p-a">
+                                                  <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div>
+                                                  <div class="col-sm-12">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Programme</label>
+                                                      <div class="col-sm-10">
+                                                      <select class="form-control c-select" disabled>
+                                                          <option>-Choose-</option>
+                                                          <option>Diploma</option>
+                                                      </select>
+                                                      </div>
+                                                    </div>
+                          
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Course</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select" disabled>
+                                                              <option>-Choose-</option>
+                                                              <option>Fisioterapi</option>
+                                                          </select>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a">
+                                                  <div class="row p-l-2"><h6><b>MUET AND BAHASA MELAYU</b></h6></div>
+                                                  <div class="col-sm-12">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">MUET</label>
+                                                      <div class="col-sm-10">
+                                                      <select class="form-control c-select">
+                                                          <option>-Choose-</option>
+                                                          <option>Band 1</option>
+                                                          <option>Band 2</option>
+                                                          <option>Band 3</option>
+                                                          <option>Band 4</option>
+                                                          <option>Band 5</option>
+                                                          <option>Band 6</option>
+                                                      </select>
+                                                      </div>
+                                                    </div>
+                          
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Bahasa Melayu (SPM)</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select">
+                                                              <option>-Choose-</option>
+                                                              <option>A+</option>
+                                                              <option>A</option>
+                                                              <option>A-</option>
+                                                          </select>
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Bahasa Melayu (STPM)</label>
+                                                      <div class="col-sm-10">
+                                                          <select class="form-control c-select">
+                                                              <option>-Choose-</option>
+                                                              <option>A+</option>
+                                                              <option>A</option>
+                                                              <option>A-</option>
+                                                          </select>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a">
+                                                  <div class="row p-l-2"><h6><b>ACADEMIC CERTIFICATE</b></h6></div>
+                                                  <div class="col-sm-12">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Certificate</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="file" class="form-control" placeholder="Gambar">
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">SPM</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="file" class="form-control" placeholder="Gambar">
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">STPM</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="file" class="form-control" placeholder="Gambar">
+                                                      </div>
+                                                    </div>
+                        
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Diploma</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="file" class="form-control" placeholder="Gambar">
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Degree</label>
+                                                      <div class="col-sm-10">
+                                                          <input type="file" class="form-control" placeholder="Gambar">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a text-right">
+                                                  <button type="submit" class="btn info">Save</button>
+                                                </div>
+                                                
+                                              </form>
+                                            </p> -->
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <!-- tab Financial -->
+                                      <div class="tab-pane animated fadeIn text-muted" id="tabNew6">
+                                        <div class="box" id="">
+                                          <div class="box-body">
+                                            <p class="m-a-0">
+                                              <!-- <form role="form"> -->
+                                                <div class="row p-a">
+                                                  <!-- <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div> -->
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Fees (RM)</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="text" class="form-control"   id="" placeholder="Fees">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a text-right">
+                                                  <button type="submit" class="btn info">Save</button>
+                                                </div>
+                                                
+                                              <!-- </form> -->
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <!-- tab Student Status -->
+                                      <div class="tab-pane animated fadeIn text-muted" id="tabNew7">
+                                        <div class="box" id="">
+                                          <div class="box-body">
+                                            <p class="m-a-0">
+                                              <!-- <form role="form"> -->
+                                                <div class="row p-a">
+                                                  <!-- <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div> -->
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Session</label>
+                                                      <div class="col-sm-10">
+                                                        <select class="form-control c-select"   >
+                                                          <option>-Choose-</option>
+                                                          <option>2020/2021</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Intake</label>
+                                                      <div class="col-sm-10">
+                                                        <select class="form-control c-select"   >
+                                                          <option>-Choose-</option>
+                                                          <option>April</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Semester</label>
+                                                      <div class="col-sm-10">
+                                                        <select class="form-control c-select"   >
+                                                          <option>-Choose-</option>
+                                                          <option>1</option>
+                                                          <option>2</option>
+                                                          <option>3</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Status</label>
+                                                      <div class="col-sm-10">
+                                                        <select class="form-control c-select"   >
+                                                          <option>-Choose-</option>
+                                                          <option>Aktif</option>
+                                                          <option>Alumni</option>
+                                                          <option>Bayar</option>
+                                                          <option>Daftar</option>
+                                                          <option>Digantung</option>
+                                                          <option>Tangguh</option>
+                                                          <option>Tarik Diri</option>
+                                                          <option>Telah Bergraduat</option>
+                                                          <option>Tidak Aktif</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+  
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Date of Commencement of Studies</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="date" class="form-control" id=""   >
+                                                      </div>
+                                                    </div>
+  
+                                                    <div class="form-group row">
+                                                      <label for="" class="col-sm-2 form-control-label">Graduation Date</label>
+                                                      <div class="col-sm-10">
+                                                        <input type="date" class="form-control" id=""   >
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="row p-a text-right">
+                                                  <button type="submit" class="btn info">Save</button>
+                                                </div>
+                                                
+                                              <!-- </form> -->
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="p-a b-t">
+                          <!-- <a href="#" class="text-muted"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+                          <a href="#" class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a> -->
+                        </div>
+                      </div>
+                  </div>
+                </div><!-- end modal new add student -->
+
+                <!-- top modal kemaskini -->
+                <div class="modal fade" id="topModal">
+                  <div class="modal-top white b-b" style="height:950px">
+                      <div class="row-col">
+                        <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+                        <div class="p-a b-b">
+                          <span class="h5">Student Info Update</span>
+                        </div>
+                        <div class="row-row">
+                          <div class="row-body">
+                            <div class="row-inner">
+                              <div class="row p-a-2">
+                                <div class="col-sm-12">
+                                  <div class="box">
+                                    <div class="box-header light lt">
+                                      <div class="row">
+                                        <div class="col-xs-6 col-md-5"></div>
+                                        <div class="col-xs-6 col-md-2">
+                                          <div class="text-center">
+                                            <img src="images/nopic.png" class="img-thumbnail" alt="..." width="50%">
+                                            <input type="file" class="form-control m-t-1" placeholder="Picture">
+                                          </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-5"></div>
+                                      </div>
+                                      <div class="row m-t-2">
+                                        <div class="col-xs-6 col-md-6">
+                                          <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Student ID</label>
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" id="upt_std_studentid" placeholder="Student ID" readonly>
+                                            </div>
+                                          </div>
+              
+                                          <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Name</label>
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" id="upt_sti_name" placeholder="Name" readonly>
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">IC No.</label>
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" id="upt_sti_icno" placeholder="IC No." readonly>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-6">
+                                          <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Programme</label>
+                                            <div class="col-sm-10">
+                                              <select class="form-control c-select" disabled id="upt_pgm_id">
+                                              </select>
+                                            </div>
+                                          </div>
+                
+                                          <div class="form-group row">
+                                            <label for="" class="col-sm-2 form-control-label">Course</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control c-select" id="upt_crs_code">
+                                                </select>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+
+                                  <div class="b-b b-success nav-active-success">
+                                    <ul class="nav nav-tabs">
+                                      <li class="nav-item">
+                                        <a class="nav-link active" href="#" data-toggle="tab" data-target="#tab1">Personal</a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="tab" data-target="#tab2">Parents & Heirs</a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="tab" data-target="#tab3">Registration</a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="tab" data-target="#tab4">Academic</a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="tab" data-target="#tab5">Timetable</a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="tab" data-target="#tab6">Financial</a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="tab" data-target="#tab7">Student Status</a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="tab-content p-a m-b-md">
+                                    <div class="tab-pane animated fadeIn text-muted active" id="tab1">
+                                      <div class="box" id="divKemaskini">
+                                        <div class="box-body">
+                                          <p class="m-a-0">
+                                            <form role="form">
+                                              <div class="row p-a">
+                                                <div class="row p-l-2"><h6><b>PERSONAL INFO</b></h6></div>
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Gender</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="upt_sti_gender">
+                                                        </select>
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Nationality</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="upt_sti_nationality">
+                                                        </select>
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Race</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="upt_sti_race"></select>
+                                                    </div>
+                                                  </div>
+                                                  
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Native Status</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="upt_sti_status_bumiputra"></select>
+                                                    </div>
+                                                  </div>
+                      
+                                                  
+                                                </div>
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Religion</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="upt_sti_religion">
+                                                        </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">OKU Status</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="upt_sti_status_oku">
+                                                        </select>
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Blood Type</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select" id="upt_sti_blood_type">
+                                                        </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Email</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_sti_email" placeholder="Email">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a">
+                                                <!-- place info -->
+                                                <div class="row p-l-2"><h6><b>PLACE INFO</b></h6></div>
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Address</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_sti_address_1" placeholder="Address 1">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label"></label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_sti_address_2" placeholder="Address 2">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label"></label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_sti_address_3" placeholder="Address 3">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Postcode</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_sti_postcode" placeholder="Postcode">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">State</label>
+                                                    <div class="col-sm-10">
+                                                      <select class="form-control c-select" id="upt_sti_state">
+                                                    </select>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Home No.</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_sti_contactno_home" placeholder="Home No.">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_sti_contactno_mobile" placeholder="Phone No.">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a">
+                                                <!-- bank info -->
+                                                <div class="row p-l-2"><h6><b>BANK ACCOUNT INFO</b></h6></div>
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Bank</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_sti_bank_id" placeholder="Bank">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Account No.</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_sti_bank_accountno" placeholder="Account No.">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="col-sm-6"></div>
+                                              </div>
+
+                                              <div class="row p-a text-right">
+                                                <button type="submit" class="btn info">Save</button>
+                                              </div>
+                                              
+                                            </form>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- tab Parents & Heirs -->
+                                    <div class="tab-pane animated fadeIn text-muted" id="tab2">
+                                      <div class="box" id="">
+                                        <div class="box-body">
+                                          <p class="m-a-0">
+                                            <form role="form">
+                                              <div class="row p-a">
+                                                <div class="col-sm-6">
+                                                  <div class=""><h6><b>FATHER INFO</b></h6></div>
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Name</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_par_father_name" placeholder="Name" >
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Address</label>
+                                                    <div class="col-sm-10">
+                                                      <textarea class="form-control" rows="3" id="upt_par_father_address" placeholder="Address" ></textarea>
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_par_father_contactno" placeholder="Phone No." >
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Occupation</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_par_father_occupation" placeholder="Occupation" >
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                  <div class=""><h6><b>HEIR INFO</b></h6></div>
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Name</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_par_nextofkin" placeholder="Name" >
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Address</label>
+                                                    <div class="col-sm-10">
+                                                      <textarea class="form-control" rows="3" id="upt_par_kin_address" placeholder="Address" ></textarea>
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_par_kin_contactno" placeholder="Phone No." >
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a">
+                                                <div class="col-sm-6">
+                                                  <div class=""><h6><b>MOTHER INFO</b></h6></div>
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Name</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_par_mother_name" placeholder="Name" >
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Address</label>
+                                                    <div class="col-sm-10">
+                                                      <textarea class="form-control" rows="3" id="upt_par_mother_address" placeholder="Address" ></textarea>
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Phone No.</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_par_mother_contactno" placeholder="Phone No." >
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Occupation</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_par_mother_occupation" placeholder="Occupation" >
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                
+                                                <div class="col-sm-6">
+                                                  <div class=""><h6><b>OTHER INFO</b></h6></div>
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Family Income</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_par_family_income" placeholder="Family Income" >
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Total Dependent</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="upt_par_family_responsibility" placeholder="Total Dependent" >
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Parental Relationship</label>
+                                                    <div class="col-sm-10">
+                                                      <select class="form-control c-select" id="upt_par_parent_relation">
+                                                          <option>-Choose-</option>
+                                                          <option>Masih Bersama</option>
+                                                          <option>Bercerai Hidup</option>
+                                                          <option>Bercerai Mati</option>
+                                                          <option>Tiada Ibu/Bapa</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Student Stay With</label>
+                                                    <div class="col-sm-10">
+                                                      <select class="form-control c-select" id="upt_par_living_with">
+                                                        <option>-Choose-</option>
+                                                        <option>Ibu Bapa (Keluarga)</option>
+                                                        <option>Ibu</option>
+                                                        <option>Bapa</option>
+                                                        <option>Saudara Mara/Waris</option>
+                                                        <option>Keluarga Angkat</option>
+                                                        <option>Datuk & Nenek</option>
+                                                        <option>Rumah Anak Yatim</option>
+                                                    </select>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a text-right">
+                                                <button type="submit" class="btn info">Save</button>
+                                              </div>
+                                              
+                                            </form>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- tab Registration -->
+                                    <div class="tab-pane animated fadeIn text-muted" id="tab3">
+                                      <div class="box" id="">
+                                        <div class="box-body">
+                                          <p class="m-a-0">
+                                            <form role="form">
+                                              <div class="row p-a">
+                                                <div class="row p-l-2"><h6><b>REGISTRATION INFO</b></h6></div>
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Payment via</label>
+                                                    <div class="col-sm-10">
+                                                      <select class="form-control c-select">
+                                                        <option>-Choose-</option>
+                                                        <option>Cek</option>
+                                                        <option>Deposit Tunai</option>
+                                                        <option>Kad Kredit/Kad Debit</option>
+                                                        <option>Pemindahan Dalam Talian</option>
+                                                        <option>Pusat Zakat</option>
+                                                        <option>Tunai</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Receipt No.</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" placeholder="Receipt No.">
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Upload Receipt</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a text-right">
+                                                <button type="submit" class="btn info">Save</button>
+                                              </div>
+                                              
+                                            </form>
+                                          </p>
+                                        </div>
+                                      </div> 
+                                    </div>
+
+                                    <!-- tab Academic -->
+                                    <div class="tab-pane animated fadeIn text-muted" id="tab4">
+                                      <div class="box" id="">
+                                        <div class="box-body">
+                                          <p class="m-a-0">
+                                            <form role="form">
+                                              <div class="row p-a">
+                                                <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div>
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Programme</label>
+                                                    <div class="col-sm-10">
+                                                    <select class="form-control c-select" disabled>
+                                                        <option>-Choose-</option>
+                                                        <option>Diploma</option>
+                                                    </select>
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Course</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select" disabled>
+                                                            <option>-Choose-</option>
+                                                            <option>Fisioterapi</option>
+                                                        </select>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a">
+                                                <div class="row p-l-2"><h6><b>MUET AND BAHASA MELAYU</b></h6></div>
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">MUET</label>
+                                                    <div class="col-sm-10">
+                                                    <select class="form-control c-select">
+                                                        <option>-Choose-</option>
+                                                        <option>Band 1</option>
+                                                        <option>Band 2</option>
+                                                        <option>Band 3</option>
+                                                        <option>Band 4</option>
+                                                        <option>Band 5</option>
+                                                        <option>Band 6</option>
+                                                    </select>
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Bahasa Melayu (SPM)</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select">
+                                                            <option>-Choose-</option>
+                                                            <option>A+</option>
+                                                            <option>A</option>
+                                                            <option>A-</option>
+                                                        </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Bahasa Melayu (STPM)</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select">
+                                                            <option>-Choose-</option>
+                                                            <option>A+</option>
+                                                            <option>A</option>
+                                                            <option>A-</option>
+                                                        </select>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a">
+                                                <div class="row p-l-2"><h6><b>ACADEMIC CERTIFICATE</b></h6></div>
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Certificate</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="Gambar">
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">SPM</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="Gambar">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">STPM</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="Gambar">
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Diploma</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="Gambar">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Degree</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="Gambar">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a text-right">
+                                                <button type="submit" class="btn info">Save</button>
+                                              </div>
+                                              
+                                            </form>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- tab Timetable -->
+                                    <div class="tab-pane animated fadeIn text-muted" id="tab">
+                                      <div class="box" id="">
+                                        <div class="box-body">
+                                          <!-- <p class="m-a-0">
+                                            <form role="form">
+                                              <div class="row p-a">
+                                                <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div>
+                                                <div class="col-sm-12">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Programme</label>
+                                                    <div class="col-sm-10">
+                                                    <select class="form-control c-select" disabled>
+                                                        <option>-Choose-</option>
+                                                        <option>Diploma</option>
+                                                    </select>
+                                                    </div>
+                                                  </div>
+                        
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Course</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select" disabled>
+                                                            <option>-Choose-</option>
+                                                            <option>Fisioterapi</option>
+                                                        </select>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a">
+                                                <div class="row p-l-2"><h6><b>MUET AND BAHASA MELAYU</b></h6></div>
+                                                <div class="col-sm-12">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">MUET</label>
+                                                    <div class="col-sm-10">
+                                                    <select class="form-control c-select">
+                                                        <option>-Choose-</option>
+                                                        <option>Band 1</option>
+                                                        <option>Band 2</option>
+                                                        <option>Band 3</option>
+                                                        <option>Band 4</option>
+                                                        <option>Band 5</option>
+                                                        <option>Band 6</option>
+                                                    </select>
+                                                    </div>
+                                                  </div>
+                        
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Bahasa Melayu (SPM)</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select">
+                                                            <option>-Choose-</option>
+                                                            <option>A+</option>
+                                                            <option>A</option>
+                                                            <option>A-</option>
+                                                        </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Bahasa Melayu (STPM)</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control c-select">
+                                                            <option>-Choose-</option>
+                                                            <option>A+</option>
+                                                            <option>A</option>
+                                                            <option>A-</option>
+                                                        </select>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a">
+                                                <div class="row p-l-2"><h6><b>ACADEMIC CERTIFICATE</b></h6></div>
+                                                <div class="col-sm-12">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Certificate</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="Gambar">
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">SPM</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="Gambar">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">STPM</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="Gambar">
+                                                    </div>
+                                                  </div>
+                      
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Diploma</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="Gambar">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Degree</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" placeholder="Gambar">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a text-right">
+                                                <button type="submit" class="btn info">Save</button>
+                                              </div>
+                                              
+                                            </form>
+                                          </p> -->
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- tab Financial -->
+                                    <div class="tab-pane animated fadeIn text-muted" id="tab6">
+                                      <div class="box" id="">
+                                        <div class="box-body">
+                                          <p class="m-a-0">
+                                            <form role="form">
+                                              <div class="row p-a">
+                                                <!-- <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div> -->
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Fees (RM)</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" class="form-control" id="" placeholder="Fees">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a text-right">
+                                                <button type="submit" class="btn info">Save</button>
+                                              </div>
+                                              
+                                            </form>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- tab Student Status -->
+                                    <div class="tab-pane animated fadeIn text-muted" id="tab7">
+                                      <div class="box" id="">
+                                        <div class="box-body">
+                                          <p class="m-a-0">
+                                            <form role="form">
+                                              <div class="row p-a">
+                                                <!-- <div class="row p-l-2"><h6><b>PROGRAMME/COURSE</b></h6></div> -->
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Session</label>
+                                                    <div class="col-sm-10">
+                                                      <select class="form-control c-select" >
+                                                        <option>-Choose-</option>
+                                                        <option>2020/2021</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Intake</label>
+                                                    <div class="col-sm-10">
+                                                      <select class="form-control c-select" >
+                                                        <option>-Choose-</option>
+                                                        <option>April</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Semester</label>
+                                                    <div class="col-sm-10">
+                                                      <select class="form-control c-select" >
+                                                        <option>-Choose-</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Status</label>
+                                                    <div class="col-sm-10">
+                                                      <select class="form-control c-select" >
+                                                        <option>-Choose-</option>
+                                                        <option>Aktif</option>
+                                                        <option>Alumni</option>
+                                                        <option>Bayar</option>
+                                                        <option>Daftar</option>
+                                                        <option>Digantung</option>
+                                                        <option>Tangguh</option>
+                                                        <option>Tarik Diri</option>
+                                                        <option>Telah Bergraduat</option>
+                                                        <option>Tidak Aktif</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Date of Commencement of Studies</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="date" class="form-control" id="" >
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                    <label for="" class="col-sm-2 form-control-label">Graduation Date</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="date" class="form-control" id="" >
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row p-a text-right">
+                                                <button type="submit" class="btn info">Save</button>
+                                              </div>
+                                              
+                                            </form>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="p-a b-t">
+                          <!-- <a href="#" class="text-muted"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+                          <a href="#" class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a> -->
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                <!-- kemaskini -->
+                <div class="box collapse" id="divKemaskini">
+                  <div class="box-header purple-700">
+                    <h3><b>KEMASKINI MAKLUMAT PERIBADI PELAJAR</b></h3>
+                    <!-- <small>Senarai Lokasi</small> -->
+                  </div>
+                  <div class="box-body">
+                    <p class="m-a-0">
+                      <form role="form">
+                        <div class="row p-a">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">ID Pelajar</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" placeholder="ID Pelajar">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Nama Pelajar</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" placeholder="Nama Pelajar">
+                              </div>
+                            </div>
+  
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Program</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select">
+                                      <option>-Pilih-</option>
+                                      <option>Diploma</option>
+                                  </select>
+                              </div>
+                            </div>
+  
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Jurusan</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select">
+                                      <option>-Pilih-</option>
+                                      <option>Fisioterapi</option>
+                                  </select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Sesi</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" placeholder="Sesi">
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Jantina</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select">
+                                      <option>-Pilih-</option>
+                                      <option>Lelaki</option>
+                                      <option>Perempuan</option>
+                                  </select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Status Warganegara</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select">
+                                      <option>-Pilih-</option>
+                                      <option>Warganegara</option>
+                                      <option>Bukan Warganegara</option>
+                                  </select>
+                              </div>
+                            </div>
+
+                            
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Kaum/Bangsa</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select">
+                                      <option>-Pilih-</option>
+                                      <option>Melayu</option>
+                                  </select>
+                              </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Status Bumiputera</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select">
+                                      <option>-Pilih-</option>
+                                      <option>Bumiputera</option>
+                                      <option>Bukan Bumiputera</option>
+                                  </select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Agama</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select">
+                                      <option>-Pilih-</option>
+                                      <option>Islam</option>
+                                  </select>
+                              </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Cacat</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select">
+                                      <option>-Pilih-</option>
+                                      <option>Cacat</option>
+                                      <option>Tidak Cacat</option>
+                                  </select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Kumpulan Darah</label>
+                              <div class="col-sm-10">
+                                  <select class="form-control c-select">
+                                      <option>-Pilih-</option>
+                                      <option>A</option>
+                                      <option>B</option>
+                                      <option>AB</option>
+                                      <option>O</option>
+                                  </select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="" class="col-sm-2 form-control-label">Gambar</label>
+                              <div class="col-sm-10">
+                                  <input type="file" class="form-control" placeholder="Gambar">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row p-a text-right">
+                          <button type="submit" class="btn warn">Simpan</button>
+                        </div>
+                        
+                      </form>
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+
+    <script src="pljr_info.js"></script>
+    <!-- <script src="scripts/ajax.js"></script> -->

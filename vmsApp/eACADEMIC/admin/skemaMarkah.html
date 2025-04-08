@@ -1,0 +1,106 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Setting</span>
+			        </li>
+			        <li class="nav-item btn_create_sc_gradScheme" id="liRekodBaru">
+				        <a class="nav-link text-muted" id="btnNew" data-toggle="modal" data-target="#reg-skema" data-backdrop="static" data-keyboard="false">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <!-------------------------------------------------- Grading Scheme -------------------------------------------------->
+                <div class="box" id="divSkemaMarkah">
+                  <div class="box-header pink-800">
+                    <h3><b>GRADING SCHEME</b></h3>
+                  </div>
+                  <div class="box-body b-b">
+                    <p class="m-a-0">
+                      <div id="tableSkema">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table class="table table-striped m-b-none" id="skemaList"></table>
+                      </div>
+
+                      <!-- add grading scheme -->
+                      <div id="reg-skema" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <form role="form" id="formAddGred">
+                              <div class="modal-header pink-800">
+                                  <h5 class="modal-title">REGISTER GRADING SCHEME</h5>
+                              </div>
+                              <div class="modal-body  p-lg">
+                                <p>
+                                    <input type="hidden" id="clgId">
+                                    <div class="form-group row">
+                                      <label for="" class="col-sm-1 form-control-label">Course</label>
+                                      <div class="col-md-11">
+                                          <select class="form-control c-select slct2" id="gsc_name" onchange="checkId(this)" required></select>
+                                          <span class="text-danger" id="check"></span>
+                                      </div>
+                                    </div>
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                <input type="submit" class="btn info p-x-md " id="btnSubmit" value="Save">
+                              </div>
+                            </form>
+                          </div><!-- /.modal-content -->
+                        </div>
+                      </div>
+                    </p>
+                  </div>
+                </div><!-------------------------------------------------- end Grading Scheme -------------------------------------------------->
+
+
+                <!-------------------------------------------------- view item list -------------------------------------------------->
+                <div id="mdlItem" class="modal fade" data-backdrop="static">
+                  <div id="" class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header p-a-0 cyan-500">
+                          <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+                          <div class="p-a b-b">
+                            <span class="h5">ITEMS LIST</span>
+                          </div>
+                        </div>
+                        <div class="modal-body p-lg">
+                          <p class="m-a-0 ">
+                            <table id="listSkemaDet" class="table table-striped m-b-none"></table>
+                          </p>
+                        </div>
+                    </div><!-- /.modal-content -->
+                  </div>
+                </div><!-------------------------------------------------- end view item list -------------------------------------------------->
+
+              </div>
+        </div>
+    </div>
+
+    <script src="callFunction.js"></script>
+    <script src="skemaMarkah.js"></script>
+    <script src="capaian.js"></script>
+    

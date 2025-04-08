@@ -1,0 +1,297 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+  
+            <ul class="nav navbar-nav">
+              <li class="nav-item">
+                  <span class="navbar-item text-md">Registration</span>
+              </li>
+            </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+  
+    <!-- FOOTER INSERT -->
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+
+    <!-- <div class="modal" id="loading_modal" data-backdrop="static">
+        <div class="modal-dialog">
+          <div style="padding-top: 50%;" class="text-center text-white"><span class="fa fa-cog fa-spin fa-3x m-b"></span><br><i>Loading...</i></div>
+        </div>
+    </div> -->
+  
+    <div class="app-body">
+  
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box" style="margin-bottom: 100px;">
+                  <div class="box-header light-blue-900" data-toggle="collapse" href="#form_setup" style="cursor: pointer;" id="formCECT">
+                    <h3><b>CREDIT EXEMPTION APPLICATION</b><span class="fa fa-pencil pull-right"></span></h3>
+                  </div>
+                  <div class="box-body" id="divNew">
+                    <p class="m-a-0">
+                        <form id="form_setup" class="collapse" role="form">
+                            <div class="row p-a p-b-0">
+                                <input type="hidden" id="fk_cect">
+                                <div class="col-sm-6">
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-2 form-control-label">Student ID</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="studentid" placeholder="Student ID" readonly>
+                                        </div>
+                                    </div>
+            
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-2 form-control-label">Student Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="std_name" placeholder="Student Name" readonly>
+                                        </div>
+                                    </div>
+            
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-2 form-control-label">Programme</label>
+                                        <div class="col-sm-10">
+                                            <input type="hidden" class="form-control" id="pgm_id" placeholder="Programme" readonly>
+                                            <input type="text" class="form-control" id="programme" placeholder="Programme" readonly>
+                                        </div>
+                                    </div>
+            
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-2 form-control-label">Semester<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" id="std_semester" required placeholder="Semester">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row m-b-0">
+                                        <label for="" class="col-sm-2 form-control-label">Previous Level of Education<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-10">
+                                            <select id="std_edu" class="form-control c-select" required>
+                                                <option value="">-Choose-</option>
+                                                <option value="STPM">STPM</option>
+                                                <option value="Matriculation">Matriculation</option>
+                                                <option value="Diploma">Diploma</option>
+                                                <option value="Degree">Degree</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-2 form-control-label">Previous IPTA/IPTS<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="std_pre_universiti" placeholder="Previous IPTA/IPTS" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-2 form-control-label">Previous Programme<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="std_pre_program" placeholder="Previous Programme" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-2 form-control-label">Transcript</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group m-b">
+                                                <span class="input-group-addon" id="view_transkrip"></span>
+                                                <input type="file" class="form-control" id="std_transkrip" required>
+                                            </div>
+                                            <input type="hidden" class="form-control" id="exist_std_transkrip">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row m-b-0">
+                                        <label for="" class="col-sm-2 form-control-label">Processing Fees</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group m-b">
+                                                <span class="input-group-addon" id="view_fee"></span>
+                                                <input type="file" class="form-control" id="std_fee" required>
+                                            </div>
+                                            <input type="hidden" class="form-control" id="exist_std_fee" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row m-r-1 text-right" id="divButton">
+                                <button type="submit" class="btn info">Save</button>
+                            </div>
+                        </form>
+                        
+                        <hr>
+                        <div id="cect_det" class="p-l m-b-md">
+
+                            <div class="none" id="accordianSem_0">
+                                <div class="m-b" id="accordion">
+                                    <div class="panel box no-border m-b-xs">
+                                        <div class="box-header p-y-sm blue-grey-500 text-white">
+                                            <span id="appAdminCE" class="pull-right label text-sm"></span>
+                                            <a data-toggle="collapse" data-parent="#accordion" data-target="#c_0" class="" aria-expanded="false">
+                                                <b>Course List CE</b>
+                                            </a>
+                                        </div>
+                                        <div id="c_0" class="collapse" aria-expanded="true" >
+                                            <div class="card-body p-a">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p><b>Previous Level of Education : </b><span id="std_pre_programCE" class="text-uppercase"></span></p>
+                                                        <p><b>Previous IPTA/IPTS : </b><span  id="std_pre_universitiCE" class="text-uppercase"></span></p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p><b>Previous Programme : </b><span class="text-uppercase" id="std_pre_programCE"></span></p>
+                                                        <p><b>Status : </b><span class="text-uppercase" id="cect_statusCE">${field.cect_status}</span></p>
+                                                        <p ${hide}><b>Remark : </b><span class="text-uppercase" id="catatan_adminCE">${field.catatan_admin}</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer text-right">
+                                                <!-- <button type="button" class="btn btn-sm btn-outline-primary rounded Chkapprove btnView" ${hideApprove} onclick="addCectDet('${field.id}')"><i class="fa fa-fw fa-plus"></i> Add</button> -->
+                                            </div>
+                                            <h6 class="p-l-1 light-blue-700"><b>COURSE LIST</b></h6>
+                                            <textarea class="hidden" id="dataListCE"></textarea>
+                                            <table class="table table-striped" id="ceLIST"></table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="#tab0"></div>
+
+
+                        </div>
+                    </p>
+                  </div>
+                </div>
+
+
+                <!-------------------------------------------------- modal add course -------------------------------------------------->
+                <div id="mdlAddCourse" class="modal fade" data-backdrop="static">
+                    <div class="modal-dialog">
+                      <div class="modal-content" id="other">
+                          <form role="form" id="form_register">
+                            <div class="modal-header light-blue-900">
+                                <h5 class="modal-title">ADD COURSE</h5>
+                            </div>
+                            <div class="modal-body p-lg">
+                                <p>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 form-control-label">Course Code</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="pv_course_code" placeholder="Course Code" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 form-control-label">Course Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="pv_course_name" placeholder="Course Name" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 form-control-label">Credit Hours</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" id="pv_crt_hour" placeholder="Credit Hours" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 form-control-label">Grade</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="pv_grade" placeholder="Grade" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row ">
+                                        <label for="" class="col-sm-3 form-control-label">VMS Course</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control c-select slct2" id="course_code" required></select>
+                                        </div>
+                                    </div>
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                <input type="submit" class="btn info p-x-md" value="Save">
+                            </div>                                      
+                          </form>
+                      </div><!-- /.modal-content -->
+                    </div>
+                </div><!-------------------------------------------------- end modal add course -------------------------------------------------->
+
+
+                <!-------------------------------------------------- modal edit course -------------------------------------------------->
+                <div id="mdlUptCourse" class="modal fade" data-backdrop="static">
+                    <div class="modal-dialog">
+                      <div class="modal-content" id="other">
+                          <form role="form" id="form_upt">
+                            <div class="modal-header light-blue-900">
+                                <h5 class="modal-title">UPDATE COURSE</h5>
+                            </div>
+                            <div class="modal-body p-lg">
+                              <p>
+                                <input type="hidden" id="pk_id">
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 form-control-label">Course Code</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="upt_pv_course_code" placeholder="Course Code" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 form-control-label">Course Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="upt_pv_course_name" placeholder="Course Name" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 form-control-label">Credit Hours</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="upt_pv_crt_hour" placeholder="Credit Hours" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 form-control-label">Grade</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="upt_pv_grade" placeholder="Grade" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row ">
+                                    <label for="" class="col-sm-3 form-control-label">VMS Course</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control c-select slct2" id="upt_course_code" required></select>
+                                    </div>
+                                </div>
+                              </p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                              <input type="submit" class="btn success p-x-md" value="Update">
+                            </div>                                      
+                          </form>
+                      </div><!-- /.modal-content -->
+                    </div>
+                </div><!-------------------------------------------------- end modal edit course -------------------------------------------------->
+
+
+              </div>
+        </div>
+    </div>
+
+    <script src="callFunctionStd.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <script src="pljr_mohonCE.js?n=1"></script>

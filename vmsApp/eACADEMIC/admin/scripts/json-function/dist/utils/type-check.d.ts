@@ -1,0 +1,14 @@
+declare type TypeCheckFunction = (value: any) => boolean;
+declare type OneOfCheckFunction = (value: any, options: any[]) => boolean;
+declare const isDefined: TypeCheckFunction;
+declare const isNumber: TypeCheckFunction;
+declare const isNull: TypeCheckFunction;
+declare const isString: TypeCheckFunction;
+declare const isFunction: TypeCheckFunction;
+declare const isArray: TypeCheckFunction;
+declare const isArrayOfString: TypeCheckFunction;
+declare const isArrayOfObject: TypeCheckFunction;
+declare const isObject: TypeCheckFunction;
+declare const isOneOf: OneOfCheckFunction;
+declare const isSchemeToolsObject: TypeCheckFunction;
+export { isOneOf, isArray, isString, isNumber, isNull, isObject, isDefined, isFunction, isArrayOfString, isArrayOfObject, isSchemeToolsObject };

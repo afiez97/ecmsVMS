@@ -1,0 +1,221 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Polisi</span>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header lime-900">
+                    <h3><b>ATTENDANCE POLICY</b></h3>
+                    <small>Attendance Policy Settings</small>
+                  </div>
+                  <div class="box-body light lt">
+                    <p class="m-a-0">
+                      <div class="row">
+                      <div class=" col-lg-12">
+                        <div class="b-b nav-active-bg">
+                          <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                              <a class="nav-link active" href="#" data-toggle="tab" data-target="#tab1">Settings</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#" data-toggle="tab" data-target="#tab2">Warning Notifications</a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="tab-content p-a m-b-md" id="polisi">
+                          <div class="tab-pane animated fadeIn active text-muted" id="tab1">
+                            <!-- Tetapan -->
+                            
+                            <form role="form" id="form-uptPolicyAtd">
+                              <div class="form-group row">
+                                <label for="modKemaskini" class="col-lg-3 m-r-1 form-control-label font-weight-bold">
+                                  Update Mode</label>
+                                <div class="form-check form-check-inline">
+                                  <input type="hidden" id="page1" name="page" value="1">
+                                  <input class="form-check-input" type="radio" name="apl_attendance_mode" id="automatik" value="A">
+                                  <label class="form-check-label checkMode" for="automatik">Automatic</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="apl_attendance_mode" id="manual" value="M">
+                                  <label class="form-check-label checkMode" for="manual">Manual</label>
+                                </div>
+                              </div>
+                              
+                              <div class="form-group row hide-manual">
+                                <label for="rekodKehadiran" class="col-xs-12 col-lg-3 form-control-label font-weight-bold">Attendance Record Time</label>
+                                <div class="col-lg-8">
+                                  <div class="form-group row">
+                                    <div class="col-xs-2 col-lg-2">
+                                      <input type="text" class="form-control" id="apl_earlyin_dur">
+                                    </div>
+                                    <label for="apl_earlyin_dur" class="col-lg-6 form-control-label">minutes before class starts</label>
+                                  </div>
+
+                                  <div class="form-group row hide-manual">
+                                    <div class="col-xs-2 col-lg-2">
+                                      <input type="text" class="form-control" id="apl_earlyout_dur">
+                                    </div>
+                                    <label for="apl_earlyout_dur" class="col-lg-6 form-control-label">minutes after class starts</label>
+                                  </div>
+
+                                  <div class="form-group row hide-manual">
+                                    <div class="col-xs-2 col-lg-2">
+                                      <input type="text" class="form-control" id="apl_latein_dur">
+                                    </div>
+                                    <label for="apl_latein_dur" class="col-lg-6 form-control-label">minutes before class ends</label>
+                                  </div>
+
+                                  <div class="form-group row hide-manual">
+                                    <div class="col-xs-2 col-lg-2">
+                                      <input type="text" class="form-control" id="apl_lateout_dur">
+                                    </div>
+                                    <label for="apl_lateout_dur" class="col-lg-6 form-control-label">minutes after class ends</label>
+                                  </div>
+
+                                </div>
+                              </div>
+
+                              <div class="form-group row hide-manual">
+                                <label for="masaRefreshPaparan" class="col-lg-3 form-control-label">Display Refresh Time Interval</label>
+                                <div class="form-group row">
+                                  <div class="col-xs-2 col-lg-1">
+                                    <input type="text" class="form-control" id="apl_refresh_interval">
+                                  </div>
+                                  <label for="apl_refresh_interval" class="col-lg-6 form-control-label">milliseconds (eg: 1000 milliseconds = 1 seconds)</label>
+                                </div>
+                              </div>
+
+                              <div class="lime-200"><span class="uppercase font-weight-bold text-dark p-l-1">ABSENCE WARNING POLICY</span></div>
+                            
+                              <div class="form-group row">
+                                <div class="form-check m-l-3 m-t-2">
+                                  <input class="form-check-input" type="checkbox" value="A" id="apl_warning_status" name="apl_warning_status">
+                                  <label class="form-check-label" for="apl_warning_status">
+                                    Activate this policy
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <div class="col-xs-2 col-lg-1 m-l-1">
+                                  <input type="text" class="form-control" id="apl_warning_letter_param">
+                                </div>
+                                <label for="apl_warning_letter_param" class="col-lg-6 form-control-label">maximum number of absence
+
+                                </label>
+                              </div>
+                            
+                              <div class="col-lg-12 offset-xs-5 offset-lg-5 m-t-3">
+                                <button class="md-btn md-raised m-b-sm w-xs info" type="submit">Save</button>
+                              </div>
+                            </form>
+
+
+                          </div> <!-- Tetapan Polisi Ends Here -->
+                          <div class="tab-pane animated fadeIn text-muted" id="tab2">
+                            <!-- Notifikasi Amaran -->
+                            <form role="form" id="form-uptPolicyAtd-noti">
+                              <input type="hidden" id="page2" name="page" value="2">
+
+                            <table class="table">
+                              <tbody>
+                                <tr>
+                                  <td width="22%">
+                                    <label for="o1" class="form-control-label font-weight-bold">Send Warning Notification Through Email	</label>
+                                  </td>
+                                  <td>
+                                    <div class="form-check">
+                                      <input class="form-check-input m-t-1 m-l-1" type="checkbox" id="o1" name="o1" value="A">
+                                    </div>  
+                                  </td>
+                                </tr>
+                                <tr >
+                                  <td colspan="2">
+                                    <label class="form-control-label font-weight-bold">Send Notification To:</label>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <label for="o2" class="form-control-label font-weight-bold m-l-3" >Lecturer</label>
+                                  </td>
+                                  <td>
+                                    <div class="form-check">
+                                      <input class="form-check-input m-t-1 m-l-1" type="checkbox" id="o2" name="o2" value="A" >
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <label for="notifKumpulanPengguna" class="form-control-label font-weight-bold m-l-3">Group User</label>
+                                  </td>
+                                  <td class="p-l-0">
+                                    <div class="input-group select2-bootstrap-append m-l-1" style="width:50%">
+                                      <select id="multi-append" class="form-control" multiple  data-ui-jp="select2" data-ui-options="{theme: 'bootstrap'}" name="o3" >
+                                        <option value="">Choose...</option>
+                                          <!-- <option value="Admin Kemasukan dan Rekod">Admin Kemasukan dan Rekod</option>
+                                          <option value="Administrator">Administrator</option>
+                                          <option value="Admin Fakulti">Admin Fakulti</option>
+                                          <option value="Admin Kewanggan">Admin Kewanggan</option>
+                                          <option value="Admin Kejururawatan">Admin Kejururawatan</option>
+                                          <option value="Admin Pascasiswazah">Admin Pascasiswazah</option>
+                                          <option value="Dekan">Dekan</option>
+                                          <option value="HR Administrator">HR Administrator</option>
+                                          <option value="HR Employee">HR Employee</option>
+                                          <option value="Ketua Pengawas Peperiksaan">Ketua Pengawas Peperiksaan</option>
+                                          <option value="Pengguna1">Pengguna1</option>
+                                          <option value="Pensyarah">Pensyarah</option>
+                                          <option value="Sekreteriat Senat">Sekreteriat Senat</option>
+                                          <option value="Unit Peperiksaan">Unit Peperiksaan</option> -->
+                                      </select>
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" data-select2-open="multi-append">
+                                          <span class="fa fa-search"></span>
+                                        </button>
+                                      </span>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                              
+                            
+                            <div class="col-lg-12 offset-xs-5  offset-lg-5 m-t-3">
+                              <button class="md-btn md-raised m-b-sm w-xs info" type="submit">Save</button>
+                            </div>
+                            </form>
+
+                          </div><!-- Notifikasi Amaran Ends Here-->
+                        </div>
+                      </div>
+                    </p>
+                  </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+      <script src="scripts/ui-jp.js"></script>
+      <script src="scripts/ajax.js"></script>
+      <script src="pol_kehadiran.js"></script>
+      

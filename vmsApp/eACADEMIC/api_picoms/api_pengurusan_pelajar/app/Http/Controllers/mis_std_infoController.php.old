@@ -1,0 +1,747 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+use App\Models\stdTawaran;
+use App\Models\mis_prm_programme;
+use App\Models\mis_prm_curyear;
+use App\Models\mis_std_info;
+use App\Models\mis_std_parent;
+use App\Models\mis_std_registration;
+use App\Models\mis_std_academic;
+use App\Models\mis_std_financial;
+use App\Models\mis_std_status;
+
+class mis_std_infoController extends Controller
+{
+    // public function  __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
+    public function create(Request $request){
+
+        $std_studentid        = $request->input('std_studentid');
+        $sti_name             = $request->input('sti_name');
+        $sti_icno             = $request->input('sti_icno');
+        $pgm_id               = $request->input('pgm_id');
+        $crs_code             = $request->input('crs_code');
+        $sti_gender           = $request->input('sti_gender');
+        $sti_nationality      = $request->input('sti_nationality');
+        $sti_status_bumiputra      = $request->input('sti_status_bumiputra');
+        $sti_race             = $request->input('sti_race');
+        $sti_religion         = $request->input('sti_religion');
+        $sti_status_oku       = $request->input('sti_status_oku');
+        $sti_blood_type       = $request->input('sti_blood_type');
+        $sti_email            = $request->input('sti_email');
+        $sti_address_1        = $request->input('sti_address_1');
+        $sti_address_2        = $request->input('sti_address_2');
+        $sti_address_3        = $request->input('sti_address_3');
+        $sti_postcode         = $request->input('sti_postcode');
+        $sti_state            = $request->input('sti_state');
+        $sti_contactno_home   = $request->input('sti_contactno_home');
+        $sti_contactno_mobile = $request->input('sti_contactno_mobile');
+        $sti_bank_id          = $request->input('sti_bank_id');
+        $sti_bank_accountno   = $request->input('sti_bank_accountno');
+        $recordstatus         = $request->input('recordstatus');
+        // $sti_image            = $std_studentid.'_PROFILE';
+
+        $par_father_name             = $request->input('par_father_name');
+        $par_father_address          = $request->input('par_father_address');
+        $par_father_contactno        = $request->input('par_father_contactno');
+        $par_father_occupation       = $request->input('par_father_occupation');
+        $par_nextofkin               = $request->input('par_nextofkin');
+        $par_kin_address             = $request->input('par_kin_address');
+        $par_kin_contactno           = $request->input('par_kin_contactno');
+        $par_mother_name             = $request->input('par_mother_name');
+        $par_mother_address          = $request->input('par_mother_address');
+        $par_mother_contactno        = $request->input('par_mother_contactno');
+        $par_mother_occupation       = $request->input('par_mother_occupation');
+        $par_parent_relation         = $request->input('par_parent_relation');
+        $par_family_income           = $request->input('par_family_income');
+        $par_family_responsibility   = $request->input('par_family_responsibility');
+        $par_living_with             = $request->input('par_living_with');
+
+        $srg_payment_via             = $request->input('srg_payment_via');
+        $srg_payment_resit           = $request->input('srg_payment_resit');
+        $srg_payment_resitdoc        = $std_studentid.'_RESIT_NEW_REG';
+
+        $sta_muet                    = $request->input('sta_muet');
+        $sta_bm_spm                  = $request->input('sta_bm_spm');
+        $sta_bm_stpm                 = $request->input('sta_bm_stpm');
+        $sta_cert_doc                = $std_studentid.'_CERT';
+        $sta_spm_doc                 = $std_studentid.'_SPM';
+        $sta_stpm_doc                = $std_studentid.'_STPM';
+        $sta_diploma_doc             = $std_studentid.'_DIPLOMA';
+        $sta_degree_doc              = $std_studentid.'_DEGREE';
+
+        dd($request->file('sti_image'));
+        //PROFILE DOC
+        if($file = $request->hasFile('sti_image')) {
+        //     $destinationPath_image = public_path().'\profile' ;
+            $resitdoc_image = base64_encode(file_get_contents($request->file('sti_image')->getRealPath()));
+        }
+
+        //PROFILE
+        // $file_image = $request->file('sti_image') ;
+        // $fileExt_image = $file_image->getClientOriginalExtension(); 
+        // $resitdoc_image = $sti_image.'.'.$fileExt_image ;
+        // $destinationPath_image = public_path().'\profile' ;
+        // $file_image->move($destinationPath_image,$resitdoc_image);
+
+        //RECEIPT DOC
+        // if($file = $request->hasFile('srg_payment_resitdoc')) {
+            // $file = $request->file('srg_payment_resitdoc') ;
+            // $fileExt = $file->getClientOriginalExtension(); 
+            // $resitdoc = $srg_payment_resitdoc.'.'.$fileExt ;
+            // $destinationPath = public_path();
+            // // $destinationPath = public_path().'\resit' ;
+            // $file->move($destinationPath,$resitdoc);
+        // }
+
+        //CERT DOC
+            // $file_cert = $request->file('sta_cert_doc') ;
+            // $fileExt_cert = $file_cert->getClientOriginalExtension(); 
+            // $resitdoc_cert = $sta_cert_doc.'.'.$fileExt_cert ;
+            // $destinationPath_cert = public_path();
+            // // $destinationPath_cert = public_path().'\academic' ;
+            // $file_cert->move($destinationPath_cert,$resitdoc_cert);
+
+        //SPM DOC
+            // $file_spm = $request->file('sta_spm_doc') ;
+            // $fileExt_spm = $file_spm->getClientOriginalExtension(); 
+            // $resitdoc_spm = $sta_spm_doc.'.'.$fileExt_spm ;
+            // $destinationPath_spm = public_path();
+            // // $destinationPath_spm = public_path().'\academic' ;
+            // $file_spm->move($destinationPath_spm,$resitdoc_spm); 
+            
+        //STPM DOC
+            // $file_stpm = $request->file('sta_stpm_doc') ;
+            // $fileExt_stpm = $file_stpm->getClientOriginalExtension(); 
+            // $resitdoc_stpm = $sta_stpm_doc.'.'.$fileExt_stpm ;
+            // $destinationPath_stpm = public_path();
+            // // $destinationPath_stpm = public_path().'\academic' ;
+            // $file_stpm->move($destinationPath_stpm,$resitdoc_stpm);
+
+        //DIPLOMA DOC
+            // $file_diploma = $request->file('sta_diploma_doc') ;
+            // $fileExt_diploma = $file_diploma->getClientOriginalExtension(); 
+            // $resitdoc_diploma = $sta_diploma_doc.'.'.$fileExt_diploma ;
+            // $destinationPath_diploma = public_path();
+            // // $destinationPath_diploma = public_path().'\academic' ;
+            // $file_diploma->move($destinationPath_diploma,$resitdoc_diploma);
+
+        //DEGREE DOC
+            // $file_degree = $request->file('sta_degree_doc') ;
+            // $fileExt_degree = $file_degree->getClientOriginalExtension(); 
+            // $resitdoc_degree = $sta_degree_doc.'.'.$fileExt_degree ;
+            // $destinationPath_degree = public_path();
+            // // $destinationPath_degree = public_path().'\academic' ;
+            // $file_degree->move($destinationPath_degree,$resitdoc_degree);
+
+        $fin_fees                  = $request->input('fin_fees');
+
+        $sts_cur_year                = $request->input('sts_cur_year');
+        $sts_cur_intake              = $request->input('sts_cur_intake');
+        $sts_semester                = $request->input('sts_semester');
+        $sts_status                  = $request->input('sts_status');
+        $sts_date_joined             = $request->input('sts_date_joined');
+        $sts_date_complete           = $request->input('sts_date_complete');
+
+        
+        $salt = "RMY7nZ3+s8xpU1n0O*0o_EGfdoYtd|iU_AzhKCMoSu_xhh-e|~y8FOG*-xLZ";
+        $password     = hash("sha256", $sti_icno.$salt);
+    
+        $dataS = [
+            'std_studentid'       => $std_studentid ,
+            'sti_name'       => $sti_name ,
+            'sti_icno'       => $sti_icno ,
+            'pgm_id'      => $pgm_id ,
+            'crs_code' => $crs_code,
+            'sti_gender' => $sti_gender,
+            'sti_nationality' => $sti_nationality,
+            'sti_status_bumiputra' => $sti_status_bumiputra,
+            'sti_race' => $sti_race,
+            'sti_religion' => $sti_religion,
+            'sti_status_oku' => $sti_status_oku,
+            'sti_blood_type' => $sti_blood_type,
+            'sti_email' => $sti_email,
+            'sti_address_1' => $sti_address_1,
+            'sti_address_2' => $sti_address_2,
+            'sti_address_3' => $sti_address_3,
+            'sti_postcode' => $sti_postcode,
+            'sti_state' => $sti_state,
+            'sti_contactno_home' => $sti_contactno_home,
+            'sti_contactno_mobile' => $sti_contactno_mobile,
+            'sti_bank_id' => $sti_bank_id,
+            'sti_bank_accountno' => $sti_bank_accountno,
+            'recordstatus' => $recordstatus,
+            'sti_password' => $password,
+            'sti_image' => $resitdoc_image,
+            // 'sti_image_path' => $destinationPath_image,
+        ];
+
+        $dataP = [
+            'std_studentid'       => $std_studentid ,
+            'pgm_id'      => $pgm_id ,
+            'par_father_name'       => $par_father_name ,
+            'par_father_address' => $par_father_address,
+            'par_father_contactno' => $par_father_contactno,
+            'par_father_occupation' => $par_father_occupation,
+            'par_nextofkin' => $par_nextofkin,
+            'par_kin_address' => $par_kin_address,
+            'par_kin_contactno' => $par_kin_contactno,
+            'par_mother_name' => $par_mother_name,
+            'par_mother_address' => $par_mother_address,
+            'par_mother_contactno' => $par_mother_contactno,
+            'par_mother_occupation' => $par_mother_occupation,
+            'par_parent_relation' => $par_parent_relation,
+            'par_family_income' => $par_family_income,
+            'par_family_responsibility' => $par_family_responsibility,
+            'par_living_with' => $par_living_with,
+            'recordstatus' => $recordstatus,
+        ];
+
+        $dataV = [
+            'std_studentid' => $std_studentid,
+            'pgm_id' => $pgm_id,
+            'srg_payment_via' => $srg_payment_via,
+            'srg_payment_resit' => $srg_payment_resit,
+            // 'srg_payment_resitdoc' => $resitdoc,
+            'recordstatus' => $recordstatus,
+        ];
+
+        $dataA = [
+            'std_studentid' => $std_studentid,
+            'sta_muet' => $sta_muet,
+            'sta_bm_spm' => $sta_bm_spm,
+            'sta_bm_stpm' => $sta_bm_stpm,
+            // 'sta_cert_doc' => $resitdoc_cert,
+            // 'sta_spm_doc' => $resitdoc_spm,
+            // 'sta_stpm_doc' => $resitdoc_stpm,
+            // 'sta_diploma_doc' => $resitdoc_diploma,
+            // 'sta_degree_doc' => $resitdoc_degree,
+            'recordstatus' => $recordstatus,
+        ];
+
+        $dataF = [
+            'std_studentid' => $std_studentid,
+            'fin_fees' => $fin_fees,
+            'recordstatus' => $recordstatus,
+        ];
+
+        $dataT = [
+            'std_studentid' => $std_studentid,
+            'pgm_id' => $pgm_id,
+            'sts_cur_year' => $sts_cur_year,
+            'sts_cur_intake' => $sts_cur_intake,
+            'sts_semester' => $sts_semester,
+            'sts_status' => $sts_status,
+            'sts_date_joined' => $sts_date_joined,
+            'sts_date_complete' => $sts_date_complete,
+            'recordstatus' => $recordstatus,
+        ];
+
+
+        $infoS = mis_std_info::create($dataS);
+        $infoP = mis_std_parent::create($dataP);
+        $infoV = mis_std_registration::create($dataV);
+        $infoA = mis_std_academic::create($dataA);
+        $infoF = mis_std_financial::create($dataF);
+        $infoT = mis_std_status::create($dataT);
+
+        if($infoS){
+
+            return response()->json([
+                'success'=>true,
+                'messages'=>'Successfully Register',
+                'data'=>$infoS,
+            ],201);
+        }
+        else {
+            return response()->json([
+                'success'=>false,
+                'messages'=>'Registration Failed',
+                'data'=>'',
+            ],400);
+        }
+    }
+
+    public function update(Request $request){
+
+        $std_studentid        = $request->input('std_studentid');
+        $sti_name             = $request->input('sti_name');
+        $sti_icno             = $request->input('sti_icno');
+        $pgm_id               = $request->input('pgm_id');
+        $crs_code             = $request->input('crs_code');
+        $sti_gender           = $request->input('sti_gender');
+        $sti_nationality      = $request->input('sti_nationality');
+        $sti_status_bumiputra      = $request->input('sti_status_bumiputra');
+        $sti_race             = $request->input('sti_race');
+        $sti_religion         = $request->input('sti_religion');
+        $sti_status_oku       = $request->input('sti_status_oku');
+        $sti_blood_type       = $request->input('sti_blood_type');
+        $sti_email            = $request->input('sti_email');
+        $sti_address_1        = $request->input('sti_address_1');
+        $sti_address_2        = $request->input('sti_address_2');
+        $sti_address_3        = $request->input('sti_address_3');
+        $sti_postcode         = $request->input('sti_postcode');
+        $sti_state            = $request->input('sti_state');
+        $sti_contactno_home   = $request->input('sti_contactno_home');
+        $sti_contactno_mobile = $request->input('sti_contactno_mobile');
+        $sti_bank_id          = $request->input('sti_bank_id');
+        $sti_bank_accountno   = $request->input('sti_bank_accountno');
+        $recordstatus         = $request->input('recordstatus');
+        $resitdoc_image            = $request->input('sti_image');
+
+        $par_father_name             = $request->input('par_father_name');
+        $par_father_address          = $request->input('par_father_address');
+        $par_father_contactno        = $request->input('par_father_contactno');
+        $par_father_occupation       = $request->input('par_father_occupation');
+        $par_nextofkin               = $request->input('par_nextofkin');
+        $par_kin_address             = $request->input('par_kin_address');
+        $par_kin_contactno           = $request->input('par_kin_contactno');
+        $par_mother_name             = $request->input('par_mother_name');
+        $par_mother_address          = $request->input('par_mother_address');
+        $par_mother_contactno        = $request->input('par_mother_contactno');
+        $par_mother_occupation       = $request->input('par_mother_occupation');
+        $par_parent_relation         = $request->input('par_parent_relation');
+        $par_family_income           = $request->input('par_family_income');
+        $par_family_responsibility   = $request->input('par_family_responsibility');
+        $par_living_with             = $request->input('par_living_with');
+
+        $srg_payment_via             = $request->input('srg_payment_via');
+        $srg_payment_resit           = $request->input('srg_payment_resit');
+        $srg_payment_resitdoc        = '';
+
+        $sta_muet                    = $request->input('sta_muet');
+        $sta_bm_spm                  = $request->input('sta_bm_spm');
+        $sta_bm_stpm                 = $request->input('sta_bm_stpm');
+        $sta_cert_doc                = '';
+        $sta_spm_doc                 = '';
+        $sta_stpm_doc                = '';
+        $sta_diploma_doc             = '';
+        $sta_degree_doc              = '';
+        $image              = '';
+
+
+        //PROFILE DOC
+        if($file = $request->hasFile('sti_image')) {
+            // dd('1');
+            // $destinationPath_image = public_path().'\profile' ;
+            $image = base64_encode(file_get_contents($request->file('sti_image')->getRealPath()));
+        }else{
+            // dd('2');
+            // $destinationPath_image = mis_std_infoController::getCurrFile('mis_std_info','sti_image_path',$std_studentid);
+            $info_image = mis_std_infoController::getCurrFile('mis_std_info','sti_image',$std_studentid);
+            $image = $info_image -> sti_image;
+        }
+
+        //RECEIPT DOC
+        if($file = $request->hasFile('srg_payment_resitdoc')) {
+            $srg_payment_resitdoc = $std_studentid.'_RESIT_NEW_REG';
+            $file = $request->file('srg_payment_resitdoc') ;
+            $fileExt = $file->getClientOriginalExtension(); 
+            $resitdoc = $srg_payment_resitdoc.'.'.$fileExt ;
+            $destinationPath = public_path();
+            // $destinationPath = public_path().'\resit' ;
+            $file->move($destinationPath,$resitdoc);
+            
+        }else{
+            $info_resit = mis_std_infoController::getCurrFile('mis_std_registration','srg_payment_resitdoc',$std_studentid);
+            $resitdoc = $info_resit -> srg_payment_resitdoc;
+        }
+
+        //CERT DOC
+        if($file = $request->hasFile('sta_cert_doc')) {
+            $sta_cert_doc = $std_studentid.'_CERT';
+            $file_cert = $request->file('sta_cert_doc') ;
+            $fileExt_cert = $file_cert->getClientOriginalExtension(); 
+            $resitdoc_cert = $sta_cert_doc.'.'.$fileExt_cert ;
+            $destinationPath_cert = public_path();
+            // $destinationPath_cert = public_path().'\academic' ;
+            $file_cert->move($destinationPath_cert,$resitdoc_cert);
+            
+        }else{
+            $info_cert = mis_std_infoController::getCurrFile('mis_std_academic','sta_cert_doc',$std_studentid);
+            $resitdoc_cert = $info_cert -> sta_cert_doc;
+        }
+
+        //SPM DOC
+        if($file = $request->hasFile('sta_spm_doc')) {
+            $sta_spm_doc = $std_studentid.'_SPM';
+            $file_spm = $request->file('sta_spm_doc') ;
+            $fileExt_spm = $file_spm->getClientOriginalExtension(); 
+            $resitdoc_spm = $sta_spm_doc.'.'.$fileExt_spm ;
+            $destinationPath_spm = public_path() ;
+            // $destinationPath_spm = public_path().'\academic' ;
+            $file_spm->move($destinationPath_spm,$resitdoc_spm); 
+            
+        }else{
+            $info_spm = mis_std_infoController::getCurrFile('mis_std_academic','sta_spm_doc',$std_studentid);
+            $resitdoc_spm = $info_spm -> resitdoc_spm;
+        }
+
+        //STPM DOC
+        if($file = $request->hasFile('sta_stpm_doc')) {
+            $sta_stpm_doc = $std_studentid.'_STPM';
+            $file_stpm = $request->file('sta_stpm_doc') ;
+            $fileExt_stpm = $file_stpm->getClientOriginalExtension(); 
+            $resitdoc_stpm = $sta_stpm_doc.'.'.$fileExt_stpm ;
+            $destinationPath_stpm = public_path() ;
+            // $destinationPath_stpm = public_path().'\academic' ;
+            $file_stpm->move($destinationPath_stpm,$resitdoc_stpm);
+            
+        }else{
+            $info_stpm = mis_std_infoController::getCurrFile('mis_std_academic','sta_stpm_doc',$std_studentid);
+            $resitdoc_stpm = $info_stpm -> sta_stpm_doc;
+        }
+
+        //DIPLOMA DOC
+        if($file = $request->hasFile('sta_diploma_doc')) {
+            $sta_diploma_doc = $std_studentid.'_DIPLOMA';
+            $file_diploma = $request->file('sta_diploma_doc') ;
+            $fileExt_diploma = $file_diploma->getClientOriginalExtension(); 
+            $resitdoc_diploma = $sta_diploma_doc.'.'.$fileExt_diploma ;
+            $destinationPath_diploma = public_path() ;
+            // $destinationPath_diploma = public_path().'\academic' ;
+
+            $info_diploma = mis_std_infoController::getCurrFile('mis_std_academic','sta_diploma_doc',$std_studentid);
+            //unlink($destinationPath_diploma."/".$info_diploma -> sta_diploma_doc);
+            $file_diploma->move($destinationPath_diploma,$resitdoc_diploma);
+            
+        }else{
+            $info_diploma = mis_std_infoController::getCurrFile('mis_std_academic','sta_diploma_doc',$std_studentid);
+            $resitdoc_diploma = $info_diploma -> sta_diploma_doc;
+        }
+
+        //DEGREE DOC
+        if($file = $request->hasFile('sta_degree_doc')) {
+            $sta_degree_doc = $std_studentid.'_DEGREE';
+            $file_degree = $request->file('sta_degree_doc') ;
+            $fileExt_degree = $file_degree->getClientOriginalExtension(); 
+            $resitdoc_degree = $sta_degree_doc.'.'.$fileExt_degree ;
+            // $destinationPath_degree = public_path().'\academic' ;
+            $destinationPath_degree = public_path() ;
+            $file_degree->move($destinationPath_degree,$resitdoc_degree);
+            
+        }else{
+            $info_degree = mis_std_infoController::getCurrFile('mis_std_academic','sta_degree_doc',$std_studentid);
+            $resitdoc_degree = $info_degree -> sta_degree_doc;
+        }
+
+        $fin_fees                  = $request->input('fin_fees');
+
+        $sts_cur_year                = $request->input('sts_cur_year');
+        $sts_cur_intake              = $request->input('sts_cur_intake');
+        $sts_semester                = $request->input('sts_semester');
+        $sts_status                  = $request->input('sts_status');
+        $sts_date_joined             = $request->input('sts_date_joined');
+        $sts_date_complete           = $request->input('sts_date_complete');
+
+        
+        // $salt = "RMY7nZ3+s8xpU1n0O*0o_EGfdoYtd|iU_AzhKCMoSu_xhh-e|~y8FOG*-xLZ";
+        // $password     = hash("sha256", $sti_icno.$salt);
+        // dd($image);
+
+        $dataS = [
+            'std_studentid'       => $std_studentid ,
+            'sti_name'       => $sti_name ,
+            'sti_icno'       => $sti_icno ,
+            'pgm_id'      => $pgm_id ,
+            'crs_code' => $crs_code,
+            'sti_gender' => $sti_gender,
+            'sti_nationality' => $sti_nationality,
+            'sti_status_bumiputra' => $sti_status_bumiputra,
+            'sti_race' => $sti_race,
+            'sti_religion' => $sti_religion,
+            'sti_status_oku' => $sti_status_oku,
+            'sti_blood_type' => $sti_blood_type,
+            'sti_email' => $sti_email,
+            'sti_address_1' => $sti_address_1,
+            'sti_address_2' => $sti_address_2,
+            'sti_address_3' => $sti_address_3,
+            'sti_postcode' => $sti_postcode,
+            'sti_state' => $sti_state,
+            'sti_contactno_home' => $sti_contactno_home,
+            'sti_contactno_mobile' => $sti_contactno_mobile,
+            'sti_bank_id' => $sti_bank_id,
+            'sti_bank_accountno' => $sti_bank_accountno,
+            'recordstatus' => $recordstatus,
+            // 'sti_password' => $password,
+            // 'sti_image' => $image,
+            // 'sti_image_path' => $destinationPath_image,
+        ];
+
+        $dataP = [
+            'std_studentid'       => $std_studentid ,
+            'pgm_id'      => $pgm_id ,
+            'par_father_name'       => $par_father_name ,
+            'par_father_address' => $par_father_address,
+            'par_father_contactno' => $par_father_contactno,
+            'par_father_occupation' => $par_father_occupation,
+            'par_nextofkin' => $par_nextofkin,
+            'par_kin_address' => $par_kin_address,
+            'par_kin_contactno' => $par_kin_contactno,
+            'par_mother_name' => $par_mother_name,
+            'par_mother_address' => $par_mother_address,
+            'par_mother_contactno' => $par_mother_contactno,
+            'par_mother_occupation' => $par_mother_occupation,
+            'par_parent_relation' => $par_parent_relation,
+            'par_family_income' => $par_family_income,
+            'par_family_responsibility' => $par_family_responsibility,
+            'par_living_with' => $par_living_with,
+            'recordstatus' => $recordstatus,
+        ];
+
+        $dataV = [
+            'std_studentid' => $std_studentid,
+            'pgm_id' => $pgm_id,
+            'srg_payment_via' => $srg_payment_via,
+            'srg_payment_resit' => $srg_payment_resit,
+            'srg_payment_resitdoc' => $resitdoc,
+            'recordstatus' => $recordstatus,
+        ];
+
+        $dataA = [
+            'std_studentid' => $std_studentid,
+            'sta_muet' => $sta_muet,
+            'sta_bm_spm' => $sta_bm_spm,
+            'sta_bm_stpm' => $sta_bm_stpm,
+            'sta_cert_doc' => $resitdoc_cert,
+            'sta_spm_doc' => $resitdoc_spm,
+            'sta_stpm_doc' => $resitdoc_stpm,
+            'sta_diploma_doc' => $resitdoc_diploma,
+            'sta_degree_doc' => $resitdoc_degree,
+            'recordstatus' => $recordstatus,
+        ];
+
+        $dataF = [
+            'std_studentid' => $std_studentid,
+            'fin_fees' => $fin_fees,
+            'recordstatus' => $recordstatus,
+        ];
+
+        $dataT = [
+            'std_studentid' => $std_studentid,
+            'pgm_id' => $pgm_id,
+            'sts_cur_year' => $sts_cur_year,
+            'sts_cur_intake' => $sts_cur_intake,
+            'sts_semester' => $sts_semester,
+            'sts_status' => $sts_status,
+            'sts_date_joined' => $sts_date_joined,
+            'sts_date_complete' => $sts_date_complete,
+            'recordstatus' => $recordstatus,
+        ];
+
+        $infoS = mis_std_info::where('std_studentid',$std_studentid)-> update($dataS);
+        $infoP = mis_std_parent::where('std_studentid',$std_studentid)-> update($dataP);
+        $infoV = mis_std_registration::where('std_studentid',$std_studentid)-> update($dataV);
+        $infoA = mis_std_academic::where('std_studentid',$std_studentid)-> update($dataA);
+        $infoF = mis_std_financial::where('std_studentid',$std_studentid)-> update($dataF);
+        $infoT = mis_std_status::where('std_studentid',$std_studentid)-> update($dataT);
+
+        if($infoS){
+
+            return response()->json([
+                'success'=>true,
+                'messages'=>'Successfully Register',
+                'data'=>$infoS,
+            ],201);
+        }
+        else {
+            return response()->json([
+                'success'=>false,
+                'messages'=>'Registration Failed',
+                'data'=>'',
+            ],400);
+        }
+    }
+
+    public function list(Request $request){
+
+        // $first_name     = $request->input('first_name');
+        // $mykad          = $request->input('mykad');
+        // $offer_choice   = $request->input('offer_choice');
+
+        // if($first_name == '' && $mykad == ''){
+
+        //     $register = mis_std_info::select('*')
+        //             ->leftJoin('mis_prm_programme', 'mis_prm_programme.pgm_id', '=', 'mis_std_info.pgm_id')
+        //             ->leftJoin('mis_std_status', 'mis_std_status.pgm_id', '=', 'mis_prm_programme.pgm_id')
+        //             ->where('mis_std_info.recordstatus',1)
+        //             ->get();
+
+        // }
+        // else {
+
+        //     $register = mis_std_info::select('*')
+        //             ->leftJoin('mis_prm_programme', 'mis_prm_programme.pgm_id', '=', 'mis_std_info.pgm_id')
+        //             ->where('mis_std_info.recordstatus',1);
+
+        //     if($first_name != ''){ //SEARCHING BY STUDENT ID [IF SEARCHING FIELD NOT EMPTY]
+        //         $register = $register->where('first_name', 'like', '%' . $first_name . '%');
+        //     }
+
+        //     if($mykad != ''){ //SEARCHING BY STUDENT ID [IF SEARCHING FIELD NOT EMPTY]
+        //         $register = $register->where('mykad', 'like', '%' . $mykad . '%');
+        //     }
+            
+        //     if($offer_choice != ''){ //SEARCHING BY PROGRAM ID [IF SEARCHING FIELD NOT EMPTY]
+        //         $register = $register->where('offer_choice',$offer_choice);
+        //     }
+
+        //     $register = $register->get();
+
+        // }
+        
+        $register = mis_std_info::select('*')
+                    ->leftJoin('mis_std_parent', 'mis_std_parent.std_studentid', '=', 'mis_std_info.std_studentid')
+                    ->leftJoin('mis_prm_programme', 'mis_prm_programme.pgm_id', '=', 'mis_std_info.pgm_id')
+                    ->leftJoin('mis_std_registration', 'mis_std_registration.std_studentid', '=', 'mis_std_info.std_studentid')
+                    ->leftJoin('mis_std_status', 'mis_std_status.std_studentid', '=', 'mis_std_info.std_studentid')
+                    ->leftJoin('mis_std_financial', 'mis_std_financial.std_studentid', '=', 'mis_std_info.std_studentid')
+                    ->leftJoin('mis_std_academic', 'mis_std_academic.std_studentid', '=', 'mis_std_info.std_studentid')
+                    ->leftJoin('mis_status', 'mis_status.sts_status_code', '=', 'mis_std_status.sts_status')
+                    ->where([['mis_std_info.recordstatus','!=','DEL']])
+                    ->get();
+
+        if($register){
+
+            return response()->json([
+                'success'=>true,
+                'messages'=>'Proses Berjaya',
+                'data'=>$register,
+            ],201);
+        }
+        else {
+            return response()->json([
+                'success'=>false,
+                'messages'=>'Proses Gagal',
+                'data'=>'',
+            ],400);
+        }
+    }
+
+    public function show($id){
+
+        $tawaran = mis_std_info::select('*')
+        ->leftJoin('mis_prm_programme', 'mis_prm_programme.pgm_id', '=', 'std_info.offer_choice')
+        ->where('mis_std_info.recordstatus',1)
+        ->where('std_info',$id)->first();
+
+        if($tawaran){
+
+            return response()->json([
+                'success'=>true,
+                'messages'=>'Proses Berjaya',
+                'data'=>$tawaran,
+            ],201);
+        }
+        else {
+            return response()->json([
+                'success'=>false,
+                'messages'=>'Proses Gagal',
+                'data'=>'',
+            ],400);
+        }
+    }
+
+    public function getCurrFile($tablename,$param1,$param2){
+
+        $output = '';
+
+        if($tablename == 'mis_std_registration'){
+            $output = mis_std_registration::select($param1)
+            ->where([
+                ['mis_std_registration.recordstatus','!=','DEL'],
+                ['mis_std_registration.std_studentid','=',$param2]
+                ])->first();
+
+        }else if($tablename == 'mis_std_academic'){
+            $output = mis_std_academic::select($param1)
+            ->where([
+                ['mis_std_academic.recordstatus','!=','DEL'],
+                ['mis_std_academic.std_studentid','=',$param2]
+                ])->first();
+
+        }else if($tablename == 'mis_std_info'){
+            $output = mis_std_info::select($param1)
+            ->where([
+                ['mis_std_info.recordstatus','!=','DEL'],
+                ['mis_std_info.std_studentid','=',$param2]
+                ])->first();
+
+        }
+        
+            return $output;
+    }
+
+    public function studentIdChecking(Request $request){
+        $input = $request->input('input');
+
+        $query = mis_std_info::select('std_studentid')->where([
+            ['std_studentid','=',$input],
+            ['recordstatus','!=','DEL']
+            ])->get();
+
+        if ($query)  {
+            return response()->json([
+                'success'=>true,
+                'message'=>"Carian Berjaya!",
+                'data' => $query
+            ],200);
+        }
+        else{
+            return response()->json([
+                'success'=>false,
+                'message'=>"Carian Gagal!",
+                'data'=>''
+            ],404);
+        }
+    }
+
+    public function delete(Request $request) {
+        $std_studentid = $request->input('std_studentid');
+        $recordstatus = $request->input('recordstatus');
+
+        $infoS = mis_std_info::where('std_studentid',$std_studentid) -> update([
+            'recordstatus' => $recordstatus,
+        ]);
+        $infoP = mis_std_parent::where('std_studentid',$std_studentid) -> update([
+            'recordstatus' => $recordstatus,
+        ]);
+        $infoV = mis_std_registration::where('std_studentid',$std_studentid) -> update([
+            'recordstatus' => $recordstatus,
+        ]);
+        $infoA = mis_std_academic::where('std_studentid',$std_studentid) -> update([
+            'recordstatus' => $recordstatus,
+        ]);
+        $infoF = mis_std_financial::where('std_studentid',$std_studentid) -> update([
+            'recordstatus' => $recordstatus,
+        ]);
+        $infoT = mis_std_status::where('std_studentid',$std_studentid) -> update([
+            'recordstatus' => $recordstatus,
+        ]);
+
+
+        if ($infoS)  {
+            return response()->json([
+                'success'=>true,
+                'message'=>"Remove Success!",
+                'data' => $infoS
+            ],200);
+        }
+        else{
+            return response()->json([
+                'success'=>false,
+                'message'=>"Failed to Remove!",
+                'data'=>''
+            ],404);
+        }
+    }
+}

@@ -1,0 +1,251 @@
+
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Hostel</span>
+			        </li>
+              <!-- <li class="nav-item">
+				        <a class="nav-link text-muted" data-toggle="modal" data-target="#hostel-booking">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li> -->
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+              <!-- list student booking hostel -->
+              <div class="box">
+                <div class="box-header lime-900">
+                  <h3><b>BOOKING LIST</b></h3>
+                </div>
+                <div class="box-body b-b">
+                  <p class="m-a-0">
+                    <div id="">
+                      <textarea class="hidden" id="dataList"></textarea>
+                      <table id="bookingList" class="table table-striped m-b-none"></table>
+                    </div>
+                  </p>
+                </div>
+              </div>
+                
+
+              <!-------------------------------------------------- modal add Booking --------------------------------------------------
+              <div id="hostel-booking" class="modal fade" data-backdrop="static">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                      <form role="form" id="formAddBooking">
+                        <div class="modal-header lime-900">
+                            <h5 class="modal-title">ADD BOOKING</h5>
+                        </div>
+                        <div class="modal-body p-lg">
+                          <p>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 form-control-label">Matric No.<span class="text-danger"> *</span></label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control c-select" id="stud_id" required>
+                                    <span class="text-danger" id="check"></span>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label class="col-sm-3 form-control-label">Name</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="stud_name" readonly>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-3 form-control-label">Check-in Date</label>
+                                  <div class="col-sm-9">
+                                    <input type="date" class="form-control" id="expected_chkInDate">
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="" class="col-sm-3 form-control-label">Status</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control c-select" id="booking_status" required>
+                                      <option value="">- Choose -</option>
+                                      <option value="New">New</option>
+                                      <option value="Accept">Accept</option>
+                                      <option value="Reject">Reject</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 form-control-label">Campus<span class="text-danger"> *</span></label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control c-select fieldHstl" id="branch_id" required></select>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row" title="Select Campus to view list">
+                                  <label class="col-sm-3 form-control-label">Hostel<span class="text-info"> *</span></label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control c-select fieldHstl" id="hostel_id" required></select>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row" title="Select Hostel to view list">
+                                  <label class="col-sm-3 form-control-label">Block<span class="text-info"> *</span></label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control c-select fieldHstl" id="block_id" required></select>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row" title="Select Block to view list">
+                                  <label class="col-sm-3 form-control-label">Room<span class="text-info"> *</span></label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control c-select fieldHstl" id="room_id" required></select>
+                                  </div>
+                                </div>
+                                <-- <div class="form-group row" title="Select Room to view list">
+                                  <label class="col-sm-3 form-control-label">Bed<span class="text-info"> *</span></label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control c-select" id="bed_id" required></select>
+                                  </div>
+                                </div> --
+                              </div>
+                            </div>
+                          </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                          <input type="submit" class="btn info p-x-md" id="btnSaveStd" value="Save">
+                        </div>                                      
+                      </form>
+                  </div><-- /.modal-content --
+                </div>
+              </div><-------------------------------------------------- end modal add Booking -------------------------------------------------->
+
+
+                <!-------------------------------------------------- modal update Booking -------------------------------------------------->
+                <div id="updateBooking" class="modal fade" data-backdrop="static">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form role="form" id="formUptBooking">
+                          <div class="modal-header lime-900">
+                              <h5 class="modal-title">UPDATE BOOKING</h5>
+                          </div>
+                          <div class="modal-body p-lg">
+                            <p>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <input type="hidden" id="pk_id">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Matric No.</label>
+                                    <div class="col-sm-9">
+                                      <input type="text" class="form-control" id="upt_stud_id" readonly>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Name</label>
+                                    <div class="col-sm-9">
+                                      <input type="text" class="form-control" id="upt_stud_name" readonly>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-3 form-control-label">Check-in Date</label>
+                                    <div class="col-sm-9">
+                                      <input type="date" class="form-control" id="upt_expected_chkInDate">
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <label for="" class="col-sm-3 form-control-label">Status</label>
+                                    <div class="col-sm-9">
+                                      <select class="form-control c-select" id="upt_booking_status" required>
+                                        <option value="">- Choose -</option>
+                                        <option value="New">New</option>
+                                        <option value="Accept">Accept</option>
+                                        <option value="Reject">Reject</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Campus<span class="text-danger"> *</span></label>
+                                    <div class="col-sm-9">
+                                      <select class="form-control c-select" id="upt_branch_id" required></select>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row" title="Select Campus to view list">
+                                    <label class="col-sm-3 form-control-label">Hostel<span class="text-info"> *</span></label>
+                                    <div class="col-sm-9">
+                                      <select class="form-control c-select" id="upt_hostel_id" required></select>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row" title="Select Hostel to view list">
+                                    <label class="col-sm-3 form-control-label">Block <span class="text-info">*</span></label>
+                                    <div class="col-sm-9">
+                                      <select class="form-control c-select" id="upt_block_id" required></select>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row" title="Select Block to view list">
+                                    <label class="col-sm-3 form-control-label">Room <span class="text-info">*</span></label>
+                                    <div class="col-sm-9">
+                                      <select class="form-control c-select" id="upt_room_id" required></select>
+                                    </div>
+                                  <div class="col-sm-9 push-sm-3 text-danger">
+                                  <div id="label_status" class="hidden">Room Not Available</div>
+
+                                  </div>
+                                  </div>
+                                  <!-- <div class="form-group row" title="Select Room to view list">
+                                    <label for="" class="col-sm-3 form-control-label">Bed <span class="text-info">*</span></label>
+                                    <div class="col-sm-9">
+                                      <select class="form-control c-select" id="upt_bed_id" required></select>
+                                    </div>
+                                  </div> -->
+                                </div>
+                              </div>
+                            </p>
+                          </div>
+                          <div class="modal-footer ">
+                            <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+                            <input type="submit" class="btn success p-x-md btnUpdate" value="Update">
+                          </div>                                      
+                        </form>
+                    </div><!-- /.modal-content -->
+                  </div>
+                </div><!-------------------------------------------------- end modal update Booking -------------------------------------------------->
+
+              </div>
+        </div>
+    </div>
+
+    <script src="callFunction.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <script src="hostel_booking.js?n=2"></script>

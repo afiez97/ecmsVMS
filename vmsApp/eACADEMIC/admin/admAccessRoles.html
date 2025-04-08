@@ -1,0 +1,1256 @@
+<!-- HEADER INSERT -->
+<div class="app-header white bg b-b">
+  <div class="navbar" data-pjax>
+    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+      <i class="ion-navicon"></i>
+    </a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a id="infoPljr"><span class="navbar-item text-md">Access Roles Configuration</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-muted" data-toggle="modal" data-target="#reg-program" id="btnMdlAdd">
+          <span class="">
+            <i class="fa fa-fw fa-plus"></i>
+            <span class="hidden-sm-down">New Record</span>
+          </span>|
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link text-info divSem" data-toggle="modal" data-target="#topModalNew">
+          <span class="">
+            <i class="fa fa-fw fa-upload"></i>
+            <span class="hidden-sm-down">List Roles</span>
+          </span>
+        </a>
+      </li>
+
+
+    </ul>
+    <!-- nabar right -->
+    <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+  </div>
+</div>
+
+<!-- FOOTER INSERT -->
+<div class="app-footer white bg p-a b-t">
+  <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+  <span class="text-sm text-muted">&copy; Copyright.</span>
+</div>
+
+<div class="app-body">
+
+  <!-- CONTENT START -->
+  <div style="min-height: mh-200;">
+    <div class="padding">
+      <!-- <i class="material-icons md-24">(.*)</i>   <em>$1</em>-->
+      <div class="box nav-active-border b-info">
+        <ul class="nav nav-md">
+          <li class="nav-item inline">
+            <a class="nav-link active" href="#" data-toggle="tab" data-target="#tab_1">
+              <span class="text-md">List Roles</span>
+              <small class="block text-muted hidden-sm-down">Haa la</small>
+            </a>
+          </li>
+          <li class="nav-item inline">
+            <a class="nav-link" href="#" data-toggle="tab" data-target="#tab_2">
+              <span class="text-md">List Student</span>
+              <small class="block text-muted hidden-sm-down">betul</small>
+            </a>
+          </li>
+        
+        </ul>
+        <div class="tab-content clear b-t">
+          <div class="tab-pane active" id="tab_1">
+              <div class="box-body">
+                <div class="col-sm-10">
+                  <div class="">
+                    <h6><b>INFO</b></h6>
+                  </div>
+                  <div class="box-body">
+                    <div>
+                      <div class="table-wrap">
+                        <textarea class="hidden" id="dataListsuperadmin"></textarea>
+                        <table id="list_superadmin" class="table table-striped superadmin footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-center breakpoint-lg" data-sorting="true" style="display: table;">
+                          <thead>
+                            <tr class="footable-filtering">
+                              <th colspan="5">
+                                
+                                  <div class="form-group footable-filtering-search"><label class="sr-only">Search</label>
+                                    <div class="input-group"><input type="text" class="form-control" placeholder="Search...">
+                                      <div class="input-group-btn"><button type="button" class="btn btn-primary"><span class="fooicon fooicon-search"></span></button><button type="button" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                          <li class="dropdown-header">Search for:</li>
+                                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">No.</label></a></li>
+                                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">Person In Charge</label></a>
+                                          </li>
+                                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">Staff ID</label></a></li>
+                                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">Role</label></a></li>
+                                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">Action</label></a></li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                
+                              </th>
+                            </tr>
+                            <tr class="footable-header">
+                              <th class="footable-sortable footable-first-visible" style="display: table-cell;">No.<span class="fooicon fooicon-sort"></span></th>
+                              <th class="footable-sortable" style="display: table-cell;">Person In
+                                Charge<span class="fooicon fooicon-sort"></span></th>
+                              <th class="footable-sortable" style="display: table-cell;">Staff
+                                ID<span class="fooicon fooicon-sort"></span></th>
+                              <th class="footable-sortable" style="display: table-cell;">Role<span class="fooicon fooicon-sort"></span></th>
+                              <th class="footable-sortable footable-last-visible" style="display: table-cell;">Action<span class="fooicon fooicon-sort"></span></th>
+                            </tr>
+                          </thead>
+                          <tfoot></tfoot>
+                          <tbody>
+                            <tr>
+                              <td class="footable-first-visible" style="display: table-cell;">1</td>
+                              <td style="display: table-cell;"><span class="text-uppercase">HAFIZAH
+                                  BINTI MUHAMMAD SYAKIR</span></td>
+                              <td style="display: table-cell;"><span class="text-uppercase">PT0479</span></td>
+                              <td style="display: table-cell;">Super Admin</td>
+                              <td class="footable-last-visible" style="display: table-cell;"><button class="btn btn-icon danger" title="Delete" onclick="delData('17')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                            </tr>
+                            <tr>
+                              <td class="footable-first-visible" style="display: table-cell;">2</td>
+                              <td style="display: table-cell;"><span class="text-uppercase">FIRA
+                                  SYUHADA BINTI AZMAN</span></td>
+                              <td style="display: table-cell;"><span class="text-uppercase">SK0728</span></td>
+                              <td style="display: table-cell;">Super Admin</td>
+                              <td class="footable-last-visible" style="display: table-cell;"><button class="btn btn-icon danger" title="Delete" onclick="delData('34')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                            </tr>
+                            <tr>
+                              <td class="footable-first-visible" style="display: table-cell;">3</td>
+                              <td style="display: table-cell;"><span class="text-uppercase">Admin
+                                  6</span></td>
+                              <td style="display: table-cell;"><span class="text-uppercase">user6</span></td>
+                              <td style="display: table-cell;">Super Admin</td>
+                              <td class="footable-last-visible" style="display: table-cell;"><button class="btn btn-icon danger" title="Delete" onclick="delData('1')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                            </tr>
+                            <tr>
+                              <td class="footable-first-visible" style="display: table-cell;">4</td>
+                              <td style="display: table-cell;"><span class="text-uppercase">SITI
+                                  NURAIN BINTI ROSDI</span></td>
+                              <td style="display: table-cell;"><span class="text-uppercase">PT0732</span></td>
+                              <td style="display: table-cell;">Super Admin</td>
+                              <td class="footable-last-visible" style="display: table-cell;"><button class="btn btn-icon danger" title="Delete" onclick="delData('18')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                            </tr>
+                            <tr>
+                              <td class="footable-first-visible" style="display: table-cell;">5</td>
+                              <td style="display: table-cell;"><span class="text-uppercase">Admin
+                                  4</span></td>
+                              <td style="display: table-cell;"><span class="text-uppercase">user4</span></td>
+                              <td style="display: table-cell;">Super Admin</td>
+                              <td class="footable-last-visible" style="display: table-cell;"><button class="btn btn-icon danger" title="Delete" onclick="delData('20')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                            </tr>
+                            <tr>
+                              <td class="footable-first-visible" style="display: table-cell;">6</td>
+                              <td style="display: table-cell;"><span class="text-uppercase">NOOR
+                                  HISHAM BIN JALIL</span></td>
+                              <td style="display: table-cell;"><span class="text-uppercase">SK0688</span></td>
+                              <td style="display: table-cell;">Super Admin</td>
+                              <td class="footable-last-visible" style="display: table-cell;"><button class="btn btn-icon danger" title="Delete" onclick="delData('35')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                            </tr>
+                            <tr>
+                              <td class="footable-first-visible" style="display: table-cell;">7</td>
+                              <td style="display: table-cell;"><span class="text-uppercase">MOHAMMAD
+                                  ASHRI BIN ABU HASSAN</span></td>
+                              <td style="display: table-cell;"><span class="text-uppercase">PT1001</span></td>
+                              <td style="display: table-cell;">Super Admin</td>
+                              <td class="footable-last-visible" style="display: table-cell;"><button class="btn btn-icon danger" title="Delete" onclick="delData('36')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                            </tr>
+                            <tr>
+                              <td class="footable-first-visible" style="display: table-cell;">8</td>
+                              <td style="display: table-cell;"><span class="text-uppercase">Admin
+                                  5</span></td>
+                              <td style="display: table-cell;"><span class="text-uppercase">user5</span></td>
+                              <td style="display: table-cell;">Super Admin</td>
+                              <td class="footable-last-visible" style="display: table-cell;"><button class="btn btn-icon danger" title="Delete" onclick="delData('37')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+  
+          </div>
+          <div class="tab-pane" id="tab_2">
+  
+            <div class="box-body">
+ <!-- senarai pelajar -->
+ <div id="listStudent">
+  <textarea class="hidden" id="dataList"></textarea>
+  <div class="row">
+    <div class="col-md-12">
+      <h5 class="text-success">Student Register
+        <button type="button" class="btn btn-sm btn-outline-primary pull-right super_admin"
+          data-toggle="modal" onclick="modalNew()" data-ui-toggle-class="zoom"
+          data-ui-target="#animate"><i class="fa fa-fw fa-plus"></i> Register</button>
+      </h5>
+      <hr>
+      <form id="search_form" class="m-b-3">
+        <div class="row">
+          <div class="col-md-4 m-t-2"><select class="form-control c-select select2-hidden-accessible"
+              id="pgm_filter" required="" tabindex="-1" aria-hidden="true">
+              <option value="">- Choose Programme -</option>
+              <option value="12">DLM - DIPLOMA IN LOGISTICS MANAGEMENT</option>
+              <option value="3">MBA - MASTER IN BUSINESS ADMINISTRATION</option>
+              <option value="6">BSC - BACHELOR OF INTERNATIONAL SUPPLY CHAIN MANAGEMENT (HONOURS)</option>
+              <option value="7">BHR - BACHELOR OF BUSINESS ADMINISTRATION (HONOURS) (HUMAN RESOURCE
+                MANAGEMENT)</option>
+              <option value="11">DHM - DIPLOMA IN HOTEL MANAGEMENT</option>
+              <option value="13">DHR - DIPLOMA IN HUMAN RESOURCE MANAGEMENT</option>
+              <option value="14">DEC - DIPLOMA IN EARLY CHILDHOOD EDUCATION</option>
+              <option value="15">DBM - DIPLOMA IN BUSINESS MANAGEMENT</option>
+              <option value="17">DPY - DIPLOMA IN PSYCHOLOGY</option>
+              <option value="18">DIS - DIPLOM A IN ISLAMIC STUDIES</option>
+              <option value="2">PNG - DOCTOR OF PHILOSOPHY (PHD) IN NURSING</option>
+              <option value="5">MNG - MASTER IN NURSING</option>
+              <option value="8">DNS - DIPLOMA IN NURSING SCIENCES</option>
+              <option value="10">PBR - POST BASIC RENAL NURSING</option>
+              <option value="20">DMA - DIPLOMA IN MEDICAL ASSISTANT</option>
+              <option value="25">DPH - DIPLOMA IN PHYSIOTHERAPY</option>
+              <option value="26">DOT - DIPLOMA IN OCCUPATIONAL THERAPY</option>
+              <option value="35">PNG_PT - DOCTOR OF PHILOSOPHY (Phd) IN NURSING</option>
+              <option value="31">BNS - BACHELOR OF NURSING SCIENCE (HONOURS)</option>
+              <option value="37">DMH - DIPLOMA IN MEDICAL AND HEALTH SCIENCES</option>
+            </select><span class="select2 select2-container select2-container--bootstrap" dir="ltr"><span
+                class="selection"><span
+                  class="select2-selection select2-selection--single form-control c-select"
+                  role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+                  aria-labelledby="select2-pgm_filter-container"><span class="select2-selection__rendered"
+                    id="select2-pgm_filter-container" title="- Choose Programme -">- Choose Programme
+                    -</span><span class="select2-selection__arrow" role="presentation"><b
+                      role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                aria-hidden="true"></span></span></div>
+          <div class="col-md-4 m-t-2"><select class="form-control c-select select2-hidden-accessible"
+              id="intake_filter" required="" tabindex="-1" aria-hidden="true">
+              <option value="">- Choose Intake -</option>
+              <option value="OCT-2024">OCT-2024</option>
+              <option value="SEP-2024">SEP-2024</option>
+              <option value="JUL-2024">JUL-2024</option>
+              <option value="APR-2024">APR-2024</option>
+              <option value="JAN-2024">JAN-2024</option>
+              <option value="DEC-2024">DEC-2024</option>
+              <option value="SEP-2023">SEP-2023</option>
+              <option value="APR-2023">APR-2023</option>
+              <option value="OCT-2023">OCT-2023</option>
+              <option value="JUL-2023">JUL-2023</option>
+              <option value="JAN-2023">JAN-2023</option>
+              <option value="DEC-2023">DEC-2023</option>
+              <option value="JUN-2023">JUN-2023</option>
+              <option value="SEP-2022">SEP-2022</option>
+              <option value="OCT-2022">OCT-2022</option>
+              <option value="JUL-2022">JUL-2022</option>
+              <option value="JAN-2022">JAN-2022</option>
+              <option value="DEC-2022">DEC-2022</option>
+              <option value="APR-2022">APR-2022</option>
+              <option value="OCT-2021">OCT-2021</option>
+              <option value="SEP-2021">SEP-2021</option>
+              <option value="JUL-2021">JUL-2021</option>
+              <option value="JAN-2021">JAN-2021</option>
+              <option value="DEC-2021">DEC-2021</option>
+              <option value="APR-2021">APR-2021</option>
+              <option value="SEP-2020">SEP-2020</option>
+              <option value="APR-2020">APR-2020</option>
+              <option value="JUL-2020">JUL-2020</option>
+              <option value="DEC-2020">DEC-2020</option>
+              <option value="JUL-2019">JUL-2019</option>
+              <option value="JAN-2019">JAN-2019</option>
+              <option value="DEC-2019">DEC-2019</option>
+              <option value="JUL-2018">JUL-2018</option>
+            </select><span class="select2 select2-container select2-container--bootstrap" dir="ltr"><span
+                class="selection"><span
+                  class="select2-selection select2-selection--single form-control c-select"
+                  role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+                  aria-labelledby="select2-intake_filter-container"><span
+                    class="select2-selection__rendered" id="select2-intake_filter-container"
+                    title="- Choose Intake -">- Choose Intake -</span><span
+                    class="select2-selection__arrow" role="presentation"><b
+                      role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                aria-hidden="true"></span></span></div>
+          <div class="col-md-4 m-t-2"><button type="submit" class="btn btn-info"><i
+                class="fa fa-search"></i> Go</button></div>
+        </div>
+      </form>
+      <table
+        class="table table-bordered table-striped m-b-none footable footable-8 footable-filtering footable-filtering-right footable-paging footable-paging-center breakpoint breakpoint-lg"
+        data-sorting="true" id="tableStudent" style="display: table;">
+        <thead>
+          <tr class="footable-filtering">
+            <th colspan="4">
+              <form class="form-inline">
+                <div class="form-group footable-filtering-search"><label class="sr-only">Search</label>
+                  <div class="input-group"><input type="text" class="form-control"
+                      placeholder="Search...">
+                    <div class="input-group-btn"><button type="button" class="btn btn-primary"><span
+                          class="fooicon fooicon-search"></span></button><button type="button"
+                        class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                      <ul class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-header">Search for:</li>
+                        <li><a class="checkbox"><label><input type="checkbox"
+                                checked="checked">Name</label></a></li>
+                        <li><a class="checkbox"><label><input type="checkbox" checked="checked">IC
+                              No.</label></a></li>
+                        <li><a class="checkbox"><label><input type="checkbox"
+                                checked="checked">Programme</label></a></li>
+                        <li><a class="checkbox"><label><input type="checkbox"
+                                checked="checked">Status</label></a></li>
+                        <li><a class="checkbox"><label><input type="checkbox"
+                                checked="checked">Action</label></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </th>
+          </tr>
+          <tr class="footable-header">
+            <th class="footable-sortable footable-first-visible" style="display: table-cell;">Name<span
+                class="fooicon fooicon-sort"></span></th>
+            <th class="footable-sortable" style="display: table-cell;">IC No.<span
+                class="fooicon fooicon-sort"></span></th>
+            <th class="footable-sortable" style="display: none;">Programme<span
+                class="fooicon fooicon-sort"></span></th>
+            <th class="footable-sortable" style="display: table-cell;">Status<span
+                class="fooicon fooicon-sort"></span></th>
+            <th class="footable-sortable footable-last-visible" style="display: table-cell;">Action<span
+                class="fooicon fooicon-sort"></span></th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr class="footable-paging">
+            <td colspan="4">
+              <div class="footable-pagination-wrapper">
+                <ul class="pagination">
+                  <li class="footable-page-nav disabled" data-page="first"><a class="footable-page-link"
+                      href="#">«</a></li>
+                  <li class="footable-page-nav disabled" data-page="prev"><a class="footable-page-link"
+                      href="#">‹</a></li>
+                  <li class="footable-page-nav disabled" data-page="prev-limit"><a
+                      class="footable-page-link" href="#">...</a></li>
+                  <li class="footable-page visible active" data-page="1"><a class="footable-page-link"
+                      href="#">1</a></li>
+                  <li class="footable-page visible" data-page="2"><a class="footable-page-link"
+                      href="#">2</a></li>
+                  <li class="footable-page visible" data-page="3"><a class="footable-page-link"
+                      href="#">3</a></li>
+                  <li class="footable-page visible" data-page="4"><a class="footable-page-link"
+                      href="#">4</a></li>
+                  <li class="footable-page visible" data-page="5"><a class="footable-page-link"
+                      href="#">5</a></li>
+                  <li class="footable-page" data-page="6"><a class="footable-page-link" href="#">6</a>
+                  </li>
+                  <li class="footable-page" data-page="7"><a class="footable-page-link" href="#">7</a>
+                  </li>
+                  <li class="footable-page" data-page="8"><a class="footable-page-link" href="#">8</a>
+                  </li>
+                  <li class="footable-page" data-page="9"><a class="footable-page-link" href="#">9</a>
+                  </li>
+                  <li class="footable-page" data-page="10"><a class="footable-page-link" href="#">10</a>
+                  </li>
+
+                  <li class="footable-page-nav" data-page="next-limit"><a class="footable-page-link"
+                      href="#">...</a></li>
+                  <li class="footable-page-nav" data-page="next"><a class="footable-page-link"
+                      href="#">›</a></li>
+                  <li class="footable-page-nav" data-page="last"><a class="footable-page-link"
+                      href="#">»</a></li>
+                </ul>
+                <div class="divider"></div><span class="label label-default">Showing 1 to 10 of 3546
+                  data</span>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr>
+            <td class="footable-first-visible" style="display: table-cell;"><span
+                class="footable-toggle fooicon fooicon-plus"></span><b>BHR09230025</b><br>ALHAM KHAIQAL
+              BIN KHAIDER</td>
+            <td style="display: table-cell;">031016020201</td>
+            <td style="display: none;">BACHELOR OF BUSINESS ADMINISTRATION (HONOURS) (HUMAN RESOURCE
+              MANAGEMENT)</td>
+            <td style="display: table-cell;"><span class="label rounded green">Active</span></td>
+            <td class="footable-last-visible" style="display: table-cell;"><button
+                class="btn btn-icon m-b-1" title="Update" onclick="loadData('0')"
+                data-ui-toggle-class="zoom" data-ui-target="#animate"><i
+                  class="fa fa-bars"></i></button><button class="btn btn-link text-danger m-b-1"
+                onclick="del('BHR09230025')" title="Remove"><i class="fa fa-times"></i></button></td>
+          </tr>
+          <tr>
+            <td class="footable-first-visible" style="display: table-cell;"><span
+                class="footable-toggle fooicon fooicon-plus"></span><b>DEC12230031</b><br>KARTIKAH BINTI
+              AHMAD</td>
+            <td style="display: table-cell;">910121016248</td>
+            <td style="display: none;">DIPLOMA IN EARLY CHILDHOOD EDUCATION</td>
+            <td style="display: table-cell;"><span class="label rounded green">Active</span></td>
+            <td class="footable-last-visible" style="display: table-cell;"><button
+                class="btn btn-icon m-b-1" title="Update" onclick="loadData('1')"
+                data-ui-toggle-class="zoom" data-ui-target="#animate"><i
+                  class="fa fa-bars"></i></button><button class="btn btn-link text-danger m-b-1"
+                onclick="del('DEC12230031')" title="Remove"><i class="fa fa-times"></i></button></td>
+          </tr>
+          <tr>
+            <td class="footable-first-visible" style="display: table-cell;"><span
+                class="footable-toggle fooicon fooicon-plus"></span><b>DBM09230055</b><br>MUHAMMAD ZUL
+              AZIM BIN ABDUL RAHIM</td>
+            <td style="display: table-cell;">041228140909</td>
+            <td style="display: none;">DIPLOMA IN BUSINESS MANAGEMENT</td>
+            <td style="display: table-cell;"><span class="label rounded secondary">Missing In
+                Action</span></td>
+            <td class="footable-last-visible" style="display: table-cell;"><button
+                class="btn btn-icon m-b-1" title="Update" onclick="loadData('2')"
+                data-ui-toggle-class="zoom" data-ui-target="#animate"><i
+                  class="fa fa-bars"></i></button><button class="btn btn-link text-danger m-b-1"
+                onclick="del('DBM09230055')" title="Remove"><i class="fa fa-times"></i></button></td>
+          </tr>
+          <tr>
+            <td class="footable-first-visible" style="display: table-cell;"><span
+                class="footable-toggle fooicon fooicon-plus"></span><b>DBM09220002</b><br>AHMAD
+              LUQMANURHAKIM BIN AHMAD AZMAN</td>
+            <td style="display: table-cell;">040909031113</td>
+            <td style="display: none;">DIPLOMA IN BUSINESS MANAGEMENT</td>
+            <td style="display: table-cell;"><span class="label rounded secondary">Missing In
+                Action</span></td>
+            <td class="footable-last-visible" style="display: table-cell;"><button
+                class="btn btn-icon m-b-1" title="Update" onclick="loadData('3')"
+                data-ui-toggle-class="zoom" data-ui-target="#animate"><i
+                  class="fa fa-bars"></i></button><button class="btn btn-link text-danger m-b-1"
+                onclick="del('DBM09220002')" title="Remove"><i class="fa fa-times"></i></button></td>
+          </tr>
+          <tr>
+            <td class="footable-first-visible" style="display: table-cell;"><span
+                class="footable-toggle fooicon fooicon-plus"></span><b>MNG07210004</b><br>ZAIDAH BINTI
+              ZAKARIA</td>
+            <td style="display: table-cell;">790916035756</td>
+            <td style="display: none;">MASTER IN NURSING</td>
+            <td style="display: table-cell;"><span class="label rounded green">Active</span></td>
+            <td class="footable-last-visible" style="display: table-cell;"><button
+                class="btn btn-icon m-b-1" title="Update" onclick="loadData('4')"
+                data-ui-toggle-class="zoom" data-ui-target="#animate"><i
+                  class="fa fa-bars"></i></button><button class="btn btn-link text-danger m-b-1"
+                onclick="del('MNG07210004')" title="Remove"><i class="fa fa-times"></i></button></td>
+          </tr>
+          <tr>
+            <td class="footable-first-visible" style="display: table-cell;"><span
+                class="footable-toggle fooicon fooicon-plus"></span><b>MNG07210003</b><br>ZAHARIAH BINTI
+              ALIAS</td>
+            <td style="display: table-cell;">751212055036</td>
+            <td style="display: none;">MASTER IN NURSING</td>
+            <td style="display: table-cell;"><span class="label rounded green">Active</span></td>
+            <td class="footable-last-visible" style="display: table-cell;"><button
+                class="btn btn-icon m-b-1" title="Update" onclick="loadData('5')"
+                data-ui-toggle-class="zoom" data-ui-target="#animate"><i
+                  class="fa fa-bars"></i></button><button class="btn btn-link text-danger m-b-1"
+                onclick="del('MNG07210003')" title="Remove"><i class="fa fa-times"></i></button></td>
+          </tr>
+          <tr>
+            <td class="footable-first-visible" style="display: table-cell;"><span
+                class="footable-toggle fooicon fooicon-plus"></span><b>MNG07210002</b><br>MUHAINI BINTI
+              MOHAMED</td>
+            <td style="display: table-cell;">791125065398</td>
+            <td style="display: none;">MASTER IN NURSING</td>
+            <td style="display: table-cell;"><span class="label rounded green">Active</span></td>
+            <td class="footable-last-visible" style="display: table-cell;"><button
+                class="btn btn-icon m-b-1" title="Update" onclick="loadData('6')"
+                data-ui-toggle-class="zoom" data-ui-target="#animate"><i
+                  class="fa fa-bars"></i></button><button class="btn btn-link text-danger m-b-1"
+                onclick="del('MNG07210002')" title="Remove"><i class="fa fa-times"></i></button></td>
+          </tr>
+          <tr>
+            <td class="footable-first-visible" style="display: table-cell;"><span
+                class="footable-toggle fooicon fooicon-plus"></span><b>MNG07210001</b><br>AMIZAH BINTI
+              SAHARIN</td>
+            <td style="display: table-cell;">770912015848</td>
+            <td style="display: none;">MASTER IN NURSING</td>
+            <td style="display: table-cell;"><span class="label rounded green">Active</span></td>
+            <td class="footable-last-visible" style="display: table-cell;"><button
+                class="btn btn-icon m-b-1" title="Update" onclick="loadData('7')"
+                data-ui-toggle-class="zoom" data-ui-target="#animate"><i
+                  class="fa fa-bars"></i></button><button class="btn btn-link text-danger m-b-1"
+                onclick="del('MNG07210001')" title="Remove"><i class="fa fa-times"></i></button></td>
+          </tr>
+          <tr>
+            <td class="footable-first-visible" style="display: table-cell;"><span
+                class="footable-toggle fooicon fooicon-plus"></span><b>DPY09220030</b><br>ZUHAIRI BIN
+              JOHARI</td>
+            <td style="display: table-cell;">041015141035</td>
+            <td style="display: none;">DIPLOMA IN PSYCHOLOGY</td>
+            <td style="display: table-cell;"><span class="label rounded green">Active</span></td>
+            <td class="footable-last-visible" style="display: table-cell;"><button
+                class="btn btn-icon m-b-1" title="Update" onclick="loadData('8')"
+                data-ui-toggle-class="zoom" data-ui-target="#animate"><i
+                  class="fa fa-bars"></i></button><button class="btn btn-link text-danger m-b-1"
+                onclick="del('DPY09220030')" title="Remove"><i class="fa fa-times"></i></button></td>
+          </tr>
+          <tr>
+            <td class="footable-first-visible" style="display: table-cell;"><span
+                class="footable-toggle fooicon fooicon-plus"></span><b>DMH09220014</b><br>AFFAN SYAHIZ BIN
+              AMIR</td>
+            <td style="display: table-cell;">040202060383</td>
+            <td style="display: none;">DIPLOMA IN MEDICAL AND HEALTH SCIENCES</td>
+            <td style="display: table-cell;"><span class="label rounded green">Active</span></td>
+            <td class="footable-last-visible" style="display: table-cell;"><button
+                class="btn btn-icon m-b-1" title="Update" onclick="loadData('9')"
+                data-ui-toggle-class="zoom" data-ui-target="#animate"><i
+                  class="fa fa-bars"></i></button><button class="btn btn-link text-danger m-b-1"
+                onclick="del('DMH09220014')" title="Remove"><i class="fa fa-times"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>             
+            </div>
+            
+          </div>
+  
+       
+        </div>
+      </div>
+  </div>
+    <div style=" margin-bottom: 50px;" class="col-md-10 offset-md-1 mt-2">
+              senarai pelajar
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-body">
+             
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-md-12 hidden">
+          <div class="box">
+            <div class="box-body">
+              <div id="listOfferStudent">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h5 class="text-info">
+                      <textarea class="hidden" name="tawaran_lists" id="tawaran_lists" cols="30" rows="10"></textarea>
+                      <p>Student Offer
+                        <button type="button" class="btn btn-sm btn-outline-primary pull-right" data-toggle="modal"
+                          data-target="#mdlUpload"><i class="fa fa-upload"></i> Upload</button>
+                      </p>
+                    </h5>
+                    <hr>
+                    <table class="table table-bordered table-striped m-b-none" data-sorting="true"
+                      id="tableOfferStudent"></table>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+
+
+     
+
+    </div>
+  </div>
+
+
+
+
+
+ 
+ <!-- top modal -->
+ <div class="modal fade" id="topModalNew">
+  <div class="modal-top white b-b" style="height:100vh">
+    <div class="row-col">
+      <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+      <div class="p-a b-b">
+        <span class="h5">Peranan Sebagai Lecturer</span>
+      </div>
+      <div class="row-row">
+        <div class="row-body">
+          <div class="row-inner">
+            <div class="row p-a-2">
+
+              <div class="col-sm-12" id="">
+                <div class="box" id="">
+                  <div class="box-body">
+                    <p class="m-a-0">
+                    </p>
+                    <div class="row p-a">
+                      <div class="col-md-12 m-b-2">
+                        <!-- <button data-toggle="collapse"  href="#addCurAcademic" class="btn btn-outline-success"><i class="fa fa-plus-circle"></i> Academic Session</button>  <br> -->
+                        <button data-toggle="collapse" data-target="#addCurAcademic"
+                          class="btn btn-outline-success collapsed" id="academicButton" aria-expanded="false">
+                          <i class="fa fa-plus-circle"></i> Senarai Staff
+                        </button>
+                        <p class="alert alert-info m-t-2" id="display_response">Create/Update Academic Session</p>
+                        <div class="box-body collapse" id="addCurAcademic" aria-expanded="false"
+                          style="height: 0px;">
+                          <form id="form_std_curAcademic">
+                            <div class="row p-a">
+                              <div class="col-sm-10">
+                                <div class="">
+                                  <h6><b>INFO</b></h6>
+                                </div>
+                                <div class="box-body">
+                                  <div>
+                                    <div class="table-wrap">
+                                      <textarea class="hidden" id="dataListsuperadmin"></textarea>
+                                      <table id="list_superadmin"
+                                        class="table table-striped superadmin footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-center breakpoint-lg"
+                                        data-sorting="true" style="display: table;">
+                                        <thead>
+                                          <tr class="footable-filtering">
+                                            <th colspan="5">
+                                              <form class="form-inline">
+                                                <div class="form-group footable-filtering-search"><label
+                                                    class="sr-only">Search</label>
+                                                  <div class="input-group"><input type="text" class="form-control"
+                                                      placeholder="Search...">
+                                                    <div class="input-group-btn"><button type="button"
+                                                        class="btn btn-primary"><span
+                                                          class="fooicon fooicon-search"></span></button><button
+                                                        type="button"
+                                                        class="btn btn-default dropdown-toggle"><span
+                                                          class="caret"></span></button>
+                                                      <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li class="dropdown-header">Search for:</li>
+                                                        <li><a class="checkbox"><label><input type="checkbox"
+                                                                checked="checked">No.</label></a></li>
+                                                        <li><a class="checkbox"><label><input type="checkbox"
+                                                                checked="checked">Person In Charge</label></a>
+                                                        </li>
+                                                        <li><a class="checkbox"><label><input type="checkbox"
+                                                                checked="checked">Staff ID</label></a></li>
+                                                        <li><a class="checkbox"><label><input type="checkbox"
+                                                                checked="checked">Role</label></a></li>
+                                                        <li><a class="checkbox"><label><input type="checkbox"
+                                                                checked="checked">Action</label></a></li>
+                                                      </ul>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </form>
+                                            </th>
+                                          </tr>
+                                          <tr class="footable-header">
+                                            <th class="footable-sortable footable-first-visible"
+                                              style="display: table-cell;">No.<span
+                                                class="fooicon fooicon-sort"></span></th>
+                                            <th class="footable-sortable" style="display: table-cell;">Person In
+                                              Charge<span class="fooicon fooicon-sort"></span></th>
+                                            <th class="footable-sortable" style="display: table-cell;">Staff
+                                              ID<span class="fooicon fooicon-sort"></span></th>
+                                            <th class="footable-sortable" style="display: table-cell;">Role<span
+                                                class="fooicon fooicon-sort"></span></th>
+                                            <th class="footable-sortable footable-last-visible"
+                                              style="display: table-cell;">Action<span
+                                                class="fooicon fooicon-sort"></span></th>
+                                          </tr>
+                                        </thead>
+                                        <tfoot></tfoot>
+                                        <tbody>
+                                          <tr>
+                                            <td classs="footable-first-visible" style="display: table-cell;">1</td>
+                                            <td style="display: table-cell;"><span class="text-uppercase">HAFIZAH
+                                                BINTI MUHAMMAD SYAKIR</span></td>
+                                            <td style="display: table-cell;"><span
+                                                class="text-uppercase">PT0479</span></td>
+                                            <td style="display: table-cell;">Super Admin</td>
+                                            <td class="footable-last-visible" style="display: table-cell;"><button
+                                                class="btn btn-icon danger" title="Delete"
+                                                onclick="delData('17')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button>
+                                              
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                            <td class="footable-first-visible" style="display: table-cell;">2</td>
+                                            <td style="display: table-cell;"><span class="text-uppercase">FIRA
+                                                SYUHADA BINTI AZMAN</span></td>
+                                            <td style="display: table-cell;"><span
+                                                class="text-uppercase">SK0728</span></td>
+                                            <td style="display: table-cell;">Super Admin</td>
+                                            <td class="footable-last-visible" style="display: table-cell;"><button
+                                                class="btn btn-icon danger" title="Delete"
+                                                onclick="delData('34')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                                          </tr>
+                                          <tr>
+                                            <td class="footable-first-visible" style="display: table-cell;">3</td>
+                                            <td style="display: table-cell;"><span class="text-uppercase">Admin
+                                                6</span></td>
+                                            <td style="display: table-cell;"><span
+                                                class="text-uppercase">user6</span></td>
+                                            <td style="display: table-cell;">Super Admin</td>
+                                            <td class="footable-last-visible" style="display: table-cell;"><button
+                                                class="btn btn-icon danger" title="Delete"
+                                                onclick="delData('1')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                                          </tr>
+                                          <tr>
+                                            <td class="footable-first-visible" style="display: table-cell;">4</td>
+                                            <td style="display: table-cell;"><span class="text-uppercase">SITI
+                                                NURAIN BINTI ROSDI</span></td>
+                                            <td style="display: table-cell;"><span
+                                                class="text-uppercase">PT0732</span></td>
+                                            <td style="display: table-cell;">Super Admin</td>
+                                            <td class="footable-last-visible" style="display: table-cell;"><button
+                                                class="btn btn-icon danger" title="Delete"
+                                                onclick="delData('18')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                                          </tr>
+                                          <tr>
+                                            <td class="footable-first-visible" style="display: table-cell;">5</td>
+                                            <td style="display: table-cell;"><span class="text-uppercase">Admin
+                                                4</span></td>
+                                            <td style="display: table-cell;"><span
+                                                class="text-uppercase">user4</span></td>
+                                            <td style="display: table-cell;">Super Admin</td>
+                                            <td class="footable-last-visible" style="display: table-cell;"><button
+                                                class="btn btn-icon danger" title="Delete"
+                                                onclick="delData('20')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                                          </tr>
+                                          <tr>
+                                            <td class="footable-first-visible" style="display: table-cell;">6</td>
+                                            <td style="display: table-cell;"><span class="text-uppercase">NOOR
+                                                HISHAM BIN JALIL</span></td>
+                                            <td style="display: table-cell;"><span
+                                                class="text-uppercase">SK0688</span></td>
+                                            <td style="display: table-cell;">Super Admin</td>
+                                            <td class="footable-last-visible" style="display: table-cell;"><button
+                                                class="btn btn-icon danger" title="Delete"
+                                                onclick="delData('35')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                                          </tr>
+                                          <tr>
+                                            <td class="footable-first-visible" style="display: table-cell;">7</td>
+                                            <td style="display: table-cell;"><span class="text-uppercase">MOHAMMAD
+                                                ASHRI BIN ABU HASSAN</span></td>
+                                            <td style="display: table-cell;"><span
+                                                class="text-uppercase">PT1001</span></td>
+                                            <td style="display: table-cell;">Super Admin</td>
+                                            <td class="footable-last-visible" style="display: table-cell;"><button
+                                                class="btn btn-icon danger" title="Delete"
+                                                onclick="delData('36')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                                          </tr>
+                                          <tr>
+                                            <td class="footable-first-visible" style="display: table-cell;">8</td>
+                                            <td style="display: table-cell;"><span class="text-uppercase">Admin
+                                                5</span></td>
+                                            <td style="display: table-cell;"><span
+                                                class="text-uppercase">user5</span></td>
+                                            <td style="display: table-cell;">Super Admin</td>
+                                            <td class="footable-last-visible" style="display: table-cell;"><button
+                                                class="btn btn-icon danger" title="Delete"
+                                                onclick="delData('37')"><i class="ion-trash-a"></i></button><button class="btn btn-icon" data-toggle="modal" data-target="#topModalNew" data-ui-target="#animate"><i class="fa fa-bars"></i></button></td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                            </div>
+
+                            <div class="row p-a text-right">
+                              <button type="submit" class="btn info super_admin">Save</button>
+                            </div>
+
+                          </form>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="box" id="divLectDetails">
+                          <ul class="nav nav-pills nav-stacked" data-ui-nav="" id="divListSem">
+                            <li class="nav-item" id="navLectData"><a href="#" class="nav-link auto info"><span
+                                  class="pull-right text-muted m-r-xs"><i class="fa fa-plus inline"></i><i
+                                    class="fa fa-minus none"></i></span>Setting Section Permission</a>
+                              <ul class="nav nav-sub text-sm">
+                                <div class="row m-a-2"><textarea class="hidden" id="dataList_44"></textarea>
+                                  <p><label class="label success">Active</label></p>
+                                  <div class="form-group row">
+                                    <label class="col-sm-2 form-control-label">Lorem ipsum dolor sit amet
+                                      consectetur adipisicing elit. Commodi beatae dicta eius soluta corrupti? Rem
+                                      aliquid repudiandae doloremque quod tempore. Dolore, et minima?</label>
+                                    <div class="col-sm-10">
+                                      <label class="ui-switch data-ui-switch-lg dark m-t-xs m-r">
+                                        <input type="checkbox" class="has-value">
+                                        <i></i>
+                                      </label>
+                                    </div>
+                                  </div>
+
+                                  <table id=""
+                                    class="table table-striped footable footable-5 footable-paging footable-paging-center breakpoint-lg"
+                                    style="display: table;">
+                                    <thead>
+                                      <tr class="footable-header">
+                                        <th class="footable-first-visible" style="display: table-cell;"></th>
+                                        <th style="display: table-cell;">Create</th>
+                                        <th style="display: table-cell;">Read</th>
+                                        <th style="display: table-cell;">Update</th>
+                                        <th style="display: table-cell;">Delete</th>
+                                      </tr>
+                                    </thead>
+                                    <tfoot></tfoot>
+                                    <tbody>
+                                      <tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">Permission
+                                          Access Setting</td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">Permission
+                                          Access Profile</td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">Permission
+                                          for Dashboard View</td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">Permission
+                                          for Dashboard View</td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">Permission
+                                          for Dashboard View</td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">Permission
+                                          for Dashboard View</td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">Permission
+                                          for Dashboard View</td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">Permission
+                                          for Dashboard View</td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">Permission
+                                          for Dashboard View</td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">Permission
+                                          for Dashboard View</td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+                                        <td style="display: table-cell;"><input type="checkbox" checked></td>
+
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <button id="savePermissionsBtn">Save Permissions</button>
+
+                                </div>
+                              </ul>
+                            </li>
+                            <li class="nav-item" id="navLectData"><a href="#" class="nav-link auto info"><span
+                                  class="pull-right text-muted m-r-xs"><i class="fa fa-plus inline"></i><i
+                                    class="fa fa-minus none"></i></span>Student Tab Permission</a>
+                              <ul class="nav nav-sub text-sm">
+                                <div class="row m-a-2"><textarea class="hidden" id="dataList_31"></textarea>
+                                  <p><label class="label success">Active</label></p>
+
+                                </div>
+                              </ul>
+                            </li>
+
+                            <li class="nav-item" id="navLectData"><a href="#" class="nav-link auto info"><span
+                                  class="pull-right text-muted m-r-xs"><i class="fa fa-plus inline"></i><i
+                                    class="fa fa-minus none"></i></span>Policy Tab Permission</a>
+                              <ul class="nav nav-sub text-sm">
+                                <div class="row m-a-2"><textarea class="hidden" id="dataList_31"></textarea>
+                                  <p><label class="label success">Active</label></p>
+
+                                </div>
+                              </ul>
+                            </li>
+
+                            <li class="nav-item" id="navLectData"><a href="#" class="nav-link auto info"><span
+                                  class="pull-right text-muted m-r-xs"><i class="fa fa-plus inline"></i><i
+                                    class="fa fa-minus none"></i></span>CE/CT Tab Permission</a>
+                              <ul class="nav nav-sub text-sm">
+                                <div class="row m-a-2"><textarea class="hidden" id="dataList_31"></textarea>
+                                  <p><label class="label success">Active</label></p>
+
+                                </div>
+                              </ul>
+                            </li>
+
+                            <li class="nav-item" id="navLectData"><a href="#" class="nav-link auto info"><span
+                                  class="pull-right text-muted m-r-xs"><i class="fa fa-plus inline"></i><i
+                                    class="fa fa-minus none"></i></span>Programme Change Tab Permission</a>
+                              <ul class="nav nav-sub text-sm">
+                                <div class="row m-a-2"><textarea class="hidden" id="dataList_31"></textarea>
+                                  <p><label class="label success">Active</label></p>
+
+                                </div>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="panel box b-success m-b-xs p-a-1">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <b>Course Offer</b>
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                          </div>
+                          <hr>
+                          <table
+                            class="table table-bordered table-striped table-condensed footable footable-7 footable-filtering footable-filtering-right footable-paging footable-paging-center breakpoint-lg"
+                            data-sorting="true" id="listCrstbl" style="display: table;">
+                            <thead>
+                              <tr class="footable-filtering">
+                                <th colspan="3">
+                                  <form class="form-inline">
+                                    <div class="form-group footable-filtering-search"><label
+                                        class="sr-only">Search</label>
+                                      <div class="input-group"><input type="text" class="form-control"
+                                          placeholder="Search...">
+                                        <div class="input-group-btn"><button type="button"
+                                            class="btn btn-primary"><span
+                                              class="fooicon fooicon-search"></span></button><button type="button"
+                                            class="btn btn-default dropdown-toggle"><span
+                                              class="caret"></span></button>
+                                          <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class="dropdown-header">Search for:</li>
+                                            <li><a class="checkbox"><label><input type="checkbox"
+                                                    checked="checked">Course</label></a></li>
+                                            <li><a class="checkbox"><label><input type="checkbox"
+                                                    checked="checked">Credit</label></a></li>
+                                            <li><a class="checkbox"><label><input type="checkbox"
+                                                    checked="checked">Action</label></a></li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </th>
+                              </tr>
+                              <tr class="footable-header">
+                                <th class="footable-sortable footable-first-visible" style="display: table-cell;">
+                                  Course<span class="fooicon fooicon-sort"></span></th>
+                                <th class="footable-sortable" style="display: table-cell;">Credit<span
+                                    class="fooicon fooicon-sort"></span></th>
+                                <th class="footable-sortable footable-last-visible" style="display: table-cell;">
+                                  Action<span class="fooicon fooicon-sort"></span></th>
+                              </tr>
+                            </thead>
+                            <tfoot>
+                              <tr class="footable-paging">
+                                <td colspan="3">
+                                  <div class="footable-pagination-wrapper">
+                                    <ul class="pagination">
+                                      <li class="footable-page-nav disabled" data-page="first"><a
+                                          class="footable-page-link" href="#">«</a></li>
+                                      <li class="footable-page-nav disabled" data-page="prev"><a
+                                          class="footable-page-link" href="#">‹</a></li>
+                                      <li class="footable-page visible active" data-page="1"><a
+                                          class="footable-page-link" href="#">1</a></li>
+                                      <li class="footable-page visible" data-page="2"><a
+                                          class="footable-page-link" href="#">2</a></li>
+                                      <li class="footable-page visible" data-page="3"><a
+                                          class="footable-page-link" href="#">3</a></li>
+                                      <li class="footable-page-nav" data-page="next"><a class="footable-page-link"
+                                          href="#">›</a></li>
+                                      <li class="footable-page-nav" data-page="last"><a class="footable-page-link"
+                                          href="#">»</a></li>
+                                    </ul>
+                                    <div class="divider"></div><span class="label label-default">Showing 1 to 5 of
+                                      14 data</span>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tfoot>
+                            <tbody>
+                              <tr>
+                                <td class="footable-first-visible" style="display: table-cell;">
+                                  <b>MPU3332</b><br>SOCIOLOGY
+                                </td>
+                                <td style="display: table-cell;">2</td>
+                                <td class="footable-last-visible" style="display: table-cell;"><button
+                                    onclick="addCourse('MPU3332-SOCIOLOGY','744','2','6755')"
+                                    class="btn btn-icon btn-link rounded text-success">
+                                    <i class="fa fa-plus-circle"></i></button></td>
+                              </tr>
+                              <tr>
+                                <td class="footable-first-visible" style="display: table-cell;">
+                                  <b>BBM6343</b><br>INTRODUCTION TO INFORMATION TECHNOLOGY
+                                </td>
+                                <td style="display: table-cell;">3</td>
+                                <td class="footable-last-visible" style="display: table-cell;"><button
+                                    onclick="addCourse('BBM6343-INTRODUCTION TO INFORMATION TECHNOLOGY','467','3','6756')"
+                                    class="btn btn-icon btn-link rounded text-success">
+                                    <i class="fa fa-plus-circle"></i></button></td>
+                              </tr>
+                              <tr>
+                                <td class="footable-first-visible" style="display: table-cell;">
+                                  <b>BBM6202</b><br>PRESENTATION SKILLS
+                                </td>
+                                <td style="display: table-cell;">2</td>
+                                <td class="footable-last-visible" style="display: table-cell;"><button
+                                    onclick="addCourse('BBM6202-PRESENTATION SKILLS','468','2','6757')"
+                                    class="btn btn-icon btn-link rounded text-success">
+                                    <i class="fa fa-plus-circle"></i></button></td>
+                              </tr>
+                              <tr>
+                                <td class="footable-first-visible" style="display: table-cell;">
+                                  <b>BBM6212</b><br>ARABIC LANGUAGE
+                                </td>
+                                <td style="display: table-cell;">2</td>
+                                <td class="footable-last-visible" style="display: table-cell;"><button
+                                    onclick="addCourse('BBM6212-ARABIC LANGUAGE','469','2','6758')"
+                                    class="btn btn-icon btn-link rounded text-success">
+                                    <i class="fa fa-plus-circle"></i></button></td>
+                              </tr>
+                              <tr>
+                                <td class="footable-first-visible" style="display: table-cell;">
+                                  <b>BBM6113</b><br>PRINCIPLES AND PRACTICE OF MANAGEMENT
+                                </td>
+                                <td style="display: table-cell;">3</td>
+                                <td class="footable-last-visible" style="display: table-cell;"><button
+                                    onclick="addCourse('BBM6113-PRINCIPLES AND PRACTICE OF MANAGEMENT','458','3','6759')"
+                                    class="btn btn-icon btn-link rounded text-success">
+                                    <i class="fa fa-plus-circle"></i></button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <p></p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-a b-t">
+        <!-- <a href="#" class="text-muted"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+                  <a href="#" class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal new add student -->
+
+
+
+ <!-------------------------------------------------- modal add program & activity -------------------------------------------------->
+ <div id="reg-program" class="modal fade" data-backdrop="static">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" id="other">
+      <form role="form" id="formAddActivity">
+        <div class="modal-header red-900">
+          <h5 class="modal-title">ADD PROGRAMME & ACTIVITY</h5>
+        </div>
+        <div class="modal-body p-lg">
+          <p>
+
+          <div class="form-group row ">
+            <label for="" class="col-sm-2 form-control-label">Name Access Roles</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="prog_peruntukan">
+            </div>
+
+            <label for="" class="col-sm-2 form-control-label">Shortform</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="prog_peruntukan">
+            </div>
+          </div>
+
+          <table id=""
+            class="table table-striped footable footable-5 footable-paging footable-paging-center breakpoint-lg"
+            style="display: table;">
+            <thead>
+              <tr class="footable-header">
+                <th class="footable-first-visible" style="display: table-cell;"></th>
+                <th style="display: table-cell;">Create</th>
+                <th style="display: table-cell;">Read</th>
+                <th style="display: table-cell;">Update</th>
+                <th style="display: table-cell;">Delete</th>
+              </tr>
+            </thead>
+            <tfoot></tfoot>
+            <tbody>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission Announcement</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission Setting</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission for Student tab</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission for Policy</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission for CE/CT</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission for Programme Change</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission for Student Withdraw</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission for Lecturer</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission for Examination</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission for Timetable</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+              <tr>
+                <td class="footable-first-visible" style="display: table-cell;">Permission for Reporting</td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+                <td style="display: table-cell;"><input type="checkbox" checked=""></td>
+
+              </tr>
+            </tbody>
+          </table>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+          <input type="submit" class="btn info p-x-md" value="Save">
+        </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div>
+</div>
+<!-------------------------------------------------- end modal add program & activity -------------------------------------------------->
+
+
+
+
+  <!-- LOADING START -->
+  <div class="modal" id="loading_modal" data-backdrop="static">
+    <div class="modal-dialog">
+      <div style="padding-top: 50%;" class="text-center text-white"><span
+          class="fa fa-cog fa-spin fa-3x m-b"></span><br><i id="load_text">Loading...</i></div>
+    </div>
+  </div>
+  <!-- LOADING END -->
+
+</div>
+
+<!-- <script src="pljr_info.js"></script> -->
+<script src="callFunction.js"></script>
+<script src="admAccessRoles.js?n=3"></script>
+<!-- <script src="scripts/ajax.js"></script> -->

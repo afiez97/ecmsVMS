@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VMS - Pengurusan Pelajar</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="libs/footable2/css/footable.bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.css" type="text/css" />
+  <link rel="stylesheet" href="sweet-alert/sweetalert2.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/select2/dist/css/select2.css">
+  <link rel="stylesheet" href="libs/select2-bootstrap-theme/dist/select2-bootstrap.css">
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 bg pjax-container" role="main">
+    <div class="app-header white bg b-b">
+          <div class="navbar" data-pjax>
+                <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+                  <i class="ion-navicon"></i>
+                </a>
+                
+                <div class="navbar-item pull-left h5" id="pageTitle">
+                  <button class="btn primary" title="Back" id="btnBack"><i class="fa fa-arrow-left"></i></button>&nbsp;
+                  Details
+                </div>
+                <!-- nabar right -->
+                <!-- / navbar right -->
+          </div>
+    </div>
+    <div class="app-footer white bg p-a b-t">
+      <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+      <span class="text-sm text-muted">&copy; Copyright.</span>
+    </div>
+    
+    <div class="app-body">
+      <!-- ############ PAGE START-->
+      <!-- only need a height for layout 4 -->
+      <div style="min-height: 200px">
+        <div class="padding">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="box">
+                <div class="box-header b-b">
+                  <h3>Details</h3>
+                  <!-- <div class="box-tool">
+                    <ul class="nav">
+                      <li class="nav-item inline m-r-1">
+                        <a class="nav-link" data-toggle="modal" data-target="#update-application" title="Update" id="btnMdlUpdate">
+                            <i class="ion-android-create" style="color: #22b66e;"></i>
+                        </a>
+                      </li>
+                      <li class="nav-item inline m-r-1">
+                        <a class="nav-link" title="Remove" id="btnDelete">
+                            <i class="ion-trash-b" style="color: #ef193c"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div> -->
+                </div>
+
+                <div class="box-body">
+                  <input type="hidden" id="pkId">
+                  <input type="hidden" id="school_status">
+                  <input type="hidden" id="fnnceDep_status">
+                  <input type="hidden" id="exmUnit_status">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <div class="col-md-2 font-weight-bold">Student Id</div>
+                        <div class="col-md-10 text-uppercase" id="student_id"></div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <div class="col-md-2 font-weight-bold">Name</div>
+                        <div class="col-md-10 text-uppercase" id="sti_name"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-2 font-weight-bold">IC No.</div>
+                        <div class="col-md-10" id="sti_icno"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-2 font-weight-bold">Phone No.</div>
+                        <div class="col-md-10 text-uppercase" id="sti_phone"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-2 font-weight-bold">Status No.</div>
+                        <div class="col-md-10 text-uppercase" id="app_status"></div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <div class="col-md-2 font-weight-bold">Intake</div>
+                        <div class="col-md-10 text-uppercase" id="cur_intake"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-2 font-weight-bold">Programme</div>
+                        <div class="col-md-10 text-uppercase" id="pgm_name"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-2 font-weight-bold">Type</div>
+                        <div class="col-md-10 text-uppercase" id="app_type"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-2 font-weight-bold">Course</div>
+                        <div class="col-md-10 text-uppercase" id="app_course"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-2 font-weight-bold">Reason</div>
+                        <div class="col-md-10 text-uppercase" id="app_reason"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-sm-2 font-weight-bold">Payment Proof</div>
+                        <div class="col-sm-10" id="view_payment"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-5">
+              <div class="box">
+                <div class="box-header b-b">
+                  <h3>Status</h3>
+                </div>
+
+                <div class="box-body">
+                  <div>
+                    <ul class="nav nav-pills clearfix m-b">
+                      <!-- <li class="nav-item"><a class="nav-link active" href="#tab2" data-toggle="tab">HOD/HOP</a></li> -->
+                      <!-- <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">FINANCE DEPARTMENT</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">EXAM UNIT</a></li> -->
+                    </ul>
+                    <!-- <hr> -->
+      
+                    <div class="tab-content">
+                        <!-------------------------------------------------- tab School -------------------------------------------------->
+                        <div class="tab-pane active" id="tab2">
+                          <form id="formSchool">
+                            <div class="row m-a-1">
+
+                              <div class="form-group row">
+                                <label class="col-sm-4 form-control-label font-weight-bold">Type</label>
+                                <!-- <div class="col-sm-10"></div> -->
+                                <div class="col-sm-8">
+                                  <select id="upt_app_type" class="form-control">
+                                    <option value="">- Choose -</option>
+                                    <option value="RE-SIT">RE-SIT</option>
+                                    <option value="RE-CHECK">RE-CHECK</option>
+                                    <option value="SPECIAL EXAM">SPECIAL EXAM</option>
+                                  </select>
+                                </div>
+                              </div>
+
+
+
+
+                              <div class="form-group row">
+                                <label class="col-sm-4 form-control-label font-weight-bold">Status</label>
+                                <!-- <div class="col-sm-10"></div> -->
+                                <div class="col-sm-8">
+                                  <select id="upt_app_status" class="form-control">
+                                    <option value="">- Choose -</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Reject">Reject</option>
+                                    <option disabled value="Completed">Completed</option>
+                                  </select>
+                                </div>
+                              </div>
+      
+                              <div class="form-group row">
+                                <label class="col-sm-4 form-control-label font-weight-bold">HOD/HOP</label>
+                                <div class="col-sm-8">
+                                    <!-- <input type="text" class="form-control" id="FK_hod"> -->
+                                    <span id="slctLect"><select class="form-control c-select slct2" id="FK_hod" required></select></span>
+                                    <input type="text" class="form-control" id="view_lecturer" style="display: none;" disabled>
+                                </div>
+
+                                <!-- <div class="col-sm-10">
+                                  <span id="slctLect"><select class="form-control c-select slct2" id="cot_det_lect" required></select></span>
+                                  <input type="text" class="form-control" id="view_lecturer" style="display: none;" disabled>
+                                </div> -->
+                              </div>
+    
+                              <div class="form-group row">
+                                <label class="col-sm-4 form-control-label font-weight-bold">Date</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" id="date_update">
+                                </div>
+                              </div>
+                            </div>
+                            
+        
+                            <div class="row text-right p-r-1 btn_update_e_application">
+                              <hr>
+                              <button type="submit" class="btn info">Save</button>
+                            </div>
+                          </form>
+                        </div><!-------------------------------------------------- end tab School -------------------------------------------------->
+      
+                        <!-------------------------------------------------- tab Finance Department -------------------------------------------------->
+                      
+                        <!-- <div class="tab-pane" id="tab3">
+                          <form id="formFnncDep">
+                            <div class="row m-a-1">
+                              <div class="form-group row">
+                                <label class="col-sm-2 form-control-label font-weight-bold">Signature</label>
+                                <div class="col-sm-10"></div>
+                              </div>
+      
+                              <div class="form-group row">
+                                <label class="col-sm-2 form-control-label font-weight-bold">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="finance_name">
+                                </div>
+                              </div>
+    
+                              <div class="form-group row">
+                                <label class="col-sm-2 form-control-label font-weight-bold">Date</label>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="finance_date">
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label class="col-sm-2 form-control-label font-weight-bold">Receipt No.</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="finance_receipt">
+                                </div>
+                              </div>
+                            </div>
+                            <hr>
+        
+                            <div class="row text-right p-r-1">
+                              <button type="submit" class="btn info">Save</button>
+                            </div>
+                          </form>
+                        </div> -->
+                        
+                        <!-------------------------------------------------- end tab Finance Department -------------------------------------------------->
+
+                        <!-------------------------------------------------- tab Exam Unit -------------------------------------------------->
+
+                        <!-- <div class="tab-pane" id="tab4">
+                          <form id="formUptExmUnit">
+                            <div class="row m-a-1">
+                              <div class="form-group row">
+                                <label class="col-sm-2 form-control-label font-weight-bold">Signature</label>
+                                <div class="col-sm-10"></div>
+                              </div>
+      
+                              <div class="form-group row">
+                                <label class="col-sm-2 form-control-label font-weight-bold">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="examunit_name">
+                                </div>
+                              </div>
+    
+                              <div class="form-group row">
+                                <label class="col-sm-2 form-control-label font-weight-bold">Date</label>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="examunit_date">
+                                </div>
+                              </div>
+                            </div>
+                            <hr>
+        
+                            <div class="row text-right p-r-1">
+                              <button type="submit" class="btn info">Save</button>
+                            </div>
+                          </form>
+                        </div> -->
+                        
+                        <!-------------------------------------------------- end tab Exam Unit -------------------------------------------------->
+                    </div>  
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+
+
+          <!-------------------------------------------------- modal Update Application -------------------------------------------------->
+          <div id="update-application" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form role="form" id="formUpdate">
+                  <div class="modal-header blue-grey-700">
+                      <h5 class="modal-title">UPDATE APPLICATION</h5>
+                  </div>
+                  <div class="modal-body p-lg">
+                    <p>
+                      <div class="form-group row">
+                          <label class="col-sm-2 col-form-label">Student Id <span class="text-danger d-inline">*</span></label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="student_id_upt" required>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Course <span class="text-danger d-inline">*</span></label>
+                        <div class="col-sm-10">
+                          <select class="form-control slct2" id="fk_course_upt" required></select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Type <span class="text-danger d-inline">*</span></label>
+                        <div class="col-sm-10">
+                          <select class="form-control slct2" id="app_type_upt" required>
+                            <option value="">- Choose -</option>
+                            <option value="RE-SIT">RE-SIT</option>
+                            <option value="RE-EXAMINE">RE-EXAMINE</option>
+                            <option value="REVALUATE">REVALUATE</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="cen_max_capacity" class="col-sm-2 col-form-label">Reason</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="app_reason_upt" rows="3"></textarea>
+                        </div>
+                      </div>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn success p-x-md">Update</button>
+                  </div>
+                </form>
+              </div><!-- /.modal-content -->
+            </div>
+          </div><!-------------------------------------------------- end modal Update Application -------------------------------------------------->
+        </div>
+      </div>
+
+      <!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+  
+  <!-- ############ SWITHCHER START-->
+  <!-- ############ SWITHCHER END-->
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/tether/dist/js/tether.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="libs/PACE/pace.min.js"></script>
+  <script src="libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="libs/blockUI/jquery.blockUI.js"></script>
+  <script src="libs/jscroll/jquery.jscroll.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-modal.js"></script>
+  <script src="libs/footable2/js/footable.js"></script>
+  <script src="libs/footable2/js/footable.min.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-list.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="scripts/ui-taburl.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <script src="sweet-alert/sweetalert2.js"></script>
+  <script src="sweet-alert/sweetalert2.min.js"></script>
+  <script src="libs/select2/dist/js/select2.full.min.js"></script>
+
+  <script src="scripts/action.min.js"></script>
+  <script src="config.js"></script>
+  <script src="callFunction.js"></script>
+  <script src="exam_appDetail.js"></script>
+  <script src="capaian.js"></script>
+<!-- endbuild -->
+</body>
+</html>

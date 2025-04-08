@@ -1,0 +1,274 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+      <div class="navbar" data-pjax>
+          <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+            <i class="ion-navicon"></i>
+          </a>
+
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <span class="navbar-item text-md">Registration</span>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link text-muted" data-toggle="modal" data-target="#addNew" data-backdrop="static" data-keyboard="false">
+                  <span class="">
+                    <i class="fa fa-fw fa-plus"></i>
+                    <span class="hidden-sm-down">New Record</span>
+                  </span>
+              </a>
+            </li> -->
+          </ul>
+          <!-- nabar right -->
+          <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+      </div>
+  </div>
+
+  <!-- FOOTER INSERT -->
+  <div class="app-footer white bg p-a b-t">
+    <div class="pull-right text-sm text-muted">Version 1.0.1</div>
+    <span class="text-sm text-muted">&copy; Copyright.</span>
+  </div>
+
+  <div class="app-body">
+
+      <!-- CONTENT START -->
+      <div style="min-height: mh-200">
+          <div class="col-md-10 offset-md-1 mt-2">
+            <div class="box" id="divLectDetails">
+             
+              <ul class="nav nav-pills nav-stacked" data-ui-nav id="divListSem"></ul>
+              
+            </div>
+
+            <!-------------------------------------------------- lecturer -------------------------------------------------->
+            <div id="mdlLectTmt" class="modal fade" data-backdrop="static">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header teal-500">
+                      <h5 class="modal-title">LECTURER TIMETABLE</h5>
+                    </div>
+                    <div class="modal-body p-lg">
+                      <p class="">
+                        <span class="hidden" id="acaCal"></span>
+                        <div class="form-group row">
+                          <div class="col-sm-2 font-weight-bold">Lecturer</div>
+                          <div class="col-sm-10 text-uppercase" id="lect_name"></div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="col-sm-2 font-weight-bold">Course</div>
+                          <div class="col-sm-10 text-uppercase" id="course_name"></div>
+                        </div>
+                        <hr>
+                        <span id="dataIndex" class="hidden"></span>
+                        <table class="table table-striped m-b-none" data-sorting="true" id="tblLectTmt"></table>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn white p-x-md" data-dismiss="modal">Close</button>
+                      <!-- <button type="button" class="btn btn-warning p-x-md" id="printTimeTable">Print</button> -->
+                    </div>
+                </div><!-- /.modal-content -->
+              </div>
+            </div>
+            <!-------------------------------------------------- end lecturer -------------------------------------------------->
+
+          </div>
+      </div>
+
+
+
+
+      <div style="min-height: mh-200">
+        <div class="col-md-10 offset-md-1 mt-2">
+          <div class="box" id="rock">
+           
+          <!-------------------------------------------------- student Timetable -------------------------------------------------->
+          
+
+
+            <div class="modal fade" id="StudTimetbl">
+              <div class="modal-bottom white b-b" style="height:80%;">
+                  <div class="row-col">
+                      <div class="grey-100 b-b b-t">
+                        <div class="container-fluid">
+                          <div class="row m-t-1">
+                              <div class="col-md-12">
+                                <h4><i class="fa fa-calendar-o"></i> Student Timetable</h4>
+                              </div>
+                          </div>
+                        </div>                          
+                      </div>
+                      <div class="row-row">
+                          <div class="row-body">
+                              <div class="row-inner">
+                                  <div class="container-fluid">
+                                    <p class="">
+                                      <span class="hidden" id="acaCal"></span>
+                                      <div class="form-group row">
+                                        <div class="col-sm-2 font-weight-bold">Student ID</div>
+                                        <div class="col-sm-10 text-uppercase" id="stud_id"></div>
+                                      </div>
+                  
+                                      <div class="form-group row">
+                                        <div class="col-sm-2 font-weight-bold">Student Name</div>
+                                        <div class="col-sm-10 text-uppercase" id="stud_name"></div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <div class="col-sm-2 font-weight-bold">Academic Session</div>
+                                        <div class="col-sm-10 text-uppercase" id="year"></div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <div class="col-sm-2 font-weight-bold">Semester</div>
+                                        <div class="col-sm-10 text-uppercase" id="cohort"></div>
+                                      </div>
+                                      <hr>
+                                      
+                                      <!-- <table class="table table-striped m-b-none" data-sorting="true" id="tblStudTmt"></table> -->
+                                    </p>
+                                      <p class="text-center table-responsive" style="padding:0 0;">
+                                        <table class="table table-bordered" cellpadding="1">
+                                          <thead class="grey-200">
+                                            <tr>
+                                              <th>DAY</th>
+                                              <th width="200">08:00AM-09:00AM</th>
+                                              <th width="200">09:00AM-10:00AM</th>
+                                              <th width="200">10:00AM-11:00AM</th>
+                                              <th width="200">11:00AM-12:00PM</th>
+                                              <th width="200">12:00PM-1:00PM</th>
+                                              <th width="200">01:00PM-02:00PM</th>
+                                              <th width="200">02:00PM-03:00PM</th>
+                                              <th width="200">03:00PM-04:00PM</th>
+                                              <th width="200">04:00PM-05:00PM</th>
+                                              <th width="200">05:00PM-06:00PM</th>
+                                              <th width="200">06:00PM-07:00PM</th>
+                                              <th width="200">07:00PM-08:00PM</th>
+                                              <th width="200">08:00PM-09:00PM</th>
+                                              <th width="200">09:00PM-10:00PM</th>
+                                              <th width="200">10:00PM-11:00PM</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody id="tblStudTmt"></tbody>
+                                        </table>                                          
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="p-a b-t">
+                          <div class="container text-right">
+                              <button class="btn btn-dark" data-dismiss="modal">Back</button>
+                              <button type="button" class="btn btn-outline-danger p-x-md" id="printTimeTableStudent"><i class="fa fa-file-pdf-o"></i> Print</button>
+                              
+                          </div>
+                      </div>
+                  </div> <!-- row-col -->            
+              </div>
+          </div>
+          
+            <!-------------------------------------------------- student Timetable  -------------------------------------------------->
+
+
+        </div>
+    </div>
+
+
+  </div>
+
+
+
+  <div style="min-height: mh-200">
+    <div class="col-md-10 offset-md-1 mt-2">
+      <div class="box" id="rock">
+       
+      </div>
+
+      <!-------------------------------------------------- lecturer -------------------------------------------------->
+      <div id="StudTviewCmark" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header teal-500">
+                <h5 class="modal-title">STUDENT CARRY MARK</h5>
+
+              </div>
+              <div class="modal-body p-lg">
+                <p class="">
+                  <span class="hidden" id="acaCal"></span>
+                  <div class="form-group row">
+                    <div class="col-sm-2 font-weight-bold">Student</div>
+                    <div class="col-sm-10 text-uppercase" id="studID"></div>
+                  </div>
+
+                  <!-- <div class="form-group row">
+                    <div class="col-sm-2 font-weight-bold">Student Name</div>
+                    <div class="col-sm-10 text-uppercase" id="stdname"></div>
+                  </div> -->
+                  <div class="form-group row">
+                    <div class="col-sm-2 font-weight-bold">Academic Session</div>
+                    <div class="col-sm-10 text-uppercase" id="cmsession"></div>
+                  </div>
+                  <!-- <div class="form-group row">
+                    <div class="col-sm-2 font-weight-bold">Semester</div>
+                    <div class="col-sm-10 text-uppercase" id="crscohort"></div>
+                  </div> -->
+
+                  <div class="form-group row">
+                    <div class="col-sm-2 font-weight-bold">Course</div>
+                    <div class="col-sm-10 text-uppercase" id="crsname"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-2 font-weight-bold">Total Percentage </div>
+                    <div class="col-sm-10 text-uppercase" id="tpercent"></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-2 font-weight-bold">Carry Mark Achieved</div>
+                    <div class="col-sm-10 text-uppercase" id="cmachieve"></div>
+                  </div>
+
+
+                  <hr>
+                  
+                  <!-- <table class="table table-striped m-b-none" data-sorting="true" id="tblStudTmt"></table> -->
+                
+
+                <div class="row">
+                  <div class="col-md-12">
+
+                    <table class="table table-striped m-b-none" data-sorting="true" id="tblCMark"></table>
+                    
+                  </div>
+
+                </p>                  
+                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn white p-x-md" data-dismiss="modal">Close</button>
+              </div>
+
+
+          </div><!-- /.modal-content -->
+        </div>
+      </div>
+      <!-------------------------------------------------- end lecturer -------------------------------------------------->
+
+    </div>
+</div>
+
+
+
+  
+
+
+
+
+
+<script src="jsPDF/jspdf.min.js"></script>
+<script src="jsPDF/pdfobjct.min.js"></script>
+<script src="jsPDF/jspdf.plugin.autotable.min.js"></script>
+
+  <script src="callFunctionStd.js"></script>
+  <script src="pljr_courseList.js?n=2"></script>
+  <script src="pdfJSTimeTable.js"></script>
+  <script src="scripts/ajax.js"></script>

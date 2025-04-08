@@ -1,0 +1,181 @@
+
+    <!-- HEADER INSERT -->
+    <div class="app-header white bg b-b"> 
+        <div class="navbar" data-pjax>
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
+              <i class="ion-navicon"></i>
+            </a>
+
+            <ul class="nav navbar-nav">
+			        <li class="nav-item">
+			          	<span class="navbar-item text-md">Setting</span>
+			        </li>
+			        <li class="nav-item">
+				        <a class="nav-link text-muted btn_create_sc_classroom" data-toggle="modal" data-target="#reg-lokasi" data-backdrop="static" data-keyboard="false">
+				            <span class="">
+				            	<i class="fa fa-fw fa-plus"></i>
+				            	<span class="hidden-sm-down">New Record</span>
+				            </span>
+				        </a>
+			        </li>
+			    </ul>
+            <!-- nabar right -->
+            <ul class="nav navbar-nav pull-right" id="template-header"> </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER INSERT  -->
+    <div class="app-footer white bg p-a b-t" id="template-footer"> </div>
+
+    <div class="app-body">
+
+        <!-- CONTENT START -->
+        <div style="min-height: mh-200">
+            <div class="col-md-10 offset-md-1 mt-2">
+                <div class="box">
+                  <div class="box-header blue-900">
+                    <h3><b>CLASSROOM</b></h3>
+                    <small>Classroom List</small>
+                  </div>
+                  <div class="box-body light lt">
+                    <p class="m-a-0">
+                      <div id="tableLokasi">
+                        <input type="hidden" id="clgId">
+                        <textarea class="hidden" id="dataList"></textarea>
+                        <table class="table m-b-none" id="lokasiList"></table>
+                      </div>
+
+                      <!-------------------------------------------------- modal register classroom -------------------------------------------------->
+                      <div id="reg-lokasi" class="modal fade" data-backdrop="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <form role="form" id="formAddClass">
+                              <div class="modal-header blue-900">
+                                  <h5 class="modal-title">ADD CLASSROOM</h5>
+                              </div>
+                              <div class="modal-body p-lg">
+                                <p>
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <div class="form-group row">
+                                        <label for="namaLokasi" class="col-sm-4 form-control-label">Classroom Name<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" id="loc_name" placeholder="Classroom Name" required>
+                                        </div>
+                                      </div>
+    
+                                      <div class="form-group row">
+                                        <label for="jenisLokasi" class="col-sm-4 form-control-label">Classroom Type</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control c-select" id="loc_type" required></select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="" class="col-sm-4 form-control-label">Capacity</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" id="loc_capacity" placeholder="Capacity">
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <div class="form-group row">
+                                        <label for="" class="col-sm-3 form-control-label">Status</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control c-select" id="loc_status" required></select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="deskripsi" class="col-sm-3 form-control-label">Remarks</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" rows="3" placeholder="Remarks" id="loc_description"></textarea>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                <input type="submit" class="btn info p-x-md " value="Save">
+                              </div>                                      
+                            </form>
+                          </div><!-- /.modal-content -->
+                        </div>
+                      </div><!-------------------------------------------------- end modal register classroom -------------------------------------------------->
+
+                      <!-------------------------------------------------- modal update classroom -------------------------------------------------->
+                      <div id="update-lokasi" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <form role="form" id="formUptClassroom">
+                              <div class="modal-header blue-900">
+                                  <h5 class="modal-title">UPDATE CLASSROOM</h5>
+                              </div>
+                              <div class="modal-body p-lg">
+                                <p>
+                                  <input type="hidden" id="loc_id">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <div class="form-group row">
+                                        <label for="namaLokasi" class="col-sm-4 form-control-label">Classroom Name<span class="text-danger"> *</span></label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" id="upt_loc_name" placeholder="Classroom Name" required>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="jenisLokasi" class="col-sm-4 form-control-label">Classroom Type</label>
+                                        <div class="col-sm-8">
+                                          <select class="form-control c-select" id="upt_loc_type" required></select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="kapasiti" class="col-sm-4 form-control-label">Capacity</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" id="upt_loc_capacity" placeholder="Capacity">
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <div class="form-group row">
+                                        <label for="status" class="col-sm-3 form-control-label">Status</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control c-select" id="upt_loc_status" required></select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="deskripsi" class="col-sm-3 form-control-label">Remarks</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" id="upt_loc_description" rows="3" placeholder="Remarks"></textarea>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn white p-x-md " data-dismiss="modal">Cancel</button>
+                                <input type="submit" class="btn success p-x-md" value="Update">
+                              </div>
+                            </form>
+                          </div><!-- /.modal-content -->
+                        </div>
+                      </div><!-------------------------------------------------- end modal update classroom -------------------------------------------------->
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+
+    <!-- <script src="scripts/action.min.js"></script> -->
+    <script src="callFunction.js"></script>
+    <script src="lokasi.js"></script>
+    <script src="capaian.js"></script>
